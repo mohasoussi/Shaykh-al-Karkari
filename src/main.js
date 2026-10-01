@@ -114,29 +114,6 @@ function runLoader(onReveal) {
 }
 
 /* ---------------------------------------------------------
-   Vidéos : lecture automatique, relancée si le navigateur la retarde
-   --------------------------------------------------------- */
-function autoplayVideos() {
-  const vids = $$("video[autoplay]");
-  vids.forEach((v) => {
-    v.muted = true;
-    v.defaultMuted = true;
-    v.playsInline = true;
-  });
-  const play = () => vids.forEach((v) => v.paused && v.play().catch(() => {}));
-  play();
-  vids.forEach((v) => ["loadeddata", "canplay", "suspend"].forEach((e) => v.addEventListener(e, play)));
-  document.addEventListener("visibilitychange", play);
-  // certains navigateurs n'autorisent la lecture qu'après un premier geste : on relance au premier contact
-  ["pointerdown", "touchstart", "keydown", "wheel", "scroll"].forEach((e) =>
-    addEventListener(e, play, { once: true, passive: true })
-  );
-  // si la lecture reste bloquée, l'image fixe prend un lent mouvement pour que l'accueil ne soit jamais figé
-  setTimeout(() => vids.forEach((v) => v.paused && v.classList.add("is-still")), 2500);
-  vids.forEach((v) => v.addEventListener("playing", () => v.classList.remove("is-still")));
-}
-
-/* ---------------------------------------------------------
    Intro du hero
    --------------------------------------------------------- */
 function heroIntro() {
@@ -144,7 +121,7 @@ function heroIntro() {
   const splits = rows.map((r) => new SplitText(r, { type: "chars", charsClass: "char" }));
   const chars = splits.flatMap((s) => s.chars);
   const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-  tl.fromTo(".hero-video", { scale: 1.45 }, { scale: 1.15, duration: 2.6, ease: "expo.out" }, 0)
+  tl.fromTo(".hero-photo", { scale: 1.4 }, { scale: 1.12, duration: 2.6, ease: "expo.out" }, 0)
     .from(chars, { yPercent: 115, rotate: 6, duration: 1.4, stagger: 0.035 }, 0.15)
     .from(".hero-eyebrow .line", { scaleX: 0, duration: 1.2 }, 0.5)
     .from(".hero-eyebrow", { opacity: 0, x: -20, duration: 1.2 }, 0.5)
@@ -165,7 +142,7 @@ function heroScroll() {
     scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true },
   });
   tl.to(".hero-frame", { clipPath: "inset(8% 6% 0% 6% round 400px 400px 0px 0px)", ease: "none" }, 0)
-    .to(".hero-video", { scale: 1.35, yPercent: 10, ease: "none" }, 0)
+    .to(".hero-photo", { scale: 1.3, yPercent: 8, ease: "none" }, 0)
     .to(".hero-glass", { yPercent: -30, opacity: 0, ease: "none" }, 0)
     .to(".hero-row--gold", { xPercent: 8, ease: "none" }, 0)
     .to(".hero-ar", { yPercent: 40, rotate: -6, ease: "none" }, 0);
@@ -493,12 +470,53 @@ function header() {
       const hide = self.direction === 1 && !document.body.classList.contains("menu-open");
       if (hide === hidden) return;
       hidden = hide;
+      h.classList.toggle("is-hidden", hide);
       gsap.to(h, { yPercent: hide ? -110 : 0, duration: 0.6, ease: "power3.out", overwrite: "auto" });
     },
     onLeaveBack: () => {
       hidden = false;
+      h.classList.remove("is-hidden");
       gsap.to(h, { yPercent: 0, duration: 0.6, ease: "power3.out", overwrite: "auto" });
     },
+  });
+}
+
+/* ---------------------------------------------------------
+   Menu déroulant « Enseignements » + lien de la section en cours
+   --------------------------------------------------------- */
+function navigation() {
+  const sub = $(".has-sub");
+  const toggle = $(".sub-toggle");
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const open = sub.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", String(open));
+  });
+  const fermer = () => {
+    sub.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+  };
+  document.addEventListener("click", fermer);
+  document.addEventListener("keydown", (e) => e.key === "Escape" && fermer());
+  $$(".sub a").forEach((a) => a.addEventListener("click", fermer));
+
+  const liens = {};
+  $$("[data-nav]").forEach((a) => (liens[a.dataset.nav] = a));
+  const actif = (id) => {
+    $$(".header-nav .is-current").forEach((el) => el.classList.remove("is-current"));
+    const lien = liens[id];
+    if (!lien) return;
+    lien.classList.add("is-current");
+    if (lien.closest(".sub")) toggle.classList.add("is-current");
+  };
+  const sections = { top: ".hero", shaykh: "#shaykh", cours: "#cours", conferences: "#conferences", ecrits: "#ecrits", merkez: "#merkez", livres: "#livres", recherche: "#recherche", contact: "#contact" };
+  Object.entries(sections).forEach(([id, sel]) => {
+    ScrollTrigger.create({
+      trigger: sel,
+      start: "top 55%",
+      end: "bottom 55%",
+      onToggle: (self) => self.isActive && actif(id),
+    });
   });
 }
 
@@ -635,7 +653,7 @@ function dust() {
     }
   });
   // visible seulement au-dessus des sections sombres
-  [".hero", ".manifesto", ".research", ".talks", ".gallery", ".footer"].forEach((sel) =>
+  [".hero", ".manifesto", ".research", ".talks", ".merkez", ".gallery", ".footer"].forEach((sel) =>
     ScrollTrigger.create({
       trigger: sel,
       start: "top 60%",
@@ -654,7 +672,6 @@ const ready = document.fonts ? document.fonts.ready : Promise.resolve();
 
 ready.then(async () => {
   buildMenu();
-  autoplayVideos();
   if (reduced) {
     await runLoader();
     gsap.set(".menu", { visibility: "hidden" });
@@ -662,6 +679,7 @@ ready.then(async () => {
   }
   const mm = gsap.matchMedia();
   header();
+  navigation();
   heroScroll();
   manifesto();
   reveals();

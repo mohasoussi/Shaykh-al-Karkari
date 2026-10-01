@@ -10,7 +10,7 @@
   <meta property="og:description" content="Guide de la Tariqa Karkariya, chercheur et auteur. Parcours, enseignements, recherche, conférences et ouvrages." />
   <meta property="og:image" content="/media/portrait-fes.webp" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="preload" as="image" href="/media/hero-poster.webp" />
+  <link rel="preload" as="image" href="/media/hero-photo.webp" />
   <script type="module" src="/src/main.js"></script>
 </head>
 <body class="is-loading">
@@ -48,20 +48,39 @@
 
   <!-- ============ HEADER ============ -->
   <header class="header">
-    <a class="brand" href="#top" aria-label="Accueil">
-      <span class="brand-mark" lang="ar">ك</span>
-      <span class="brand-name">Mohamed Faouzi <b>Al Karkari</b></span>
-    </a>
-    <nav class="header-nav" aria-label="Navigation principale">
-      <a href="#shaykh" data-magnetic>Le Shaykh</a>
-      <a href="#enseignements" data-magnetic>Enseignements</a>
-      <a href="#conferences" data-magnetic>Conférences</a>
-      <a href="#livres" data-magnetic>Livres</a>
-    </nav>
-    <button class="menu-btn" aria-expanded="false" aria-controls="menu" data-magnetic>
-      <span class="menu-btn-label">Menu</span>
-      <span class="menu-btn-lines"><i></i><i></i></span>
-    </button>
+    <div class="header-bar">
+      <a class="brand" href="#top" aria-label="Accueil">
+        <span class="brand-mark" lang="ar">ك</span>
+        <span class="brand-name">Mohamed Faouzi <b>Al Karkari</b></span>
+      </a>
+      <nav class="header-nav" aria-label="Navigation principale">
+        <a href="#top" data-nav="top">Accueil</a>
+        <a href="#shaykh" data-nav="shaykh">Le Shaykh</a>
+        <div class="has-sub">
+          <button class="sub-toggle" type="button" aria-expanded="false" aria-haspopup="true">Enseignements <i aria-hidden="true"></i></button>
+          <ul class="sub">
+            <li><a href="#cours" data-nav="cours">Cours</a></li>
+            <li><a href="#conferences" data-nav="conferences">Conférences</a></li>
+            <li><a href="https://karkariya.fr/le-shaykh/moudhakara/" target="_blank" rel="noopener">Moudhakara <span aria-hidden="true">↗</span></a></li>
+          </ul>
+        </div>
+        <a href="#ecrits" data-nav="ecrits">Actualités et débats</a>
+        <a href="#merkez" data-nav="merkez">Projet Merkez</a>
+        <a href="#livres" data-nav="livres">Boutique</a>
+        <a href="#recherche" data-nav="recherche">Formation</a>
+        <a href="#contact" data-nav="contact">Contact</a>
+      </nav>
+      <div class="header-end">
+        <a class="social" href="https://www.facebook.com/share/1eMkrGabXe/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21h3z"/></svg>
+        </a>
+        <a class="pill" href="#contact" data-magnetic>Newsletter</a>
+        <button class="menu-btn" aria-expanded="false" aria-controls="menu" data-magnetic>
+          <span class="menu-btn-label">Menu</span>
+          <span class="menu-btn-lines"><i></i><i></i></span>
+        </button>
+      </div>
+    </div>
   </header>
 
   <!-- ============ MENU PLEIN ÉCRAN ============ -->
@@ -71,12 +90,13 @@
       <ol class="menu-links">
         <li><a href="#shaykh"><span>01</span>Le Shaykh</a></li>
         <li><a href="#parcours"><span>02</span>Parcours</a></li>
-        <li><a href="#enseignements"><span>03</span>Enseignements</a></li>
-        <li><a href="#recherche"><span>04</span>Recherche</a></li>
-        <li><a href="#conferences"><span>05</span>Conférences</a></li>
-        <li><a href="#livres"><span>06</span>Livres</a></li>
-        <li><a href="#ecrits"><span>07</span>Écrits</a></li>
-        <li><a href="#galerie"><span>08</span>Galerie</a></li>
+        <li><a href="#cours"><span>03</span>Cours</a></li>
+        <li><a href="#conferences"><span>04</span>Conférences</a></li>
+        <li><a href="#ecrits"><span>05</span>Actualités et débats</a></li>
+        <li><a href="#merkez"><span>06</span>Projet Merkez</a></li>
+        <li><a href="#livres"><span>07</span>Boutique</a></li>
+        <li><a href="#recherche"><span>08</span>Formation</a></li>
+        <li><a href="#contact"><span>09</span>Contact</a></li>
       </ol>
       <div class="menu-aside">
         <p class="menu-ar" lang="ar" dir="rtl">الطريقة الكركرية</p>
@@ -93,7 +113,7 @@
     <!-- ============ HERO ============ -->
     <section class="hero" aria-label="Introduction">
       <div class="hero-frame">
-        <video class="hero-video" poster="/media/hero-poster.webp" autoplay muted loop playsinline disablepictureinpicture preload="auto"><source src="/media/hero-loop.mp4" type="video/mp4" /><source src="/media/hero-loop.webm" type="video/webm" /></video>
+        <img class="hero-photo" src="/media/hero-photo.webp" alt="Le Shaykh en prière au crépuscule, vêtu de sa muraqqa'a" fetchpriority="high" />
         <div class="hero-veil"></div>
       </div>
       <div class="hero-content">
@@ -133,7 +153,7 @@
         </figure>
       </div>
       <div class="about-copy">
-        <p class="kicker">01 — Le Shaykh</p>
+        <p class="kicker">Le Shaykh</p>
         <h2 class="h2" data-split>Un héritier de la chaîne, un chercheur de son temps.</h2>
         <p data-reveal>Le Shaykh Mohamed Faouzi Al Karkari est le guide spirituel de la Tariqa Karkariya, héritier d'une chaîne de transmission ininterrompue. Pendant plus d'une décennie, il a également exercé des responsabilités au sein du ministère des Affaires religieuses du Maroc.</p>
         <p data-reveal>Aujourd'hui, il conjugue l'accompagnement spirituel, l'écriture et la recherche internationale sur le soufisme — de Nador à Chicago, de Paris à Genève.</p>
@@ -152,7 +172,7 @@
     <section class="journey" id="parcours">
       <div class="journey-pin">
         <div class="journey-head">
-          <p class="kicker">02 — Parcours</p>
+          <p class="kicker">Parcours</p>
           <h2 class="h2" data-split>Les étapes d'un chemin</h2>
         </div>
         <div class="journey-track">
@@ -193,9 +213,9 @@
     </section>
 
     <!-- ============ ENSEIGNEMENTS ============ -->
-    <section class="teachings" id="enseignements">
+    <section class="teachings" id="cours">
       <div class="section-head">
-        <p class="kicker">03 — Enseignements</p>
+        <p class="kicker">Cours</p>
         <h2 class="h2" data-split>Ce qui se transmet</h2>
         <p class="section-lede" data-reveal>Des moudhakarat — entretiens et réponses — et des enseignements thématiques sur la pratique, le savoir et le cheminement.</p>
       </div>
@@ -237,7 +257,7 @@
     <!-- ============ RECHERCHE ============ -->
     <section class="research" id="recherche">
       <div class="research-inner">
-        <p class="kicker">04 — Recherche</p>
+        <p class="kicker">Recherche &amp; formation</p>
         <h2 class="h2 h2--light" data-split>Le soufisme comme objet d'étude, et comme expérience vécue.</h2>
         <div class="research-grid">
           <div class="research-card" data-reveal>
@@ -266,7 +286,7 @@
         <div class="talks-bg-inner"><video muted loop playsinline preload="none"><source src="/media/conferences-loop.mp4" type="video/mp4" /><source src="/media/conferences-loop.webm" type="video/webm" /></video></div>
       </div>
       <div class="talks-intro">
-        <p class="kicker">05 — Conférences</p>
+        <p class="kicker">Conférences</p>
         <h2 class="talks-title" data-split>Une année<br /><em>en lumière</em></h2>
         <p class="section-lede section-lede--light" data-reveal>Amphithéâtres, cercles de dhikr, scènes pour la paix : un rayonnement qui traverse les continents.</p>
       </div>
@@ -296,7 +316,7 @@
     <!-- ============ LIVRES ============ -->
     <section class="books" id="livres">
       <div class="section-head section-head--center">
-        <p class="kicker">06 — Ouvrages</p>
+        <p class="kicker">Boutique · Ouvrages</p>
         <h2 class="h2" data-split>Les livres du Shaykh</h2>
         <p class="section-lede" data-reveal>Six ouvrages publiés aux éditions Les 7 lectures : la Voie, ses fondements et ses ascensions.</p>
       </div>
@@ -332,7 +352,7 @@
     <!-- ============ ÉCRITS ============ -->
     <section class="writings" id="ecrits">
       <div class="section-head">
-        <p class="kicker">07 — Écrits</p>
+        <p class="kicker">Actualités et débats</p>
         <h2 class="h2" data-split>Articles &amp; textes récents</h2>
       </div>
       <div class="articles">
@@ -354,10 +374,21 @@
       </div>
     </section>
 
+    <!-- ============ PROJET MERKEZ ============ -->
+    <section class="merkez" id="merkez">
+      <p class="merkez-word" aria-hidden="true">Merkez</p>
+      <div class="merkez-inner">
+        <p class="kicker">Projet Merkez</p>
+        <h2 class="h2 h2--light" data-split>Merkez, le centre.</h2>
+        <p class="merkez-text" data-reveal>Le Projet Merkez sera présenté prochainement sur cette page.</p>
+        <a class="btn btn--light" href="#contact" data-magnetic><span>Être informé</span><i>→</i></a>
+      </div>
+    </section>
+
     <!-- ============ GALERIE ============ -->
     <section class="gallery" id="galerie">
       <div class="section-head section-head--center">
-        <p class="kicker">08 — Galerie</p>
+        <p class="kicker">Galerie</p>
         <h2 class="h2" data-split>Instants de transmission</h2>
       </div>
       <div class="mosaic">
@@ -380,6 +411,10 @@
         <a class="eco-card" href="https://les7lectures.com/livres/" target="_blank" rel="noopener" data-reveal><span class="eco-k">Librairie</span><strong>Les 7 lectures</strong><span>Tous les ouvrages publiés du Shaykh.</span><i>↗</i></a>
         <a class="eco-card" href="https://www.facebook.com/share/1eMkrGabXe/?mibextid=wwXIfr" target="_blank" rel="noopener" data-reveal><span class="eco-k">Réseau officiel</span><strong>Facebook</strong><span>Les publications et l'actualité du Shaykh.</span><i>↗</i></a>
       </div>
+      <div class="contact" id="contact" data-reveal>
+        <p class="kicker">Contact &amp; lettre d'information</p>
+        <p class="contact-text">La lettre d'information et le formulaire de contact arrivent bientôt. D'ici là, retrouvez les actualités du Shaykh sur Facebook et sur Karkariya.fr.</p>
+      </div>
     </section>
   </main>
 
@@ -387,7 +422,7 @@
     <div class="footer-marquee" aria-hidden="true"><div class="footer-track"><span>Mohamed Faouzi Al Karkari</span><i>✦</i><span>Mohamed Faouzi Al Karkari</span><i>✦</i></div></div>
     <div class="footer-bottom">
       <p>© <span class="year">2026</span> Shaykh Mohamed Faouzi Al Karkari</p>
-      <nav aria-label="Pied de page"><a href="#shaykh">Le Shaykh</a><a href="#enseignements">Enseignements</a><a href="#livres">Livres</a><a href="#top">Haut de page ↑</a></nav>
+      <nav aria-label="Pied de page"><a href="#shaykh">Le Shaykh</a><a href="#cours">Cours</a><a href="#livres">Boutique</a><a href="#top">Haut de page ↑</a></nav>
     </div>
   </footer>
   </div>
