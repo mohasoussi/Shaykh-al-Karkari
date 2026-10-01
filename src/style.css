@@ -232,11 +232,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   gap: 28px;
   padding: 10px 14px 10px 18px;
   border-radius: 22px;
-  background: rgba(14, 20, 30, 0.5);
-  -webkit-backdrop-filter: blur(22px) saturate(160%);
-  backdrop-filter: blur(22px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 10px 40px rgba(0, 0, 0, 0.25);
+  background: rgba(8, 13, 24, 0.92);
+  border: 1px solid rgba(226, 187, 120, 0.22);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
 }
 .brand { display: flex; align-items: center; gap: 12px; flex: none; }
 .brand-mark {
@@ -282,11 +280,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   left: -14px;
   min-width: 200px;
   border-radius: 18px;
-  background: rgba(14, 20, 30, 0.72);
-  -webkit-backdrop-filter: blur(22px) saturate(160%);
-  backdrop-filter: blur(22px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 18px 50px rgba(0, 0, 0, 0.35);
+  background: rgba(8, 13, 24, 0.97);
+  border: 1px solid rgba(226, 187, 120, 0.22);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-6px);
@@ -311,12 +307,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ivory);
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
-  transition: background 0.3s;
+  background: transparent;
+  border: 1px solid #e2bb78;
+  transition: background 0.3s, color 0.3s;
 }
-.pill:hover { background: rgba(255, 255, 255, 0.26); }
+.pill:hover { background: #e2bb78; color: var(--night); }
 .menu-btn { display: none; align-items: center; gap: 12px; padding: 8px 6px; font-family: var(--serif); font-weight: 600; font-size: 1rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ivory); }
 .menu-btn-lines { width: 30px; height: 10px; position: relative; }
 .menu-btn-lines i {
@@ -397,8 +392,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   position: absolute;
   inset: 0 46% 0 0;
   z-index: 1;
-  background: url("/media/motif-geometrique.svg") 0 0 / 260px 260px;
-  opacity: 0.38;
+  background: url("/media/motif-geometrique.svg") 0 0 / 150px 150px;
+  opacity: 0.4;
   -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 50%, transparent 100%);
   mask-image: linear-gradient(90deg, #000 0%, #000 50%, transparent 100%);
   pointer-events: none;
@@ -406,12 +401,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media not (prefers-reduced-motion: reduce) {
   .hero-pattern { animation: motif-defile 120s linear infinite; }
 }
-@keyframes motif-defile { to { background-position: 260px 260px; } }
+@keyframes motif-defile { to { background-position: 150px 150px; } }
 .hero-veil {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(120% 80% at 70% 40%, transparent 0%, rgba(11, 15, 20, 0.4) 75%),
+    linear-gradient(90deg, rgba(6, 12, 32, 0.74) 0%, rgba(6, 12, 32, 0.42) 38%, rgba(6, 12, 32, 0) 64%),
+    radial-gradient(120% 80% at 70% 40%, transparent 0%, rgba(11, 15, 20, 0.35) 75%),
     linear-gradient(0deg, rgba(11, 15, 20, 0.55) 0%, rgba(11, 15, 20, 0.05) 50%, rgba(11, 15, 20, 0.25) 100%);
 }
 .hero-content {
@@ -422,83 +418,41 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   align-items: flex-end;
   justify-content: space-between;
   gap: 30px;
-  padding: 96px var(--gutter) clamp(28px, 6vh, 60px);
+  padding: 96px var(--gutter) clamp(32px, 7vh, 72px);
 }
-/* Encadré « verre dépoli » façon iOS */
-.hero-glass {
-  position: relative;
-  isolation: isolate;
-  width: min(100%, 760px);
-  padding: clamp(24px, 4vw, 48px);
-  border-radius: 34px;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.04)),
-    rgba(20, 28, 38, 0.34);
-  -webkit-backdrop-filter: blur(28px) saturate(170%);
-  backdrop-filter: blur(28px) saturate(170%);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.55),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
-    0 30px 70px rgba(0, 0, 0, 0.38);
-}
-.hero-glass::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  background: radial-gradient(110% 55% at 15% 0%, rgba(255, 255, 255, 0.3), transparent 60%);
-  pointer-events: none;
-}
-.hero-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #f1deb6;
-  margin: 0 0 16px;
-}
-.hero-eyebrow .line { width: 44px; height: 1px; background: #f1deb6; transform-origin: left; }
+.hero-text { width: min(100%, 560px); text-shadow: 0 2px 18px rgba(4, 8, 22, 0.55); }
 .hero-title {
-  font-family: var(--serif);
+  margin: 0;
+  font-family: "Almendra", "Cormorant Garamond", Georgia, serif;
   font-weight: 400;
-  font-size: clamp(2.3rem, 6.2vw, 5.6rem);
-  line-height: 0.95;
-  letter-spacing: -0.015em;
-  margin: 0 0 20px;
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
+  font-size: clamp(2.1rem, 4.2vw, 3.7rem);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  color: #fff;
 }
-.hero-row { display: block; overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.1em; }
-.hero-row--gold { color: #f1deb6; padding-left: 0.5em; }
-.hero-row em { font-style: italic; font-weight: 400; }
-.hero-sub { margin: 0; font-family: var(--serif); font-weight: 500; font-size: clamp(1.2rem, 2.1vw, 1.55rem); line-height: 1.25; color: #f1deb6; }
-.hero-verse { margin: 20px 0 0; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.24); }
-.hero-verse blockquote { margin: 0; font-family: var(--serif); font-weight: 500; text-transform: uppercase; letter-spacing: 0.03em; font-size: clamp(1.05rem, 1.9vw, 1.45rem); line-height: 1.3; color: #fff; }
-.hero-verse figcaption { margin-top: 8px; font-family: var(--serif); font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.95rem; color: #e2bb78; }
+.hero-row { display: block; overflow: hidden; padding-bottom: 0.12em; margin-bottom: -0.12em; }
+.hero-row--gold { color: #e2bb78; letter-spacing: 0.07em; }
+.hero-sub { margin: 14px 0 0; font-family: var(--serif); font-weight: 500; font-size: clamp(1.05rem, 1.5vw, 1.3rem); line-height: 1.3; color: #f1deb6; }
+/* verset : capitales centrées sous le nom, référence en doré (modèle : tariqramadan.org) */
+.hero-verse { margin: 30px 0 0; padding-top: 22px; border-top: 1px solid rgba(226, 187, 120, 0.4); max-width: 520px; }
+.hero-verse blockquote { margin: 0; font-family: var(--serif); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-size: clamp(1.05rem, 1.55vw, 1.4rem); line-height: 1.4; color: #fff; text-wrap: balance; }
+.hero-verse figcaption { margin-top: 10px; font-family: var(--serif); font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; font-size: 1rem; color: #e2bb78; }
 .hero-cta {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  margin-top: 26px;
-  padding: 14px 24px;
-  border-radius: 999px;
+  margin-top: 28px;
+  padding: 13px 24px;
+  border: 1px solid #e2bb78;
   font-size: 0.74rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #fff;
-  background: rgba(255, 255, 255, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.38);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-  transition: background 0.4s var(--ease);
+  text-shadow: none;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
 }
-.hero-cta:hover { background: rgba(255, 255, 255, 0.3); }
+.hero-cta:hover { background: #e2bb78; color: var(--night); }
 .hero-scroll {
   display: flex;
   flex-direction: column;
@@ -1008,14 +962,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media (max-width: 760px) {
   .header { padding: 10px 12px; }
   .header-bar { padding: 8px 12px 8px 12px; border-radius: 20px; }
-  .hero-pattern { inset: 0; opacity: 0.2; -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 62%); mask-image: linear-gradient(180deg, #000 0%, transparent 62%); }
-  .hero-frame { bottom: auto; height: 62svh; }
+  .hero-pattern { inset: 0; opacity: 0.26; -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 60%); mask-image: linear-gradient(180deg, #000 0%, transparent 60%); }
+  .hero-frame { bottom: auto; height: 60svh; -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%); mask-image: linear-gradient(180deg, #000 70%, transparent 100%); }
   .hero-photo { object-position: 78% 40%; }
   .hero { background: linear-gradient(180deg, #0c1a3a 0%, var(--dusk-deep-2) 60%); }
-  .hero-content { padding-top: 70px; }
-  .hero-glass { border-radius: 28px; padding: 22px 20px 24px; }
-  .hero-title { font-size: clamp(1.9rem, 9.4vw, 3rem); }
-  .hero-row--gold { padding-left: 0.25em; }
+  .hero-content { padding-top: 70px; padding-bottom: 34px; }
+  .hero-text { text-shadow: none; }
+  .hero-title { font-size: clamp(1.9rem, 10.4vw, 2.7rem); }
+  .hero-verse { margin-top: 22px; padding-top: 18px; }
   .hero-scroll { display: none; }
   .stats { grid-template-columns: 1fr; }
   .stat { padding: 18px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 14px; }

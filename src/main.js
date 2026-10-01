@@ -10,6 +10,8 @@ import "@fontsource/manrope/latin-400.css";
 import "@fontsource/manrope/latin-500.css";
 import "@fontsource/manrope/latin-600.css";
 import "@fontsource/amiri/arabic-400.css";
+import "@fontsource/almendra/latin-400.css";
+import "@fontsource/almendra/latin-700.css";
 import "./style.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -122,9 +124,6 @@ function heroIntro() {
   const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
   tl.fromTo(".hero-photo", { scale: 1.12 }, { scale: 1, duration: 2.6, ease: "expo.out" }, 0)
     .from(chars, { yPercent: 115, rotate: 6, duration: 1.4, stagger: 0.035 }, 0.15)
-    .from(".hero-eyebrow .line", { scaleX: 0, duration: 1.2 }, 0.5)
-    .from(".hero-eyebrow", { opacity: 0, x: -20, duration: 1.2 }, 0.5)
-    .from(".hero-glass", { opacity: 0, y: 50, scale: 0.97, duration: 1.6 }, 0.1)
     .from(".hero-sub", { opacity: 0, y: 24, duration: 1.2 }, 0.8)
     .from(".hero-verse", { opacity: 0, y: 24, duration: 1.2 }, 1)
     .from(".hero-cta", { opacity: 0, y: 20, duration: 1.1 }, 1)
@@ -143,9 +142,8 @@ function heroScroll() {
   });
   tl.to(".hero-frame", { clipPath: "inset(8% 6% 0% 6% round 400px 400px 0px 0px)", ease: "none" }, 0)
     .to(".hero-photo", { scale: 1.15, yPercent: 6, ease: "none" }, 0)
-    .to(".hero-glass", { yPercent: -30, opacity: 0, ease: "none" }, 0)
-    .to(".hero-row--gold", { xPercent: 8, ease: "none" }, 0)
-    .to(".hero-pattern", { yPercent: -12, opacity: 0, ease: "none" }, 0);
+    .to(".hero-text", { yPercent: -25, opacity: 0, ease: "none" }, 0)
+        .to(".hero-pattern", { yPercent: -12, opacity: 0, ease: "none" }, 0);
 }
 
 /* ---------------------------------------------------------
