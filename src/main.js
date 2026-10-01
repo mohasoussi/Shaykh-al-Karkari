@@ -10,8 +10,8 @@ import "@fontsource/manrope/latin-400.css";
 import "@fontsource/manrope/latin-500.css";
 import "@fontsource/manrope/latin-600.css";
 import "@fontsource/amiri/arabic-400.css";
-import "@fontsource/almendra/latin-400.css";
-import "@fontsource/almendra/latin-700.css";
+import "@fontsource/montserrat/latin-500.css";
+import "@fontsource/montserrat/latin-600.css";
 import "./style.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -480,40 +480,22 @@ function header() {
 }
 
 /* ---------------------------------------------------------
-   Menu déroulant « Enseignements » + lien de la section en cours
+   Lien de la section en cours
    --------------------------------------------------------- */
 function navigation() {
-  const sub = $(".has-sub");
-  const toggle = $(".sub-toggle");
-  toggle.addEventListener("click", (e) => {
-    e.stopPropagation();
-    const open = sub.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", String(open));
-  });
-  const fermer = () => {
-    sub.classList.remove("is-open");
-    toggle.setAttribute("aria-expanded", "false");
-  };
-  document.addEventListener("click", fermer);
-  document.addEventListener("keydown", (e) => e.key === "Escape" && fermer());
-  $$(".sub a").forEach((a) => a.addEventListener("click", fermer));
-
   const liens = {};
   $$("[data-nav]").forEach((a) => (liens[a.dataset.nav] = a));
   const actif = (id) => {
     $$(".header-nav .is-current").forEach((el) => el.classList.remove("is-current"));
-    const lien = liens[id];
-    if (!lien) return;
-    lien.classList.add("is-current");
-    if (lien.closest(".sub")) toggle.classList.add("is-current");
+    liens[id]?.classList.add("is-current");
   };
-  const sections = { top: ".hero", shaykh: "#shaykh", cours: "#cours", conferences: "#conferences", ecrits: "#ecrits", merkez: "#merkez", livres: "#livres", recherche: "#recherche", contact: "#contact" };
+  const sections = { shaykh: "#shaykh", ecrits: "#ecrits", conferences: "#conferences" };
   Object.entries(sections).forEach(([id, sel]) => {
     ScrollTrigger.create({
       trigger: sel,
       start: "top 55%",
       end: "bottom 55%",
-      onToggle: (self) => self.isActive && actif(id),
+      onToggle: (self) => (self.isActive ? actif(id) : liens[id]?.classList.remove("is-current")),
     });
   });
 }
