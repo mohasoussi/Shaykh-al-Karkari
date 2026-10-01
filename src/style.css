@@ -15,14 +15,30 @@
   --line-light: rgba(244, 239, 230, 0.16);
 
   /* palette de la muraqqa'a */
-  --p1: #b8322a;
-  --p2: #2f6f4e;
-  --p3: #d9a527;
-  --p4: #2c4f8c;
-  --p5: #7b3b7e;
-  --p6: #d96b2b;
+  --p1: #a4584f;
+  --p2: #5d7f69;
+  --p3: #c7a45a;
+  --p4: #5a7099;
+  --p5: #86698a;
+  --p6: #c5855a;
+
+  /* teintes douces : sauge, argile, bleu de nuit, rose poudré, prune */
+  --sage: #7d9283;
+  --sage-deep: #1f2d27;
+  --sage-mist: #dfe5da;
+  --clay: #a8714f;
+  --clay-mist: #efdfd2;
+  --dusk: #5b6f8e;
+  --dusk-deep: #1b2638;
+  --dusk-deep-2: #141c2b;
+  --dusk-mist: #dde3ec;
+  --rose-mist: #efe2dc;
+  --sand: #eadfca;
+  --plum-deep: #231a22;
+  --plum-2: #2d2230;
 
   --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
   --sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --arabic: "Amiri", "Times New Roman", serif;
 
@@ -320,47 +336,90 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   inset: 0;
   background:
     radial-gradient(120% 80% at 70% 30%, transparent 0%, rgba(11, 15, 20, 0.55) 70%),
-    linear-gradient(0deg, rgba(11, 15, 20, 0.92) 0%, rgba(11, 15, 20, 0.2) 55%, rgba(11, 15, 20, 0.45) 100%);
+    linear-gradient(0deg, rgba(11, 15, 20, 0.7) 0%, rgba(11, 15, 20, 0.12) 55%, rgba(11, 15, 20, 0.38) 100%);
 }
 .hero-content {
   position: relative;
   z-index: 2;
   height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
   padding: 0 var(--gutter) clamp(28px, 6vh, 60px);
+}
+/* Encadré « verre dépoli » façon iOS */
+.hero-glass {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 760px);
+  padding: clamp(24px, 4vw, 48px);
+  border-radius: 34px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.04)),
+    rgba(20, 28, 38, 0.34);
+  -webkit-backdrop-filter: blur(28px) saturate(170%);
+  backdrop-filter: blur(28px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+    0 30px 70px rgba(0, 0, 0, 0.38);
+}
+.hero-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(110% 55% at 15% 0%, rgba(255, 255, 255, 0.3), transparent 60%);
+  pointer-events: none;
 }
 .hero-eyebrow {
   display: flex;
   align-items: center;
   gap: 16px;
-  font-size: 0.74rem;
-  letter-spacing: 0.24em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--gold-soft);
-  margin: 0 0 18px;
+  color: #f1deb6;
+  margin: 0 0 16px;
 }
-.hero-eyebrow .line { width: 56px; height: 1px; background: var(--gold); transform-origin: left; }
+.hero-eyebrow .line { width: 44px; height: 1px; background: #f1deb6; transform-origin: left; }
 .hero-title {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-weight: 300;
-  font-size: clamp(3.4rem, 12.5vw, 13rem);
-  line-height: 0.86;
-  letter-spacing: -0.035em;
-  margin: 0;
+  font-size: clamp(2rem, 5.2vw, 4.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  margin: 0 0 20px;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
 }
-.hero-row { display: block; overflow: hidden; padding-bottom: 0.06em; }
-.hero-row--gold { color: var(--gold-soft); padding-left: 0.6em; }
+.hero-row { display: block; overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+.hero-row--gold { color: #f1deb6; padding-left: 0.5em; }
 .hero-row em { font-style: italic; font-weight: 300; }
-.hero-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 30px;
-  margin-top: clamp(20px, 4vh, 40px);
+.hero-lede { max-width: 46ch; margin: 0; color: rgba(255, 255, 255, 0.9); font-size: 1rem; }
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 26px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  transition: background 0.4s var(--ease);
 }
-.hero-lede { max-width: 440px; margin: 0; color: rgba(244, 239, 230, 0.78); font-size: 0.98rem; }
+.hero-cta:hover { background: rgba(255, 255, 255, 0.3); }
 .hero-scroll {
   display: flex;
   flex-direction: column;
@@ -400,7 +459,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    ========================================================= */
 .manifesto {
   position: relative;
-  background: var(--night);
+  background: linear-gradient(165deg, var(--dusk-deep) 0%, var(--dusk-deep-2) 100%);
   color: var(--ivory);
   padding: clamp(110px, 20vh, 220px) var(--gutter);
   text-align: center;
@@ -470,7 +529,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* =========================================================
    PARCOURS (horizontal)
    ========================================================= */
-.journey { background: var(--ivory-2); position: relative; }
+.journey { background: var(--sage-mist); position: relative; }
 .journey-pin {
   height: 100vh;
   height: 100svh;
@@ -497,7 +556,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-family: var(--serif);
   font-size: clamp(3rem, 5vw, 4.6rem);
   line-height: 1;
-  color: var(--gold);
+  color: var(--clay);
   margin-bottom: auto;
 }
 .step-year small { font-size: 0.45em; color: var(--muted); }
@@ -507,7 +566,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .step--img figure { margin: 0; height: 100%; }
 .step--img img { width: 100%; height: 100%; object-fit: cover; }
 .journey-progress { margin: 44px var(--gutter) 0; height: 1px; background: var(--line); }
-.journey-progress i { display: block; height: 100%; background: var(--gold); transform: scaleX(0); transform-origin: left; }
+.journey-progress i { display: block; height: 100%; background: var(--clay); transform: scaleX(0); transform-origin: left; }
 
 /* =========================================================
    ENSEIGNEMENTS
@@ -529,7 +588,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--night);
+  background: var(--sage-deep);
   transform: scaleY(0);
   transform-origin: bottom;
   transition: transform 0.6s var(--ease);
@@ -561,7 +620,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* =========================================================
    RECHERCHE
    ========================================================= */
-.research { background: var(--night); color: var(--ivory); padding: clamp(100px, 16vh, 180px) 0 clamp(70px, 10vh, 120px); overflow: hidden; }
+.research { background: linear-gradient(180deg, var(--dusk-deep) 0%, var(--dusk-deep-2) 100%); color: var(--ivory); padding: clamp(100px, 16vh, 180px) 0 clamp(70px, 10vh, 120px); overflow: hidden; }
 .research-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .research .h2 { max-width: 1000px; }
 .research-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 60px; }
@@ -590,11 +649,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* =========================================================
    CONFÉRENCES (pile de cartes)
    ========================================================= */
-.talks { position: relative; background: var(--night); color: var(--ivory); padding-bottom: 14vh; }
+.talks { position: relative; background: var(--plum-deep); color: var(--ivory); padding-bottom: 14vh; }
 .talks-bg { position: absolute; inset: 0; pointer-events: none; }
 .talks-bg-inner { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
 .talks-bg video { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; filter: grayscale(0.3) contrast(1.1); }
-.talks-bg-inner::after { content: ""; position: absolute; inset: 0; background: radial-gradient(80% 70% at 50% 50%, rgba(11, 15, 20, 0.3), var(--night) 95%); }
+.talks-bg-inner::after { content: ""; position: absolute; inset: 0; background: radial-gradient(80% 70% at 50% 50%, rgba(35, 26, 34, 0.3), var(--plum-deep) 95%); }
 .talks-intro { position: relative; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 var(--gutter); }
 .talks-title {
   font-family: var(--serif);
@@ -613,7 +672,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   grid-template-columns: 1.25fr 1fr;
   min-height: 64vh;
   margin-bottom: 8vh;
-  background: var(--night-2);
+  background: var(--plum-2);
   border: 1px solid var(--line-light);
   overflow: hidden;
   transform-origin: center top;
@@ -625,13 +684,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .talk-place { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
 .talk h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(2rem, 3.6vw, 3.2rem); line-height: 1.02; margin: 16px 0 18px; }
 .talk p { margin: 0; color: var(--muted-light); }
-.talk--text { grid-template-columns: 1fr; background: linear-gradient(135deg, #1b2533, #0f151d); }
+.talk--text { grid-template-columns: 1fr; background: linear-gradient(135deg, #34283a, #231a22); }
 .talk--text .talk-copy { justify-content: center; align-items: center; text-align: center; max-width: 760px; margin: 0 auto; }
 
 /* =========================================================
    LIVRES (3D)
    ========================================================= */
-.books { padding: clamp(100px, 16vh, 180px) 0; background: var(--ivory); }
+.books { padding: clamp(100px, 16vh, 180px) 0; background: var(--rose-mist); }
 .shelf {
   max-width: var(--max);
   margin: 0 auto 70px;
@@ -716,7 +775,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* =========================================================
    ÉCRITS
    ========================================================= */
-.writings { padding: 0 0 clamp(100px, 16vh, 180px); }
+.writings { padding: clamp(100px, 16vh, 180px) 0; background: var(--sand); }
 .articles { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .article {
   position: relative;
@@ -735,11 +794,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: var(--night);
+  background: var(--dusk-deep);
   clip-path: circle(0% at var(--mx, 50%) var(--my, 50%));
   transition: clip-path 0.8s var(--ease);
 }
-.article:hover { color: var(--ivory); border-color: var(--night); }
+.article:hover { color: var(--ivory); border-color: var(--dusk-deep); }
 .article:hover::before { clip-path: circle(150% at var(--mx, 50%) var(--my, 50%)); }
 .article time { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
 .article h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem, 2.2vw, 2.1rem); line-height: 1.12; margin: 20px 0 30px; }
@@ -750,7 +809,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* =========================================================
    GALERIE
    ========================================================= */
-.gallery { background: var(--night); color: var(--ivory); padding: clamp(100px, 16vh, 180px) 0 clamp(140px, 20vh, 240px); overflow: hidden; }
+.gallery { background: var(--sage-deep); color: var(--ivory); padding: clamp(100px, 16vh, 180px) 0 clamp(140px, 20vh, 240px); overflow: hidden; }
 .mosaic {
   max-width: var(--max);
   margin: 0 auto;
@@ -781,7 +840,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* =========================================================
    OUTRO + FOOTER
    ========================================================= */
-.outro { background: var(--ivory); padding: clamp(110px, 18vh, 200px) var(--gutter); text-align: center; }
+.outro { background: var(--clay-mist); padding: clamp(110px, 18vh, 200px) var(--gutter); text-align: center; }
 .outro-ar { font-family: var(--arabic); font-size: clamp(2.4rem, 6vw, 5rem); color: var(--gold); margin: 0; line-height: 1.6; }
 .outro-fr { font-family: var(--serif); font-style: italic; font-size: clamp(1.8rem, 3.6vw, 3.2rem); line-height: 1.15; margin: 10px auto 12px; max-width: 900px; }
 .outro-ref { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin: 0; }
@@ -795,14 +854,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   border-top: 1px solid var(--ink);
   transition: background 0.5s var(--ease), color 0.5s;
 }
-.eco-card:hover { background: var(--ivory-2); }
+.eco-card:hover { background: rgba(168, 113, 79, 0.14); }
 .eco-k { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
 .eco-card strong { font-family: var(--serif); font-weight: 400; font-size: 2.2rem; line-height: 1.05; }
 .eco-card span:last-of-type { color: var(--muted); font-size: 0.9rem; }
 .eco-card i { position: absolute; top: 28px; right: 26px; font-style: normal; font-size: 1.3rem; transition: transform 0.5s var(--ease); }
 .eco-card:hover i { transform: translate(4px, -4px); color: var(--gold); }
 
-.footer { background: var(--night); color: var(--ivory); overflow: hidden; padding: 80px 0 30px; }
+.footer { background: var(--dusk-deep-2); color: var(--ivory); overflow: hidden; padding: 80px 0 30px; }
 .footer-marquee { overflow: hidden; }
 .footer-track {
   display: flex;
@@ -845,8 +904,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media (max-width: 760px) {
   .header { padding: 16px var(--gutter); }
   .brand-name { display: none; }
+  .hero-glass { border-radius: 28px; padding: 22px 20px 24px; }
+  .hero-title { font-size: clamp(1.9rem, 9.4vw, 3rem); }
   .hero-row--gold { padding-left: 0.25em; }
-  .hero-bottom { flex-direction: column; align-items: flex-start; }
   .hero-scroll { display: none; }
   .hero-ar { top: 14vh; right: -4vw; }
   .stats { grid-template-columns: 1fr; }

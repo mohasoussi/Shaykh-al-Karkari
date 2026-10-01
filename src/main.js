@@ -1,3 +1,6 @@
+import "@fontsource/fraunces/latin-300.css";
+import "@fontsource/fraunces/latin-300-italic.css";
+import "@fontsource/fraunces/latin-400.css";
 import "@fontsource/cormorant-garamond/latin-300.css";
 import "@fontsource/cormorant-garamond/latin-400.css";
 import "@fontsource/cormorant-garamond/latin-500.css";
@@ -145,7 +148,9 @@ function heroIntro() {
     .from(chars, { yPercent: 115, rotate: 6, duration: 1.4, stagger: 0.035 }, 0.15)
     .from(".hero-eyebrow .line", { scaleX: 0, duration: 1.2 }, 0.5)
     .from(".hero-eyebrow", { opacity: 0, x: -20, duration: 1.2 }, 0.5)
+    .from(".hero-glass", { opacity: 0, y: 50, scale: 0.97, duration: 1.6 }, 0.1)
     .from(".hero-lede", { opacity: 0, y: 30, duration: 1.2 }, 0.8)
+    .from(".hero-cta", { opacity: 0, y: 20, duration: 1.1 }, 1)
     .from(".hero-scroll", { opacity: 0, y: 20, duration: 1 }, 1)
     .from(".hero-ar", { opacity: 0, scale: 0.85, duration: 2.4 }, 0.3)
     .from(".header", { y: -40, opacity: 0, duration: 1.2 }, 0.6);
@@ -161,10 +166,9 @@ function heroScroll() {
   });
   tl.to(".hero-frame", { clipPath: "inset(8% 6% 0% 6% round 400px 400px 0px 0px)", ease: "none" }, 0)
     .to(".hero-video", { scale: 1.35, yPercent: 10, ease: "none" }, 0)
-    .to(".hero-title", { yPercent: -40, ease: "none" }, 0)
+    .to(".hero-glass", { yPercent: -30, opacity: 0, ease: "none" }, 0)
     .to(".hero-row--gold", { xPercent: 8, ease: "none" }, 0)
-    .to(".hero-ar", { yPercent: 40, rotate: -6, ease: "none" }, 0)
-    .to(".hero-bottom", { opacity: 0, y: -40, ease: "none" }, 0);
+    .to(".hero-ar", { yPercent: 40, rotate: -6, ease: "none" }, 0);
 }
 
 /* ---------------------------------------------------------
