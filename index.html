@@ -14,10 +14,29 @@
   <script type="module" src="/src/main.js"></script>
 </head>
 <body class="is-loading">
+  <noscript><style>.loader{display:none}</style></noscript>
 
   <!-- ============ LOADER : la muraqqa'a qui s'assemble ============ -->
   <div class="loader" aria-hidden="true">
     <div class="loader-grid"></div>
+    <script>
+      (function () {
+        var g = document.querySelector(".loader-grid");
+        var mob = innerWidth < 760, c = mob ? 4 : 8, r = mob ? 7 : 5;
+        var C = ["#b8322a", "#2f6f4e", "#d9a527", "#2c4f8c", "#7b3b7e", "#d96b2b", "#c9a46a"];
+        var idx = [], h = "";
+        g.style.setProperty("--cols", c);
+        g.style.setProperty("--rows", r);
+        for (var i = 0; i < c * r; i++) {
+          var k;
+          do { k = Math.floor(Math.random() * C.length); }
+          while (k === idx[i - 1] && i % c !== 0 || k === idx[i - c]);
+          idx.push(k);
+          h += '<span style="background:' + C[k] + '"></span>';
+        }
+        g.innerHTML = h;
+      })();
+    </script>
     <div class="loader-center">
       <p class="loader-ar" lang="ar" dir="rtl">محمد فوزي الكركري</p>
       <p class="loader-count"><span>0</span>%</p>
@@ -74,7 +93,7 @@
     <!-- ============ HERO ============ -->
     <section class="hero" aria-label="Introduction">
       <div class="hero-frame">
-        <video class="hero-video" src="/media/hero-loop.mp4" poster="/media/hero-poster.webp" autoplay muted loop playsinline preload="auto"></video>
+        <video class="hero-video" poster="/media/hero-poster.webp" autoplay muted loop playsinline disablepictureinpicture preload="auto"><source src="/media/hero-loop.mp4" type="video/mp4" /><source src="/media/hero-loop.webm" type="video/webm" /></video>
         <div class="hero-veil"></div>
       </div>
       <div class="hero-content">
@@ -180,32 +199,32 @@
         <p class="section-lede" data-reveal>Des moudhakarat — entretiens et réponses — et des enseignements thématiques sur la pratique, le savoir et le cheminement.</p>
       </div>
       <ul class="topics">
-        <li class="topic" data-img="/media/priere-crepuscule.webp">
+        <li class="topic" data-img="media/priere-crepuscule.webp">
           <a href="https://karkariya.fr/" target="_blank" rel="noopener">
             <span class="topic-num">i</span><span class="topic-title">La Lumière</span><span class="topic-meta">Coran, Sunnah &amp; tradition</span><span class="topic-arrow">↗</span>
           </a>
         </li>
-        <li class="topic" data-img="/media/lecture-coran.webp">
+        <li class="topic" data-img="media/lecture-coran.webp">
           <a href="https://karkariya.fr/" target="_blank" rel="noopener">
             <span class="topic-num">ii</span><span class="topic-title">Le Nom « Allâh »</span><span class="topic-meta">L'invocation</span><span class="topic-arrow">↗</span>
           </a>
         </li>
-        <li class="topic" data-img="/media/peregrination-desert.webp">
+        <li class="topic" data-img="media/peregrination-desert.webp">
           <a href="https://karkariya.fr/" target="_blank" rel="noopener">
             <span class="topic-num">iii</span><span class="topic-title">La pérégrination</span><span class="topic-meta">Le voyage intérieur</span><span class="topic-arrow">↗</span>
           </a>
         </li>
-        <li class="topic" data-img="/media/montagne-patchwork.webp">
+        <li class="topic" data-img="media/montagne-patchwork.webp">
           <a href="https://karkariya.fr/" target="_blank" rel="noopener">
             <span class="topic-num">iv</span><span class="topic-title">La muraqqa'a</span><span class="topic-meta">Le vêtement rapiécé</span><span class="topic-arrow">↗</span>
           </a>
         </li>
-        <li class="topic" data-img="/media/portrait-noir-blanc.webp">
+        <li class="topic" data-img="media/portrait-noir-blanc.webp">
           <a href="https://karkariya.fr/" target="_blank" rel="noopener">
             <span class="topic-num">v</span><span class="topic-title">La retraite</span><span class="topic-meta">Khalwa &amp; dépouillement</span><span class="topic-arrow">↗</span>
           </a>
         </li>
-        <li class="topic" data-img="/media/transmission-zaouia.webp">
+        <li class="topic" data-img="media/transmission-zaouia.webp">
           <a href="https://karkariya.fr/le-shaykh/moudhakara/" target="_blank" rel="noopener">
             <span class="topic-num">vi</span><span class="topic-title">Moudhakara</span><span class="topic-meta">Enseignements &amp; réponses</span><span class="topic-arrow">↗</span>
           </a>
@@ -243,7 +262,7 @@
     <!-- ============ CONFÉRENCES (cartes empilées) ============ -->
     <section class="talks" id="conferences">
       <div class="talks-bg" aria-hidden="true">
-        <div class="talks-bg-inner"><video src="/media/conferences-loop.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="talks-bg-inner"><video muted loop playsinline preload="none"><source src="/media/conferences-loop.mp4" type="video/mp4" /><source src="/media/conferences-loop.webm" type="video/webm" /></video></div>
       </div>
       <div class="talks-intro">
         <p class="kicker">05 — Conférences</p>

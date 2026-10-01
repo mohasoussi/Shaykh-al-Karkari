@@ -63,12 +63,12 @@ function buildTiles(container, cols, rows) {
 
 function runLoader(onReveal) {
   const loader = $(".loader");
-  const mobile = window.innerWidth < 760;
-  const tiles = buildTiles($(".loader-grid"), mobile ? 4 : 8, mobile ? 7 : 5);
+  // le damier est déjà dans la page (script en ligne) : il couvre l'écran dès la première image
+  const tiles = $$(".loader-grid span");
   const count = $(".loader-count span");
   const counter = { v: 0 };
 
-  if (reduced) {
+  if (reduced || !tiles.length) {
     loader.remove();
     document.body.classList.remove("is-loading");
     return Promise.resolve();
@@ -82,30 +82,46 @@ function runLoader(onReveal) {
         resolve();
       },
     });
-    tl.from(".loader-ar", { opacity: 0, y: 30, filter: "blur(10px)", duration: 1.2, ease: "power3.out" })
-      .to(counter, {
-        v: 100,
-        duration: 1.8,
-        ease: "power2.inOut",
-        onUpdate: () => (count.textContent = Math.round(counter.v)),
-      }, 0.1)
-      // les carreaux prennent les couleurs de la muraqqa'a…
-      .to(tiles, {
-        backgroundColor: () => PATCH[Math.floor(Math.random() * PATCH.length)],
-        duration: 0.35,
-        stagger: { each: 0.012, from: "random" },
-      }, 1.2)
-      .to(".loader-center", { opacity: 0, scale: 0.96, duration: 0.5, ease: "power2.in" }, 1.6)
-      // …puis s'effacent pour laisser passer la lumière
+    tl.to(counter, {
+      v: 100,
+      duration: 1.3,
+      ease: "power2.inOut",
+      onUpdate: () => (count.textContent = Math.round(counter.v)),
+    })
+      .to(".loader-center", { opacity: 0, scale: 0.94, duration: 0.45, ease: "power2.in" }, ">0.1")
+      // le damier se retire en laissant apparaître le site derrière
       .to(tiles, {
         scale: 0,
         rotate: () => gsap.utils.random(-30, 30),
         duration: 0.7,
         ease: "power3.inOut",
         stagger: { each: 0.018, from: "center", grid: "auto" },
-      }, 2.0)
-      .add(() => onReveal && onReveal(), 2.05);
+      }, ">-0.05")
+      .add(() => onReveal && onReveal(), "<0.1");
   });
+}
+
+/* ---------------------------------------------------------
+   Vidéos : lecture automatique, relancée si le navigateur la retarde
+   --------------------------------------------------------- */
+function autoplayVideos() {
+  const vids = $$("video[autoplay]");
+  vids.forEach((v) => {
+    v.muted = true;
+    v.defaultMuted = true;
+    v.playsInline = true;
+  });
+  const play = () => vids.forEach((v) => v.paused && v.play().catch(() => {}));
+  play();
+  vids.forEach((v) => ["loadeddata", "canplay", "suspend"].forEach((e) => v.addEventListener(e, play)));
+  document.addEventListener("visibilitychange", play);
+  // certains navigateurs n'autorisent la lecture qu'après un premier geste : on relance au premier contact
+  ["pointerdown", "touchstart", "keydown", "wheel", "scroll"].forEach((e) =>
+    addEventListener(e, play, { once: true, passive: true })
+  );
+  // si la lecture reste bloquée, l'image fixe prend un lent mouvement pour que l'accueil ne soit jamais figé
+  setTimeout(() => vids.forEach((v) => v.paused && v.classList.add("is-still")), 2500);
+  vids.forEach((v) => v.addEventListener("playing", () => v.classList.remove("is-still")));
 }
 
 /* ---------------------------------------------------------
@@ -625,6 +641,7 @@ const ready = document.fonts ? document.fonts.ready : Promise.resolve();
 
 ready.then(async () => {
   buildMenu();
+  autoplayVideos();
   if (reduced) {
     await runLoader();
     gsap.set(".menu", { visibility: "hidden" });
