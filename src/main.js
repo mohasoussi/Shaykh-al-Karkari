@@ -74,9 +74,18 @@ function runLoader(onReveal) {
     return Promise.resolve();
   }
 
+  // les carreaux changent de couleur en continu pendant le chargement
+  const remelanger = () =>
+    tiles.forEach((t) => {
+      if (Math.random() < 0.5)
+        gsap.to(t, { backgroundColor: PATCH[Math.floor(Math.random() * PATCH.length)], duration: 0.35, ease: "power1.inOut", overwrite: true });
+    });
+  const rythme = setInterval(remelanger, 280);
+
   return new Promise((resolve) => {
     const tl = gsap.timeline({
       onComplete: () => {
+        clearInterval(rythme);
         loader.remove();
         document.body.classList.remove("is-loading");
         resolve();
@@ -84,7 +93,7 @@ function runLoader(onReveal) {
     });
     tl.to(counter, {
       v: 100,
-      duration: 1.3,
+      duration: 2,
       ease: "power2.inOut",
       onUpdate: () => (count.textContent = Math.round(counter.v)),
     })
@@ -97,7 +106,7 @@ function runLoader(onReveal) {
         ease: "power3.inOut",
         stagger: { each: 0.018, from: "center", grid: "auto" },
       }, ">-0.05")
-      .add(() => onReveal && onReveal(), "<0.1");
+      .add(() => { clearInterval(rythme); onReveal && onReveal(); }, "<0.1");
   });
 }
 
