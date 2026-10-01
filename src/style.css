@@ -38,7 +38,7 @@
   --plum-2: #2d2230;
 
   --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --arabic: "Amiri", "Times New Roman", serif;
 
@@ -252,9 +252,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   padding-top: 4px;
   border-radius: 10px;
 }
-.brand-name { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; line-height: 1.3; }
+.brand-name { font-family: var(--serif); font-size: 0.86rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; line-height: 1.25; }
 .brand-name b { display: block; font-weight: 600; }
-.header-nav { display: flex; align-items: center; gap: clamp(14px, 1.7vw, 26px); font-size: 0.8rem; letter-spacing: 0.02em; white-space: nowrap; }
+.header-nav { display: flex; align-items: center; gap: clamp(12px, 1.4vw, 22px); font-family: var(--serif); font-weight: 600; font-size: 1.03rem; letter-spacing: 0.01em; white-space: nowrap; }
 .header-nav > a, .sub-toggle { position: relative; display: inline-flex; align-items: center; gap: 7px; padding-block: 6px; color: rgba(244, 239, 230, 0.86); font-size: inherit; letter-spacing: inherit; transition: color 0.3s; }
 .header-nav > a::after, .sub-toggle::after {
   content: "";
@@ -295,9 +295,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .has-sub.is-open .sub, .has-sub:hover .sub, .has-sub:focus-within .sub { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
 .header.is-hidden .sub { visibility: hidden; opacity: 0; }
 .sub::before { content: ""; position: absolute; left: 0; right: 0; top: -16px; height: 16px; }
-.sub a { display: block; padding: 10px 14px; border-radius: 12px; color: rgba(244, 239, 230, 0.88); transition: background 0.3s, color 0.3s; }
+.sub a { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; display: block; padding: 10px 14px; border-radius: 12px; color: rgba(244, 239, 230, 0.88); transition: background 0.3s, color 0.3s; }
 .sub a:hover, .sub a:focus-visible { background: rgba(255, 255, 255, 0.12); color: #fff; }
-.header-end { display: flex; align-items: center; gap: 14px; flex: none; }
+.header-end { display: flex; align-items: center; gap: 10px; flex: none; }
 .social { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; color: rgba(244, 239, 230, 0.86); transition: background 0.3s, color 0.3s; }
 .social:hover { background: rgba(255, 255, 255, 0.14); color: #fff; }
 .pill {
@@ -305,9 +305,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   align-items: center;
   padding: 10px 20px;
   border-radius: 999px;
-  font-size: 0.74rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  font-family: var(--serif);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ivory);
   background: rgba(255, 255, 255, 0.12);
@@ -316,7 +317,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: background 0.3s;
 }
 .pill:hover { background: rgba(255, 255, 255, 0.26); }
-.menu-btn { display: none; align-items: center; gap: 12px; padding: 8px 6px; font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ivory); }
+.menu-btn { display: none; align-items: center; gap: 12px; padding: 8px 6px; font-family: var(--serif); font-weight: 600; font-size: 1rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ivory); }
 .menu-btn-lines { width: 30px; height: 10px; position: relative; }
 .menu-btn-lines i {
   position: absolute;
@@ -390,13 +391,28 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   clip-path: inset(0% 0% 0% 0% round 0px);
   will-change: clip-path;
 }
-.hero-photo { width: 100%; height: 100%; object-fit: cover; object-position: 72% 55%; transform: scale(1.12); background: #0c1a3a; }
+.hero-photo { width: 100%; height: 100%; object-fit: cover; object-position: 72% 55%; background: #0c1a3a; }
+/* filigrane : motif géométrique sur la moitié gauche */
+.hero-pattern {
+  position: absolute;
+  inset: 0 46% 0 0;
+  z-index: 1;
+  background: url("/media/motif-geometrique.svg") 0 0 / 260px 260px;
+  opacity: 0.38;
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 50%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 0%, #000 50%, transparent 100%);
+  pointer-events: none;
+}
+@media not (prefers-reduced-motion: reduce) {
+  .hero-pattern { animation: motif-defile 120s linear infinite; }
+}
+@keyframes motif-defile { to { background-position: 260px 260px; } }
 .hero-veil {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(120% 80% at 70% 30%, transparent 0%, rgba(11, 15, 20, 0.55) 70%),
-    linear-gradient(0deg, rgba(11, 15, 20, 0.7) 0%, rgba(11, 15, 20, 0.12) 55%, rgba(11, 15, 20, 0.38) 100%);
+    radial-gradient(120% 80% at 70% 40%, transparent 0%, rgba(11, 15, 20, 0.4) 75%),
+    linear-gradient(0deg, rgba(11, 15, 20, 0.55) 0%, rgba(11, 15, 20, 0.05) 50%, rgba(11, 15, 20, 0.25) 100%);
 }
 .hero-content {
   position: relative;
@@ -448,18 +464,21 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .hero-eyebrow .line { width: 44px; height: 1px; background: #f1deb6; transform-origin: left; }
 .hero-title {
-  font-family: var(--display);
-  font-weight: 300;
-  font-size: clamp(2rem, 5.2vw, 4.6rem);
-  line-height: 0.98;
-  letter-spacing: -0.03em;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.3rem, 6.2vw, 5.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.015em;
   margin: 0 0 20px;
   text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
 }
 .hero-row { display: block; overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.1em; }
 .hero-row--gold { color: #f1deb6; padding-left: 0.5em; }
-.hero-row em { font-style: italic; font-weight: 300; }
-.hero-lede { max-width: 46ch; margin: 0; color: rgba(255, 255, 255, 0.9); font-size: 1rem; }
+.hero-row em { font-style: italic; font-weight: 400; }
+.hero-sub { margin: 0; font-family: var(--serif); font-weight: 500; font-size: clamp(1.2rem, 2.1vw, 1.55rem); line-height: 1.25; color: #f1deb6; }
+.hero-verse { margin: 20px 0 0; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.24); }
+.hero-verse blockquote { margin: 0; font-family: var(--serif); font-weight: 500; text-transform: uppercase; letter-spacing: 0.03em; font-size: clamp(1.05rem, 1.9vw, 1.45rem); line-height: 1.3; color: #fff; }
+.hero-verse figcaption { margin-top: 8px; font-family: var(--serif); font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.95rem; color: #e2bb78; }
 .hero-cta {
   display: inline-flex;
   align-items: center;
@@ -500,20 +519,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   animation: drip 2.2s var(--ease) infinite;
 }
 @keyframes drip { 0% { top: -40%; } 100% { top: 100%; } }
-.hero-ar {
-  position: absolute;
-  z-index: 1;
-  right: var(--gutter);
-  top: 12vh;
-  margin: 0;
-  font-family: var(--arabic);
-  font-size: clamp(8rem, 26vw, 26rem);
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(232, 211, 168, 0.28);
-  pointer-events: none;
-}
-
 /* =========================================================
    MANIFESTE
    ========================================================= */
@@ -986,7 +991,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* =========================================================
    RESPONSIVE
    ========================================================= */
-@media (max-width: 1200px) {
+@media (max-width: 1399px) {
   .header-nav, .header-end .social, .header-end .pill { display: none; }
   .menu-btn { display: flex; }
 }
@@ -1003,15 +1008,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media (max-width: 760px) {
   .header { padding: 10px 12px; }
   .header-bar { padding: 8px 12px 8px 12px; border-radius: 20px; }
+  .hero-pattern { inset: 0; opacity: 0.2; -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 62%); mask-image: linear-gradient(180deg, #000 0%, transparent 62%); }
   .hero-frame { bottom: auto; height: 62svh; }
-  .hero-photo { object-position: 78% 40%; transform: scale(1.04); }
+  .hero-photo { object-position: 78% 40%; }
   .hero { background: linear-gradient(180deg, #0c1a3a 0%, var(--dusk-deep-2) 60%); }
   .hero-content { padding-top: 70px; }
   .hero-glass { border-radius: 28px; padding: 22px 20px 24px; }
   .hero-title { font-size: clamp(1.9rem, 9.4vw, 3rem); }
   .hero-row--gold { padding-left: 0.25em; }
   .hero-scroll { display: none; }
-  .hero-ar { top: 14vh; right: -4vw; }
   .stats { grid-template-columns: 1fr; }
   .stat { padding: 18px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 120px 1fr; align-items: center; gap: 14px; }
   .stat dd { margin: 0; }
