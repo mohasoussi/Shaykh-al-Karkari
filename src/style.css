@@ -953,9 +953,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media (max-width: 1179px) {
   .header-end .pill { display: none; }
 }
-@media (max-width: 979px) {
-  .header-nav { display: none; }
-}
 
 @media (max-width: 1024px) {
   .about { grid-template-columns: 1fr; }
@@ -1147,3 +1144,46 @@ body.modal-open { overflow: hidden; }
 .ens-suite { margin-top: 48px; }
 @media (max-width: 980px) { .ens-cards { grid-template-columns: 1fr; } .ens-card { min-height: 0; gap: 28px; } }
 html, body { overflow-anchor: none; }
+
+/* photos sur les cartes d'enseignements */
+.ens-card { background: #1a2230; border-color: transparent; color: #fff; min-height: 420px; }
+.ens-img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.ens-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10, 14, 22, 0.15) 0%, rgba(10, 14, 22, 0.78) 100%); transition: opacity 0.6s; }
+.ens-card::before { z-index: -1; opacity: 0.9; }
+.ens-card:hover .ens-img { transform: scale(1.06); }
+.ens-card:hover::after { opacity: 0; }
+.ens-num { color: #f1deb6; }
+.ens-card h3 { text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45); }
+
+/* ---------- Le Shaykh : page d'accueil à deux portes + textes importés ---------- */
+.hub { padding: 150px 0 120px; }
+.hub-cards { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+.hub-card { position: relative; overflow: hidden; display: flex; align-items: flex-end; min-height: 560px; border-radius: 26px; color: #fff; text-decoration: none; isolation: isolate; background: #1a2230; }
+.hub-card img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; transition: transform 1.4s var(--ease); }
+.hub-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10, 14, 22, 0) 35%, rgba(10, 14, 22, 0.85) 100%); }
+.hub-card:hover img { transform: scale(1.06); }
+.hub-num { position: absolute; top: 26px; left: 30px; font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: #f1deb6; }
+.hub-txt { padding: 36px 34px 34px; display: flex; flex-direction: column; gap: 12px; }
+.hub-txt h2 { margin: 0; font-family: var(--serif); font-weight: 500; font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.05; }
+.hub-txt p { margin: 0; max-width: 360px; opacity: 0.88; }
+.hub-go { margin-top: 8px; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; display: inline-flex; gap: 10px; align-items: center; }
+.hub-go i { font-style: normal; transition: transform 0.5s var(--ease); }
+.hub-card:hover .hub-go i { transform: translateX(8px); }
+.shaykh-texte { padding: 40px 0 120px; }
+.shaykh-chaine { padding-top: 150px; }
+.shaykh-texte .actu-corps { max-width: 760px; margin: 0 auto; padding: 0 var(--gutter); }
+.shaykh-bloc + .shaykh-bloc { margin-top: 90px; padding-top: 70px; border-top: 1px solid var(--line); }
+.shaykh-bloc p[dir="auto"] { text-wrap: pretty; }
+.shaykh-suite { margin-top: 70px; }
+@media (max-width: 760px) { .hub-cards { grid-template-columns: 1fr; } .hub-card { min-height: 420px; } .hub { padding-top: 130px; } .shaykh-chaine { padding-top: 130px; } }
+
+/* petits écrans : les trois liens du menu passent sur une seconde ligne dans la barre */
+@media (max-width: 979px) {
+  .header-bar { flex-wrap: wrap; row-gap: 4px; }
+  .header-nav { display: flex; order: 3; flex: 0 0 100%; justify-content: space-around; gap: 8px; margin-top: 2px; padding: 8px 4px 6px 4px; border-top: 1px solid rgba(226, 187, 120, 0.18); font-size: 0.98rem; }
+}
+@media (max-width: 760px) { .header-nav { font-size: 0.92rem; } }
+@media (max-width: 979px) {
+  .hub, .shaykh-chaine, .actu-page, .actu-article { padding-top: 190px; }
+}
+@media (max-width: 979px) { body[data-page="shaykh"] .about { padding-top: 200px; } }

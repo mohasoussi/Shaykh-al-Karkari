@@ -359,6 +359,41 @@ async function enseignements() {
   log(`enseignements : ${articles.length} article(s)`);
 }
 
+/* ---------- pages du Shaykh : biographie et chaîne de transmission (articles du site d'origine) ---------- */
+const PAGES_SHAYKH = [
+  { fichier: "qui-est-le-shaykh.html", marque: "biographie", slugs: ["le-shaykh-sidi-mawlay-mohamed-faouzi-al-karkari-radiallahu-anhu"] },
+  { fichier: "chaine-de-transmission.html", marque: "chaine", slugs: ["chaine-initiatique-silsila-de-la-tariqa-karkariya", "le-sheykh-sidi-mawlay-al-hassan-radiallahu-anhu", "le-sheykh-sidi-mawlay-at-tahir-radiallahu-anhu"] },
+];
+
+async function pagesShaykh() {
+  const cfg = { prefixe: "actualite", racineImg: "shaykh" };
+  for (const page of PAGES_SHAYKH) {
+    const chemin = path.join(SITE, page.fichier);
+    if (!(await existe(chemin))) continue;
+    let blocs = [];
+    try {
+      const reçus = await depuisWordPress(`&slug=${page.slugs.join(",")}`);
+      for (const slug of page.slugs) {
+        const a = reçus.find((x) => x.slug === slug);
+        if (!a) continue;
+        const t = await traiter({ ...a, image: null }, new Set(), cfg);
+        blocs.push(`        <article class="shaykh-bloc">\n${t.html}\n        </article>\n`);
+      }
+    } catch (e) {
+      log(`${page.fichier} : lecture impossible (${e.message}), page conservée`);
+      continue;
+    }
+    if (!blocs.length) continue;
+    const re = new RegExp(`<!--shaykh:${page.marque}:debut-->[\\s\\S]*?<!--shaykh:${page.marque}:fin-->`);
+    let h = await fs.readFile(chemin, "utf8");
+    if (!re.test(h)) continue;
+    const rempl = `<!--shaykh:${page.marque}:debut-->\n${blocs.join("")}        <!--shaykh:${page.marque}:fin-->`;
+    h = h.replace(re, () => rempl);
+    await fs.writeFile(chemin, h);
+    log(`${page.fichier} : ${blocs.length} texte(s)`);
+  }
+}
+
 /* ---------- principal ---------- */
 async function main() {
   if (VIDE) {
@@ -407,6 +442,7 @@ async function main() {
   }
   await ecrire(articles);
   await enseignements();
+  await pagesShaykh();
   log(`terminé : ${articles.length} article(s) publiés`);
 }
 
