@@ -357,8 +357,8 @@ function talks() {
   cards.forEach((card, i) => {
     if (i === cards.length - 1) return;
     gsap.to(card, {
-      scale: 0.9,
-      filter: "brightness(0.35) blur(3px)",
+      scale: 0.92,
+      "--dim": 0.6, // voile sombre (plus fiable qu'un filtre CSS sur mobile)
       ease: "none",
       scrollTrigger: { trigger: cards[i + 1], start: "top bottom", end: "top 12%", scrub: true },
     });
@@ -366,14 +366,7 @@ function talks() {
   cards.forEach((card) => {
     const img = $("img", card);
     if (img)
-      gsap.fromTo(img, { scale: 1.25 }, { scale: 1, ease: "none", scrollTrigger: { trigger: card, start: "top bottom", end: "top 12%", scrub: true } });
-  });
-  gsap.from(".talks-title", {
-    letterSpacing: "0.1em",
-    opacity: 0,
-    duration: 2,
-    ease: "expo.out",
-    scrollTrigger: { trigger: ".talks-title", start: "top 85%" },
+      gsap.fromTo(img, { scale: 1.12 }, { scale: 1, ease: "none", scrollTrigger: { trigger: card, start: "top bottom", end: "top 12%", scrub: true } });
   });
   // lancer la vidéo de fond seulement quand la section est visible
   const vid = $(".talks-bg video");
