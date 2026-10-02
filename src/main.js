@@ -85,8 +85,8 @@ function pointShaykh() {
   const s = Math.max(w / ratio, h) ; // hauteur d'image affichée
   const dh = s;
   const dw = s * ratio;
-  const x = (w - dw) * px + 0.75 * dw;
-  const y = (h - dh) * py + 0.532 * dh;
+  const x = (w - dw) * px + 0.738 * dw;
+  const y = (h - dh) * py + 0.562 * dh;
   return { x: Math.min(Math.max(x, 0), innerWidth), y: Math.min(Math.max(y, 0), innerHeight) };
 }
 
@@ -634,9 +634,19 @@ function dust() {
    --------------------------------------------------------- */
 $(".year").textContent = new Date().getFullYear();
 
-// l'ouverture se referme sur la photo : on repart toujours du haut de la page
+// Rechargement ou première visite : on repart du haut (l'ouverture se referme sur la photo).
+// Retour arrière : pas d'intro, et on retrouve l'endroit de la page que l'on avait quitté.
+const retour = performance.getEntriesByType?.("navigation")?.[0]?.type === "back_forward";
+const cleScroll = `y:${location.pathname}`;
+const memoriserScroll = () => {
+  try {
+    sessionStorage.setItem(cleScroll, String(Math.round(window.scrollY)));
+  } catch {}
+};
+addEventListener("pagehide", memoriserScroll);
+document.addEventListener("visibilitychange", () => document.visibilityState === "hidden" && memoriserScroll());
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-scrollTo(0, 0);
+if (!retour) scrollTo(0, 0);
 
 const ready = document.fonts ? document.fonts.ready : Promise.resolve();
 
@@ -668,6 +678,17 @@ ready.then(async () => {
   if (!intro) gsap.from(".header", { y: -40, opacity: 0, duration: 1.1, ease: "expo.out" });
   await runLoader(() => intro?.play());
   lenis?.start();
+  if (retour) {
+    let y = 0;
+    try {
+      y = Number(sessionStorage.getItem(cleScroll)) || 0;
+    } catch {}
+    if (y > 0) {
+      ScrollTrigger.refresh();
+      if (lenis) lenis.scrollTo(y, { immediate: true, force: true });
+      else scrollTo(0, y);
+    }
+  }
   inscription?.verifierHash();
   // arrivée sur une ancre (ex. index.html#ecrits)
   try {
