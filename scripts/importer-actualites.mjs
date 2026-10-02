@@ -364,6 +364,9 @@ async function enseignements() {
 const PAGES_SHAYKH = [
 ];
 
+/** Noms de la chaîne : sans accent circonflexe, « Abou » écrit « Abu ». */
+const net = (t = "") => t.normalize("NFD").replace(/\u0302/g, "").normalize("NFC").replace(/\bAbou\b/g, "Abu").replace(/\s+/g, " ").trim();
+
 const SILSILA_SLUG = "chaine-initiatique-silsila-de-la-tariqa-karkariya";
 
 /** Chaîne initiatique : liste ordonnée de maillons (nom, invocation, portrait), du Shaykh jusqu'au Prophète. */
@@ -403,11 +406,13 @@ async function silsila() {
       continue;
     }
     const m = t.match(/^(.*?)\s*\((radi[^)]*)\)\s*$/i);
-    maillons.push({ nom: (m ? m[1] : t).replace(/^Notre\s+/i, "").trim(), invoc: m ? m[2] : "", image });
+    maillons.push({ nom: net((m ? m[1] : t).replace(/^Notre\s+/i, "")), invoc: "", image });
     image = null;
   }
   if (!maillons.length) return log("silsila : aucun maillon lu, page conservée");
 
+  maillons[0].src = "media/logo-shaykh.webp"; // même portrait que dans le header
+  maillons[0].image = null;
   for (let i = 0; i < maillons.length; i++) {
     const m = maillons[i];
     if (!m.image) continue;
@@ -432,7 +437,7 @@ async function silsila() {
   try {
     suite = JSON.parse(await fs.readFile(path.join(SITE, "scripts", "silsila-suite.json"), "utf8")).filter((m) => m?.nom);
   } catch {}
-  for (const m of suite) maillons.push({ nom: m.nom, invoc: m.invoc ?? "radiAllâhu ‘anhu", image: null, suite: true });
+  for (const m of suite) maillons.push({ nom: net(m.nom), invoc: net(m.invoc ?? ""), image: null, suite: true });
   const total = maillons.length + 1; // + le Prophète
   const li = maillons
     .map(
@@ -456,7 +461,7 @@ ${li}${suite.length ? "" : `        <li class="maillon maillon--pont" data-n="${
             <span class="prophete-halo" aria-hidden="true"></span>
             <span class="prophete-ar" lang="ar" dir="rtl">محمد ﷺ</span>
             <h3>Le Prophète Muhammad</h3>
-            <p class="maillon-invoc">le seigneur des deux mondes, la Lumière des univers, le prophète et messager d’Allâh, le bien-aimé</p>
+            <p class="maillon-invoc">le seigneur des deux mondes, la Lumière des univers, le prophète et messager d’Allah, le bien-aimé</p>
           </div>
         </li>
       </ol>${priere ? `\n      <p class="silsila-priere">${esc(priere)}</p>` : ""}`;
