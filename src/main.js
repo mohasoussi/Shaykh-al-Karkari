@@ -199,6 +199,7 @@ function manifesto() {
   gsap.to(split.words, {
     opacity: 1,
     color: (i) => (i % 9 === 4 ? "#e8d3a8" : "#f4efe6"),
+    textShadow: "0 0 26px rgba(240, 214, 160, 0.45)",
     stagger: 0.1,
     ease: "none",
     scrollTrigger: { trigger: el, start: "top 80%", end: "bottom 45%", scrub: 0.6 },
@@ -210,6 +211,42 @@ function manifesto() {
     duration: 1.4,
     scrollTrigger: { trigger: ".manifesto-sign", start: "top 90%" },
   });
+}
+
+/* ---------------------------------------------------------
+   Lumière : rayons dans la bannière, aube derrière le manifeste, halo autour du verset, fil de lumière en haut de page
+   --------------------------------------------------------- */
+function lumiere() {
+  const hero = $(".hero");
+  if (hero) {
+    const place = () => {
+      const P = pointShaykh();
+      hero.style.setProperty("--lx", `${P.x}px`);
+      hero.style.setProperty("--ly", `${P.y}px`);
+    };
+    place();
+    $(".hero-photo")?.addEventListener("load", place);
+    addEventListener("resize", place);
+    gsap.fromTo(".hero-rays", { opacity: 0 }, { opacity: 1, duration: 4, delay: 1.2, ease: "power2.out" });
+    gsap.fromTo(".hero-glow", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 3, delay: 1.4, ease: "power2.out" });
+    // en quittant la bannière, la lumière s'estompe
+    gsap.to(".hero-rays, .hero-glow", { opacity: 0.15, ease: "none", scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: true } });
+  }
+
+  const aube = $(".manifesto-glow");
+  if (aube)
+    gsap.fromTo(aube, { opacity: 0, scale: 0.5, yPercent: 20 }, {
+      opacity: 1, scale: 1.25, yPercent: -10, ease: "none",
+      scrollTrigger: { trigger: ".manifesto", start: "top 85%", end: "bottom 30%", scrub: 0.8 },
+    });
+
+  const verset = $(".outro-light");
+  if (verset)
+    ScrollTrigger.create({ trigger: ".outro", start: "top 65%", end: "bottom top", onToggle: (self) => verset.classList.toggle("is-lit", self.isActive) });
+
+  const fil = $(".light-progress i");
+  if (fil)
+    gsap.to(fil, { scaleX: 1, ease: "none", scrollTrigger: { trigger: document.documentElement, start: "top top", end: "bottom bottom", scrub: 0.3 } });
 }
 
 /* ---------------------------------------------------------
@@ -761,6 +798,7 @@ ready.then(async () => {
   marquees();
   if ($(".talks")) talks();
   articles();
+  lumiere();
   videos();
   actualites();
   silsila();

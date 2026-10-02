@@ -134,6 +134,7 @@ export function cartesEnseignements(articles, couleurs) {
   return articles
     .map((a, i) => `        <a class="ens-card" style="--hv:${couleurs[i % couleurs.length]}" href="enseignement-${esc(a.slug)}.html" data-reveal>
           ${a.vignette ? `<img class="ens-img" src="${esc(a.vignette)}" alt="" loading="lazy" decoding="async" />` : ""}
+          <i class="ens-sheen" aria-hidden="true"></i>
           <span class="ens-num">${String(i + 1).padStart(2, "0")}</span>
           <h3>${esc(a.titre)}</h3>
           <span class="ens-lire">Lire l'enseignement <i>→</i></span>
