@@ -85,8 +85,8 @@ function pointShaykh() {
   const s = Math.max(w / ratio, h) ; // hauteur d'image affichée
   const dh = s;
   const dw = s * ratio;
-  const x = (w - dw) * px + 0.738 * dw;
-  const y = (h - dh) * py + 0.562 * dh;
+  const x = (w - dw) * px + 0.742 * dw;
+  const y = (h - dh) * py + 0.5 * dh;
   return { x: Math.min(Math.max(x, 0), innerWidth), y: Math.min(Math.max(y, 0), innerHeight) };
 }
 
@@ -222,7 +222,7 @@ function lumiere() {
     const sombre = !!titre.closest(".manifesto, .talks, .silsila-page") || titre.classList.contains("h2--light");
     titre.classList.add("lumiere-titre", sombre ? "lumiere-titre--sombre" : "lumiere-titre--clair");
     ScrollTrigger.create({
-      trigger: titre, start: "top 72%", end: "bottom 28%",
+      trigger: titre, start: "top 80%", end: "top 38%",
       onToggle: (self) => titre.classList.toggle("is-lit", self.isActive),
     });
   });

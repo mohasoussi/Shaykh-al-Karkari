@@ -1291,12 +1291,12 @@ html, body { overflow-anchor: none; }
 .ens-card:hover .ens-sheen, .hub-card:hover::before { transform: translateX(130%); }
 
 /* le titre de la partie où l'on se trouve s'illumine */
-.lumiere-titre { position: relative; isolation: isolate; transition: color 1.1s var(--ease), text-shadow 1.1s var(--ease), opacity 1.1s; }
-.lumiere-titre::after { content: ""; position: absolute; left: 0; bottom: -0.18em; height: 2px; width: 100%; max-width: 220px; transform: scaleX(0); transform-origin: left; transition: transform 1.3s var(--ease), opacity 1.1s; opacity: 0;
+.lumiere-titre { position: relative; isolation: isolate; transition: color 0.5s var(--ease); }
+.lumiere-titre::after { content: ""; position: absolute; left: 0; bottom: -0.18em; height: 2px; width: 100%; max-width: 220px; transform: scaleX(0); transform-origin: left; transition: transform 0.5s var(--ease), opacity 0.4s; opacity: 0;
   background: linear-gradient(90deg, #f7dd9d, rgba(247, 221, 157, 0)); box-shadow: 0 0 14px 2px rgba(247, 221, 157, 0.55); }
 .section-head--center .lumiere-titre::after, .silsila-tete .lumiere-titre::after, .outro .lumiere-titre::after { left: 50%; margin-left: -110px; width: 220px; transform-origin: center; }
 .lumiere-titre.is-lit::after { transform: scaleX(1); opacity: 1; }
-.lumiere-titre::before { content: ""; position: absolute; z-index: -1; inset: -0.25em -0.4em; pointer-events: none; opacity: 0; filter: blur(18px); transition: opacity 1.3s var(--ease);
+.lumiere-titre::before { content: ""; position: absolute; z-index: -1; inset: -0.25em -0.4em; pointer-events: none; opacity: 0; filter: blur(18px); transition: opacity 0.5s var(--ease);
   background: radial-gradient(70% 80% at 35% 50%, rgba(255, 214, 140, 0.55), rgba(255, 200, 110, 0.18) 55%, transparent 80%); }
 .lumiere-titre.is-lit::before { opacity: 1; }
 .lumiere-titre--sombre.is-lit { color: #fff5d9; }
