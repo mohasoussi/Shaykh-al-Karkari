@@ -1255,3 +1255,5 @@ html, body { overflow-anchor: none; }
 @media (min-width: 981px) { .hub-cards { grid-template-columns: repeat(3, 1fr); } .hub-card { min-height: 520px; } }
 .hub-cards:has(> :nth-child(3)) .hub-txt h2 { font-size: clamp(1.7rem, 2.6vw, 2.4rem); }
 @media (min-width: 761px) and (max-width: 980px) { .hub-cards { grid-template-columns: repeat(2, 1fr); } .hub-cards .hub-card:nth-child(3) { grid-column: 1 / -1; } }
+.silsila-page--lignee .maillon:not(.maillon--prophete):not(.maillon--pont) { min-height: 124px; }
+.silsila-page--lignee .maillon-carte h3 { font-size: clamp(1.2rem, 1.9vw, 1.6rem); }

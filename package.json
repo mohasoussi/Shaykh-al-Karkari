@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "actualites": "node scripts/importer-actualites.mjs",
-    "prebuild": "node scripts/importer-actualites.mjs --tolerant"
+    "prebuild": "node scripts/importer-actualites.mjs --tolerant",
+    "lignee": "node scripts/lignee.mjs"
   },
   "devDependencies": {
     "node-html-parser": "^9.0.4",
