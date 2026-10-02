@@ -256,7 +256,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   align-items: center;
   justify-content: space-between;
   gap: 28px;
-  padding: 10px 14px 10px 18px;
+  padding: 5px 14px 5px 6px;
   border-radius: 22px;
   background: rgba(8, 13, 24, 0.92);
   border: 1px solid rgba(226, 187, 120, 0.22);
@@ -264,9 +264,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .brand { display: flex; align-items: center; gap: 12px; flex: none; }
 /* logo : portrait dans un cercle doré, la tête dépasse en haut */
-.brand-logo { --d: 64px; position: relative; display: block; flex: none; width: var(--d); height: var(--d); }
+.brand-logo { --d: 84px; position: relative; display: block; flex: none; width: var(--d); height: var(--d); }
 .brand-logo img { position: absolute; max-width: none; width: calc(var(--d) * 1.052); height: auto; left: calc(var(--d) * -0.026); top: calc(var(--d) * -0.244); pointer-events: none; }
-.brand-name { font-family: var(--serif); font-size: 0.86rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; line-height: 1.25; }
+.brand-name { font-family: var(--serif); font-size: 1.08rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.25; }
 .brand-name b { display: block; font-weight: 600; }
 .header-nav { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 38px); font-family: var(--serif); font-weight: 600; font-size: 1.03rem; letter-spacing: 0.01em; white-space: nowrap; }
 .header-nav > a { position: relative; display: inline-flex; align-items: center; padding-block: 6px; color: rgba(244, 239, 230, 0.86); font-size: inherit; letter-spacing: inherit; transition: color 0.3s; }
@@ -968,12 +968,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 @media (max-width: 760px) {
   .header { padding: 10px 12px; }
-  .header-bar { padding: 8px 12px 8px 12px; border-radius: 20px; }
-  .brand-logo { --d: 56px; }
+  .header-bar { padding: 4px 12px 4px 4px; border-radius: 20px; }
+  .brand-logo { --d: 64px; }
   .hero-pattern { inset: 0; opacity: 0.26; -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 60%); mask-image: linear-gradient(180deg, #000 0%, transparent 60%); }
   .hero-basmala { top: 12%; }
   .hero-basmala img { width: 62vw; opacity: 0.4; }
-  .brand-name { font-size: 0.66rem; letter-spacing: 0.1em; min-width: 0; }
+  .brand-name { font-size: 0.74rem; letter-spacing: 0.08em; min-width: 0; }
   .menu-btn-label { display: none; }
   .header-bar { gap: 12px; }
   .hero-frame { bottom: auto; height: 60svh; -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%); mask-image: linear-gradient(180deg, #000 70%, transparent 100%); }
