@@ -23,7 +23,7 @@ import path from "node:path";
 import sanitizeHtml from "sanitize-html";
 import { parse } from "node-html-parser";
 import sharp from "sharp";
-import { pageListe, pageArticle, cartesAccueil } from "./gabarits-actualites.mjs";
+import { pageListe, pageArticle, cartesAccueil, lignesEnseignements, TYPES } from "./gabarits-actualites.mjs";
 
 const SITE = process.env.SITE_DIR ? path.resolve(process.env.SITE_DIR) : process.cwd();
 const SOURCE = (process.env.ACTUALITES_SOURCE || "https://karkariya.fr").replace(/\/+$/, "");
@@ -96,14 +96,14 @@ export function retenu(a) {
 }
 
 /* ---------- 1. récupération des articles ---------- */
-async function depuisWordPress() {
+async function depuisWordPress(filtre = "") {
   let base = "/wp-json/wp/v2/posts";
   const lire = async (chemin) => {
     const out = [];
     for (let p = 1; p <= 30; p++) {
       let lot;
       try {
-        lot = await get(`${SOURCE}${chemin}?per_page=100&page=${p}&_embed=1&orderby=date&order=desc`, { json: true });
+        lot = await get(`${SOURCE}${chemin}?per_page=100&page=${p}&_embed=1&orderby=date&order=desc${filtre}`, { json: true });
       } catch (e) {
         if (p > 1 && e.status === 400) break; // page au-delà de la dernière
         throw e;
@@ -130,7 +130,7 @@ async function depuisWordPress() {
     return out;
   };
   let articles = await lire(base);
-  if (!articles.length) {
+  if (!articles.length && !filtre) {
     // le site range peut-être ses actualités dans un type de contenu à part
     const types = await get(`${SOURCE}/wp-json/wp/v2/types`, { json: true });
     const t = Object.values(types).find((x) => /actualit|news|article/i.test(`${x.slug} ${x.name}`) && x.slug !== "post" && x.rest_base);
@@ -207,19 +207,19 @@ const AUTORISE = {
   exclusiveFilter: (f) => (f.tag === "p" || f.tag === "li") && !f.text.trim() && !f.mediaChildren?.length,
 };
 
-async function enregistrerImage(src, base, dossier, nom, largeur) {
+async function enregistrerImage(src, base, dossier, nom, largeur, racineImg = "actualites") {
   const url = absolue(src, base);
   if (!url || url.startsWith("data:")) return null;
-  const dest = path.join(SITE, "public", "actualites", dossier, `${nom}.webp`);
+  const dest = path.join(SITE, "public", racineImg, dossier, `${nom}.webp`);
   if (FORCE || !(await existe(dest))) {
     const brut = await get(url, { binary: true });
     await fs.mkdir(path.dirname(dest), { recursive: true });
     await sharp(brut, { animated: true }).rotate().resize({ width: largeur, withoutEnlargement: true }).webp({ quality: 80 }).toFile(dest);
   }
-  return `actualites/${dossier}/${nom}.webp`;
+  return `${racineImg}/${dossier}/${nom}.webp`;
 }
 
-async function traiter(a, slugsConnus) {
+async function traiter(a, slugsConnus, cfg = { prefixe: "actualite", racineImg: "actualites" }) {
   // images « paresseuses » (WordPress) : la vraie adresse est dans data-src
   const brut = parse(`<div>${a.html}</div>`);
   for (const img of brut.querySelectorAll("img")) {
@@ -236,7 +236,7 @@ async function traiter(a, slugsConnus) {
     const img = images[i];
     let local = null;
     try {
-      local = await enregistrerImage(img.getAttribute("src"), a.url || SOURCE, a.slug, `img-${i + 1}`, 1400);
+      local = await enregistrerImage(img.getAttribute("src"), a.url || SOURCE, a.slug, `img-${i + 1}`, 1400, cfg.racineImg);
     } catch (e) {
       log(`image ignorée dans « ${a.slug} » (${e.message})`);
     }
@@ -253,7 +253,7 @@ async function traiter(a, slugsConnus) {
     if (!href) continue;
     if (new URL(href).host === HOTE) {
       const s = slugDepuisURL(href);
-      if (slugsConnus.has(s) && s !== a.slug) lien.setAttribute("href", `actualite-${s}.html`);
+      if (slugsConnus.has(s) && s !== a.slug) lien.setAttribute("href", `${cfg.prefixe}-${s}.html`);
       else lien.replaceWith(lien.innerHTML);
     } else {
       lien.setAttribute("target", "_blank");
@@ -268,8 +268,8 @@ async function traiter(a, slugsConnus) {
   const srcCouv = a.image || images[0]?.getAttribute("src");
   if (a.image) {
     try {
-      couverture = await enregistrerImage(a.image, a.url || SOURCE, a.slug, "couverture", 1600);
-      vignette = await enregistrerImage(a.image, a.url || SOURCE, a.slug, "vignette", 700);
+      couverture = await enregistrerImage(a.image, a.url || SOURCE, a.slug, "couverture", 1600, cfg.racineImg);
+      vignette = await enregistrerImage(a.image, a.url || SOURCE, a.slug, "vignette", 700, cfg.racineImg);
     } catch (e) {
       log(`couverture ignorée pour « ${a.slug} » (${e.message})`);
     }
@@ -294,7 +294,7 @@ async function ecrire(articles) {
   articles.forEach(async () => {});
   for (let i = 0; i < articles.length; i++) {
     const a = articles[i];
-    await fs.writeFile(path.join(racine, `actualite-${a.slug}.html`), pageArticle(a, articles[i + 1], articles[i - 1]));
+    await fs.writeFile(path.join(racine, `actualite-${a.slug}.html`), pageArticle(a, articles[i + 1], articles[i - 1], TYPES.actualite));
   }
   await fs.writeFile(path.join(racine, "actualites.html"), pageListe(articles));
   await fs.writeFile(
@@ -312,6 +312,47 @@ async function ecrire(articles) {
       await fs.writeFile(accueil, h);
     }
   } else log("repères <!--actualites:debut--> absents de index.html : l'accueil n'est pas mis à jour");
+}
+
+/* ---------- enseignements (rubrique « Moudhakara » du site d'origine) ---------- */
+const ENS_CATEGORIE = process.env.ENSEIGNEMENTS_CATEGORIE || "26"; // https://karkariya.fr/le-shaykh/moudhakara/
+const ENS_EXCLUS = /message de la tariqa karkariya/i;
+const COULEURS = ["#3f5578", "#4f7260", "#a2694a", "#6f5073", "#7b4a50", "#5a6e8a", "#6b7f4f", "#8a6a3f"];
+
+async function enseignements() {
+  let brut;
+  try {
+    brut = await depuisWordPress(`&categories=${ENS_CATEGORIE}`);
+  } catch (e) {
+    return log(`enseignements : lecture impossible (${e.message}), section conservée`);
+  }
+  brut = brut.filter((a) => a.titre && !ENS_EXCLUS.test(a.titre)).sort((x, y) => String(y.date).localeCompare(String(x.date)));
+  if (!brut.length) return log("enseignements : aucun article, section conservée");
+  const pris = new Set();
+  for (const a of brut) {
+    let s = slugifier(a.slug || a.titre) || "enseignement";
+    let n = 2;
+    while (pris.has(s)) s = `${slugifier(a.slug || a.titre)}-${n++}`;
+    pris.add(s);
+    a.slug = s;
+  }
+  const cfg = TYPES.enseignement;
+  const articles = [];
+  for (const a of brut) articles.push(await traiter(a, pris, cfg));
+
+  const gardes = new Set(articles.map((a) => `enseignement-${a.slug}.html`));
+  for (const f of await fs.readdir(SITE)) if (/^enseignement-.+\.html$/.test(f) && !gardes.has(f)) await fs.rm(path.join(SITE, f));
+  const dossiers = path.join(SITE, "public", "enseignements");
+  if (await existe(dossiers)) for (const d of await fs.readdir(dossiers)) if (!pris.has(d)) await fs.rm(path.join(dossiers, d), { recursive: true, force: true });
+  for (let i = 0; i < articles.length; i++) await fs.writeFile(path.join(SITE, `enseignement-${articles[i].slug}.html`), pageArticle(articles[i], articles[i + 1], articles[i - 1], cfg));
+  await fs.writeFile(path.join(SITE, "src", "data", "enseignements.json"), JSON.stringify(articles.map(({ html, ...m }) => m), null, 2) + "\n");
+
+  const accueil = path.join(SITE, "index.html");
+  let h = await fs.readFile(accueil, "utf8");
+  if (!h.includes("<!--enseignements:debut-->")) return log("repères <!--enseignements:debut--> absents de index.html");
+  h = h.replace(/<!--enseignements:debut-->[\s\S]*?<!--enseignements:fin-->/, `<!--enseignements:debut-->\n${lignesEnseignements(articles, COULEURS)}        <!--enseignements:fin-->`);
+  await fs.writeFile(accueil, h);
+  log(`enseignements : ${articles.length} article(s)`);
 }
 
 /* ---------- principal ---------- */
@@ -361,6 +402,7 @@ async function main() {
     articles.push(await traiter({ ...a, slugOrigine: slugDepuisURL(a.url) }, new Set([...connus, ...brut.map((b) => slugDepuisURL(b.url))])));
   }
   await ecrire(articles);
+  await enseignements();
   log(`terminé : ${articles.length} article(s) publiés`);
 }
 

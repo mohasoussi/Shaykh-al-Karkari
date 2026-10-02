@@ -79,15 +79,20 @@ ${contenu}    </section>
   });
 }
 
-export function pageArticle(a, precedent, suivant) {
+export const TYPES = {
+  actualite: { prefixe: "actualite", racineImg: "actualites", kicker: "Actualités", retour: "actualites.html", retourTexte: "← Toutes les actualités", page: "actualite", titreNav: "Autres articles" },
+  enseignement: { prefixe: "enseignement", racineImg: "enseignements", kicker: "Enseignements", retour: "index.html#cours", retourTexte: "← Tous les enseignements", page: "enseignement", titreNav: "Autres enseignements" },
+};
+
+export function pageArticle(a, precedent, suivant, t = TYPES.actualite) {
   const nav = (x, sens) =>
     x
-      ? `<a class="actu-voisin actu-voisin--${sens}" href="actualite-${esc(x.slug)}.html"><span>${sens === "prec" ? "← Article précédent" : "Article suivant →"}</span><strong>${esc(x.titre)}</strong></a>`
+      ? `<a class="actu-voisin actu-voisin--${sens}" href="${t.prefixe}-${esc(x.slug)}.html"><span>${sens === "prec" ? "← Article précédent" : "Article suivant →"}</span><strong>${esc(x.titre)}</strong></a>`
       : "<span></span>";
   const main = `    <article class="actu-article">
-      <a class="actu-retour" href="actualites.html">← Toutes les actualités</a>
+      <a class="actu-retour" href="${t.retour}">${t.retourTexte}</a>
       <header class="actu-entete">
-        <p class="kicker">Actualités</p>
+        <p class="kicker">${t.kicker}</p>
         <time datetime="${esc(a.date)}">${esc(dateLongue(a.date))}</time>
         <h1>${esc(a.titre)}</h1>
       </header>
@@ -95,13 +100,13 @@ export function pageArticle(a, precedent, suivant) {
       <div class="actu-corps">
 ${a.html}
       </div>
-      <nav class="actu-voisins" aria-label="Autres articles">
+      <nav class="actu-voisins" aria-label="${t.titreNav}">
         ${nav(precedent, "prec")}
         ${nav(suivant, "suiv")}
       </nav>
     </article>
 `;
-  return enveloppe({ titre: `${a.titre} — Shaykh Mohamed Faouzi Al Karkari`, description: a.extrait || a.titre, page: "actualite", main, image: a.couverture });
+  return enveloppe({ titre: `${a.titre} — Shaykh Mohamed Faouzi Al Karkari`, description: a.extrait || a.titre, page: t.page, main, image: a.couverture });
 }
 
 /** Les trois derniers articles, pour la section « Actualités » de l'accueil. */
@@ -116,5 +121,17 @@ export function cartesAccueil(articles) {
         </a>
 `
     )
+    .join("");
+}
+
+/** Lignes colorées de la section « Enseignements » de l'accueil. */
+export function lignesEnseignements(articles, couleurs) {
+  return articles
+    .map((a, i) => `        <li class="topic" style="--hv:${couleurs[i % couleurs.length]}">
+          <a class="topic-in" href="enseignement-${esc(a.slug)}.html">
+            <span class="topic-num">${String(i + 1).padStart(2, "0")}</span><span class="topic-title">${esc(a.titre)}</span><span class="topic-meta">${esc(new Date(a.date).getFullYear() || "")}</span><span class="topic-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+`)
     .join("");
 }
