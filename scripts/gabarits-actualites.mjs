@@ -34,11 +34,11 @@ ${main}  </main>
 `;
 }
 
-function carte(a) {
+function carte(a, prefixe = "actualite") {
   const img = a.vignette
     ? `<figure class="actu-fig"><img src="${esc(a.vignette)}" alt="${esc(a.imageAlt || "")}" loading="lazy" decoding="async" /></figure>`
     : `<figure class="actu-fig actu-fig--vide" aria-hidden="true"></figure>`;
-  return `        <a class="actu-card" href="actualite-${esc(a.slug)}.html" data-titre="${esc(a.titre.toLowerCase())}">
+  return `        <a class="actu-card" href="${prefixe}-${esc(a.slug)}.html" data-titre="${esc(a.titre.toLowerCase())}">
           ${img}
           <div class="actu-txt">
             <time datetime="${esc(a.date)}">${esc(dateLongue(a.date))}</time>
@@ -50,38 +50,43 @@ function carte(a) {
 `;
 }
 
-export function pageListe(articles) {
+export const LISTES = {
+  actualites: { page: "actualites", prefixe: "actualite", kicker: "Actualités", titre: "Actualités", lede: "Rencontres, conférences, publications : l'actualité du Shaykh et de son action.", description: "L'actualité du Shaykh Mohamed Faouzi Al Karkari : rencontres, conférences, publications.", vide: "Les articles seront bientôt publiés ici." },
+  enseignements: { page: "enseignements", prefixe: "enseignement", kicker: "Les enseignements", titre: "Les enseignements", lede: "Les moudhakara : enseignements du Shaykh sur la pratique, le savoir et le cheminement.", description: "Les enseignements du Shaykh Mohamed Faouzi Al Karkari.", vide: "Les enseignements seront bientôt publiés ici." },
+};
+
+export function pageListe(articles, l = LISTES.actualites) {
   const contenu = articles.length
     ? `      <div class="actu-outils">
         <label class="field actu-recherche"><span>Rechercher</span><input type="search" id="actu-q" placeholder="Un mot du titre" autocomplete="off" /></label>
         <p class="actu-total">${articles.length} article${articles.length > 1 ? "s" : ""}</p>
       </div>
       <div class="actu-grid" id="actu-grid">
-${articles.map(carte).join("")}      </div>
+${articles.map((a) => carte(a, l.prefixe)).join("")}      </div>
       <p class="actu-aucun" hidden>Aucun article ne correspond à votre recherche.</p>
       <div class="center actu-suite"><button class="btn-glass btn-glass--dark" type="button" id="actu-more" hidden><span>Voir plus d'articles</span><i>↓</i></button></div>
 `
-    : `      <p class="actu-vide">Les articles seront bientôt publiés ici.</p>
+    : `      <p class="actu-vide">${l.vide}</p>
 `;
   const main = `    <section class="actu-page">
       <div class="section-head">
-        <p class="kicker">Actualités</p>
-        <h1 class="h2" data-split>Actualités</h1>
-        <p class="section-lede" data-reveal>Rencontres, conférences, publications : l'actualité du Shaykh et de son action.</p>
+        <p class="kicker">${l.kicker}</p>
+        <h1 class="h2" data-split>${l.titre}</h1>
+        <p class="section-lede" data-reveal>${l.lede}</p>
       </div>
 ${contenu}    </section>
 `;
   return enveloppe({
-    titre: "Actualités — Shaykh Mohamed Faouzi Al Karkari",
-    description: "L'actualité du Shaykh Mohamed Faouzi Al Karkari : rencontres, conférences, publications.",
-    page: "actualites",
+    titre: `${l.titre} — Shaykh Mohamed Faouzi Al Karkari`,
+    description: l.description,
+    page: l.page,
     main,
   });
 }
 
 export const TYPES = {
   actualite: { prefixe: "actualite", racineImg: "actualites", kicker: "Actualités", retour: "actualites.html", retourTexte: "← Toutes les actualités", page: "actualite", titreNav: "Autres articles" },
-  enseignement: { prefixe: "enseignement", racineImg: "enseignements", kicker: "Enseignements", retour: "index.html#cours", retourTexte: "← Tous les enseignements", page: "enseignement", titreNav: "Autres enseignements" },
+  enseignement: { prefixe: "enseignement", racineImg: "enseignements", kicker: "Enseignements", retour: "enseignements.html", retourTexte: "← Tous les enseignements", page: "enseignement", titreNav: "Autres enseignements" },
 };
 
 export function pageArticle(a, precedent, suivant, t = TYPES.actualite) {
@@ -124,14 +129,14 @@ export function cartesAccueil(articles) {
     .join("");
 }
 
-/** Lignes colorées de la section « Enseignements » de l'accueil. */
-export function lignesEnseignements(articles, couleurs) {
+/** Trois cartes colorées de la section « Enseignements » de l'accueil. */
+export function cartesEnseignements(articles, couleurs) {
   return articles
-    .map((a, i) => `        <li class="topic" style="--hv:${couleurs[i % couleurs.length]}">
-          <a class="topic-in" href="enseignement-${esc(a.slug)}.html">
-            <span class="topic-num">${String(i + 1).padStart(2, "0")}</span><span class="topic-title">${esc(a.titre)}</span><span class="topic-meta">${esc(new Date(a.date).getFullYear() || "")}</span><span class="topic-arrow" aria-hidden="true">→</span>
-          </a>
-        </li>
+    .map((a, i) => `        <a class="ens-card" style="--hv:${couleurs[i % couleurs.length]}" href="enseignement-${esc(a.slug)}.html" data-reveal>
+          <span class="ens-num">${String(i + 1).padStart(2, "0")}</span>
+          <h3>${esc(a.titre)}</h3>
+          <span class="ens-lire">Lire l'enseignement <i>→</i></span>
+        </a>
 `)
     .join("");
 }

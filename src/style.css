@@ -1131,3 +1131,19 @@ body.modal-open { overflow: hidden; }
 .actu-voisin--suiv { text-align: right; }
 @media (max-width: 980px) { .actu-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .actu-grid { grid-template-columns: 1fr; } .actu-voisins { grid-template-columns: 1fr; } .actu-voisin--suiv { text-align: left; } }
+
+/* ---------- Enseignements : trois cartes colorées sur l'accueil ---------- */
+.ens-cards { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.ens-card { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; min-height: 340px; padding: 32px 30px 30px; border-radius: 22px; background: rgba(255, 255, 255, 0.55); border: 1px solid var(--line); color: var(--ink, inherit); text-decoration: none; isolation: isolate; transition: color 0.6s var(--ease), box-shadow 0.6s var(--ease); }
+.ens-card::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--hv); transform: translateY(101%); border-radius: inherit; transition: transform 0.7s var(--ease); }
+.ens-card:hover, .ens-card:focus-visible { color: #fff; box-shadow: 0 28px 50px -26px var(--hv); }
+.ens-card:hover::before, .ens-card:focus-visible::before { transform: translateY(0); }
+.ens-num { font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--gold); transition: color 0.6s; }
+.ens-card:hover .ens-num { color: #f1deb6; }
+.ens-card h3 { margin: 0; font-family: var(--serif); font-weight: 500; font-size: clamp(1.7rem, 2.6vw, 2.3rem); line-height: 1.08; }
+.ens-lire { font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; display: flex; gap: 10px; align-items: center; }
+.ens-lire i { font-style: normal; transition: transform 0.5s var(--ease); }
+.ens-card:hover .ens-lire i { transform: translateX(6px); }
+.ens-suite { margin-top: 48px; }
+@media (max-width: 980px) { .ens-cards { grid-template-columns: 1fr; } .ens-card { min-height: 0; gap: 28px; } }
+html, body { overflow-anchor: none; }

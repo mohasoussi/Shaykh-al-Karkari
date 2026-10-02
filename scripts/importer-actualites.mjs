@@ -23,7 +23,7 @@ import path from "node:path";
 import sanitizeHtml from "sanitize-html";
 import { parse } from "node-html-parser";
 import sharp from "sharp";
-import { pageListe, pageArticle, cartesAccueil, lignesEnseignements, TYPES } from "./gabarits-actualites.mjs";
+import { pageListe, pageArticle, cartesAccueil, cartesEnseignements, TYPES, LISTES } from "./gabarits-actualites.mjs";
 
 const SITE = process.env.SITE_DIR ? path.resolve(process.env.SITE_DIR) : process.cwd();
 const SOURCE = (process.env.ACTUALITES_SOURCE || "https://karkariya.fr").replace(/\/+$/, "");
@@ -316,8 +316,10 @@ async function ecrire(articles) {
 
 /* ---------- enseignements (rubrique « Moudhakara » du site d'origine) ---------- */
 const ENS_CATEGORIE = process.env.ENSEIGNEMENTS_CATEGORIE || "26"; // https://karkariya.fr/le-shaykh/moudhakara/
-const ENS_EXCLUS = /message de la tariqa karkariya/i;
-const COULEURS = ["#3f5578", "#4f7260", "#a2694a", "#6f5073", "#7b4a50", "#5a6e8a", "#6b7f4f", "#8a6a3f"];
+const ENS_EXCLUS = /message de la tariqa karkariya|la fornication|r[ée]ponse du shaykh [àa] ceux qui nous critiquent/i;
+// les trois enseignements mis en avant sous la bannière de l'accueil (nom d'origine de l'article)
+const ENS_ACCUEIL = ["vision-yeux-vision-coeur", "le-coeur-spirituel-dans-le-coeur-physique", "la-feconnaissance-pour-les-bienfaits-dallah"];
+const COULEURS = ["#3f5578", "#4f7260", "#a2694a"];
 
 async function enseignements() {
   let brut;
@@ -347,10 +349,12 @@ async function enseignements() {
   for (let i = 0; i < articles.length; i++) await fs.writeFile(path.join(SITE, `enseignement-${articles[i].slug}.html`), pageArticle(articles[i], articles[i + 1], articles[i - 1], cfg));
   await fs.writeFile(path.join(SITE, "src", "data", "enseignements.json"), JSON.stringify(articles.map(({ html, ...m }) => m), null, 2) + "\n");
 
+  await fs.writeFile(path.join(SITE, "enseignements.html"), pageListe(articles, LISTES.enseignements));
+  const vedettes = ENS_ACCUEIL.map((k) => articles.find((a) => a.slug.startsWith(k) || a.slugOrigine?.startsWith(k))).filter(Boolean);
   const accueil = path.join(SITE, "index.html");
   let h = await fs.readFile(accueil, "utf8");
   if (!h.includes("<!--enseignements:debut-->")) return log("repères <!--enseignements:debut--> absents de index.html");
-  h = h.replace(/<!--enseignements:debut-->[\s\S]*?<!--enseignements:fin-->/, `<!--enseignements:debut-->\n${lignesEnseignements(articles, COULEURS)}        <!--enseignements:fin-->`);
+  h = h.replace(/<!--enseignements:debut-->[\s\S]*?<!--enseignements:fin-->/, `<!--enseignements:debut-->\n${cartesEnseignements(vedettes, COULEURS)}        <!--enseignements:fin-->`);
   await fs.writeFile(accueil, h);
   log(`enseignements : ${articles.length} article(s)`);
 }

@@ -674,7 +674,11 @@ const memoriserScroll = () => {
 addEventListener("pagehide", memoriserScroll);
 document.addEventListener("visibilitychange", () => document.visibilityState === "hidden" && memoriserScroll());
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-if (!retour) scrollTo(0, 0);
+if (!retour) {
+  scrollTo(0, 0);
+  // une page qui s'ouvre repart toujours du haut, même si des images se chargent ensuite
+  addEventListener("load", () => !location.hash && scrollY < 400 && scrollTo(0, 0), { once: true });
+}
 
 const ready = document.fonts ? document.fonts.ready : Promise.resolve();
 
@@ -707,6 +711,7 @@ ready.then(async () => {
   if (!intro) gsap.from(".header", { y: -40, opacity: 0, duration: 1.1, ease: "expo.out" });
   await runLoader(() => intro?.play());
   lenis?.start();
+  if (!retour && !location.hash && scrollY > 0) lenis ? lenis.scrollTo(0, { immediate: true, force: true }) : scrollTo(0, 0);
   if (retour) {
     let y = 0;
     try {
