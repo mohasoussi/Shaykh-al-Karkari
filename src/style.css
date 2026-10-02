@@ -1252,3 +1252,6 @@ html, body { overflow-anchor: none; }
   .prophete-ar { font-size: 3.6rem; }
 }
 .maillon--prophete.is-active .maillon-carte, .maillon--prophete .maillon-carte { background: none; border: 0; }
+@media (min-width: 981px) { .hub-cards { grid-template-columns: repeat(3, 1fr); } .hub-card { min-height: 520px; } }
+.hub-cards:has(> :nth-child(3)) .hub-txt h2 { font-size: clamp(1.7rem, 2.6vw, 2.4rem); }
+@media (min-width: 761px) and (max-width: 980px) { .hub-cards { grid-template-columns: repeat(2, 1fr); } .hub-cards .hub-card:nth-child(3) { grid-column: 1 / -1; } }

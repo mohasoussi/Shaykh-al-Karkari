@@ -427,6 +427,12 @@ async function silsila() {
     }
   }
 
+  // maîtres entre le dernier maillon de l'article et le Prophète ﷺ : liste tenue à la main dans scripts/silsila-suite.json
+  let suite = [];
+  try {
+    suite = JSON.parse(await fs.readFile(path.join(SITE, "scripts", "silsila-suite.json"), "utf8")).filter((m) => m?.nom);
+  } catch {}
+  for (const m of suite) maillons.push({ nom: m.nom, invoc: m.invoc ?? "radiAllâhu ‘anhu", image: null, suite: true });
   const total = maillons.length + 1; // + le Prophète
   const li = maillons
     .map(
@@ -443,7 +449,7 @@ async function silsila() {
     )
     .join("");
   const liste = `<ol class="silsila" data-total="${total}">
-${li}        <li class="maillon maillon--pont" data-n="${maillons.length}" aria-hidden="true"><span class="maillon-point"></span><p>De maître en maître, la chaîne remonte jusqu'au Prophète</p></li>
+${li}${suite.length ? "" : `        <li class="maillon maillon--pont" data-n="${maillons.length}" aria-hidden="true"><span class="maillon-point"></span><p>De maître en maître, la chaîne remonte jusqu'au Prophète</p></li>\n`}
         <li class="maillon maillon--prophete" data-n="${total}">
           <span class="maillon-point" aria-hidden="true"></span>
           <div class="maillon-carte">

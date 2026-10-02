@@ -55,7 +55,8 @@ Le fichier `netlify.toml` est prêt : connecter le dépôt à Netlify suffit.
 | Accueil (intro en damier, événements, enseignements, conférences, actualités, contact) | `index.html` |
 | Le Shaykh (deux portes) | `le-shaykh.html` |
 | Qui est le Shaykh ? (parcours + biographie importée) | `qui-est-le-shaykh.html` |
-| Sa chaîne de transmission (silsila + maîtres, importée) | `chaine-de-transmission.html` |
+| Sa chaîne de transmission (silsila animée, importée ; maîtres entre Ibn Machich et le Prophète : `scripts/silsila-suite.json`) | `chaine-de-transmission.html` |
+| Sa lignée chérifienne (animée) | `lignee-cherifienne.html` |
 | Conférences en vidéo | `conferences.html` — renseigner l'attribut `data-youtube` de chaque carte (adresse YouTube ou identifiant) pour activer la vidéo |
 | Projet Merkez | `projet-merkez.html` |
 | Articles des enseignements (à rédiger) | `article-*.html` |
