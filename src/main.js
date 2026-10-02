@@ -65,8 +65,25 @@ function buildTiles(container, cols, rows) {
   return $$("span", container);
 }
 
+/** Point de la photo du Shaykh (visage) où le cercle d'ouverture vient se refermer. */
+function pointShaykh() {
+  const frame = $(".hero-frame");
+  const photo = $(".hero-photo");
+  const w = frame.offsetWidth;
+  const h = frame.offsetHeight;
+  const [px, py] = getComputedStyle(photo).objectPosition.split(" ").map((v) => parseFloat(v) / 100);
+  const ratio = (photo.naturalWidth || 1536) / (photo.naturalHeight || 1024);
+  const s = Math.max(w / ratio, h) ; // hauteur d'image affichée
+  const dh = s;
+  const dw = s * ratio;
+  const x = (w - dw) * px + 0.728 * dw;
+  const y = (h - dh) * py + 0.41 * dh;
+  return { x: Math.min(Math.max(x, 0), innerWidth), y: Math.min(Math.max(y, 0), innerHeight) };
+}
+
 function runLoader(onReveal) {
   const loader = $(".loader");
+  const ring = $(".loader-ring");
   // le damier est déjà dans la page (script en ligne) : il couvre l'écran dès la première image
   const tiles = $$(".loader-grid span");
   const count = $(".loader-count span");
@@ -74,6 +91,7 @@ function runLoader(onReveal) {
 
   if (reduced || !tiles.length) {
     loader.remove();
+    ring?.remove();
     document.body.classList.remove("is-loading");
     return Promise.resolve();
   }
@@ -86,11 +104,22 @@ function runLoader(onReveal) {
     });
   const rythme = setInterval(remelanger, 280);
 
+  // fin d'intro : un cercle se referme jusqu'à n'être plus qu'un point sur le Shaykh
+  const P = pointShaykh();
+  const iris = { r: Math.hypot(Math.max(P.x, innerWidth - P.x), Math.max(P.y, innerHeight - P.y)) + 24 };
+  const dessiner = () => {
+    loader.style.clipPath = `circle(${iris.r}px at ${P.x}px ${P.y}px)`;
+    ring.style.width = ring.style.height = `${iris.r * 2}px`;
+  };
+  gsap.set(ring, { left: P.x, top: P.y, xPercent: -50, yPercent: -50 });
+  dessiner();
+
   return new Promise((resolve) => {
     const tl = gsap.timeline({
       onComplete: () => {
         clearInterval(rythme);
         loader.remove();
+        ring.remove();
         document.body.classList.remove("is-loading");
         resolve();
       },
@@ -102,15 +131,11 @@ function runLoader(onReveal) {
       onUpdate: () => (count.textContent = Math.round(counter.v)),
     })
       .to(".loader-center", { opacity: 0, scale: 0.94, duration: 0.45, ease: "power2.in" }, ">0.1")
-      // le damier se retire en laissant apparaître le site derrière
-      .to(tiles, {
-        scale: 0,
-        rotate: () => gsap.utils.random(-30, 30),
-        duration: 0.7,
-        ease: "power3.inOut",
-        stagger: { each: 0.018, from: "center", grid: "auto" },
-      }, ">-0.05")
-      .add(() => { clearInterval(rythme); onReveal && onReveal(); }, "<0.1");
+      .set(ring, { opacity: 1 }, ">-0.1")
+      .to(iris, { r: 0, duration: 1.9, ease: "power3.inOut", onUpdate: dessiner }, "<")
+      .add(() => { clearInterval(rythme); onReveal && onReveal(); }, "<0.55")
+      // le point final éclot puis disparaît
+      .to(ring, { scale: 3.2, opacity: 0, duration: 0.55, ease: "power2.out" }, ">");
   });
 }
 
@@ -640,6 +665,10 @@ function dust() {
    Démarrage
    --------------------------------------------------------- */
 $(".year").textContent = new Date().getFullYear();
+
+// l'ouverture se referme sur la photo : on repart toujours du haut de la page
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+scrollTo(0, 0);
 
 const ready = document.fonts ? document.fonts.ready : Promise.resolve();
 

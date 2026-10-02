@@ -136,6 +136,19 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   place-items: center;
   pointer-events: none;
 }
+.loader-ring {
+  position: fixed;
+  z-index: 101;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border: 2px solid #e8d3a8;
+  border-radius: 50%;
+  box-shadow: 0 0 22px rgba(232, 211, 168, 0.55);
+  pointer-events: none;
+  opacity: 0;
+}
 .loader-grid {
   position: absolute;
   inset: 0;
