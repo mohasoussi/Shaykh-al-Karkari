@@ -1303,3 +1303,6 @@ html, body { overflow-anchor: none; }
 .lumiere-titre--clair.is-lit { color: #8c5d12; }
 .manifesto > .kicker.lumiere-titre--sombre.is-lit { color: #ffe9b8; }
 @media (prefers-reduced-motion: reduce) { .lumiere-titre, .lumiere-titre::after { transition: none; } }
+.stats .stat dt { white-space: nowrap; font-size: clamp(1.7rem, 2.5vw, 2.5rem); }
+.stats .stat dt span { font-size: inherit; }
+@media (max-width: 760px) { .stats .stat dt { font-size: 2rem; } }
