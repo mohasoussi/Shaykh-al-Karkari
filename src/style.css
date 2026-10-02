@@ -976,7 +976,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .hero-frame { bottom: auto; height: 60svh; -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%); mask-image: linear-gradient(180deg, #000 70%, transparent 100%); }
   .hero-photo { object-position: 78% 40%; }
   .hero { background: linear-gradient(180deg, #0c1a3a 0%, var(--dusk-deep-2) 60%); }
-  .hero-content { padding-top: 70px; padding-bottom: 34px; }
+  .hero-content { align-items: flex-start; padding-top: clamp(300px, calc(100svh - 380px), 54svh); padding-bottom: 34px; }
   .hero-text { text-shadow: none; }
   .hero-title { font-size: clamp(1.55rem, 8vw, 2.2rem); }
   .hero-verse { margin-top: 22px; padding-top: 18px; }
