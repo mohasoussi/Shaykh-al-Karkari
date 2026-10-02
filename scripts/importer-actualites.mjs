@@ -204,7 +204,6 @@ const AUTORISE = {
     li: (tag, attribs) => ({ tagName: "li", attribs: { ...attribs, dir: "auto" } }),
     blockquote: (tag, attribs) => ({ tagName: "blockquote", attribs: { ...attribs, dir: "auto" } }),
   },
-  exclusiveFilter: (f) => (f.tag === "p" || f.tag === "li") && !f.text.trim() && !f.mediaChildren?.length,
 };
 
 async function enregistrerImage(src, base, dossier, nom, largeur, racineImg = "actualites") {
@@ -260,6 +259,8 @@ async function traiter(a, slugsConnus, cfg = { prefixe: "actualite", racineImg: 
       lien.setAttribute("rel", "noopener");
     }
   }
+  // paragraphes vides (mais on garde ceux qui contiennent une image ou une vidéo, même dans un lien)
+  for (const el of racine.querySelectorAll("p, li")) if (!el.text.trim() && !el.querySelector("img, iframe")) el.remove();
   propre = racine.innerHTML.trim();
 
   // image de couverture + vignette
