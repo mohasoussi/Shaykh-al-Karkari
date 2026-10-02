@@ -1,0 +1,14 @@
+# Relance chaque jour la mise en ligne du site pour que les nouveaux articles apparaissent seuls.
+# Réglage : dans Netlify, créer un « Build hook », puis l'ajouter dans GitHub
+# (Settings > Secrets and variables > Actions) sous le nom NETLIFY_BUILD_HOOK.
+name: Actualités
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Relancer la mise en ligne
+        run: curl -fsS -X POST -d '{}' "${{ secrets.NETLIFY_BUILD_HOOK }}"

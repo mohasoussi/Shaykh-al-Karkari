@@ -450,6 +450,7 @@ function navigation() {
     liens[id]?.classList.add("is-current");
   };
   if (page === "shaykh" || page === "conferences") actif(page);
+  if (page === "actualites" || page === "actualite") actif("ecrits");
   if (page === "home" && $("#ecrits"))
     ScrollTrigger.create({
       trigger: "#ecrits",
@@ -457,6 +458,32 @@ function navigation() {
       end: "bottom 55%",
       onToggle: (self) => (self.isActive ? actif("ecrits") : liens.ecrits?.classList.remove("is-current")),
     });
+}
+
+/* ---------------------------------------------------------
+   Page Actualités : recherche + « Voir plus »
+   --------------------------------------------------------- */
+function actualites() {
+  const grille = $("#actu-grid");
+  if (!grille) return;
+  const cartes = $$(".actu-card", grille);
+  const plus = $("#actu-more");
+  const aucun = $(".actu-aucun");
+  const champ = $("#actu-q");
+  const PAS = 12;
+  let visibles = PAS;
+  const rendre = () => {
+    const q = (champ?.value || "").trim().toLowerCase();
+    const ok = cartes.filter((c) => !q || c.dataset.titre.includes(q));
+    cartes.forEach((c) => (c.hidden = true));
+    ok.slice(0, visibles).forEach((c) => (c.hidden = false));
+    if (plus) plus.hidden = ok.length <= visibles;
+    if (aucun) aucun.hidden = ok.length > 0;
+    ScrollTrigger.refresh();
+  };
+  champ?.addEventListener("input", () => ((visibles = PAS), rendre()));
+  plus?.addEventListener("click", () => ((visibles += PAS), rendre()));
+  rendre();
 }
 
 /* ---------------------------------------------------------
@@ -670,6 +697,7 @@ ready.then(async () => {
   if ($(".talks")) talks();
   articles();
   videos();
+  actualites();
   cursor();
   dust();
   ScrollTrigger.refresh();
