@@ -67,11 +67,13 @@ L'en-tête, le menu et le pied de page sont communs : ils se modifient une seule
 - Sur le site publié avec Netlify, les réponses arrivent dans **Netlify → Forms → inscription** : liste, export CSV, alertes e-mail. Il n'y a rien d'autre à installer.
 - Dans l'aperçu Claude, elles sont enregistrées dans la base de la page et se consultent à l'adresse `…#admin` (réservée à l'administrateur).
 
-## Actualités automatiques
+## Articles importés automatiquement
 
-Les articles de https://karkariya.fr/actualites/ sont importés sans copier-coller :
+Les articles de https://karkariya.fr sont repris sans copier-coller :
 
-- `npm run actualites` lit le site d'origine (API WordPress, sinon lecture des pages), nettoie le texte, télécharge et allège les images, puis génère `actualites.html`, un `actualite-<nom>.html` par article et les 3 derniers articles de l'accueil.
-- `npm run build` relance l'import avant chaque mise en ligne ; si le site d'origine est injoignable, les pages existantes sont conservées.
-- `.github/workflows/actualites.yml` déclenche une mise en ligne chaque jour (secret `NETLIFY_BUILD_HOOK`) : un nouvel article publié sur l'ancien site apparaît ici dès le lendemain.
-- `npm run actualites -- --vide` remet la page à zéro. Autre site : variables `ACTUALITES_SOURCE` / `ACTUALITES_CHEMIN`.
+- **Actualités** (`actualites.html`, `actualite-*.html`) : événements, conférences, actions humanitaires, vie de la tariqa. Les cours, tafsir, témoignages, réfutations… sont écartés (règles dans `retenu()`, `scripts/importer-actualites.mjs`).
+- **Enseignements** (`enseignements.html`, `enseignement-*.html`) : rubrique « Moudhakara ». Les trois cartes de l'accueil sont fixées par `ENS_ACCUEIL`.
+- **Chaîne de transmission** (`chaine-de-transmission.html`) : la silsila est relue dans l'article d'origine et mise en scène jusqu'au Prophète ﷺ.
+- `npm run actualites` lance l'import à la main ; `npm run build` le relance avant chaque mise en ligne (si le site d'origine est injoignable, les pages existantes sont conservées).
+- `.github/workflows/actualites.yml` relance l'import toutes les 6 heures sur GitHub et enregistre les nouveautés dans le dépôt ; Netlify republie alors le site tout seul. Rien à configurer, à part avoir relié le dépôt à Netlify.
+- Autre site source : variables `ACTUALITES_SOURCE` / `ACTUALITES_CHEMIN`.

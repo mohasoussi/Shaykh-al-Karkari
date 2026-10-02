@@ -1189,3 +1189,66 @@ html, body { overflow-anchor: none; }
 @media (max-width: 979px) { body[data-page="shaykh"] .about { padding-top: 200px; } }
 .shaykh-texte .actu-corps h3 { font-size: 1.7rem; margin: 2.2em 0 .5em; }
 .shaykh-texte .actu-corps h3:first-child { margin-top: 0; }
+
+/* ---------- Chaîne de transmission : fil lumineux jusqu'au Prophète ﷺ ---------- */
+.bio-liste { padding-left: 1.2em; }
+.bio-liste li { margin-bottom: .7em; }
+.silsila-page { position: relative; padding: 160px var(--gutter) 120px; background: radial-gradient(120% 60% at 50% 0%, #17223a 0%, #0b0f14 60%); color: #f4efe6; overflow: hidden; }
+.silsila-tete { max-width: 760px; margin: 0 auto 90px; text-align: center; }
+.silsila-tete .h2 { color: #f4efe6; }
+.silsila-tete .section-lede { margin-inline: auto; color: rgba(244, 239, 230, 0.7); }
+.silsila-doc { margin-top: 30px; }
+.silsila { position: relative; list-style: none; margin: 0 auto; padding: 0; max-width: 980px; counter-reset: m; }
+.silsila-fil { position: absolute; left: 50%; top: 520px; bottom: 360px; width: 2px; transform: translateX(-50%); background: rgba(226, 187, 120, 0.16); pointer-events: none; }
+.silsila-fil i { display: block; width: 100%; height: 100%; background: linear-gradient(180deg, #e2bb78, #f7e6b8); transform-origin: top; transform: scaleY(0); box-shadow: 0 0 16px 2px rgba(226, 187, 120, 0.6); }
+.maillon { position: relative; display: flex; align-items: center; min-height: 190px; width: 50%; }
+.maillon:nth-child(odd) { margin-right: 50%; justify-content: flex-end; padding-right: 64px; text-align: right; }
+.maillon:nth-child(even) { margin-left: 50%; justify-content: flex-start; padding-left: 64px; }
+.maillon-point { position: absolute; top: 50%; width: 16px; height: 16px; margin-top: -8px; border-radius: 50%; background: #0b0f14; border: 2px solid rgba(226, 187, 120, 0.5); transition: background 0.5s, box-shadow 0.5s, transform 0.5s, border-color 0.5s; z-index: 2; }
+.maillon:nth-child(odd) .maillon-point { right: -8px; }
+.maillon:nth-child(even) .maillon-point { left: -8px; }
+.maillon-carte { position: relative; display: flex; align-items: center; gap: 22px; padding: 18px 24px; border-radius: 20px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(226, 187, 120, 0.14); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: background 0.6s, border-color 0.6s, transform 0.6s var(--ease); max-width: 100%; }
+.maillon:nth-child(odd) .maillon-carte { flex-direction: row-reverse; }
+.maillon-rang { position: absolute; top: -12px; font-family: var(--serif); font-style: italic; font-size: 0.95rem; color: #e2bb78; background: #0b0f14; padding: 0 8px; }
+.maillon:nth-child(odd) .maillon-rang { left: 18px; }
+.maillon:nth-child(even) .maillon-rang { right: 18px; }
+.maillon-carte h3 { margin: 0; font-family: var(--serif); font-weight: 500; font-size: clamp(1.35rem, 2.2vw, 1.9rem); line-height: 1.1; }
+.maillon-invoc { margin: 6px 0 0; font-size: 0.78rem; letter-spacing: 0.08em; color: rgba(244, 239, 230, 0.55); font-style: italic; }
+.maillon-photo { margin: 0; flex: none; width: 92px; height: 116px; border-radius: 14px; overflow: hidden; border: 1px solid rgba(226, 187, 120, 0.4); }
+.maillon-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+.maillon--shaykh .maillon-photo { width: 110px; height: 140px; }
+.maillon.is-active .maillon-point { background: #e2bb78; border-color: #f7e6b8; box-shadow: 0 0 0 6px rgba(226, 187, 120, 0.18), 0 0 24px 6px rgba(226, 187, 120, 0.6); transform: scale(1.25); }
+.maillon.is-active .maillon-carte { background: rgba(226, 187, 120, 0.1); border-color: rgba(226, 187, 120, 0.5); }
+.maillon--pont { width: 100%; margin: 0 !important; padding: 0 !important; min-height: 150px; justify-content: center !important; text-align: center !important; }
+.maillon--pont p { margin: 0; padding: 0 16px; background: #0b0f14; font-family: var(--serif); font-style: italic; font-size: 1.15rem; color: rgba(247, 230, 184, 0.85); z-index: 1; }
+.maillon--pont .maillon-point { display: none; }
+.maillon--prophete { width: 100%; margin: 0 !important; padding: 40px 0 0 !important; justify-content: center !important; text-align: center !important; min-height: 420px; }
+.maillon--prophete .maillon-point { left: 50% !important; right: auto !important; top: 40px; margin: 0 0 0 -8px; }
+.maillon--prophete .maillon-carte { flex-direction: column !important; background: none; border: 0; backdrop-filter: none; margin-top: 70px; padding: 0; gap: 8px; }
+.prophete-halo { position: absolute; left: 50%; top: 50%; width: 520px; height: 520px; margin: -300px 0 0 -260px; border-radius: 50%; background: radial-gradient(circle, rgba(247, 230, 184, 0.55) 0%, rgba(226, 187, 120, 0.22) 35%, transparent 68%); opacity: 0; transform: scale(0.4); pointer-events: none; }
+.prophete-ar { position: relative; font-family: "Amiri", serif; font-size: clamp(3.6rem, 9vw, 6.4rem); line-height: 1.1; color: #f7e6b8; text-shadow: 0 0 30px rgba(247, 230, 184, 0.7); }
+.maillon--prophete h3 { position: relative; font-size: clamp(1.8rem, 3.4vw, 2.6rem); }
+.maillon--prophete.is-active .prophete-ar { text-shadow: 0 0 50px rgba(247, 230, 184, 0.95), 0 0 110px rgba(226, 187, 120, 0.7); }
+.silsila-priere { max-width: 560px; margin: 60px auto 0; text-align: center; font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: rgba(244, 239, 230, 0.7); }
+.silsila-compteur { position: fixed; z-index: 40; left: 50%; bottom: 22px; transform: translate(-50%, 20px); margin: 0; padding: 8px 18px; border-radius: 999px; background: rgba(11, 15, 20, 0.75); border: 1px solid rgba(226, 187, 120, 0.35); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: rgba(244, 239, 230, 0.8); font-size: 0.82rem; letter-spacing: 0.12em; opacity: 0; pointer-events: none; transition: opacity 0.4s, transform 0.4s; }
+.silsila-compteur b { color: #e2bb78; font-weight: 600; font-size: 1rem; }
+.silsila-compteur.is-on { opacity: 1; transform: translate(-50%, 0); }
+.silsila-page ~ footer, .silsila-page + .footer { margin-top: 0; }
+@media (max-width: 760px) {
+  .silsila-page { padding-top: 200px; }
+  .silsila-fil { left: 22px; transform: none; top: 560px; }
+  .maillon, .maillon:nth-child(odd), .maillon:nth-child(even) { width: 100%; margin: 0; padding: 0 0 0 54px; justify-content: flex-start; text-align: left; min-height: 150px; }
+  .maillon:nth-child(odd) .maillon-point, .maillon:nth-child(even) .maillon-point { left: 15px; right: auto; }
+  .maillon:nth-child(odd) .maillon-carte { flex-direction: row; }
+  .maillon:nth-child(odd) .maillon-rang, .maillon:nth-child(even) .maillon-rang { left: 18px; right: auto; }
+  .maillon-photo { width: 70px; height: 90px; }
+  .maillon--shaykh .maillon-photo { width: 84px; height: 108px; }
+  .maillon--pont { padding-left: 54px !important; justify-content: flex-start !important; text-align: left !important; }
+  .maillon--pont p { background: none; padding: 0; }
+  .maillon--prophete { padding-left: 0 !important; }
+  .maillon--prophete .maillon-point { left: 15px !important; }
+  .maillon--prophete .maillon-carte { align-items: flex-start; margin-left: 54px; margin-top: 60px; }
+  .prophete-halo { left: 30%; width: 380px; height: 380px; margin: -230px 0 0 -190px; }
+  .prophete-ar { font-size: 3.6rem; }
+}
+.maillon--prophete.is-active .maillon-carte, .maillon--prophete .maillon-carte { background: none; border: 0; }

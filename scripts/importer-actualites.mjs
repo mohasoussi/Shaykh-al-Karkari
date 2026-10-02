@@ -23,7 +23,7 @@ import path from "node:path";
 import sanitizeHtml from "sanitize-html";
 import { parse } from "node-html-parser";
 import sharp from "sharp";
-import { pageListe, pageArticle, cartesAccueil, cartesEnseignements, TYPES, LISTES } from "./gabarits-actualites.mjs";
+import { esc, pageListe, pageArticle, cartesAccueil, cartesEnseignements, TYPES, LISTES } from "./gabarits-actualites.mjs";
 
 const SITE = process.env.SITE_DIR ? path.resolve(process.env.SITE_DIR) : process.cwd();
 const SOURCE = (process.env.ACTUALITES_SOURCE || "https://karkariya.fr").replace(/\/+$/, "");
@@ -362,10 +362,107 @@ async function enseignements() {
 
 /* ---------- pages du Shaykh : biographie et chaîne de transmission (articles du site d'origine) ---------- */
 const PAGES_SHAYKH = [
-  { fichier: "chaine-de-transmission.html", marque: "chaine", slugs: ["chaine-initiatique-silsila-de-la-tariqa-karkariya", "le-sheykh-sidi-mawlay-al-hassan-radiallahu-anhu", "le-sheykh-sidi-mawlay-at-tahir-radiallahu-anhu"] },
 ];
 
+const SILSILA_SLUG = "chaine-initiatique-silsila-de-la-tariqa-karkariya";
+
+/** Chaîne initiatique : liste ordonnée de maillons (nom, invocation, portrait), du Shaykh jusqu'au Prophète. */
+async function silsila() {
+  const chemin = path.join(SITE, "chaine-de-transmission.html");
+  if (!(await existe(chemin))) return;
+  let h = await fs.readFile(chemin, "utf8");
+  if (!h.includes("<!--shaykh:silsila:debut-->")) return;
+  let a;
+  try {
+    a = (await depuisWordPress(`&slug=${SILSILA_SLUG}`)).find((x) => x.slug === SILSILA_SLUG);
+  } catch (e) {
+    return log(`silsila : lecture impossible (${e.message}), page conservée`);
+  }
+  if (!a) return log("silsila : article introuvable, page conservée");
+
+  const racine = parse(`<div>${a.html}</div>`);
+  const maillons = [];
+  let image = null;
+  let officiel = null;
+  let priere = "";
+  for (const p of racine.querySelectorAll("p")) {
+    const img = p.querySelector("img");
+    const t = p.text.replace(/\s+/g, " ").trim();
+    const btn = p.querySelector("a.vc_btn, a[href$='.jpg']:not(:has(img))");
+    if (img) {
+      image = img.getAttribute("src");
+      continue;
+    }
+    if (btn && /document officiel/i.test(t)) {
+      officiel = btn.getAttribute("href");
+      continue;
+    }
+    if (!t || /^qui a pris de\s*:?$/i.test(t)) continue;
+    if (p.querySelector("em") && /agr[ée]e/i.test(t)) {
+      priere = t;
+      continue;
+    }
+    const m = t.match(/^(.*?)\s*\((radi[^)]*)\)\s*$/i);
+    maillons.push({ nom: (m ? m[1] : t).replace(/^Notre\s+/i, "").trim(), invoc: m ? m[2] : "", image });
+    image = null;
+  }
+  if (!maillons.length) return log("silsila : aucun maillon lu, page conservée");
+
+  for (let i = 0; i < maillons.length; i++) {
+    const m = maillons[i];
+    if (!m.image) continue;
+    try {
+      m.src = await enregistrerImage(m.image, a.url || SOURCE, "silsila", `maillon-${i + 1}`, 520, "shaykh");
+    } catch (e) {
+      log(`silsila : portrait ignoré (${e.message})`);
+    }
+  }
+  let doc = "";
+  if (officiel) {
+    try {
+      const src = await enregistrerImage(officiel, a.url || SOURCE, "silsila", "document-officiel", 2000, "shaykh");
+      doc = `<a class="btn-glass btn-glass--dark silsila-doc" href="${src}" target="_blank" rel="noopener"><span>Voir le document officiel</span><i>↗</i></a>`;
+    } catch (e) {
+      log(`silsila : document officiel ignoré (${e.message})`);
+    }
+  }
+
+  const total = maillons.length + 1; // + le Prophète
+  const li = maillons
+    .map(
+      (m, i) => `        <li class="maillon${i === 0 ? " maillon--shaykh" : ""}" data-n="${i + 1}">
+          <span class="maillon-point" aria-hidden="true"></span>
+          <div class="maillon-carte">
+            ${m.src ? `<figure class="maillon-photo"><img src="${m.src}" alt="${esc(m.nom)}" loading="lazy" decoding="async" /></figure>` : ""}
+            <span class="maillon-rang">${String(i + 1).padStart(2, "0")}</span>
+            <h3>${esc(m.nom)}</h3>
+            ${m.invoc ? `<p class="maillon-invoc">${esc(m.invoc)}</p>` : ""}
+          </div>
+        </li>
+`
+    )
+    .join("");
+  const liste = `<ol class="silsila" data-total="${total}">
+${li}        <li class="maillon maillon--pont" data-n="${maillons.length}" aria-hidden="true"><span class="maillon-point"></span><p>De maître en maître, la chaîne remonte jusqu'au Prophète</p></li>
+        <li class="maillon maillon--prophete" data-n="${total}">
+          <span class="maillon-point" aria-hidden="true"></span>
+          <div class="maillon-carte">
+            <span class="prophete-halo" aria-hidden="true"></span>
+            <span class="prophete-ar" lang="ar" dir="rtl">محمد ﷺ</span>
+            <h3>Le Prophète Muhammad</h3>
+            <p class="maillon-invoc">paix et bénédiction d'Allâh sur lui</p>
+          </div>
+        </li>
+      </ol>${priere ? `\n      <p class="silsila-priere">${esc(priere)}</p>` : ""}`;
+  h = h.replace(/<!--shaykh:silsila:debut-->[\s\S]*?<!--shaykh:silsila:fin-->/, () => `<!--shaykh:silsila:debut-->\n      ${liste}\n      <!--shaykh:silsila:fin-->`);
+  h = h.replace(/<!--shaykh:silsila-officiel:debut-->[\s\S]*?<!--shaykh:silsila-officiel:fin-->/, () => `<!--shaykh:silsila-officiel:debut-->${doc}<!--shaykh:silsila-officiel:fin-->`);
+  h = h.replace(/(<p class="silsila-compteur"[^>]*><b>)\d+(<\/b> \/ <span>)\d+/, (_, a1, a2) => `${a1}1${a2}${total}`);
+  await fs.writeFile(chemin, h);
+  log(`silsila : ${maillons.length} maillons + le Prophète`);
+}
+
 async function pagesShaykh() {
+  await silsila();
   const cfg = { prefixe: "actualite", racineImg: "shaykh" };
   for (const page of PAGES_SHAYKH) {
     const chemin = path.join(SITE, page.fichier);

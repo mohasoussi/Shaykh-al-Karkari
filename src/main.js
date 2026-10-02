@@ -488,6 +488,66 @@ function actualites() {
 }
 
 /* ---------------------------------------------------------
+   Chaîne de transmission : un fil de lumière qui se tend de maillon en maillon, jusqu'au Prophète ﷺ
+   --------------------------------------------------------- */
+function silsila() {
+  const liste = $(".silsila");
+  if (!liste) return;
+  const page = $(".silsila-page");
+  const fil = $(".silsila-fil");
+  const barre = $("i", fil);
+  const items = $$(".maillon", liste).filter((li) => !li.classList.contains("maillon--pont"));
+  const compteur = $(".silsila-compteur");
+  const num = $("b", compteur);
+  const point = (li) => $(".maillon-point", li).getBoundingClientRect();
+
+  const placer = () => {
+    const pr = page.getBoundingClientRect();
+    const a = point(items[0]);
+    const z = point(items[items.length - 1]);
+    fil.style.top = `${a.top + a.height / 2 - pr.top}px`;
+    fil.style.height = `${z.top - a.top}px`;
+    fil.style.bottom = "auto";
+  };
+  placer();
+  ScrollTrigger.addEventListener("refresh", placer);
+
+  // le fil se tend avec le défilement
+  gsap.fromTo(barre, { scaleY: 0 }, {
+    scaleY: 1, ease: "none",
+    scrollTrigger: { trigger: items[0], start: "center 60%", endTrigger: items[items.length - 1], end: "center 60%", scrub: 0.4 },
+  });
+
+  const large = innerWidth > 760;
+  items.forEach((li, i) => {
+    const carte = $(".maillon-carte", li);
+    const dir = large ? (li.matches(":nth-child(odd)") ? -1 : 1) : 1;
+    if (!li.classList.contains("maillon--prophete"))
+      gsap.from(carte, { opacity: 0, x: dir * (large ? 70 : 30), duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: li, start: "top 88%" } });
+    else
+      gsap.from(carte, { opacity: 0, y: 40, duration: 1.4, ease: "power3.out", scrollTrigger: { trigger: li, start: "top 80%" } });
+    ScrollTrigger.create({
+      trigger: li, start: "top 58%", end: li.classList.contains("maillon--prophete") ? "bottom top" : "bottom 58%",
+      onToggle: (self) => {
+        li.classList.toggle("is-active", self.isActive);
+        if (self.isActive) num.textContent = li.dataset.n;
+      },
+    });
+  });
+
+  // le Prophète ﷺ : la lumière se déploie
+  const proph = $(".maillon--prophete", liste);
+  const halo = $(".prophete-halo", proph);
+  gsap.to(halo, { opacity: 1, scale: 1, duration: 2.4, ease: "power2.out", scrollTrigger: { trigger: proph, start: "top 62%", toggleActions: "play none none reverse" } });
+
+  // compteur « n / total » pendant la traversée
+  ScrollTrigger.create({
+    trigger: liste, start: "top 70%", end: "bottom 62%",
+    onToggle: (self) => compteur.classList.toggle("is-on", self.isActive),
+  });
+}
+
+/* ---------------------------------------------------------
    Page vidéo : un lecteur par conférence, activé dès qu'un lien YouTube est renseigné
    (attribut data-youtube de chaque carte : adresse complète ou identifiant)
    --------------------------------------------------------- */
@@ -703,6 +763,7 @@ ready.then(async () => {
   articles();
   videos();
   actualites();
+  silsila();
   cursor();
   dust();
   ScrollTrigger.refresh();
