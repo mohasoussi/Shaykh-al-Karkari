@@ -473,8 +473,9 @@ function actualites() {
   const PAS = 12;
   let visibles = PAS;
   const rendre = () => {
-    const q = (champ?.value || "").trim().toLowerCase();
-    const ok = cartes.filter((c) => !q || c.dataset.titre.includes(q));
+    const sans = (s) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    const q = sans((champ?.value || "").trim());
+    const ok = cartes.filter((c) => !q || sans(c.dataset.titre).includes(q));
     cartes.forEach((c) => (c.hidden = true));
     ok.slice(0, visibles).forEach((c) => (c.hidden = false));
     if (plus) plus.hidden = ok.length <= visibles;
