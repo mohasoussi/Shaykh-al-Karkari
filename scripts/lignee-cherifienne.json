@@ -1,15 +1,15 @@
 [
  {
   "nom": "Shaykh Sidi Mohamed Faouzi Al Karkari",
-  "detail": "né en 1974 à Tamsaman, dans le Rif"
+  "detail": "né en 1974 à Temsamane, dans le Rif"
  },
  {
   "nom": "Sidi Moulay Tayeb al-Karkari al-Idrissi al-Hassani",
-  "detail": "père du Shaykh · le noble chérifien"
+  "detail": ""
  },
  {
   "nom": "Sidi Moulay at-Tâhir al-Karkari",
-  "detail": "shaykh éducateur et pôle de son temps, héritier du secret initiatique"
+  "detail": "shaykh éducateur et pôle de son temps"
  },
  {
   "nom": "Moulay Muhammad al-Fardiy",
@@ -20,11 +20,11 @@
   "detail": ""
  },
  {
-  "nom": "Sidi Muhammad ibn Qaddour al-Boukili",
-  "detail": "shaykh et pôle"
+  "nom": "Sidi Muhammad ibn Qaddour al-Wakili",
+  "detail": "Shaykh et pôle de son temps, héritier de la darqawiya"
  },
  {
-  "nom": "Moulay Abdul'Qader",
+  "nom": "Moulay 'Abd al'Qader",
   "detail": ""
  },
  {
@@ -52,7 +52,7 @@
   "detail": ""
  },
  {
-  "nom": "Moulay Yaʿcoub",
+  "nom": "Moulay Yaʿqoub",
   "detail": ""
  },
  {
@@ -64,11 +64,11 @@
   "detail": ""
  },
  {
-  "nom": "Moulay Yahiʿa",
+  "nom": "Moulay Yahya",
   "detail": ""
  },
  {
-  "nom": "Moulay Abdul-Rahman",
+  "nom": "Moulay 'Abd ar-Rahman",
   "detail": ""
  },
  {
@@ -76,7 +76,7 @@
   "detail": ""
  },
  {
-  "nom": "Moulay ʿAbdul-Aziz",
+  "nom": "Moulay ʿAbd al-Aziz",
   "detail": ""
  },
  {
@@ -84,11 +84,11 @@
   "detail": ""
  },
  {
-  "nom": "Moulay Yahiya",
+  "nom": "Moulay Yahya",
   "detail": ""
  },
  {
-  "nom": "Moulay ʿAissa",
+  "nom": "Moulay ʿIssa",
   "detail": ""
  },
  {
@@ -104,11 +104,11 @@
   "detail": ""
  },
  {
-  "nom": "Moulay ʿAissa",
+  "nom": "Moulay ʿIssa",
   "detail": ""
  },
  {
-  "nom": "Moulay Mimoun Abu-Wakili",
+  "nom": "Moulay Mimoune Abu-Wakil",
   "detail": ""
  },
  {
@@ -116,7 +116,7 @@
   "detail": ""
  },
  {
-  "nom": "Moulay ʿAissa",
+  "nom": "Moulay ʿIssa",
   "detail": ""
  },
  {
@@ -128,7 +128,7 @@
   "detail": ""
  },
  {
-  "nom": "Moulay ʿAbdul-Aziz",
+  "nom": "Moulay ʿAbd al-'Aziz",
   "detail": ""
  },
  {
@@ -144,7 +144,7 @@
   "detail": ""
  },
  {
-  "nom": "Moulay ʿImran",
+  "nom": "Moulay ʿImrane",
   "detail": ""
  },
  {
@@ -172,11 +172,11 @@
   "detail": ""
  },
  {
-  "nom": "Moulay Idriss Nafs al-Zakkiya",
+  "nom": "Moulay Idriss al-Akbar",
   "detail": ""
  },
  {
-  "nom": "ʿAbd Allâh al-Kâmil",
+  "nom": "ʿAbdallah al-Kâmil",
   "detail": ""
  },
  {
@@ -185,11 +185,11 @@
  },
  {
   "nom": "Moulay Hassan al-Sebt",
-  "detail": "fils de l'imam ʿAlî et de Fâtima"
+  "detail": ""
  },
  {
-  "nom": "Sayyidunâ ʿAlî et Fâtima az-Zahrâ’",
-  "detail": "ʿAlî, que Dieu anoblisse son visage · Fâtima, fille du Seigneur des deux mondes, Sayyidunâ Muhammad ﷺ",
+  "nom": "ʿAlî et Fâtima az-Zahrâ",
+  "detail": "ʿAlî, que Dieu anoblisse son visage · Fâtima-Zahra, fille du Prophète Muhammad ﷺ",
   "pont": "De la famille du Prophète, la lignée remonte à l'imam ʿAlî et à Fâtima"
  }
 ]
