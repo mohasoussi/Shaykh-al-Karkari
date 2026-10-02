@@ -65,7 +65,7 @@ function buildTiles(container, cols, rows) {
   return $$("span", container);
 }
 
-/** Point de la photo du Shaykh (visage) où le cercle d'ouverture vient se refermer. */
+/** Point de la photo du Shaykh (son cœur, sous les mains) où le cercle d'ouverture vient se refermer. */
 function pointShaykh() {
   const frame = $(".hero-frame");
   const photo = $(".hero-photo");
@@ -76,8 +76,8 @@ function pointShaykh() {
   const s = Math.max(w / ratio, h) ; // hauteur d'image affichée
   const dh = s;
   const dw = s * ratio;
-  const x = (w - dw) * px + 0.728 * dw;
-  const y = (h - dh) * py + 0.41 * dh;
+  const x = (w - dw) * px + 0.75 * dw;
+  const y = (h - dh) * py + 0.532 * dh;
   return { x: Math.min(Math.max(x, 0), innerWidth), y: Math.min(Math.max(y, 0), innerHeight) };
 }
 
@@ -106,7 +106,10 @@ function runLoader(onReveal) {
 
   // fin d'intro : un cercle se referme jusqu'à n'être plus qu'un point sur le Shaykh
   const P = pointShaykh();
-  const iris = { r: Math.hypot(Math.max(P.x, innerWidth - P.x), Math.max(P.y, innerHeight - P.y)) + 24 };
+  // rayon de départ : couvre toute la zone du damier, même quand la barre d'adresse d'un téléphone change la hauteur visible
+  const vw = Math.max(innerWidth, document.documentElement.clientWidth, window.screen?.width || 0);
+  const vh = Math.max(innerHeight, document.documentElement.clientHeight, window.screen?.height || 0);
+  const iris = { r: Math.hypot(Math.max(P.x, vw - P.x), Math.max(P.y, vh - P.y)) + 200 };
   const dessiner = () => {
     loader.style.clipPath = `circle(${iris.r}px at ${P.x}px ${P.y}px)`;
     ring.style.width = ring.style.height = `${iris.r * 2}px`;
