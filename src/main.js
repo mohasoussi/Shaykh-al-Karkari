@@ -157,6 +157,7 @@ function heroIntro() {
     .from(".hero-cta", { opacity: 0, y: 20, duration: 1.1 }, 1)
     .from(".hero-scroll", { opacity: 0, y: 20, duration: 1 }, 1)
     .from(".hero-pattern", { opacity: 0, xPercent: -6, duration: 2.6 }, 0.2)
+    .from(".hero-basmala img", { opacity: 0, scale: 0.9, duration: 2.8, ease: "power3.out" }, 0.5)
     .from(".header", { y: -40, opacity: 0, duration: 1.2 }, 0.6);
   return tl;
 }
@@ -171,7 +172,8 @@ function heroScroll() {
   tl.to(".hero-frame", { clipPath: "inset(8% 6% 0% 6% round 400px 400px 0px 0px)", ease: "none" }, 0)
     .to(".hero-photo", { scale: 1.15, yPercent: 6, ease: "none" }, 0)
     .to(".hero-text", { yPercent: -25, opacity: 0, ease: "none" }, 0)
-        .to(".hero-pattern", { yPercent: -12, opacity: 0, ease: "none" }, 0);
+        .to(".hero-pattern", { yPercent: -12, opacity: 0, ease: "none" }, 0)
+    .to(".hero-basmala", { yPercent: -30, opacity: 0, ease: "none" }, 0);
 }
 
 /* ---------------------------------------------------------
@@ -328,27 +330,6 @@ function teachings() {
   $$(".topic").forEach((t) =>
     gsap.from(t, { opacity: 0, y: 40, duration: 1, ease: "power3.out", scrollTrigger: { trigger: t, start: "top 92%" } })
   );
-  if (!finePointer) return;
-  const float = $(".topic-float");
-  const img = $("img", float);
-  const xTo = gsap.quickTo(float, "x", { duration: 0.7, ease: "power3" });
-  const yTo = gsap.quickTo(float, "y", { duration: 0.7, ease: "power3" });
-  let rot = 0;
-  let lastX = 0;
-  window.addEventListener("mousemove", (e) => {
-    xTo(e.clientX);
-    yTo(e.clientY);
-    rot = gsap.utils.clamp(-12, 12, (e.clientX - lastX) * 0.6);
-    lastX = e.clientX;
-    gsap.to(float, { rotate: rot, duration: 0.6, ease: "power2.out", overwrite: "auto" });
-  });
-  $$(".topic").forEach((t) => {
-    t.addEventListener("mouseenter", () => {
-      img.src = t.dataset.img;
-      gsap.to(float, { opacity: 1, scale: 1, duration: 0.6, ease: "expo.out" });
-    });
-    t.addEventListener("mouseleave", () => gsap.to(float, { opacity: 0, scale: 0.6, duration: 0.5, ease: "expo.out" }));
-  });
 }
 
 /* ---------------------------------------------------------
