@@ -218,6 +218,9 @@ async function enregistrerImage(src, base, dossier, nom, largeur, racineImg = "a
   return `${racineImg}/${dossier}/${nom}.webp`;
 }
 
+/** « Sheykh » s'écrit « Shaykh » partout (texte seulement, jamais dans les adresses). */
+const shaykhify = (html = "") => html.replace(/(<[^>]*>)|([^<]+)/g, (m, tag, txt) => (tag ? tag : txt.replace(/Sheykh/g, "Shaykh").replace(/sheykh/g, "shaykh").replace(/SHEYKH/g, "SHAYKH")));
+
 async function traiter(a, slugsConnus, cfg = { prefixe: "actualite", racineImg: "actualites" }) {
   // images « paresseuses » (WordPress) : la vraie adresse est dans data-src
   const brut = parse(`<div>${a.html}</div>`);
@@ -278,7 +281,7 @@ async function traiter(a, slugsConnus, cfg = { prefixe: "actualite", racineImg: 
     couverture = vignette = null;
   }
   const resume = a.extrait || extrait(texte(propre));
-  return { ...a, html: propre, couverture, vignette, extrait: extrait(resume) };
+  return { ...a, titre: shaykhify(a.titre), imageAlt: shaykhify(a.imageAlt), html: shaykhify(propre), couverture, vignette, extrait: shaykhify(extrait(resume)) };
 }
 
 /* ---------- 3. écriture des pages ---------- */
@@ -365,7 +368,7 @@ const PAGES_SHAYKH = [
 ];
 
 /** Noms de la chaîne : sans accent circonflexe, « Abou » écrit « Abu ». */
-const net = (t = "") => t.normalize("NFD").replace(/\u0302/g, "").normalize("NFC").replace(/\bAbou\b/g, "Abu").replace(/\s+/g, " ").trim();
+const net = (t = "") => shaykhify(t).normalize("NFD").replace(/\u0302/g, "").normalize("NFC").replace(/\bAbou\b/g, "Abu").replace(/\s+/g, " ").trim();
 
 const SILSILA_SLUG = "chaine-initiatique-silsila-de-la-tariqa-karkariya";
 
@@ -461,7 +464,6 @@ ${li}${suite.length ? "" : `        <li class="maillon maillon--pont" data-n="${
             <span class="prophete-halo" aria-hidden="true"></span>
             <span class="prophete-ar" lang="ar" dir="rtl">محمد ﷺ</span>
             <h3>Le Prophète Muhammad</h3>
-            <p class="maillon-invoc">le seigneur des deux mondes, la Lumière des univers, le prophète et messager d’Allah, le bien-aimé</p>
           </div>
         </li>
       </ol>${priere ? `\n      <p class="silsila-priere">${esc(priere)}</p>` : ""}`;

@@ -217,21 +217,15 @@ function manifesto() {
    Lumière : rayons dans la bannière, aube derrière le manifeste, halo autour du verset, fil de lumière en haut de page
    --------------------------------------------------------- */
 function lumiere() {
-  const hero = $(".hero");
-  if (hero) {
-    const place = () => {
-      const P = pointShaykh();
-      hero.style.setProperty("--lx", `${P.x}px`);
-      hero.style.setProperty("--ly", `${P.y}px`);
-    };
-    place();
-    $(".hero-photo")?.addEventListener("load", place);
-    addEventListener("resize", place);
-    gsap.fromTo(".hero-rays", { opacity: 0 }, { opacity: 1, duration: 4, delay: 1.2, ease: "power2.out" });
-    gsap.fromTo(".hero-glow", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 3, delay: 1.4, ease: "power2.out" });
-    // en quittant la bannière, la lumière s'estompe
-    gsap.to(".hero-rays, .hero-glow", { opacity: 0.15, ease: "none", scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: true } });
-  }
+  // le titre de la partie où l'on se trouve s'illumine
+  $$(".h2, .manifesto > .kicker").forEach((titre) => {
+    const sombre = !!titre.closest(".manifesto, .talks, .silsila-page") || titre.classList.contains("h2--light");
+    titre.classList.add("lumiere-titre", sombre ? "lumiere-titre--sombre" : "lumiere-titre--clair");
+    ScrollTrigger.create({
+      trigger: titre, start: "top 72%", end: "bottom 28%",
+      onToggle: (self) => titre.classList.toggle("is-lit", self.isActive),
+    });
+  });
 
   const aube = $(".manifesto-glow");
   if (aube)
