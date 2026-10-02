@@ -47,3 +47,20 @@ Les animations sont désactivées si l'utilisateur a activé « réduire les ani
 ## Déploiement
 
 Le fichier `netlify.toml` est prêt : connecter le dépôt à Netlify suffit.
+
+## Pages du site
+
+| Page | Fichier |
+| --- | --- |
+| Accueil (intro en damier, événements, enseignements, conférences, actualités, contact) | `index.html` |
+| Le Shaykh (biographie et parcours) | `le-shaykh.html` |
+| Conférences en vidéo | `conferences.html` — renseigner l'attribut `data-youtube` de chaque carte (adresse YouTube ou identifiant) pour activer la vidéo |
+| Projet Merkez | `projet-merkez.html` |
+| Articles des enseignements (à rédiger) | `article-*.html` |
+
+L'en-tête, le menu et le pied de page sont communs : ils se modifient une seule fois dans `partials/`.
+
+## Formulaire « Être informé » (prénom, nom, ville, téléphone, e-mail)
+
+- Sur le site publié avec Netlify, les réponses arrivent dans **Netlify → Forms → inscription** : liste, export CSV, alertes e-mail. Il n'y a rien d'autre à installer.
+- Dans l'aperçu Claude, elles sont enregistrées dans la base de la page et se consultent à l'adresse `…#admin` (réservée à l'administrateur).

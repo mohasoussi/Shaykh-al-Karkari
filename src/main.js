@@ -13,6 +13,7 @@ import "@fontsource/amiri/arabic-400.css";
 import "@fontsource/montserrat/latin-500.css";
 import "@fontsource/montserrat/latin-600.css";
 import "./style.css";
+import { initInscription } from "./inscription.js";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
@@ -29,6 +30,13 @@ const PATCH = ["#b8322a", "#2f6f4e", "#d9a527", "#2c4f8c", "#7b3b7e", "#d96b2b",
 /* ---------------------------------------------------------
    Défilement fluide (Lenis) synchronisé avec GSAP
    --------------------------------------------------------- */
+// Les liens « index.html#… » deviennent de simples ancres sur l'accueil ; depuis une autre page, ils sautent l'intro au retour.
+const isHome = document.body.dataset.page === "home";
+$$('a[href^="index.html"]').forEach((a) => {
+  if (isHome) a.setAttribute("href", a.getAttribute("href").replace(/^index\.html/, "") || "#top");
+  else a.addEventListener("click", () => { try { sessionStorage.setItem("skipIntro", "1"); } catch {} });
+});
+
 let lenis = null;
 if (!reduced) {
   lenis = new Lenis({ duration: 1.15, easing: (t) => 1 - Math.pow(1 - t, 4), smoothWheel: true });
@@ -47,6 +55,7 @@ $$('a[href^="#"]').forEach((a) => {
   a.addEventListener("click", (e) => {
     const id = a.getAttribute("href");
     if (id.length < 2 && id !== "#") return;
+    if (id === "#admin") return; // ouvre le panneau d'administration (voir inscription.js)
     e.preventDefault();
     if (document.body.classList.contains("menu-open")) closeMenu();
     scrollToTarget(id === "#" ? "#top" : id);
@@ -84,6 +93,13 @@ function pointShaykh() {
 function runLoader(onReveal) {
   const loader = $(".loader");
   const ring = $(".loader-ring");
+  if (!loader || document.documentElement.dataset.skip) {
+    loader?.remove();
+    ring?.remove();
+    document.body.classList.remove("is-loading");
+    onReveal && onReveal();
+    return Promise.resolve();
+  }
   // le damier est déjà dans la page (script en ligne) : il couvre l'écran dès la première image
   const tiles = $$(".loader-grid span");
   const count = $(".loader-count span");
@@ -153,11 +169,10 @@ function heroIntro() {
   tl.fromTo(".hero-photo", { scale: 1.12 }, { scale: 1, duration: 2.6, ease: "expo.out" }, 0)
     .from(chars, { yPercent: 115, rotate: 6, duration: 1.4, stagger: 0.035 }, 0.15)
     .from(".hero-sub", { opacity: 0, y: 24, duration: 1.2 }, 0.8)
-    .from(".hero-verse", { opacity: 0, y: 24, duration: 1.2 }, 1)
     .from(".hero-cta", { opacity: 0, y: 20, duration: 1.1 }, 1)
     .from(".hero-scroll", { opacity: 0, y: 20, duration: 1 }, 1)
     .from(".hero-pattern", { opacity: 0, xPercent: -6, duration: 2.6 }, 0.2)
-    .from(".hero-basmala img", { opacity: 0, scale: 0.9, duration: 2.8, ease: "power3.out" }, 0.5)
+    .from(".hero-layer--basmala", { opacity: 0, duration: 2.6, ease: "power2.out" }, 0.6)
     .from(".header", { y: -40, opacity: 0, duration: 1.2 }, 0.6);
   return tl;
 }
@@ -172,8 +187,7 @@ function heroScroll() {
   tl.to(".hero-frame", { clipPath: "inset(8% 6% 0% 6% round 400px 400px 0px 0px)", ease: "none" }, 0)
     .to(".hero-photo", { scale: 1.15, yPercent: 6, ease: "none" }, 0)
     .to(".hero-text", { yPercent: -25, opacity: 0, ease: "none" }, 0)
-        .to(".hero-pattern", { yPercent: -12, opacity: 0, ease: "none" }, 0)
-    .to(".hero-basmala", { yPercent: -30, opacity: 0, ease: "none" }, 0);
+        .to(".hero-pattern", { yPercent: -12, opacity: 0, ease: "none" }, 0);
 }
 
 /* ---------------------------------------------------------
@@ -388,35 +402,6 @@ function talks() {
 }
 
 /* ---------------------------------------------------------
-   Livres : arrivée en 3D + inclinaison à la souris
-   --------------------------------------------------------- */
-function books() {
-  const items = $$(".book-3d");
-  gsap.from(items, {
-    rotateY: -90,
-    y: 120,
-    opacity: 0,
-    duration: 1.6,
-    ease: "expo.out",
-    stagger: 0.12,
-    scrollTrigger: { trigger: ".shelf", start: "top 80%" },
-  });
-  if (!finePointer) return;
-  $$(".book").forEach((book) => {
-    const b = $(".book-3d", book);
-    book.addEventListener("mousemove", (e) => {
-      const r = book.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width - 0.5;
-      const py = (e.clientY - r.top) / r.height - 0.5;
-      gsap.to(b, { rotateY: -6 + px * 30, rotateX: -py * 16, y: -10, duration: 0.6, ease: "power3.out" });
-    });
-    book.addEventListener("mouseleave", () =>
-      gsap.to(b, { rotateY: -28, rotateX: 4, y: 0, duration: 1, ease: "expo.out" })
-    );
-  });
-}
-
-/* ---------------------------------------------------------
    Articles : le cercle d'encre part de la souris
    --------------------------------------------------------- */
 function articles() {
@@ -427,34 +412,6 @@ function articles() {
       a.style.setProperty("--my", `${e.clientY - r.top}px`);
     })
   );
-}
-
-/* ---------------------------------------------------------
-   Galerie : vitesses de parallaxe différentes
-   --------------------------------------------------------- */
-function gallery(mm) {
-  $$(".m").forEach((fig) => {
-    gsap.from(fig, {
-      clipPath: "inset(30% 30% 30% 30%)",
-      duration: 1.6,
-      ease: "expo.inOut",
-      scrollTrigger: { trigger: fig, start: "top 90%" },
-    });
-    gsap.to($("img", fig), {
-      scale: 1.05,
-      ease: "none",
-      scrollTrigger: { trigger: fig, start: "top bottom", end: "bottom top", scrub: true },
-    });
-  });
-  mm.add("(min-width: 761px)", () => {
-    $$("[data-speed]").forEach((el) =>
-      gsap.to(el, {
-        y: () => +el.dataset.speed * window.innerHeight,
-        ease: "none",
-        scrollTrigger: { trigger: ".mosaic", start: "top bottom", end: "bottom top", scrub: true, invalidateOnRefresh: true },
-      })
-    );
-  });
 }
 
 /* ---------------------------------------------------------
@@ -485,19 +442,46 @@ function header() {
    Lien de la section en cours
    --------------------------------------------------------- */
 function navigation() {
+  const page = document.body.dataset.page;
   const liens = {};
   $$("[data-nav]").forEach((a) => (liens[a.dataset.nav] = a));
   const actif = (id) => {
     $$(".header-nav .is-current").forEach((el) => el.classList.remove("is-current"));
     liens[id]?.classList.add("is-current");
   };
-  const sections = { shaykh: "#shaykh", ecrits: "#ecrits", conferences: "#conferences" };
-  Object.entries(sections).forEach(([id, sel]) => {
+  if (page === "shaykh" || page === "conferences") actif(page);
+  if (page === "home" && $("#ecrits"))
     ScrollTrigger.create({
-      trigger: sel,
+      trigger: "#ecrits",
       start: "top 55%",
       end: "bottom 55%",
-      onToggle: (self) => (self.isActive ? actif(id) : liens[id]?.classList.remove("is-current")),
+      onToggle: (self) => (self.isActive ? actif("ecrits") : liens.ecrits?.classList.remove("is-current")),
+    });
+}
+
+/* ---------------------------------------------------------
+   Page vidéo : un lecteur par conférence, activé dès qu'un lien YouTube est renseigné
+   (attribut data-youtube de chaque carte : adresse complète ou identifiant)
+   --------------------------------------------------------- */
+function videos() {
+  $$(".vcard").forEach((card) => {
+    const raw = (card.dataset.youtube || "").trim();
+    if (!raw) return;
+    const id = (raw.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/) || [, raw])[1];
+    const btn = $(".vplay", card);
+    const lien = $(".vlink", card);
+    btn.disabled = false;
+    $(".vstatus", card)?.remove();
+    lien.href = `https://www.youtube.com/watch?v=${id}`;
+    lien.hidden = false;
+    btn.addEventListener("click", () => {
+      const f = document.createElement("iframe");
+      f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+      f.title = $("h2", card)?.textContent || "Vidéo";
+      f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      f.allowFullscreen = true;
+      f.referrerPolicy = "strict-origin-when-cross-origin";
+      $(".vframe", card).replaceChildren(f);
     });
   });
 }
@@ -635,7 +619,7 @@ function dust() {
     }
   });
   // visible seulement au-dessus des sections sombres
-  [".hero", ".manifesto", ".research", ".talks", ".merkez", ".gallery", ".footer"].forEach((sel) =>
+  [".hero", ".manifesto", ".talks", ".merkez", ".vpage", ".footer"].filter((sel) => $(sel)).forEach((sel) =>
     ScrollTrigger.create({
       trigger: sel,
       start: "top 60%",
@@ -658,6 +642,7 @@ const ready = document.fonts ? document.fonts.ready : Promise.resolve();
 
 ready.then(async () => {
   buildMenu();
+  const inscription = initInscription(lenis);
   if (reduced) {
     await runLoader();
     gsap.set(".menu", { visibility: "hidden" });
@@ -666,21 +651,26 @@ ready.then(async () => {
   const mm = gsap.matchMedia();
   header();
   navigation();
-  heroScroll();
-  manifesto();
+  if ($(".hero")) heroScroll();
+  if ($("[data-words]")) manifesto();
   reveals();
-  journey(mm);
+  if ($(".journey-track")) journey(mm);
   teachings();
   marquees();
-  talks();
-  books();
+  if ($(".talks")) talks();
   articles();
-  gallery(mm);
+  videos();
   cursor();
   dust();
   ScrollTrigger.refresh();
 
-  const intro = heroIntro().pause();
-  await runLoader(() => intro.play());
+  const intro = $(".hero") ? heroIntro().pause() : null;
+  if (!intro) gsap.from(".header", { y: -40, opacity: 0, duration: 1.1, ease: "expo.out" });
+  await runLoader(() => intro?.play());
   lenis?.start();
+  inscription?.verifierHash();
+  // arrivée sur une ancre (ex. index.html#ecrits)
+  try {
+    if (location.hash.length > 1 && location.hash !== "#admin" && $(location.hash)) scrollToTarget(location.hash);
+  } catch {}
 });
