@@ -1187,3 +1187,5 @@ html, body { overflow-anchor: none; }
   .hub, .shaykh-chaine, .actu-page, .actu-article { padding-top: 190px; }
 }
 @media (max-width: 979px) { body[data-page="shaykh"] .about { padding-top: 200px; } }
+.shaykh-texte .actu-corps h3 { font-size: 1.7rem; margin: 2.2em 0 .5em; }
+.shaykh-texte .actu-corps h3:first-child { margin-top: 0; }

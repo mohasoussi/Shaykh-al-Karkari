@@ -362,7 +362,6 @@ async function enseignements() {
 
 /* ---------- pages du Shaykh : biographie et chaîne de transmission (articles du site d'origine) ---------- */
 const PAGES_SHAYKH = [
-  { fichier: "qui-est-le-shaykh.html", marque: "biographie", slugs: ["le-shaykh-sidi-mawlay-mohamed-faouzi-al-karkari-radiallahu-anhu"] },
   { fichier: "chaine-de-transmission.html", marque: "chaine", slugs: ["chaine-initiatique-silsila-de-la-tariqa-karkariya", "le-sheykh-sidi-mawlay-al-hassan-radiallahu-anhu", "le-sheykh-sidi-mawlay-at-tahir-radiallahu-anhu"] },
 ];
 
