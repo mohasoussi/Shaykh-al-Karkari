@@ -45,7 +45,7 @@ ${items}        <li class="maillon maillon--prophete" data-n="${total}">
             <span class="prophete-halo" aria-hidden="true"></span>
             <span class="prophete-ar" lang="ar" dir="rtl">محمد ﷺ</span>
             <h3>Le Prophète Muhammad</h3>
-            <p class="maillon-invoc">paix et bénédiction d'Allâh sur lui</p>
+            <p class="maillon-invoc">le seigneur des deux mondes, la Lumière des univers, le prophète et messager d’Allâh, le bien-aimé</p>
           </div>
         </li>
       </ol>
