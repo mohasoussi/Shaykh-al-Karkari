@@ -80,6 +80,21 @@ const extrait = (s, n = 200) => {
 };
 const existe = (p) => fs.access(p).then(() => true, () => false);
 
+/* ---------- filtre éditorial ----------
+   La page Actualités ne garde que : événements, conférences et visites du Shaykh, actions humanitaires,
+   vie de la tariqa Karkariya. Les cours, enseignements, tafsir, témoignages, réfutations… sont écartés. */
+const CATEGORIES_OK = /^(actualit[ée]s|l'actu|le shaykh en europe)/i;
+const CATEGORIES_NON = /r[ée]futation|moudhakara|enseignement|tafs[iî]r|cours|basmala|fondements|poème|sorcellerie|biographie|t[ée]moignage|engagement|subha|danse|retraite|p[ée]r[ée]grination|lumi[èe]re/i;
+const TITRES_NON = /^\(?cours\)?|r[ée]ponse [àa] l.amour|accompagnement des convertis|^chap\.|pourquoi cheminer|qu.est-ce que la voie/i;
+const TOUJOURS = ["zawiya-karkariya-de-lyon-condrieu"]; // classé « sans catégorie » sur l'ancien site mais c'est un événement
+export function retenu(a) {
+  if (!a.categories?.length) return !a.slug || TOUJOURS.some((t) => a.slug.includes(t)) || !a.estWordPress;
+  if (TOUJOURS.some((t) => a.slug?.includes(t))) return true;
+  if (TITRES_NON.test(a.titre)) return false;
+  if (a.categories.some((c) => CATEGORIES_NON.test(c))) return false;
+  return a.categories.some((c) => CATEGORIES_OK.test(c));
+}
+
 /* ---------- 1. récupération des articles ---------- */
 async function depuisWordPress() {
   let base = "/wp-json/wp/v2/posts";
@@ -107,6 +122,7 @@ async function depuisWordPress() {
           image: media?.source_url,
           imageAlt: texte(media?.alt_text),
           categories: cats,
+          estWordPress: true,
         });
       }
       if (lot.length < 100) break;
@@ -200,7 +216,7 @@ async function enregistrerImage(src, base, dossier, nom, largeur) {
     await fs.mkdir(path.dirname(dest), { recursive: true });
     await sharp(brut, { animated: true }).rotate().resize({ width: largeur, withoutEnlargement: true }).webp({ quality: 80 }).toFile(dest);
   }
-  return `/actualites/${dossier}/${nom}.webp`;
+  return `actualites/${dossier}/${nom}.webp`;
 }
 
 async function traiter(a, slugsConnus) {
@@ -329,7 +345,7 @@ async function main() {
   }
 
   // ordre, noms uniques
-  brut = brut.filter((a) => a.titre).sort((x, y) => String(y.date).localeCompare(String(x.date))).slice(0, MAX);
+  brut = brut.filter((a) => a.titre && retenu(a)).sort((x, y) => String(y.date).localeCompare(String(x.date))).slice(0, MAX);
   const pris = new Set();
   for (const a of brut) {
     let s = slugifier(a.slug || a.titre) || "article";
