@@ -24,6 +24,7 @@ import sanitizeHtml from "sanitize-html";
 import { parse } from "node-html-parser";
 import sharp from "sharp";
 import { genererLangues } from "./langues.mjs";
+import { genererMaitres, lienMaitre } from "./maitres.mjs";
 import { esc, pageListe, pageArticle, cartesAccueil, cartesEnseignements, TYPES, LISTES } from "./gabarits-actualites.mjs";
 
 const SITE = process.env.SITE_DIR ? path.resolve(process.env.SITE_DIR) : process.cwd();
@@ -445,16 +446,21 @@ async function silsila() {
   const total = maillons.length + 1; // + le Prophète
   const li = maillons
     .map(
-      (m, i) => `        <li class="maillon${i === 0 ? " maillon--shaykh" : ""}" data-n="${i + 1}">
+      (m, i) => {
+        // biographie du maître : une page par maître (scripts/maitres-data.mjs) ; le Shaykh renvoie à sa propre page
+        const lien = i === 0 ? "qui-est-le-shaykh.html#biographie" : lienMaitre(m.nom);
+        return `        <li class="maillon${i === 0 ? " maillon--shaykh" : ""}${lien ? " maillon--lien" : ""}" data-n="${i + 1}">
           <span class="maillon-point" aria-hidden="true"></span>
           <div class="maillon-carte">
             ${m.src ? `<figure class="maillon-photo"><img src="${m.src}" alt="${esc(m.nom)}" loading="lazy" decoding="async" /></figure>` : ""}
             <span class="maillon-rang">${String(i + 1).padStart(2, "0")}</span>
             <h3>${esc(m.nom)}</h3>
             ${m.invoc ? `<p class="maillon-invoc">${esc(m.invoc)}</p>` : ""}
+            ${lien ? `<a class="maillon-bio" href="${lien}" aria-label="Biographie : ${esc(m.nom)}"><span>Biographie</span><i>→</i></a>` : ""}
           </div>
         </li>
-`
+`;
+      }
     )
     .join("");
   const liste = `<ol class="silsila" data-total="${total}">
@@ -554,6 +560,7 @@ async function main() {
   await ecrire(articles);
   await enseignements();
   await pagesShaykh();
+  await genererMaitres();
   log(`terminé : ${articles.length} article(s) publiés`);
 }
 

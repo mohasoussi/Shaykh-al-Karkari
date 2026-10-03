@@ -26,6 +26,7 @@ const MOTS = {
     "la porte de la cité de la science": "the gate of the city of knowledge",
     "le pur et purifié": "the pure and purified",
     "Rechercher": "Search",
+    ">Biographie<": ">Biography (in French)<",
     "Un mot du titre": "A word from the title",
     "Aucun article ne correspond à votre recherche.": "No article matches your search.",
     "Voir plus d'articles": "Show more articles",
@@ -41,6 +42,7 @@ const MOTS = {
     "la porte de la cité de la science": "باب مدينة العلم",
     "le pur et purifié": "الطاهر المطهَّر",
     "Rechercher": "بحث",
+    ">Biographie<": ">السيرة (بالفرنسية)<",
     "Un mot du titre": "كلمة من العنوان",
     "Aucun article ne correspond à votre recherche.": "لا يوجد مقال يطابق بحثك.",
     "Voir plus d'articles": "عرض مزيد من المقالات",
@@ -53,7 +55,7 @@ const LOCALES = { en: "en-GB", ar: "ar-u-ca-gregory-nu-latn" };
 /** Adapte un morceau de HTML français généré : chemins (les pages sont dans un sous-dossier), dates, libellés, flèches. */
 export function localiser(html, code) {
   let h = html
-    .replace(/(href|src)="(actualite-|enseignement-|actualites\/|enseignements\/|shaykh\/|media\/)/g, '$1="../$2')
+    .replace(/(href|src)="(actualite-|enseignement-|maitre-|actualites\/|enseignements\/|shaykh\/|media\/)/g, '$1="../$2')
     .replace(/<time datetime="([^"]+)">[^<]*<\/time>/g, (_, iso) => {
       const d = new Date(iso);
       const t = Number.isNaN(+d) ? "" : d.toLocaleDateString(LOCALES[code], { day: "numeric", month: "long", year: "numeric" });

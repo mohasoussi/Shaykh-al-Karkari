@@ -1404,3 +1404,37 @@ html[lang="ar"] .btn-or:hover i { transform: translateX(-6px); }
 .menu-aside .btn-or { margin-bottom: 8px; }
 @media (max-width: 375px) { .header-nav { font-size: 0.84rem !important; gap: 6px !important; } .brand-logo { --d: 60px; } }
 @media (max-width: 760px) { .menu-inner { padding-top: 120px; } }
+
+/* Chaîne de transmission : cartes cliquables vers la biographie du maître */
+.maillon-bio { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; font: 600 .7rem/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--gold-soft); opacity: .0; transform: translateY(6px); transition: opacity .45s var(--ease), transform .45s var(--ease); }
+.maillon-bio::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.maillon-bio i { font-style: normal; transition: transform .45s var(--ease); }
+.maillon--lien .maillon-carte { position: relative; transition: transform .6s var(--ease), box-shadow .6s var(--ease), border-color .5s, background .5s; cursor: pointer; }
+.maillon--lien .maillon-carte::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(110deg, transparent 35%, rgba(226, 187, 120, .24) 50%, transparent 65%) 130% 0 / 250% 100% no-repeat; transition: background-position 1.1s var(--ease); pointer-events: none; }
+.maillon--lien .maillon-carte:hover, .maillon--lien .maillon-carte:focus-within { transform: translateY(-6px) scale(1.02); border-color: rgba(226, 187, 120, .8); box-shadow: 0 22px 60px rgba(0, 0, 0, .45), 0 0 0 1px rgba(226, 187, 120, .35), 0 0 40px rgba(226, 187, 120, .18); }
+.maillon--lien .maillon-carte:hover::before, .maillon--lien .maillon-carte:focus-within::before { background-position: -30% 0; }
+.maillon--lien .maillon-carte:hover .maillon-bio, .maillon--lien .maillon-carte:focus-within .maillon-bio { opacity: 1; transform: none; }
+.maillon--lien .maillon-carte:hover .maillon-bio i { transform: translateX(6px); }
+.maillon--lien .maillon-carte:hover h3 { color: var(--gold-soft); }
+.maillon--lien .maillon-carte h3 { transition: color .4s; }
+@media (hover: none) { .maillon-bio { opacity: .9; transform: none; } }
+html[lang="ar"] .maillon-bio { letter-spacing: 0; font-size: .9rem; }
+html[lang="ar"] .maillon--lien .maillon-carte:hover .maillon-bio i { transform: translateX(-6px); }
+
+/* Page de biographie d'un maître */
+.maitre .section-head { max-width: 860px; margin-left: auto; margin-right: auto; padding: 0 var(--gutter); }
+.maitre-sous { margin: 6px 0 0; font-family: var(--serif); font-style: italic; font-size: 1.25rem; color: var(--muted); }
+.maitre-intro { font-family: var(--serif); font-size: 1.45rem; line-height: 1.45; color: var(--ink); }
+.maitre .actu-corps p { text-align: left; }
+.maitre-sources-t { margin-top: 3em !important; font-size: 1.2rem !important; }
+.maitre-sources { padding-left: 1.2em; font-size: .92rem; color: var(--muted); }
+.maitre-sources a { text-decoration: underline; text-underline-offset: 3px; }
+.maillon-bio { position: absolute; inset: 0; z-index: 2; display: flex; align-items: flex-end; justify-content: flex-end; gap: 8px; padding: 0 18px 12px; margin: 0; opacity: 1; transform: none; border-radius: inherit; }
+.maillon-bio::after { content: none; }
+.maillon-bio span, .maillon-bio i { opacity: 0; transform: translateY(6px); transition: opacity .45s var(--ease), transform .45s var(--ease); }
+.maillon:nth-child(odd) .maillon-bio { justify-content: flex-start; }
+html[lang="ar"] .maillon-bio { justify-content: flex-start; }
+.maillon--lien .maillon-carte:hover .maillon-bio span, .maillon--lien .maillon-carte:hover .maillon-bio i, .maillon--lien .maillon-carte:focus-within .maillon-bio span, .maillon--lien .maillon-carte:focus-within .maillon-bio i { opacity: 1; transform: none; }
+@media (hover: none) { .maillon-bio span, .maillon-bio i { opacity: .9; transform: none; } }
+.shaykh-texte.maitre, .shaykh-texte.ascendance { padding-top: clamp(140px, 20vh, 200px); }
+.maillon--lien .maillon-carte { padding-bottom: 38px; }
