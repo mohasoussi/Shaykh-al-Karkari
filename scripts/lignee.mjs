@@ -11,32 +11,63 @@ const SITE = process.env.SITE_DIR ? path.resolve(process.env.SITE_DIR) : process
 const liste = JSON.parse(await fs.readFile(path.join(SITE, "scripts", "lignee-cherifienne.json"), "utf8"));
 const total = liste.length + 1;
 
-const items = liste
-  .map((m, i) => {
-    const pont = m.pont ? `        <li class="maillon maillon--pont" data-n="${i}" aria-hidden="true"><span class="maillon-point"></span><p>${esc(m.pont)}</p></li>\n` : "";
-    return `${pont}        <li class="maillon${i === 0 ? " maillon--shaykh" : ""}" data-n="${i + 1}">
+// textes par langue (les noms restent en translittération latine)
+const TEXTES = {
+  fr: { dir: "", titre: "Sa lignée chérifienne", desc: "La noble lignée chérifienne du Shaykh Mohamed Faouzi Al Karkari, jusqu'au Prophète Muhammad ﷺ.", kicker: "Le Shaykh",
+    lede: "Fils du noble chérifien Sidi Moulay Tayeb al-Karkari al-Idrissi al-Hassani, le Shaykh descend de la lignée idrisside : par l'imam ʿAli et Fatima az-Zahra’, elle remonte au Prophète Muhammad ﷺ.",
+    prophete: "Le Prophète Muhammad", suite: "Sa chaîne de transmission", fleche: "→", traduire: (x) => x },
+  en: { dir: "en/", titre: "His noble lineage", desc: "The noble sharifian lineage of Shaykh Mohamed Faouzi Al Karkari, all the way back to the Prophet Muhammad ﷺ.", kicker: "The Shaykh",
+    lede: "Son of the noble sharif Sidi Moulay Tayeb al-Karkari al-Idrissi al-Hassani, the Shaykh descends from the Idrisid line: through Imam ʿAli and Fatima az-Zahra’, it goes back to the Prophet Muhammad ﷺ.",
+    prophete: "The Prophet Muhammad", suite: "His chain of transmission", fleche: "→",
+    traduire: (x) => ({
+      "né en 1974 à Temsamane, dans le Rif": "born in 1974 in Temsamane, in the Rif",
+      "shaykh éducateur et pôle de son temps": "educating shaykh and pole of his time",
+      "Shaykh et pôle de son temps, héritier de la darqawiya": "Shaykh and pole of his time, heir of the Darqawiya",
+      "ʿAlî, que Dieu anoblisse son visage · Fâtima-Zahra, fille du Prophète Muhammad ﷺ": "ʿAli, may God honour his face · Fatima az-Zahra’, daughter of the Prophet Muhammad ﷺ",
+      "De la famille du Prophète, la lignée remonte à l'imam ʿAlî et à Fâtima": "From the family of the Prophet, the lineage goes back to Imam ʿAli and Fatima",
+    })[x] || x },
+  ar: { dir: "ar/", titre: "نسبه الشريف", desc: "النسب الشريف للشيخ محمد فوزي الكركري، وصولًا إلى النبي محمد ﷺ.", kicker: "الشيخ",
+    lede: "الشيخ ابن الشريف سيدي مولاي الطيب الكركري الإدريسي الحسني، وينحدر من السلالة الإدريسية التي يتصل نسبها، عبر الإمام علي وفاطمة الزهراء، بالنبي محمد ﷺ.",
+    prophete: "النبي محمد", suite: "سلسلة إسناده", fleche: "←",
+    traduire: (x) => ({
+      "né en 1974 à Temsamane, dans le Rif": "وُلد سنة 1974م في تمسمان بالريف",
+      "shaykh éducateur et pôle de son temps": "شيخ مربٍّ وقطب زمانه",
+      "Shaykh et pôle de son temps, héritier de la darqawiya": "شيخ وقطب زمانه، وارث الطريقة الدرقاوية",
+      "ʿAlî, que Dieu anoblisse son visage · Fâtima-Zahra, fille du Prophète Muhammad ﷺ": "علي، كرّم الله وجهه · فاطمة الزهراء، بنت النبي محمد ﷺ",
+      "De la famille du Prophète, la lignée remonte à l'imam ʿAlî et à Fâtima": "من آل بيت النبي، يمتدّ النسب إلى الإمام علي وفاطمة",
+    })[x] || x },
+};
+
+for (const [code, T] of Object.entries(TEXTES)) {
+  const items = liste
+    .map((m, i) => {
+      const pont = m.pont ? `        <li class="maillon maillon--pont" data-n="${i}" aria-hidden="true"><span class="maillon-point"></span><p>${esc(T.traduire(m.pont))}</p></li>\n` : "";
+      return `${pont}        <li class="maillon${i === 0 ? " maillon--shaykh" : ""}" data-n="${i + 1}">
           <span class="maillon-point" aria-hidden="true"></span>
           <div class="maillon-carte">
             <span class="maillon-rang">${String(i + 1).padStart(2, "0")}</span>
             <h3>${esc(m.nom)}</h3>
-            ${m.detail ? `<p class="maillon-invoc">${esc(m.detail)}</p>` : ""}
+            ${m.detail ? `<p class="maillon-invoc">${esc(T.traduire(m.detail))}</p>` : ""}
           </div>
         </li>
 `;
-  })
-  .join("");
+    })
+    .join("");
 
-const modele = await fs.readFile(path.join(SITE, "chaine-de-transmission.html"), "utf8");
-const tete = modele
-  .slice(0, modele.indexOf('    <section class="silsila-page"'))
-  .replaceAll("Sa chaîne de transmission", "Sa lignée chérifienne")
-  .replace(/La chaîne initiatique \(silsila\)[^"]*/, "La noble lignée chérifienne du Shaykh Mohamed Faouzi Al Karkari, jusqu'au Prophète Muhammad ﷺ.");
+  // l'en-tête (méta, menus) vient de la page « chaîne de transmission » de la même langue
+  const modele = await fs.readFile(path.join(SITE, T.dir, "chaine-de-transmission.html"), "utf8");
+  const tete = modele
+    .slice(0, modele.indexOf('    <section class="silsila-page"'))
+    .replace(/<title>[^<]*<\/title>/, `<title>${T.titre} — ${code === "ar" ? "الشيخ محمد فوزي الكركري" : "Shaykh Mohamed Faouzi Al Karkari"}</title>`)
+    .replace(/(<meta name="description" content=")[^"]*/, `$1${esc(T.desc)}`)
+    .replace(/(<meta property="og:title" content=")[^"]*/, `$1${T.titre}`)
+    .replace(/(<meta property="og:description" content=")[^"]*/, `$1${esc(T.desc)}`);
 
-const page = `${tete}    <section class="silsila-page silsila-page--lignee" id="silsila-page">
+  const page = `${tete}    <section class="silsila-page silsila-page--lignee" id="silsila-page">
       <header class="silsila-tete">
-        <p class="kicker">Le Shaykh</p>
-        <h1 class="h2" data-split>Sa lignée chérifienne</h1>
-        <p class="section-lede" data-reveal>Fils du noble chérifien Sidi Moulay Tayeb al-Karkari al-Idrissi al-Hassani, le Shaykh descend de la lignée idrisside : par l'imam ʿAli et Fatima az-Zahra’, elle remonte au Prophète Muhammad ﷺ.</p>
+        <p class="kicker">${T.kicker}</p>
+        <h1 class="h2" data-split>${T.titre}</h1>
+        <p class="section-lede" data-reveal>${T.lede}</p>
       </header>
       <div class="silsila-fil" aria-hidden="true"><i></i></div>
       <ol class="silsila" data-total="${total}">
@@ -45,12 +76,12 @@ ${items}        <li class="maillon maillon--prophete" data-n="${total}">
           <div class="maillon-carte">
             <span class="prophete-halo" aria-hidden="true"></span>
             <span class="prophete-ar" lang="ar" dir="rtl">محمد ﷺ</span>
-            <h3>Le Prophète Muhammad</h3>
+            <h3>${T.prophete}</h3>
           </div>
         </li>
       </ol>
       <p class="silsila-compteur" aria-live="polite"><b>1</b> / <span>${total}</span></p>
-      <div class="center shaykh-suite"><a class="btn-glass btn-glass--dark" href="chaine-de-transmission.html"><span>Sa chaîne de transmission</span><i>→</i></a></div>
+      <div class="center shaykh-suite"><a class="btn-glass btn-glass--dark" href="chaine-de-transmission.html"><span>${T.suite}</span><i>${T.fleche}</i></a></div>
     </section>
 
   </main>
@@ -59,5 +90,7 @@ ${items}        <li class="maillon maillon--prophete" data-n="${total}">
 </body>
 </html>
 `;
-await fs.writeFile(path.join(SITE, "lignee-cherifienne.html"), page);
-console.log(`[lignée] ${liste.length} générations + le Prophète`);
+  await fs.mkdir(path.join(SITE, T.dir || "."), { recursive: true });
+  await fs.writeFile(path.join(SITE, T.dir, "lignee-cherifienne.html"), page);
+}
+console.log(`[lignée] ${liste.length} générations + le Prophète (fr, en, ar)`);

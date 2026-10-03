@@ -163,8 +163,10 @@ function runLoader(onReveal) {
    --------------------------------------------------------- */
 function heroIntro() {
   const rows = $$(".hero-row");
-  const splits = rows.map((r) => new SplitText(r, { type: "chars", charsClass: "char" }));
-  const chars = splits.flatMap((s) => s.chars);
+  // en arabe, on anime mot par mot : découper en lettres casserait la liaison des caractères
+  const ar = document.documentElement.lang === "ar";
+  const splits = rows.map((r) => new SplitText(r, ar ? { type: "words", wordsClass: "char" } : { type: "chars", charsClass: "char" }));
+  const chars = splits.flatMap((s) => (ar ? s.words : s.chars));
   const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
   tl.fromTo(".hero-photo", { scale: 1.12 }, { scale: 1, duration: 2.6, ease: "expo.out" }, 0)
     .from(chars, { yPercent: 115, rotate: 6, duration: 1.4, stagger: 0.035 }, 0.15)
@@ -591,11 +593,11 @@ function videos() {
     const lien = $(".vlink", card);
     btn.disabled = false;
     $(".vstatus", card)?.remove();
-    lien.href = `https://www.youtube.com/watch?v=${id}`;
+    const liste = (raw.match(/[?&]list=([\w-]+)/) || [])[1];
     lien.hidden = false;
     btn.addEventListener("click", () => {
       const f = document.createElement("iframe");
-      f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+      f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0${liste ? `&list=${liste}` : ""}`;
       f.title = $("h2", card)?.textContent || "Vidéo";
       f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
       f.allowFullscreen = true;
@@ -608,6 +610,7 @@ function videos() {
 /* ---------------------------------------------------------
    Menu plein écran (carreaux de la muraqqa'a)
    --------------------------------------------------------- */
+const LABELS = { fr: { fermer: "Fermer", menu: "Menu" }, en: { fermer: "Close", menu: "Menu" }, ar: { fermer: "إغلاق", menu: "القائمة" } }[document.documentElement.lang] || { fermer: "Fermer", menu: "Menu" };
 const menu = $(".menu");
 const menuBtn = $(".menu-btn");
 let menuTl;
@@ -634,7 +637,7 @@ function openMenu() {
   document.body.classList.add("menu-open");
   menuBtn.setAttribute("aria-expanded", "true");
   menu.setAttribute("aria-hidden", "false");
-  $(".menu-btn-label").textContent = "Fermer";
+  $(".menu-btn-label").textContent = LABELS.fermer;
   lenis?.stop();
   menuTl.timeScale(1).play();
 }
@@ -642,7 +645,7 @@ function closeMenu() {
   document.body.classList.remove("menu-open");
   menuBtn.setAttribute("aria-expanded", "false");
   menu.setAttribute("aria-hidden", "true");
-  $(".menu-btn-label").textContent = "Menu";
+  $(".menu-btn-label").textContent = LABELS.menu;
   lenis?.start();
   menuTl.timeScale(1.8).reverse();
 }

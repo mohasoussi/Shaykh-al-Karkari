@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!--@include head-->
+  <title>Shaykh Mohamed Faouzi Al Karkari</title>
+  <meta name="description" content="Shaykh Mohamed Faouzi Al Karkari — guide of the Karkariya Sufi Order, author and lecturer. Teachings, lectures and gatherings." />
+  <meta property="og:title" content="Shaykh Mohamed Faouzi Al Karkari" />
+  <meta property="og:description" content="Guide of the Karkariya Sufi Order, author and lecturer. Teachings, lectures and gatherings." />
+  <meta property="og:image" content="/media/portrait-fes.webp" />
+  <link rel="preload" as="image" href="/media/hero-photo.webp" />
+</head>
+<body class="is-loading" data-page="home">
+
+  <style>
+    /* styles critiques : le damier s'affiche dès la première image, avant le chargement de la feuille de style */
+    body.is-loading{overflow:hidden}
+    .loader{position:fixed;inset:0;z-index:100;display:grid;place-items:center}
+    .loader-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(var(--cols,8),1fr);grid-template-rows:repeat(var(--rows,5),1fr)}
+    .loader-center{position:relative;text-align:center;color:#f4efe6;background:rgba(11,15,20,.94);padding:32px 48px;font-family:Georgia,serif}
+    .loader-verse{max-width:24ch;margin:0 auto;font-style:italic;font-size:clamp(1.6rem,4.6vw,2.5rem);line-height:1.2}
+    .loader-ref{margin:14px 0 0;font-size:1rem;letter-spacing:.22em;text-transform:uppercase;color:#c9a46a}
+    .loader-count{margin:22px 0 0;font-size:.75rem;letter-spacing:.3em;color:#a9a49a}
+    html[data-skip] .loader,html[data-skip] .loader-ring{display:none}
+    html[data-skip] body.is-loading{overflow:auto}
+    .loader-ring{position:fixed;left:0;top:0;width:0;height:0;opacity:0;pointer-events:none}
+  </style>
+  <noscript><style>.loader{display:none}</style></noscript>
+
+  <!-- ============ LOADER : la muraqqa'a qui s'assemble ============ -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader-grid"></div>
+    <script>
+      (function () {
+        try {
+          var nav = performance.getEntriesByType("navigation")[0];
+          var back = nav && nav.type === "back_forward";
+          if (sessionStorage.getItem("skipIntro") || back) { sessionStorage.removeItem("skipIntro"); document.documentElement.setAttribute("data-skip", "1"); }
+        } catch (e) {}
+        var g = document.querySelector(".loader-grid");
+        var mob = innerWidth < 760, c = mob ? 4 : 8, r = mob ? 7 : 5;
+        var C = ["#b8322a", "#2f6f4e", "#d9a527", "#2c4f8c", "#7b3b7e", "#d96b2b", "#c9a46a"];
+        var idx = [], h = "";
+        g.style.setProperty("--cols", c);
+        g.style.setProperty("--rows", r);
+        for (var i = 0; i < c * r; i++) {
+          var k;
+          do { k = Math.floor(Math.random() * C.length); }
+          while (k === idx[i - 1] && i % c !== 0 || k === idx[i - c]);
+          idx.push(k);
+          h += '<span style="background:' + C[k] + '"></span>';
+        }
+        g.innerHTML = h;
+      })();
+    </script>
+    <div class="loader-center">
+      <p class="loader-verse">“Allah is the Light of the heavens and the earth”</p>
+      <p class="loader-ref">Qur’an 24:35</p>
+      <p class="loader-count"><span>0</span>%</p>
+    </div>
+    <script>
+      (function () {
+        var c = document.querySelector(".loader-center");
+        c.style.opacity = 0;
+        var show = function () { c.style.transition = "opacity .4s"; c.style.opacity = 1; };
+        var go = false, once = function () { if (!go) { go = true; show(); } };
+        if (document.fonts && document.fonts.load) {
+          Promise.all([document.fonts.load('italic 500 1em "Cormorant Garamond"'), document.fonts.load('600 1em "Cormorant Garamond"')]).then(once, once);
+        }
+        setTimeout(once, 1400);
+      })();
+    </script>
+  </div>
+
+  <div class="loader-ring" aria-hidden="true"></div>
+
+  <div class="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"><em>Voir</em></span></div>
+  <canvas class="dust" aria-hidden="true"></canvas>
+
+  <!--@include ui-->
+  <!--@include header-->
+  <!--@include menu-->
+  <div class="smooth" id="top">
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-label="Introduction">
+      <div class="hero-frame">
+        <img class="hero-photo hero-layer" src="/media/hero-photo.webp" alt="The Shaykh in prayer at dusk, wearing his muraqqaʿa" fetchpriority="high" />
+        <img class="hero-photo hero-layer hero-layer--basmala" src="/media/hero-basmala.webp" alt="" aria-hidden="true" />
+        <img class="hero-photo hero-layer" src="/media/hero-shaykh.webp" alt="" aria-hidden="true" />
+        <div class="hero-veil"></div>
+      </div>
+      <div class="hero-pattern" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span class="hero-row hero-row--prefix">Shaykh</span>
+            <span class="hero-row">Mohamed Faouzi</span>
+            <span class="hero-row hero-row--gold">AL KARKARI</span>
+          </h1>
+          <p class="hero-sub">Spiritual guide of the Karkariya Sufi Order, Author, Lecturer</p>
+          <a class="hero-cta" href="qui-est-le-shaykh.html#biographie" data-magnetic>Discover the journey <span aria-hidden="true">→</span></a>
+        </div>
+        <a class="hero-scroll" href="#manifeste" aria-label="Scroll">
+          <span>Scroll</span><i></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ MANIFESTE ============ -->
+    <section class="manifesto" id="manifeste">
+      <div class="manifesto-glow" aria-hidden="true"></div>
+      <p class="kicker">A path of light</p>
+      <p class="manifesto-text" data-words>Linking academic research with lived spiritual experience. Handing on a tradition without freezing it. Walking, meeting, teaching — and making every encounter a passage towards the Light.</p>
+      <div class="manifesto-sign">
+        <span lang="ar" dir="rtl">محمد فوزي الكركري</span>
+      </div>
+    </section>
+
+    <!-- ============ ÉVÉNEMENTS ============ -->
+    <section class="events" id="evenements">
+      <div class="section-head">
+        <p class="kicker">Events</p>
+        <h2 class="h2" data-split>Gatherings and appointments</h2>
+      </div>
+      <div class="events-grid">
+        <div class="events-next" data-reveal>
+          <p class="events-label">Upcoming</p>
+          <p class="events-empty">Upcoming gatherings will be announced here.</p>
+          <button class="btn-glass btn-glass--dark" type="button" data-open-inscription data-magnetic><span>Stay informed</span><i>→</i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ENSEIGNEMENTS ============ -->
+    <section class="teachings" id="cours">
+      <div class="section-head">
+        <p class="kicker">Teachings</p>
+        <h2 class="h2" data-split>What is handed down</h2>
+        <p class="section-lede" data-reveal>Thematic teachings on practice, knowledge and the path. (Texts in French.)</p>
+      </div>
+      <div class="ens-cards">
+        <!--enseignements:debut-->
+        <a class="ens-card" style="--hv:#3f5578" href="../enseignement-vision-yeux-vision-coeur.html" data-reveal>
+          <img class="ens-img" src="../enseignements/vision-yeux-vision-coeur/vignette.webp" alt="" loading="lazy" decoding="async" />
+          <i class="ens-sheen" aria-hidden="true"></i>
+          <span class="ens-num">01</span>
+          <h3>La vision des yeux et la Vision du Cœur</h3>
+          <span class="ens-lire">Read the teaching <i>→</i></span>
+        </a>
+        <a class="ens-card" style="--hv:#4f7260" href="../enseignement-le-coeur-spirituel-dans-le-coeur-physique.html" data-reveal>
+          <img class="ens-img" src="../enseignements/le-coeur-spirituel-dans-le-coeur-physique/vignette.webp" alt="" loading="lazy" decoding="async" />
+          <i class="ens-sheen" aria-hidden="true"></i>
+          <span class="ens-num">02</span>
+          <h3>Le cœur spirituel dans le cœur physique.</h3>
+          <span class="ens-lire">Read the teaching <i>→</i></span>
+        </a>
+        <a class="ens-card" style="--hv:#a2694a" href="../enseignement-la-feconnaissance-pour-les-bienfaits-dallah-30102015.html" data-reveal>
+          <img class="ens-img" src="../enseignements/la-feconnaissance-pour-les-bienfaits-dallah-30102015/vignette.webp" alt="" loading="lazy" decoding="async" />
+          <i class="ens-sheen" aria-hidden="true"></i>
+          <span class="ens-num">03</span>
+          <h3>La reconnaissance pour les bienfaits d’Allâh</h3>
+          <span class="ens-lire">Read the teaching <i>→</i></span>
+        </a>
+        <!--enseignements:fin-->
+      </div>
+      <div class="center ens-suite"><a class="btn-glass btn-glass--dark" href="enseignements.html"><span>All teachings</span><i>→</i></a></div>
+    </section>
+
+    <!-- ============ CONFÉRENCES (cartes empilées, vidéo en fond) ============ -->
+    <section class="talks" id="conferences">
+      <div class="talks-bg" aria-hidden="true">
+        <div class="talks-bg-inner"><video muted loop playsinline preload="none"><source src="/media/conferences-loop.mp4" type="video/mp4" /><source src="/media/conferences-loop.webm" type="video/webm" /></video></div>
+      </div>
+      <div class="talks-intro">
+        <p class="kicker">Lectures</p>
+        <h2 class="h2 h2--light" data-split>Lecture halls, dhikr circles and stages for peace</h2>
+      </div>
+      <div class="talks-stack">
+        <a class="talk" href="conferences.html#sorbonne">
+          <figure><img src="/media/conf-sorbonne.webp" alt="Lecture at the Sorbonne" /></figure>
+          <div class="talk-copy"><span class="talk-place">Paris · France — February 2025</span><h3>AI and Peace: what future do we want?</h3><p>A lecture at the Sorbonne, in the heart of the Parisian university.</p><span class="talk-cta">Watch the video <i>→</i></span></div>
+        </a>
+        <a class="talk" href="conferences.html">
+          <figure><img src="/media/conf-geneve.webp" alt="Gathering &amp; lecture in Geneva" /></figure>
+          <div class="talk-copy"><span class="talk-place">Geneva · Switzerland — April 2025</span><h3>Gathering &amp; lecture in Geneva</h3><p>A day of transmission: dhikr circle, exchanges and teaching.</p><span class="talk-cta">Watch the video <i>→</i></span></div>
+        </a>
+        <a class="talk" href="conferences.html#paix">
+          <figure><img src="/media/conf-paix.webp" alt="A Voice for Peace" /></figure>
+          <div class="talk-copy"><span class="talk-place">Paris · France — April 2025</span><h3>A Voice for Peace</h3><p>Taking part in the Paris edition of the event devoted to dialogue and peace.</p><span class="talk-cta">Watch the video <i>→</i></span></div>
+        </a>
+        <a class="talk talk--text" href="conferences.html#stanford">
+          <div class="talk-copy"><span class="talk-place">United States · Brazil</span><h3>Stanford, Berkeley, Blumenau, Joinville</h3><p>Workshops and lectures on light, language, intelligence and spirituality; university meetings in Brazil in 2025.</p><span class="talk-cta">Watch the video <i>→</i></span></div>
+        </a>
+      </div>
+      <div class="talks-more"><a class="btn-glass" href="conferences.html" data-magnetic><span>All videos</span><i>→</i></a></div>
+    </section>
+
+    <!-- ============ ÉCRITS ============ -->
+    <section class="writings" id="ecrits">
+      <div class="section-head">
+        <p class="kicker">News</p>
+        <h2 class="h2" data-split>Recent articles &amp; texts</h2>
+      </div>
+      <div class="articles">
+        <!--actualites:debut-->
+        <a class="article" href="../actualite-rencontre-du-shaykh-avec-un-chef-de-tribu-indigene-au-bresil.html" data-reveal>
+          <time datetime="2025-10-15T07:35:23Z">15 October 2025</time>
+          <h3>Rencontre du Shaykh avec un chef de tribu indigène au Brésil</h3>
+          <span class="article-cta">Read the article <i>→</i></span>
+        </a>
+        <a class="article" href="../actualite-le-shaykh-mohamed-faouzi-al-karkari-invite-de-linstitut-de-parapsychologie-de-jo.html" data-reveal>
+          <time datetime="2025-10-12T10:19:23Z">12 October 2025</time>
+          <h3>Le Shaykh Mohamed Faouzi al-Karkari, invité de l’institut de parapsychologie de Joinville (Brésil)</h3>
+          <span class="article-cta">Read the article <i>→</i></span>
+        </a>
+        <a class="article" href="../actualite-le-shaykh-mohamed-faouzi-al-karkari-invite-de-luniversite-regionale-de-blumenau-.html" data-reveal>
+          <time datetime="2025-10-10T11:12:09Z">10 October 2025</time>
+          <h3>Le Shaykh Mohamed Faouzi al-Karkari, invité de l’Université régionale de Blumenau au Brésil</h3>
+          <span class="article-cta">Read the article <i>→</i></span>
+        </a>
+        <!--actualites:fin-->
+      </div>
+      <div class="center writings-cta"><a class="btn-glass btn-glass--dark" href="actualites.html"><span>All news</span><i>→</i></a> <a class="btn btn--fb" href="https://www.facebook.com/share/1eMkrGabXe/?mibextid=wwXIfr" target="_blank" rel="noopener" data-magnetic><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21h3z"/></svg><span>Read the posts on Facebook</span><i>↗</i></a></div>
+    </section>
+
+    <!-- ============ OUTRO ============ -->
+    <section class="outro">
+      <div class="outro-light" aria-hidden="true"><i></i><i></i><i></i></div>
+      <p class="outro-ar" lang="ar" dir="rtl" data-reveal>اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ</p>
+      <p class="outro-fr" data-split>“Allah is the Light of the heavens and the earth.”</p>
+      <p class="outro-ref" data-reveal>Qur’an, Sūrat an-Nūr, 24:35</p>
+      <div class="follow" data-reveal>
+        <p class="eco-k">Follow the Shaykh</p>
+        <a class="btn btn--fb" href="https://www.facebook.com/share/1eMkrGabXe/?mibextid=wwXIfr" target="_blank" rel="noopener" data-magnetic><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21h3z"/></svg><span>The Shaykh's Facebook page</span><i>↗</i></a>
+      </div>
+      <div class="contact" id="contact" data-reveal>
+        <p class="kicker">Contact</p>
+        <p class="contact-text">Leave your details to be informed of the Shaykh's upcoming gatherings.</p>
+        <button class="btn-glass btn-glass--dark" type="button" data-open-inscription data-magnetic><span>Stay informed</span><i>→</i></button>
+      </div>
+    </section>
+  </main>
+  <!--@include footer-->
+  </div>
+
+  <div class="modal" id="inscription" role="dialog" aria-modal="true" aria-labelledby="ins-title" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card">
+      <button class="modal-close" type="button" data-close aria-label="Close">×</button>
+      <p class="kicker">Stay informed</p>
+      <h2 class="modal-title" id="ins-title">Upcoming gatherings</h2>
+      <p class="modal-lede">Leave your details and you will be notified of the Shaykh's upcoming gatherings.</p>
+      <form id="form-inscription" name="inscription" method="POST" novalidate>
+        <p class="hp" aria-hidden="true"><label>Leave empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+        <div class="fields">
+          <label class="field"><span>First name</span><input name="prenom" type="text" autocomplete="given-name" required /></label>
+          <label class="field"><span>Last name</span><input name="nom" type="text" autocomplete="family-name" required /></label>
+          <label class="field"><span>City</span><input name="ville" type="text" autocomplete="address-level2" required /></label>
+          <label class="field"><span>Phone</span><input name="telephone" type="tel" autocomplete="tel" inputmode="tel" required /></label>
+          <label class="field field--wide"><span>E-mail address</span><input name="email" type="email" autocomplete="email" required /></label>
+        </div>
+        <label class="check"><input name="consentement" type="checkbox" required /><span>I agree to these details being used to inform me of the Shaykh's gatherings. I can ask for them to be deleted at any time.</span></label>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+        <button class="btn-glass btn-glass--dark" type="submit"><span>Send</span><i>→</i></button>
+      </form>
+      <div class="form-ok" hidden>
+        <p class="kicker">Thank you</p>
+        <p class="modal-lede">Your details have been saved. You will be informed of upcoming gatherings.</p>
+        <button class="btn-glass btn-glass--dark" type="button" data-close><span>Close</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal--wide" id="admin" role="dialog" aria-modal="true" aria-labelledby="adm-title" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card">
+      <button class="modal-close" type="button" data-close aria-label="Close">×</button>
+      <p class="kicker">Administration</p>
+      <h2 class="modal-title" id="adm-title">Personnes à informer</h2>
+      <p class="modal-lede admin-state">Chargement…</p>
+      <div class="admin-tools" hidden>
+        <span class="admin-count"></span>
+        <button class="btn-glass btn-glass--dark" type="button" data-export><span>Exporter en CSV</span></button>
+      </div>
+      <div class="admin-table-wrap" hidden>
+        <table class="admin-table">
+          <thead><tr><th>Date</th><th>Prénom</th><th>Nom</th><th>Ville</th><th>Téléphone</th><th>E-mail</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

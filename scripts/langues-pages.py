@@ -1,0 +1,131 @@
+#!/usr/bin/env python3
+"""Génère les versions anglaise (en/) et arabe (ar/) des pages éditoriales fixes
+(Qui est le Shaykh ?, Le Shaykh, Projet Merkez) à partir des pages françaises.
+Chaque entrée : texte français exact -> (anglais, arabe). Une entrée introuvable arrête le script.
+Utilisation : python3 scripts/langues-pages.py"""
+import re, sys, os
+
+def lire(p): return open(p, encoding="utf-8").read()
+
+def traduire(src, table, code):
+    html = lire(src)
+    i = 1 if code == "en" else 2
+    for ligne in table:
+        fr = ligne[0]
+        if fr not in html:
+            sys.exit("introuvable dans %s : %s" % (src, fr[:70]))
+        html = html.replace(fr, ligne[i])
+    html = html.replace('<html lang="fr">', '<html lang="%s"%s>' % (code, ' dir="rtl"' if code == "ar" else ""), 1)
+    os.makedirs(code, exist_ok=True)
+    open(os.path.join(code, os.path.basename(src)), "w", encoding="utf-8").write(html)
+
+# ---------------------------------------------------------------- Le Shaykh (page d'entrée)
+HUB = [
+ ("Le Shaykh Mohamed Faouzi Al Karkari : qui il est, et la chaîne de transmission dont il est l'héritier.", "Shaykh Mohamed Faouzi Al Karkari: who he is, and the chain of transmission he inherits.", "الشيخ محمد فوزي الكركري: من هو، وسلسلة الإسناد التي ورثها."),
+ ("Le Shaykh — Shaykh Mohamed Faouzi Al Karkari", "The Shaykh — Shaykh Mohamed Faouzi Al Karkari", "الشيخ — الشيخ محمد فوزي الكركري"),
+ ('<p class="kicker">Le Shaykh</p>', '<p class="kicker">The Shaykh</p>', '<p class="kicker">الشيخ</p>'),
+ ("<h1 class=\"h2\" data-split>Shaykh Mohamed Faouzi Al Karkari</h1>", "<h1 class=\"h2\" data-split>Shaykh Mohamed Faouzi Al Karkari</h1>", "<h1 class=\"h2\" data-split>الشيخ محمد فوزي الكركري</h1>"),
+ ("Guide spirituel de la Confrérie Soufie Karkariya. Trois portes pour le connaître.", "Spiritual guide of the Karkariya Sufi Order. Three doors to get to know him.", "المرشد الروحي للطريقة الصوفية الكركرية. ثلاثة أبواب للتعرّف عليه."),
+ ("<h2>Qui est le Shaykh&nbsp;?</h2>", "<h2>Who is the Shaykh?</h2>", "<h2>من هو الشيخ؟</h2>"),
+ ("Son parcours, ses recherches, sa biographie.", "His journey, his research, his biography.", "مسيرته وأبحاثه وسيرته."),
+ ("<h2>Sa chaîne de transmission</h2>", "<h2>His chain of transmission</h2>", "<h2>سلسلة إسناده</h2>"),
+ ("La silsila, et les maîtres qui l'ont précédé.", "The silsila, and the masters who came before him.", "السلسلة والمشايخ الذين سبقوه."),
+ ("<h2>Sa lignée chérifienne</h2>", "<h2>His noble lineage</h2>", "<h2>نسبه الشريف</h2>"),
+ ("Une noble famille, jusqu'au Prophète ﷺ.", "A noble family, all the way back to the Prophet ﷺ.", "أسرة شريفة تمتدّ إلى النبي ﷺ."),
+ ('<span class="hub-go">Découvrir <i>→</i></span>', '<span class="hub-go">Discover <i>→</i></span>', '<span class="hub-go">اكتشف <i>←</i></span>'),
+]
+
+# ---------------------------------------------------------------- Projet Merkez
+MERKEZ = [
+ ("Le Projet Merkez sera présenté prochainement.", "The Merkez Project will be presented soon.", "سيُعرض مشروع مركز قريبًا."),
+ ("Projet Merkez — Shaykh Mohamed Faouzi Al Karkari", "Merkez Project — Shaykh Mohamed Faouzi Al Karkari", "مشروع مركز — الشيخ محمد فوزي الكركري"),
+ ('<p class="kicker">Projet Merkez</p>', '<p class="kicker">Merkez Project</p>', '<p class="kicker">مشروع مركز</p>'),
+ ("Merkez, le centre.", "Merkez, the centre.", "مركز، المحور."),
+ ("Le Projet Merkez sera présenté prochainement sur cette page.", "The Merkez Project will be presented soon on this page.", "سيُعرض مشروع مركز قريبًا في هذه الصفحة."),
+ ("<span>Être informé</span>", "<span>Stay informed</span>", "<span>ابقَ على اطلاع</span>"),
+ ("<i>→</i></a>", "<i>→</i></a>", "<i>←</i></a>"),
+]
+
+# ---------------------------------------------------------------- Qui est le Shaykh ?
+QUI = [
+ ("Le Shaykh Mohamed Faouzi Al Karkari : un héritier de la chaîne de transmission, un chercheur de son temps.", "Shaykh Mohamed Faouzi Al Karkari: an heir to the chain of transmission, a researcher of his time.", "الشيخ محمد فوزي الكركري: وارثٌ لسلسلة الإسناد، وباحثٌ في عصره."),
+ ("Qui est le Shaykh ? — Shaykh Mohamed Faouzi Al Karkari", "Who is the Shaykh? — Shaykh Mohamed Faouzi Al Karkari", "من هو الشيخ؟ — الشيخ محمد فوزي الكركري"),
+ ('data-cursor="Voir"', 'data-cursor="View"', 'data-cursor="عرض"'),
+ ('alt="Le Shaykh Mohamed Faouzi Al Karkari en djellaba blanche et chéchia rouge"', 'alt="Shaykh Mohamed Faouzi Al Karkari in a white djellaba and red chechia"', 'alt="الشيخ محمد فوزي الكركري بجلبابٍ أبيض وطربوشٍ أحمر"'),
+ ('alt="Le Shaykh en recueillement"', 'alt="The Shaykh in contemplation"', 'alt="الشيخ في خلوة تأمّل"'),
+ ('<p class="kicker">Qui est le Shaykh ?</p>', '<p class="kicker">Who is the Shaykh?</p>', '<p class="kicker">من هو الشيخ؟</p>'),
+ ("Un héritier de la chaîne, un chercheur de son temps.", "An heir to the chain, a researcher of his time.", "وارثٌ للسلسلة، وباحثٌ في عصره."),
+ ("Le Shaykh Mohamed Faouzi Al Karkari est le guide spirituel de la Tariqa Karkariya, héritier d'une chaîne de transmission ininterrompue. Pendant plus d'une décennie, il a également exercé des responsabilités au sein du ministère des Affaires religieuses du Maroc.",
+  "Shaykh Mohamed Faouzi Al Karkari is the spiritual guide of the Karkariya Tariqa, heir to an unbroken chain of transmission. For more than a decade he also held responsibilities within Morocco's Ministry of Religious Affairs.",
+  "الشيخ محمد فوزي الكركري هو المرشد الروحي للطريقة الكركرية، ووارثُ سلسلة إسنادٍ متصلة. وقد تولّى كذلك مسؤوليات في وزارة الشؤون الدينية بالمغرب لأكثر من عقد."),
+ ("Aujourd'hui, il conjugue l'accompagnement spirituel, l'écriture et la recherche internationale sur le soufisme — de Nador à Chicago, de Paris à Genève.",
+  "Today he combines spiritual guidance, writing and international research on Sufism — from Nador to Chicago, from Paris to Geneva.",
+  "وهو اليوم يجمع بين الإرشاد الروحي والتأليف والبحث الدولي في التصوّف — من الناظور إلى شيكاغو، ومن باريس إلى جنيف."),
+ ("« La Lumière divine n'est pas une métaphore, mais une réalité qui se voit. »", "“The divine Light is not a metaphor, but a reality that can be seen.”", "«النور الإلهي ليس استعارةً، بل حقيقةٌ تُرى.»"),
+ ("<span data-count=\"2\">0</span> millions</dt><dd>de disciples à travers le monde, sur les cinq continents</dd>", "<span data-count=\"2\">0</span> million</dt><dd>disciples worldwide, on all five continents</dd>", "<span data-count=\"2\">0</span> مليون</dt><dd>مريد في أنحاء العالم، عبر القارات الخمس</dd>"),
+ ("ouvrages : 10 livres en arabe, traduits en 5 langues", "books: 10 titles in Arabic, translated into 5 languages", "مؤلَّف: عشرة كتب بالعربية مترجمة إلى خمس لغات"),
+ ("<span data-count=\"6\">0</span> langues</dt><dd>de traduction : arabe, français, italien, espagnol, anglais, néerlandais</dd>", "<span data-count=\"6\">0</span> languages</dt><dd>Arabic, French, Italian, Spanish, English and Dutch</dd>", "<span data-count=\"6\">0</span> لغات</dt><dd>العربية والفرنسية والإيطالية والإسبانية والإنجليزية والهولندية</dd>"),
+ ("<!-- ============ BIOGRAPHIE (importée du site d'origine) ============ -->", "<!-- ============ BIOGRAPHY ============ -->", "<!-- ============ BIOGRAPHY ============ -->"),
+ ('<p class="kicker">Biographie</p>', '<p class="kicker">Biography</p>', '<p class="kicker">السيرة</p>'),
+ ("Un cheminement, une transmission", "A path, a transmission", "مسيرةٌ وتبليغ"),
+ ("<h3>Origines et formation</h3>", "<h3>Origins and education</h3>", "<h3>النشأة والتكوين</h3>"),
+ ("Le Shaykh Mohamed Faouzi Al Karkari est né en 1974 (1394 de l'hégire) à Tamsaman, dans le Rif marocain, dans la zawiya de son grand-père, le Shaykh Moulay Tahar al-Karkari, lui-même héritier du Shaykh Ahmad al-Alawi. Issu d'une noble famille chérifienne, descendant de la lignée idrisside qui remonte au Prophète Muhammad (que la paix soit sur lui), il a grandi au milieu des disciples. Il suit sa scolarité primaire à Al Hoceima, puis ses études secondaires à Taza, qu'il interrompt pour entreprendre un long cheminement intérieur.",
+  "Shaykh Mohamed Faouzi Al Karkari was born in 1974 (1394 AH) in Tamsaman, in the Moroccan Rif, in the zawiya of his grandfather, Shaykh Moulay Tahar al-Karkari, himself an heir of Shaykh Ahmad al-Alawi. Born into a noble sharifian family, a descendant of the Idrisid line going back to the Prophet Muhammad (peace be upon him), he grew up among the disciples. He attended primary school in Al Hoceima, then secondary school in Taza, which he interrupted to undertake a long inner journey.",
+  "وُلد الشيخ محمد فوزي الكركري سنة 1974م (1394هـ) في تمسمان بالريف المغربي، في زاوية جدّه الشيخ مولاي الطاهر الكركري، وارث الشيخ أحمد العلاوي. ينتمي إلى أسرة شريفة، من سلالة الأدارسة التي يتصل نسبها بالنبي محمد ﷺ، ونشأ بين المريدين. تابع دراسته الابتدائية بالحسيمة ثم الثانوية بتازة، وانقطع عنها ليخوض رحلةً باطنيةً طويلة."),
+ ("<h3>La pérégrination</h3>", "<h3>The wandering</h3>", "<h3>السياحة</h3>"),
+ ("En 1994, à vingt ans, il quitte sa famille et sa région pour partir sur les routes du Maroc. D'Oujda à Al Mahbes, dans le désert marocain, de Tanger à Guelmim, il parcourt le pays pendant dix ans, jusqu'en 2004.",
+  "In 1994, at the age of twenty, he left his family and region to take to the roads of Morocco. From Oujda to Al Mahbes in the Moroccan desert, from Tangier to Guelmim, he travelled the country for ten years, until 2004.",
+  "في سنة 1994م، وهو في العشرين من عمره، غادر أسرته وإقليمه ليسير في دروب المغرب. من وجدة إلى المحبس في الصحراء المغربية، ومن طنجة إلى كلميم، جاب البلاد عشر سنوات حتى سنة 2004م."),
+ ("À son retour à Nador, un feu intérieur, un besoin de repentir et une quête profonde du divin le conduisent chez son Shaykh.",
+  "On his return to Nador, an inner fire, a need for repentance and a deep quest for the divine led him to his Shaykh.",
+  "وعند عودته إلى الناظور، قادته نارٌ باطنة وحاجةٌ إلى التوبة وطلبٌ عميق للحقّ إلى شيخه."),
+ ("<h3>La rencontre avec son maître et la succession</h3>", "<h3>Meeting his master, and the succession</h3>", "<h3>اللقاء بالشيخ والخلافة</h3>"),
+ ("En 2004, il rend visite à son oncle, le Shaykh Sidi Mawlay al-Hassan Al Karkari, héritier du Shaykh Moulay Tahar, auprès duquel il demande à s'engager sur la voie. Il entre en retraite spirituelle (<em>khalwa</em>) en novembre 2004, puis demeure environ deux ans à ses côtés, dans l'étude, l'assiduité et l'invocation.",
+  "In 2004 he visited his uncle, Shaykh Sidi Mawlay al-Hassan Al Karkari, heir of Shaykh Moulay Tahar, and asked to be admitted to the path. He entered a spiritual retreat (<em>khalwa</em>) in November 2004, then remained with him for about two years, in study, devotion and invocation.",
+  "في سنة 2004م زار عمَّه الشيخ سيدي مولاي الحسن الكركري، وارثَ الشيخ مولاي الطاهر، وطلب منه أن يأخذ عنه الطريق. دخل الخلوة (<em>khalwa</em>) في نوفمبر 2004م، ثم لازمه نحو سنتين في الدراسة والمداومة والذكر."),
+ ("À la mort de son Shaykh, en 2007 (1428 de l'hégire), celui-ci témoigne devant une trentaine de témoins que Mohamed Faouzi Al Karkari est son héritier. Il renouvelle alors l'enseignement de la voie et en rend les fondements accessibles à ceux qui s'y engagent. Il est aujourd'hui le Guide spirituel de l'Ordre Soufi Karkariya, héritier d'une chaîne de transmission reconnue à travers le monde.",
+  "When his Shaykh passed away in 2007 (1428 AH), he had declared before some thirty witnesses that Mohamed Faouzi Al Karkari was his heir. He then renewed the teaching of the path and made its foundations accessible to those who commit to it. He is today the spiritual Guide of the Karkariya Sufi Order, heir to a chain of transmission recognised throughout the world.",
+  "وعند وفاة شيخه سنة 2007م (1428هـ) كان قد أشهد نحو ثلاثين شاهدًا بأن محمد فوزي الكركري وارثُه. فجدّد تعليم الطريق وجعل أصوله في متناول من يسلكه. وهو اليوم المرشد الروحي للطريقة الصوفية الكركرية، وارثُ سلسلة إسنادٍ معروفة في أنحاء العالم."),
+ ("<h3>Une voie qui rayonne</h3>", "<h3>A path that radiates</h3>", "<h3>طريقٌ يشعّ</h3>"),
+ ("Porté par un message d'unité, de fraternité et d'amour de Dieu à travers l'amour de Sa création, l'ordre s'est développé très rapidement. Il compte aujourd'hui près de deux millions de disciples à travers le monde, sur les cinq continents.",
+  "Carried by a message of unity, brotherhood and love of God through love of His creation, the order grew very quickly. It now counts nearly two million disciples worldwide, on all five continents.",
+  "بفضل رسالةٍ تقوم على الوحدة والأخوّة ومحبة الله من خلال محبة خلقه، انتشرت الطريقة سريعًا، وهي تضمّ اليوم قرابة مليوني مريد في أنحاء العالم عبر القارات الخمس."),
+ ("Depuis janvier 2023, il est Chercheur principal pour les États-Unis et à l'international, au sein d'une collaboration entre des chercheurs de la Divinity School de l'Université de Chicago, de l'Université Yale et de l'American University of Sharjah. Conduit à l'invitation du professeur Yousef Casewit (Université de Chicago), ce projet met en lumière les enseignements et les apports de grandes figures soufies moins connues, parmi lesquelles Sidi Abdurrahman al-Majdoub, ʿAbd al-Karīm al-Jīlī, Ibn al-Fāriḍ, Abū l-Ḥasan al-Shādhilī et ʿĀʾisha al-Manūbiyya.",
+  "Since January 2023 he has been Principal Investigator for the United States and internationally, within a collaboration between researchers of the University of Chicago Divinity School, Yale University and the American University of Sharjah. Led at the invitation of Professor Yousef Casewit (University of Chicago), this project sheds light on the teachings and contributions of great but lesser-known Sufi figures, among them Sidi Abdurrahman al-Majdoub, ʿAbd al-Karīm al-Jīlī, Ibn al-Fāriḍ, Abū l-Ḥasan al-Shādhilī and ʿĀʾisha al-Manūbiyya.",
+  "منذ يناير 2023م وهو الباحث الرئيسي للولايات المتحدة وعلى الصعيد الدولي، ضمن تعاونٍ بين باحثين من كلية اللاهوت بجامعة شيكاغو وجامعة ييل والجامعة الأمريكية في الشارقة. ويُنجَز هذا المشروع بدعوةٍ من الأستاذ يوسف كاسويت (جامعة شيكاغو)، ويُبرز تعاليمَ كبار أعلام التصوف الأقلّ شهرة وإسهاماتِهم، ومنهم سيدي عبد الرحمن المجذوب وعبد الكريم الجيلي وابن الفارض وأبو الحسن الشاذلي وعائشة المنوبية."),
+ ("Il est également fondateur et président de l'Al Karkari Institute for Sufi Studies, organisation américaine à but non lucratif dédiée à la recherche académique sur le soufisme. L'Institut crée des ponts entre la recherche académique et l'expérience spirituelle vécue : traduction de la littérature soufie, partenariats avec des universités de premier plan pour des projets de traduction collaborative, rédaction d'ouvrages. Chercheur invité à l'Université de Chicago en 2023, il y a animé des ateliers de niveau master et doctorat consacrés à la littérature soufie extatique.",
+  "He is also founder and president of the Al Karkari Institute for Sufi Studies, an American non-profit organisation dedicated to academic research on Sufism. The Institute builds bridges between academic research and lived spiritual experience: translation of Sufi literature, partnerships with leading universities on collaborative translation projects, and the writing of books. A visiting researcher at the University of Chicago in 2023, he led master's and doctoral level workshops there on ecstatic Sufi literature.",
+  "وهو كذلك مؤسس ورئيس معهد الكركري للدراسات الصوفية، وهو منظمة أمريكية غير ربحية مكرّسة للبحث الأكاديمي في التصوف. ويُقيم المعهد جسورًا بين البحث الأكاديمي والتجربة الروحية المعيشة: ترجمة الأدب الصوفي، وشراكات مع جامعات رائدة في مشاريع ترجمة تعاونية، وتأليف الكتب. وكان باحثًا زائرًا في جامعة شيكاغو سنة 2023م، حيث أدار ورشات للماجستير والدكتوراه حول الأدب الصوفي الوجدي."),
+ ("<h3>L'auteur</h3>", "<h3>The author</h3>", "<h3>المؤلِّف</h3>"),
+ ("Le Shaykh est l'auteur d'une œuvre en langue arabe de dix livres consacrés à la voie soufie. Chacun d'eux a été traduit en cinq langues — français, anglais, espagnol, italien et néerlandais —, ce qui forme aujourd'hui une bibliothèque de cinquante-cinq ouvrages à la disposition des chercheurs comme des chercheurs de Dieu.",
+  "The Shaykh is the author of a body of work in Arabic made up of ten books devoted to the Sufi path. Each has been translated into five languages — French, English, Spanish, Italian and Dutch — which today forms a library of fifty-five titles, at the disposal of scholars and seekers of God alike.",
+  "الشيخ صاحب مؤلَّفات بالعربية في عشرة كتب مكرّسة للطريق الصوفي. وقد تُرجم كلٌّ منها إلى خمس لغات — الفرنسية والإنجليزية والإسبانية والإيطالية والهولندية — فتكوّنت اليوم مكتبةٌ من خمسةٍ وخمسين مؤلَّفًا في متناول الباحثين وطلاب الحقّ على السواء."),
+ ("Cette œuvre est désormais étudiée dans le monde académique : <em>Les Fondements de l'Ordre Karkariya</em> (<em>The Foundations of the Karkariya Order</em>) a ainsi été traduit en anglais par Y. Casewit, K. Williams et J. Zaghdoudi (2021).",
+  "This body of work is now studied in the academic world: <em>The Foundations of the Karkariya Order</em> was thus translated into English by Y. Casewit, K. Williams and J. Zaghdoudi (2021).",
+  "وقد بات هذا المؤلَّف موضع دراسةٍ في الأوساط الأكاديمية: فكتاب <em>The Foundations of the Karkariya Order</em> (أصول الطريقة الكركرية) تُرجم إلى الإنجليزية على يد ي. كاسويت وك. ويليامز وج. الزغدودي (2021م)."),
+ ("<h3>Conférences et ateliers</h3>", "<h3>Lectures and workshops</h3>", "<h3>المحاضرات والورشات</h3>"),
+ ("Il intervient régulièrement en Europe, aux États-Unis et au Brésil. Parmi ses interventions récentes :", "He speaks regularly in Europe, the United States and Brazil. Among his recent talks:", "يلقي محاضرات بانتظام في أوروبا والولايات المتحدة والبرازيل، ومن مداخلاته الأخيرة:"),
+ ("<strong>23 mai 2026</strong> — Assise spirituelle à Genève (Suisse)", "<strong>23 May 2026</strong> — Spiritual gathering in Geneva (Switzerland)", "<strong>23 مايو 2026</strong> — مجلس روحي في جنيف (سويسرا)"),
+ ("<strong>18 mai 2026</strong> — Table ronde à Paris", "<strong>18 May 2026</strong> — Round table in Paris", "<strong>18 مايو 2026</strong> — مائدة مستديرة في باريس"),
+ ("<strong>17 mai 2026</strong> — Conférence à Bruxelles", "<strong>17 May 2026</strong> — Lecture in Brussels", "<strong>17 مايو 2026</strong> — محاضرة في بروكسل"),
+ ("<strong>16 mai 2026</strong> — Conférence à Eindhoven (Pays-Bas)", "<strong>16 May 2026</strong> — Lecture in Eindhoven (Netherlands)", "<strong>16 مايو 2026</strong> — محاضرة في أيندهوفن (هولندا)"),
+ ("<strong>11 mai 2026</strong> — Table ronde à Schleswig (Allemagne)", "<strong>11 May 2026</strong> — Round table in Schleswig (Germany)", "<strong>11 مايو 2026</strong> — مائدة مستديرة في شلسفيغ (ألمانيا)"),
+ ("<strong>Octobre 2025</strong> — « Histoire et pertinence contemporaine du soufisme », Université de Santa Catarina, Blumenau (Brésil)", "<strong>October 2025</strong> — “History and contemporary relevance of Sufism”, University of Santa Catarina, Blumenau (Brazil)", "<strong>أكتوبر 2025</strong> — «تاريخ التصوف وراهنيّته المعاصرة»، جامعة سانتا كاتارينا، بلومينو (البرازيل)"),
+ ("<strong>Septembre 2025</strong> — Symposium pour la Paix du Rotary, Paris : table ronde sur la laïcité et le dialogue interreligieux", "<strong>September 2025</strong> — Rotary Peace Symposium, Paris: round table on secularism and interfaith dialogue", "<strong>سبتمبر 2025</strong> — ندوة السلام لنادي الروتاري، باريس: مائدة مستديرة حول العلمانية والحوار بين الأديان"),
+ ("<strong>Avril 2025</strong> — Conférence internationale pour la Paix « Une Voix pour la Paix », Paris", "<strong>April 2025</strong> — International Peace Conference “A Voice for Peace”, Paris", "<strong>أبريل 2025</strong> — المؤتمر الدولي للسلام «صوتٌ من أجل السلام»، باريس"),
+ ("<strong>Février 2025</strong> — « IA et Paix, quel futur voulons-nous ? », Sorbonne, Paris", "<strong>February 2025</strong> — “AI and Peace: what future do we want?”, Sorbonne, Paris", "<strong>فبراير 2025</strong> — «الذكاء الاصطناعي والسلام: أيّ مستقبل نريد؟»، السوربون، باريس"),
+ ("<strong>Février 2025</strong> — Deux ateliers à Stanford University sur l'ordre numérique et l'ordre divin, puis un atelier à UC Berkeley : « Illumination et Lumière dans la sagesse d'Ibn ʿAṭāʾ Allāh al-Iskandarī »", "<strong>February 2025</strong> — Two workshops at Stanford University on the digital order and the divine order, then a workshop at UC Berkeley: “Illumination and Light in the wisdom of Ibn ʿAṭāʾ Allāh al-Iskandarī”", "<strong>فبراير 2025</strong> — ورشتان في جامعة ستانفورد حول النظام الرقمي والنظام الإلهي، ثم ورشة في جامعة بيركلي: «الإشراق والنور في حكمة ابن عطاء الله السكندري»"),
+ ("<strong>Juillet 2024</strong> — « Les dimensions spirituelles de la calligraphie islamique », The Reed Society, Washington DC", "<strong>July 2024</strong> — “The spiritual dimensions of Islamic calligraphy”, The Reed Society, Washington DC", "<strong>يوليو 2024</strong> — «الأبعاد الروحية للخط الإسلامي»، The Reed Society، واشنطن"),
+ ("<strong>Mai 2023</strong> — « Soufisme vivant et intelligence artificielle », Divinity School de l'Université de Chicago", "<strong>May 2023</strong> — “Living Sufism and artificial intelligence”, Divinity School of the University of Chicago", "<strong>مايو 2023</strong> — «التصوف الحيّ والذكاء الاصطناعي»، كلية اللاهوت بجامعة شيكاغو"),
+ ("<h3>Distinctions</h3>", "<h3>Honours</h3>", "<h3>التكريمات</h3>"),
+ ("<strong>Octobre 2025</strong> — Paul Harris Fellow (Rotary International), en reconnaissance d'un engagement exceptionnel en faveur de la paix, du dialogue interculturel et du service à la communauté", "<strong>October 2025</strong> — Paul Harris Fellow (Rotary International), in recognition of an exceptional commitment to peace, intercultural dialogue and service to the community", "<strong>أكتوبر 2025</strong> — زميل بول هاريس (الروتاري الدولي)، تقديرًا لالتزامٍ استثنائي بالسلام والحوار بين الثقافات وخدمة المجتمع"),
+ ("<strong>2020</strong> — Certificate of Honor for Humanitarian Impact in Africa, First African Summit, Nations unies", "<strong>2020</strong> — Certificate of Honor for Humanitarian Impact in Africa, First African Summit, United Nations", "<strong>2020</strong> — شهادة تكريم عن الأثر الإنساني في إفريقيا، القمة الإفريقية الأولى، الأمم المتحدة"),
+ ('<span>Sa chaîne de transmission</span><i>→</i>', '<span>His chain of transmission</span><i>→</i>', '<span>سلسلة إسناده</span><i>←</i>'),
+]
+
+if __name__ == "__main__":
+    for code in ("en", "ar"):
+        traduire("le-shaykh.html", HUB, code)
+        traduire("projet-merkez.html", MERKEZ, code)
+        traduire("qui-est-le-shaykh.html", QUI, code)
+    print("pages éditoriales : en/ + ar/")

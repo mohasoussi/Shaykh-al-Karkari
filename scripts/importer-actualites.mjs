@@ -23,6 +23,7 @@ import path from "node:path";
 import sanitizeHtml from "sanitize-html";
 import { parse } from "node-html-parser";
 import sharp from "sharp";
+import { genererLangues } from "./langues.mjs";
 import { esc, pageListe, pageArticle, cartesAccueil, cartesEnseignements, TYPES, LISTES } from "./gabarits-actualites.mjs";
 
 const SITE = process.env.SITE_DIR ? path.resolve(process.env.SITE_DIR) : process.cwd();
@@ -559,4 +560,11 @@ async function main() {
 main().catch((e) => {
   console.error("[actualités] erreur :", e);
   process.exitCode = TOLERANT ? 0 : 1;
+}).finally(async () => {
+  // versions anglaise et arabe, déduites des pages françaises (même en cas d'échec de l'import)
+  try {
+    await genererLangues();
+  } catch (e) {
+    console.error("[langues] erreur :", e);
+  }
 });

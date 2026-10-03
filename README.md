@@ -84,3 +84,10 @@ Les articles de https://karkariya.fr sont repris sans copier-coller :
 - `npm run actualites` lance l'import à la main ; `npm run build` le relance avant chaque mise en ligne (si le site d'origine est injoignable, les pages existantes sont conservées).
 - `.github/workflows/actualites.yml` relance l'import toutes les 6 heures sur GitHub et enregistre les nouveautés dans le dépôt ; Cloudflare Pages republie alors le site tout seul. Rien à configurer, à part avoir relié le dépôt à Cloudflare Pages.
 - Autre site source : variables `ACTUALITES_SOURCE` / `ACTUALITES_CHEMIN`.
+
+## Langues (français, anglais, arabe)
+
+- Le français est la langue de référence (pages à la racine). `en/` (anglais) et `ar/` (arabe, de droite à gauche) en sont déduites.
+- `node scripts/langues.mjs` régénère l'accueil, les listes (actualités, enseignements) et la chaîne de transmission en EN/AR ; `npm run lignee` la lignée ; `node scripts/conferences.mjs` la page vidéo des trois langues.
+- `python3 scripts/langues-pages.py` génère « Qui est le Shaykh ? », « Le Shaykh » et « Projet Merkez » en EN/AR : pour modifier un texte, éditez la table de ce fichier (français → anglais → arabe), puis relancez-le.
+- L'import automatique (`importer-actualites.mjs`) relance `langues.mjs` ; les articles eux-mêmes restent en français.

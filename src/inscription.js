@@ -17,6 +17,12 @@ async function capacite(nom) {
   }
 }
 
+const LANG = document.documentElement.lang;
+const MSG = {
+  fr: { vide: "Merci de remplir tous les champs.", mail: "L'adresse e-mail ne semble pas valide.", tel: "Le numéro de téléphone ne semble pas valide.", ok: "Merci de cocher la case d'accord pour continuer.", envoi: "Envoi en cours…", echec: "L'enregistrement n'a pas abouti. Merci de réessayer dans un instant." },
+  en: { vide: "Please fill in all fields.", mail: "The e-mail address does not look valid.", tel: "The phone number does not look valid.", ok: "Please tick the consent box to continue.", envoi: "Sending…", echec: "Your details could not be saved. Please try again in a moment." },
+  ar: { vide: "يرجى ملء جميع الحقول.", mail: "عنوان البريد الإلكتروني غير صحيح.", tel: "رقم الهاتف غير صحيح.", ok: "يرجى تأشير خانة الموافقة للمتابعة.", envoi: "جارٍ الإرسال…", echec: "تعذّر حفظ بياناتك. يرجى المحاولة بعد قليل." },
+}[LANG] || {};
 const CHAMPS = ["prenom", "nom", "ville", "telephone", "email"];
 
 async function enregistrer(fiche) {
@@ -110,21 +116,21 @@ export function initInscription(lenis) {
     };
     if (d["bot-field"]) return; // piège à robots
     const vide = CHAMPS.find((k) => !String(d[k] || "").trim());
-    if (vide) return erreur("Merci de remplir tous les champs.", form.elements[vide]);
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email.trim())) return erreur("L'adresse e-mail ne semble pas valide.", form.elements.email);
-    if (d.telephone.replace(/\D/g, "").length < 8) return erreur("Le numéro de téléphone ne semble pas valide.", form.elements.telephone);
-    if (!form.elements.consentement.checked) return erreur("Merci de cocher la case d'accord pour continuer.", form.elements.consentement);
+    if (vide) return erreur(MSG.vide, form.elements[vide]);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email.trim())) return erreur(MSG.mail, form.elements.email);
+    if (d.telephone.replace(/\D/g, "").length < 8) return erreur(MSG.tel, form.elements.telephone);
+    if (!form.elements.consentement.checked) return erreur(MSG.ok, form.elements.consentement);
 
     const fiche = { date: new Date().toISOString(), ...Object.fromEntries(CHAMPS.map((k) => [k, String(d[k]).trim()])) };
     bouton.disabled = true;
-    msg.textContent = "Envoi en cours…";
+    msg.textContent = MSG.envoi;
     try {
       await enregistrer(fiche);
       form.reset();
       form.hidden = true;
       $(".form-ok", modale).hidden = false;
     } catch {
-      erreur("L'enregistrement n'a pas abouti. Merci de réessayer dans un instant.");
+      erreur(MSG.echec);
     } finally {
       bouton.disabled = false;
     }
