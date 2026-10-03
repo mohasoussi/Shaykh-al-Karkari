@@ -46,7 +46,13 @@ Les animations sont désactivées si l'utilisateur a activé « réduire les ani
 
 ## Déploiement
 
-Le fichier `netlify.toml` est prêt : connecter le dépôt à Netlify suffit.
+## Mise en ligne sur Cloudflare Pages
+
+1. Cloudflare → **Workers & Pages** → **Create** → **Pages** → **Connect to Git** → choisir le dépôt.
+2. Réglages de build : **Framework preset** : aucun · **Build command** : `npm run build` · **Build output directory** : `dist` (la version de Node, 22, est lue dans `.node-version`).
+3. Formulaire « Être informé » : **Storage & databases** → **KV** → créer un espace `inscriptions`. Puis dans le projet Pages : **Settings** → **Bindings** → **Add** → **KV namespace** → nom de variable `INSCRIPTIONS`. Ajouter aussi, dans **Variables and Secrets**, un secret `ADMIN_TOKEN` (le mot de passe d'administration). Relancer un déploiement.
+4. Les inscriptions se consultent sur `/#admin` (mot de passe `ADMIN_TOKEN`) avec export CSV.
+5. Chaque enregistrement sur GitHub (dont ceux de la tâche automatique) republie le site tout seul.
 
 ## Pages du site
 
@@ -65,7 +71,7 @@ L'en-tête, le menu et le pied de page sont communs : ils se modifient une seule
 
 ## Formulaire « Être informé » (prénom, nom, ville, téléphone, e-mail)
 
-- Sur le site publié avec Netlify, les réponses arrivent dans **Netlify → Forms → inscription** : liste, export CSV, alertes e-mail. Il n'y a rien d'autre à installer.
+- Sur le site publié (Cloudflare Pages), les réponses sont rangées par `functions/api/inscription.js` dans l'espace KV `INSCRIPTIONS` ; le panneau `#admin` les affiche après saisie du mot de passe `ADMIN_TOKEN`.
 - Dans l'aperçu Claude, elles sont enregistrées dans la base de la page et se consultent à l'adresse `…#admin` (réservée à l'administrateur).
 
 ## Articles importés automatiquement
@@ -76,5 +82,5 @@ Les articles de https://karkariya.fr sont repris sans copier-coller :
 - **Enseignements** (`enseignements.html`, `enseignement-*.html`) : rubrique « Moudhakara ». Les trois cartes de l'accueil sont fixées par `ENS_ACCUEIL`.
 - **Chaîne de transmission** (`chaine-de-transmission.html`) : la silsila est relue dans l'article d'origine et mise en scène jusqu'au Prophète ﷺ.
 - `npm run actualites` lance l'import à la main ; `npm run build` le relance avant chaque mise en ligne (si le site d'origine est injoignable, les pages existantes sont conservées).
-- `.github/workflows/actualites.yml` relance l'import toutes les 6 heures sur GitHub et enregistre les nouveautés dans le dépôt ; Netlify republie alors le site tout seul. Rien à configurer, à part avoir relié le dépôt à Netlify.
+- `.github/workflows/actualites.yml` relance l'import toutes les 6 heures sur GitHub et enregistre les nouveautés dans le dépôt ; Cloudflare Pages republie alors le site tout seul. Rien à configurer, à part avoir relié le dépôt à Cloudflare Pages.
 - Autre site source : variables `ACTUALITES_SOURCE` / `ACTUALITES_CHEMIN`.

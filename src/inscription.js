@@ -2,10 +2,9 @@
 
    Où partent les réponses ?
    - Dans l'aperçu Claude : dans la base de données de la page (collection « contacts »).
-     Le panneau d'administration (adresse #admin) les affiche et les exporte en CSV.
-   - Sur le site publié (Netlify) : dans Netlify Forms. Le « backoffice » est alors
-     le tableau de bord Netlify → Forms → inscription (liste, export CSV, alertes e-mail).
-   Le formulaire essaie d'abord la base de la page, puis Netlify. */
+   - Sur le site publié (Cloudflare Pages) : /api/inscription (functions/api/inscription.js) range chaque
+     fiche dans l'espace KV « INSCRIPTIONS ». Le panneau d'administration (adresse #admin) les liste et
+     les exporte en CSV après saisie du mot de passe d'administration (variable ADMIN_TOKEN). */
 
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -36,11 +35,10 @@ async function enregistrer(fiche) {
       console.warn("base de données :", e?.code || e);
     }
   }
-  // 2. Netlify Forms (site publié)
-  const corps = new URLSearchParams({ "form-name": "inscription", ...Object.fromEntries(CHAMPS.map((k) => [k, fiche[k]])), consentement: "oui" });
-  const r = await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: corps.toString() });
+  // 2. site publié : fonction Cloudflare
+  const r = await fetch("/api/inscription", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(fiche) });
   if (!r.ok) throw new Error(`http ${r.status}`);
-  return "netlify";
+  return "cloudflare";
 }
 
 function csv(lignes) {
@@ -139,30 +137,10 @@ export function initInscription(lenis) {
   const tableau = $(".admin-table-wrap", admin);
   let lignes = [];
 
-  async function chargerAdmin() {
-    etat.hidden = false;
-    outils.hidden = true;
-    tableau.hidden = true;
-    etat.textContent = "Chargement…";
-    const db = await capacite("db");
-    if (!db) {
-      etat.textContent =
-        "Sur le site publié, les inscriptions se consultent dans votre tableau de bord Netlify (Forms → inscription), avec export CSV. Cette vue ne fonctionne que dans l'aperçu Claude.";
-      return;
-    }
-    const user = await capacite("user");
-    if (!(user?.canEdit?.() ?? false)) {
-      etat.textContent = "Accès réservé à l'administrateur du site.";
-      return;
-    }
-    try {
-      const snap = await db.collection("contacts").get();
-      lignes = snap.docs.flatMap((d) => d.data()?.entries || []).sort((a, b) => String(b.date).localeCompare(String(a.date)));
-    } catch {
-      etat.textContent = "Impossible de lire la liste pour le moment.";
-      return;
-    }
+  function afficher(liste) {
+    lignes = liste;
     if (!lignes.length) {
+      etat.hidden = false;
       etat.textContent = "Aucune inscription pour le moment.";
       return;
     }
@@ -183,6 +161,63 @@ export function initInscription(lenis) {
         return tr;
       })
     );
+  }
+
+  // site publié : mot de passe d'administration, puis lecture de /api/inscriptions
+  function demanderMotDePasse(message) {
+    etat.hidden = false;
+    etat.replaceChildren();
+    const p = document.createElement("span");
+    p.textContent = message || "Saisissez le mot de passe d'administration pour voir les inscriptions.";
+    const f = document.createElement("form");
+    f.className = "admin-login";
+    f.innerHTML = '<input type="password" name="mdp" autocomplete="current-password" placeholder="Mot de passe" required /><button class="btn-glass btn-glass--dark" type="submit"><span>Afficher</span></button>';
+    f.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const mdp = f.elements.mdp.value;
+      etat.textContent = "Chargement…";
+      try {
+        const r = await fetch("/api/inscriptions", { headers: { Authorization: `Bearer ${mdp}` } });
+        if (r.status === 401) return demanderMotDePasse("Mot de passe incorrect.");
+        if (!r.ok) throw new Error(r.status);
+        try { sessionStorage.setItem("adm", mdp); } catch {}
+        afficher((await r.json()).inscriptions || []);
+      } catch {
+        etat.textContent = "Impossible de lire la liste pour le moment.";
+      }
+    });
+    etat.append(p, f);
+    f.elements.mdp.focus({ preventScroll: true });
+  }
+
+  async function chargerAdmin() {
+    etat.hidden = false;
+    outils.hidden = true;
+    tableau.hidden = true;
+    etat.textContent = "Chargement…";
+    const db = await capacite("db");
+    if (!db) {
+      let memo = "";
+      try { memo = sessionStorage.getItem("adm") || ""; } catch {}
+      if (memo) {
+        try {
+          const r = await fetch("/api/inscriptions", { headers: { Authorization: `Bearer ${memo}` } });
+          if (r.ok) return afficher((await r.json()).inscriptions || []);
+        } catch {}
+      }
+      return demanderMotDePasse();
+    }
+    const user = await capacite("user");
+    if (!(user?.canEdit?.() ?? false)) {
+      etat.textContent = "Accès réservé à l'administrateur du site.";
+      return;
+    }
+    try {
+      const snap = await db.collection("contacts").get();
+      afficher(snap.docs.flatMap((d) => d.data()?.entries || []).sort((a, b) => String(b.date).localeCompare(String(a.date))));
+    } catch {
+      etat.textContent = "Impossible de lire la liste pour le moment.";
+    }
   }
 
   $("[data-export]", admin).addEventListener("click", async () => {

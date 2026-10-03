@@ -1,5 +1,5 @@
 # Récupère automatiquement les nouveaux articles de karkariya.fr (actualités, enseignements, chaîne de transmission),
-# toutes les 6 heures. S'il y a du nouveau, les pages sont enregistrées dans le dépôt : Netlify republie alors le site tout seul.
+# toutes les 6 heures. S'il y a du nouveau, les pages sont enregistrées dans le dépôt : Cloudflare Pages republie alors le site tout seul.
 name: Nouveaux articles
 on:
   schedule:
