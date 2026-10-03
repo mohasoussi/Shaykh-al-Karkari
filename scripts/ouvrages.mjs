@@ -1,0 +1,57 @@
+#!/usr/bin/env node
+/* Génère la page « Ouvrages » (fr, en, ar) à partir de scripts/ouvrages.json (titres classés par langue de traduction).
+   Utilisation : node scripts/ouvrages.mjs */
+import fs from "node:fs";
+const data = JSON.parse(fs.readFileSync("scripts/ouvrages.json", "utf8"));
+const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const NOMS = {
+  fr: { fr: "Français", en: "Anglais", es: "Espagnol", it: "Italien", nl: "Néerlandais" },
+  en: { fr: "French", en: "English", es: "Spanish", it: "Italian", nl: "Dutch" },
+  ar: { fr: "الفرنسية", en: "الإنجليزية", es: "الإسبانية", it: "الإيطالية", nl: "الهولندية" },
+};
+const T = {
+  fr: { dir: "", kicker: "Les ouvrages", h1: "Les ouvrages du Shaykh", lede: "Dix livres écrits en arabe, traduits en français, anglais, espagnol, italien et néerlandais. Voici les titres disponibles, classés par langue.", title: "Les ouvrages — Shaykh Mohamed Faouzi Al Karkari", desc: "Les ouvrages du Shaykh Mohamed Faouzi Al Karkari, par langue de traduction.", n: (k) => `${k} titre${k > 1 ? "s" : ""}` },
+  en: { dir: "en/", kicker: "Books", h1: "The Shaykh's books", lede: "Ten books written in Arabic, translated into French, English, Spanish, Italian and Dutch. Here are the available titles, by language.", title: "Books — Shaykh Mohamed Faouzi Al Karkari", desc: "Books by Shaykh Mohamed Faouzi Al Karkari, by language of translation.", n: (k) => `${k} title${k > 1 ? "s" : ""}` },
+  ar: { dir: "ar/", kicker: "المؤلفات", h1: "مؤلفات الشيخ", lede: "عشرة كتب كُتبت بالعربية، ومترجمة إلى الفرنسية والإنجليزية والإسبانية والإيطالية والهولندية. هذه هي العناوين المتوفرة، مصنّفة حسب اللغة.", title: "المؤلفات — الشيخ محمد فوزي الكركري", desc: "مؤلفات الشيخ محمد فوزي الكركري حسب لغة الترجمة.", n: (k) => `${k} عنوانًا` },
+};
+for (const [code, t] of Object.entries(T)) {
+  const blocs = Object.entries(data).map(([l, titres]) => `      <section class="livres-langue" id="livres-${l}">
+        <h2 class="livres-titre" data-reveal><span>${NOMS[code][l]}</span><em>${t.n(titres.length)}</em></h2>
+        <ul class="livres">
+${titres.map((x, i) => `          <li class="livre" data-reveal><span class="livre-n">${String(i + 1).padStart(2, "0")}</span><span class="livre-t" lang="${l}">${esc(x).replace(/ ([?!:])/g, "\u00a0$1")}</span></li>`).join("\n")}
+        </ul>
+      </section>`).join("\n");
+  const html = `<!doctype html>
+<html lang="${code}"${code === "ar" ? ' dir="rtl"' : ""}>
+<head>
+  <!--@include head-->
+  <title>${t.title}</title>
+  <meta name="description" content="${esc(t.desc)}" />
+  <meta property="og:title" content="${esc(t.title)}" />
+  <meta property="og:description" content="${esc(t.desc)}" />
+  <meta property="og:image" content="/media/portrait-fes.webp" />
+</head>
+<body data-page="ouvrages">
+  <!--@include ui-->
+  <!--@include header-->
+  <!--@include menu-->
+  <div class="smooth" id="top">
+  <main>
+    <section class="actu-page ouvrages">
+      <div class="section-head">
+        <p class="kicker">${t.kicker}</p>
+        <h1 class="h2" data-split>${t.h1}</h1>
+        <p class="section-lede" data-reveal>${t.lede}</p>
+      </div>
+${blocs}
+    </section>
+  </main>
+  <!--@include footer-->
+  </div>
+</body>
+</html>
+`;
+  if (t.dir) fs.mkdirSync(t.dir, { recursive: true });
+  fs.writeFileSync(`${t.dir}ouvrages.html`, html);
+}
+console.log("ouvrages.html ×3");

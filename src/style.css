@@ -1355,3 +1355,15 @@ html[lang="ar"] .btn-glass, html[lang="ar"] .pill, html[lang="ar"] .hero-cta { f
 .asc-photo img { display: block; width: 100%; border-radius: 16px; }
 .asc-photo figcaption { margin-top: .8em; font-size: .88rem; line-height: 1.5; color: var(--muted); font-style: italic; }
 html[lang="ar"] .hadiths li { padding-left: 0; padding-right: 26px; border-left: 0; border-right: 1px solid var(--gold); }
+
+/* Page des ouvrages */
+.ouvrages .livres-langue { max-width: var(--max); margin: 0 auto clamp(48px, 7vw, 90px); padding: 0 var(--gutter); }
+.livres-titre { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin: 0 0 22px; padding-bottom: 14px; border-bottom: 1px solid var(--line); font-family: var(--serif); font-weight: 400; font-size: clamp(1.8rem, 3vw, 2.5rem); }
+.livres-titre em { font: 500 .78rem var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); font-style: normal; }
+.livres { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.livre { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 22px; min-height: 150px; padding: 20px 22px; border-radius: 14px; background: linear-gradient(160deg, #1d2a3d, #121a27); color: var(--ivory); border: 1px solid rgba(226, 187, 120, .22); overflow: hidden; }
+.livre::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: linear-gradient(180deg, #e2bb78, rgba(226, 187, 120, .2)); }
+.livre-n { font-family: var(--serif); font-style: italic; color: var(--gold); }
+.livre-t { font-family: var(--serif); font-size: 1.35rem; line-height: 1.2; }
+html[lang="ar"] .livre::before { inset: 0 0 0 auto; }
+html[lang="ar"] .livres-titre em { letter-spacing: 0; }
