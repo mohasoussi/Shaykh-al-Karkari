@@ -1324,11 +1324,24 @@ html, body { overflow-anchor: none; }
 .lang a:hover { background: rgba(255, 255, 255, 0.2); }
 .lang a[aria-current] { background: #f4efe6; color: var(--night); border-color: #f4efe6; font-weight: 700; }
 .lang--menu a[aria-current] { color: var(--night); }
-/* téléphone : les boutons passent sur une seconde ligne, sous le logo, les liens et le burger */
+/* téléphone : les trois boutons de langue flottent sous l'en-tête, à droite, hors de la barre */
 @media (max-width: 760px) {
-  .header-bar { position: relative; padding-bottom: 44px; }
-  .header-end .lang { position: absolute; left: 50%; bottom: 7px; transform: translateX(-50%); gap: 8px; }
-  .header-end .lang a { padding: 5px 12px; font-size: 0.74rem; min-width: 44px; }
+  .header-bar { position: relative; }
+  .header-end .lang { position: absolute; right: 4px; top: calc(100% + 8px); gap: 6px; }
+  .header-end .lang a { padding: 5px 10px; font-size: 0.72rem; min-width: 38px; background: rgba(8, 13, 24, 0.85); border-color: rgba(226, 187, 120, 0.4); }
+  .header-end .lang a[aria-current] { background: #f4efe6; }
+  html[lang="ar"] .header-end .lang { right: auto; left: 4px; }
+  .header-nav { font-size: 0.98rem !important; gap: clamp(8px, 2.6vw, 18px) !important; }
+}
+@media (max-width: 400px) { .header-nav { font-size: 0.9rem !important; gap: 8px !important; } }
+
+/* menu plein écran sur téléphone : défilable, textes plus compacts, rien n'est coupé */
+.menu-inner { overflow-y: auto; overscroll-behavior: contain; }
+@media (max-width: 760px) {
+  .menu-inner { grid-template-columns: 1fr; align-items: start; align-content: start; gap: 28px; padding-top: 120px; padding-bottom: 60px; }
+  .menu-links a { font-size: clamp(1.9rem, 4.6vh, 2.6rem); }
+  .menu-ar { font-size: 1.9rem; margin-bottom: 8px; }
+  .menu-aside { gap: 12px; }
 }
 
 html[lang="ar"] { --serif: "Amiri", "Cormorant Garamond", Georgia, serif; --sans: "Amiri", "Manrope", ui-sans-serif, system-ui, sans-serif; }
@@ -1388,3 +1401,5 @@ html[lang="ar"] .livres-titre em { letter-spacing: 0; }
 .btn-or:hover i { transform: translateX(6px); }
 html[lang="ar"] .btn-or { font-size: 1.05rem; }
 html[lang="ar"] .btn-or:hover i { transform: translateX(-6px); }
+.menu-aside .btn-or { margin-bottom: 8px; }
+@media (max-width: 375px) { .header-nav { font-size: 0.84rem !important; gap: 6px !important; } .brand-logo { --d: 60px; } }
