@@ -46,13 +46,16 @@ Les animations sont désactivées si l'utilisateur a activé « réduire les ani
 
 ## Déploiement
 
-## Mise en ligne sur Cloudflare Pages
+## Mise en ligne sur Cloudflare (Workers & Pages)
 
-1. Cloudflare → **Workers & Pages** → **Create** → **Pages** → **Connect to Git** → choisir le dépôt.
-2. Réglages de build : **Framework preset** : aucun · **Build command** : `npm run build` · **Build output directory** : `dist` (la version de Node, 22, est lue dans `.node-version`).
-3. Formulaire « Être informé » : **Storage & databases** → **KV** → créer un espace `inscriptions`. Puis dans le projet Pages : **Settings** → **Bindings** → **Add** → **KV namespace** → nom de variable `INSCRIPTIONS`. Ajouter aussi, dans **Variables and Secrets**, un secret `ADMIN_TOKEN` (le mot de passe d'administration). Relancer un déploiement.
-4. Les inscriptions se consultent sur `/#admin` (mot de passe `ADMIN_TOKEN`) avec export CSV.
-5. Chaque enregistrement sur GitHub (dont ceux de la tâche automatique) republie le site tout seul.
+Le fichier `wrangler.jsonc` décrit tout : le site (dossier `dist`), le Worker `worker/index.js` (adresses `/api/inscription` et `/api/inscriptions`) et l'espace KV `INSCRIPTIONS`.
+
+1. Cloudflare → **Workers & Pages** → **Create** → **Import a repository** → choisir le dépôt.
+2. **Build command** : `npm run build` · **Deploy command** : `npx wrangler deploy` · racine : `/`. (Node 22 est lu dans `.node-version`.)
+3. Au premier déploiement, Cloudflare crée l'espace KV `INSCRIPTIONS` tout seul. Sinon : **Storage & databases → KV** → créer un espace, puis recopier son identifiant dans `wrangler.jsonc` (`"id": "…"`).
+4. **Settings → Variables and Secrets** : ajouter un secret `ADMIN_TOKEN` (le mot de passe d'administration).
+5. Les inscriptions se consultent sur `/#admin` (mot de passe `ADMIN_TOKEN`) avec export CSV.
+6. Chaque enregistrement sur GitHub (dont ceux de la tâche automatique) republie le site tout seul.
 
 ## Pages du site
 
