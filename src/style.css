@@ -1378,3 +1378,13 @@ html[lang="ar"] .hadiths li { padding-left: 0; padding-right: 26px; border-left:
 .livre-t { font-family: var(--serif); font-size: 1.35rem; line-height: 1.2; }
 html[lang="ar"] .livre::before { inset: 0 0 0 auto; }
 html[lang="ar"] .livres-titre em { letter-spacing: 0; }
+
+/* Menu : plus de mot « Menu » (les deux traits suffisent) ; « Prochaines rencontres » en bouton doré plein */
+.menu-btn-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.menu-btn { padding: 10px 8px; }
+.btn-or { display: inline-flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px 24px; border-radius: 999px; background: #e2bb78; color: #121a27 !important; font: 600 .82rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; box-shadow: 0 10px 30px rgba(226, 187, 120, .25); transition: background .3s, transform .4s var(--ease), box-shadow .3s; }
+.btn-or:hover { background: #f1deb6; color: #121a27 !important; transform: translateY(-2px); box-shadow: 0 14px 36px rgba(226, 187, 120, .35); }
+.btn-or i { font-style: normal; transition: transform .4s var(--ease); }
+.btn-or:hover i { transform: translateX(6px); }
+html[lang="ar"] .btn-or { font-size: 1.05rem; }
+html[lang="ar"] .btn-or:hover i { transform: translateX(-6px); }
