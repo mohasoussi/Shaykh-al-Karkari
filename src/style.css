@@ -1342,3 +1342,16 @@ html[lang="ar"] .lang--menu a { margin-right: 0; margin-left: 6px; }
 html[lang="ar"] .kicker, html[lang="ar"] .talk-place, html[lang="ar"] .events-label, html[lang="ar"] .eco-k { font-size: 1rem; }
 html[lang="ar"] .hero-scroll span, html[lang="ar"] .maillon-rang, html[lang="ar"] .lang a { font-size: 0.95rem; }
 html[lang="ar"] .btn-glass, html[lang="ar"] .pill, html[lang="ar"] .hero-cta { font-size: 1.05rem; }
+
+/* Le Shaykh : quatre cartes en deux rangées */
+@media (min-width: 761px) { .hub-cards:has(> :nth-child(4)) { grid-template-columns: repeat(2, 1fr); } .hub-cards:has(> :nth-child(4)) .hub-card { min-height: 460px; grid-column: auto !important; } }
+
+/* Article « Son ascendance » */
+.ascendance .section-head { max-width: 860px; margin-left: auto; margin-right: auto; padding: 0 var(--gutter); }
+.ascendance .actu-corps p { text-align: left; }
+.hadiths { list-style: none; margin: 1.1em 0 1.4em; padding: 0; display: grid; gap: .7em; }
+.hadiths li { position: relative; padding: .2em 0 .2em 26px; border-left: 1px solid var(--gold); font-family: var(--serif); font-style: italic; font-size: 1.25rem; line-height: 1.45; color: var(--ink); }
+.asc-photo { margin: 2.4em 0; }
+.asc-photo img { display: block; width: 100%; border-radius: 16px; }
+.asc-photo figcaption { margin-top: .8em; font-size: .88rem; line-height: 1.5; color: var(--muted); font-style: italic; }
+html[lang="ar"] .hadiths li { padding-left: 0; padding-right: 26px; border-left: 0; border-right: 1px solid var(--gold); }

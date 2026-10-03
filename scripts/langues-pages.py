@@ -25,13 +25,16 @@ HUB = [
  ("Le Shaykh — Shaykh Mohamed Faouzi Al Karkari", "The Shaykh — Shaykh Mohamed Faouzi Al Karkari", "الشيخ — الشيخ محمد فوزي الكركري"),
  ('<p class="kicker">Le Shaykh</p>', '<p class="kicker">The Shaykh</p>', '<p class="kicker">الشيخ</p>'),
  ("<h1 class=\"h2\" data-split>Shaykh Mohamed Faouzi Al Karkari</h1>", "<h1 class=\"h2\" data-split>Shaykh Mohamed Faouzi Al Karkari</h1>", "<h1 class=\"h2\" data-split>الشيخ محمد فوزي الكركري</h1>"),
- ("Guide spirituel de la Confrérie Soufie Karkariya. Trois portes pour le connaître.", "Spiritual guide of the Karkariya Sufi Order. Three doors to get to know him.", "المرشد الروحي للطريقة الصوفية الكركرية. ثلاثة أبواب للتعرّف عليه."),
+ ("Guide spirituel de la Confrérie Soufie Karkariya. Quatre portes pour le connaître.", "Spiritual guide of the Karkariya Sufi Order. Four doors to get to know him.", "المرشد الروحي للطريقة الصوفية الكركرية. أربعة أبواب للتعرّف عليه."),
  ("<h2>Qui est le Shaykh&nbsp;?</h2>", "<h2>Who is the Shaykh?</h2>", "<h2>من هو الشيخ؟</h2>"),
  ("Son parcours, ses recherches, sa biographie.", "His journey, his research, his biography.", "مسيرته وأبحاثه وسيرته."),
  ("<h2>Sa chaîne de transmission</h2>", "<h2>His chain of transmission</h2>", "<h2>سلسلة إسناده</h2>"),
  ("La silsila, et les maîtres qui l'ont précédé.", "The silsila, and the masters who came before him.", "السلسلة والمشايخ الذين سبقوه."),
  ("<h2>Sa lignée chérifienne</h2>", "<h2>His noble lineage</h2>", "<h2>نسبه الشريف</h2>"),
  ("Une noble famille, jusqu'au Prophète ﷺ.", "A noble family, all the way back to the Prophet ﷺ.", "أسرة شريفة تمتدّ إلى النبي ﷺ."),
+ ("<h2>Son ascendance</h2>", "<h2>His ancestry</h2>", "<h2>أصوله وأجداده</h2>"),
+ ("Du Prophète ﷺ aux Idrissides du Rif : l'histoire de sa lignée.", "From the Prophet ﷺ to the Idrisids of the Rif: the story of his lineage (article in French).", "من النبي ﷺ إلى الأدارسة في الريف: قصة نسبه (المقال بالفرنسية)."),
+ ('href="ascendance-prophetique.html"', 'href="../ascendance-prophetique.html"', 'href="../ascendance-prophetique.html"'),
  ('<span class="hub-go">Découvrir <i>→</i></span>', '<span class="hub-go">Discover <i>→</i></span>', '<span class="hub-go">اكتشف <i>←</i></span>'),
 ]
 
