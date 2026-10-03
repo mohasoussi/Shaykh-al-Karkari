@@ -1318,7 +1318,18 @@ html, body { overflow-anchor: none; }
 .lang a[aria-current] { opacity: 1; background: rgba(255, 255, 255, 0.16); }
 .lang--menu { margin: 0 0 18px; font-size: 0.85rem; }
 .lang--menu a { padding: 10px 14px; border: 1px solid rgba(255, 255, 255, 0.2); margin-right: 6px; }
-@media (max-width: 979px) { .header-end .lang { display: none; } }
+/* trois boutons de langue toujours visibles */
+.lang { gap: 6px; }
+.lang a { min-width: 40px; padding: 8px 10px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.32); opacity: 1; background: rgba(255, 255, 255, 0.06); }
+.lang a:hover { background: rgba(255, 255, 255, 0.2); }
+.lang a[aria-current] { background: #f4efe6; color: var(--night); border-color: #f4efe6; font-weight: 700; }
+.lang--menu a[aria-current] { color: var(--night); }
+/* téléphone : les boutons passent sur une seconde ligne, sous le logo, les liens et le burger */
+@media (max-width: 760px) {
+  .header-bar { position: relative; padding-bottom: 44px; }
+  .header-end .lang { position: absolute; left: 50%; bottom: 7px; transform: translateX(-50%); gap: 8px; }
+  .header-end .lang a { padding: 5px 12px; font-size: 0.74rem; min-width: 44px; }
+}
 
 html[lang="ar"] { --serif: "Amiri", "Cormorant Garamond", Georgia, serif; --sans: "Amiri", "Manrope", ui-sans-serif, system-ui, sans-serif; }
 html[lang="ar"] body { line-height: 1.85; }
