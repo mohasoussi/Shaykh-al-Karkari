@@ -1403,4 +1403,4 @@ html[lang="ar"] .btn-or { font-size: 1.05rem; }
 html[lang="ar"] .btn-or:hover i { transform: translateX(-6px); }
 .menu-aside .btn-or { margin-bottom: 8px; }
 @media (max-width: 375px) { .header-nav { font-size: 0.84rem !important; gap: 6px !important; } .brand-logo { --d: 60px; } }
-@media (max-width: 760px) { .lang--menu { display: none; } .menu-inner { padding-top: 132px; } }
+@media (max-width: 760px) { .menu-inner { padding-top: 120px; } }
