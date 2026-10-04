@@ -29,10 +29,10 @@ const V = [
     place: { fr: "Université de Chicago · États-Unis — 26 mars 2025", en: "University of Chicago · United States — 26 March 2025", ar: "جامعة شيكاغو · الولايات المتحدة — 26 مارس 2025" },
     t: { fr: "Phénomènes extraordinaires, dévoilement et monde imaginal", en: "Extraordinary Experiences, Unveiling and the Imaginal", ar: "التجارب الخارقة والكشف وعالم المثال" },
     d: { fr: "Le Martin Marty Center reçoit le Pr Jeffrey Kripal, spécialiste des religions comparées, et le Shaykh : la nature des expériences extraordinaires, du dévoilement visionnaire, du monde intermédiaire de l'Imaginal et de la Lumière, centrale dans la pensée soufie.", en: "The Martin Marty Center hosted Professor Jeffrey Kripal, a scholar of comparative religion, in conversation with the Shaykh about extraordinary experiences, visionary unveiling, the in-between realm of the Imaginal, and the Light central to Sufi thought.", ar: "استضاف مركز مارتن مارتي الأستاذ جيفري كريبال، المتخصص في الأديان المقارنة، في حوار مع الشيخ حول التجارب الخارقة والكشف الرؤيوي وعالم المثال والنور في الفكر الصوفي." } },
-  { id: "yale-1", yt: "https://www.youtube.com/watch?v=mXIJ7_x326k", img: "",
+  { id: "yale-1", yt: "https://www.youtube.com/playlist?list=PLnRed8_Im6qRnuymvPprVz5zrOrHbQvRi", thumb: "mXIJ7_x326k", img: "",
     place: { fr: "Université Yale · États-Unis — 19 mai 2025", en: "Yale University · United States — 19 May 2025", ar: "جامعة ييل · الولايات المتحدة — 19 مايو 2025" },
     t: { fr: "Conférence à l'Université Yale", en: "Lecture at Yale University", ar: "محاضرة في جامعة ييل" },
-    d: { fr: "Conférence donnée à l'Université Yale (première partie ; la conférence est répartie en sept vidéos sur YouTube).", en: "A lecture given at Yale University (part one; the lecture is split into seven videos on YouTube).", ar: "محاضرة ألقاها الشيخ في جامعة ييل (الجزء الأول؛ المحاضرة مقسّمة إلى سبعة مقاطع على يوتيوب)." } },
+    d: { fr: "Conférence donnée à l'Université Yale, répartie en sept parties : le lecteur enchaîne automatiquement toute la série.", en: "A lecture given at Yale University, in seven parts: the player plays the whole series in sequence.", ar: "محاضرة ألقاها الشيخ في جامعة ييل، مقسّمة إلى سبعة أجزاء يتابعها المشغّل تلقائيًا." } },
   { id: "yale-2", yt: "https://www.youtube.com/watch?v=momk8eZDRvg", img: "",
     place: { fr: "Université Yale · États-Unis", en: "Yale University · United States", ar: "جامعة ييل · الولايات المتحدة" },
     t: { fr: "Questions-réponses à Yale : la place du soi dans la quête du savoir", en: "Q&A at Yale: the place of the self in the pursuit of knowledge", ar: "أسئلة وأجوبة في ييل: موضع النفس في طلب العلم" },
@@ -56,14 +56,14 @@ const V = [
 ];
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-const ytId = (u) => (u.match(/v=([\w-]{11})/) || [])[1];
+const ytId = (u, v) => v.thumb || (u.match(/v=([\w-]{11})/) || [])[1];
 const PLAY = '<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>';
 
 for (const [code, T] of Object.entries(L)) {
   const dir = T.dir;
   const pre = dir ? "../" : "";
   const cards = V.map((v) => {
-    const id = ytId(v.yt);
+    const id = ytId(v.yt, v);
     const img = v.img ? `${pre}media/${v.img}.webp` : `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
     return `      <article class="vcard" id="${v.id}" data-youtube="${esc(v.yt)}" data-reveal>
         <div class="vframe">

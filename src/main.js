@@ -588,12 +588,12 @@ function videos() {
   $$(".vcard").forEach((card) => {
     const raw = (card.dataset.youtube || "").trim();
     if (!raw) return;
-    const id = (raw.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/) || [, raw])[1];
+    const liste = (raw.match(/[?&]list=([\w-]+)/) || [])[1];
+    const id = (raw.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/) || [])[1] || (liste ? "videoseries" : raw);
     const btn = $(".vplay", card);
     const lien = $(".vlink", card);
     btn.disabled = false;
     $(".vstatus", card)?.remove();
-    const liste = (raw.match(/[?&]list=([\w-]+)/) || [])[1];
     lien.hidden = false;
     btn.addEventListener("click", () => {
       const f = document.createElement("iframe");
