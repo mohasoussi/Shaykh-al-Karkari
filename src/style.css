@@ -1535,3 +1535,10 @@ html[lang="ar"] .lb-close { right: auto; left: 18px; }
 .album-art { margin: 14px 0 0; }
 .album-art a { text-decoration: underline; text-underline-offset: 3px; color: var(--ink); }
 html[lang="ar"] .album-n { letter-spacing: 0; font-size: .9rem; }
+
+.presse-liste{list-style:none;margin:0 auto 3rem;padding:0;max-width:62rem;display:grid;gap:.8rem}
+.presse-liste a{display:grid;gap:.25rem;padding:1.1rem 1.3rem;border:1px solid rgba(201,162,75,.35);border-radius:14px;color:inherit;text-decoration:none;transition:border-color .3s,transform .3s}
+.presse-liste a:hover{border-color:var(--or,#c9a24b);translate:0 -3px}
+.presse-liste strong{color:var(--or,#c9a24b);letter-spacing:.06em;text-transform:uppercase;font-size:.85rem}
+.presse-liste span{font-size:1rem;line-height:1.4}
+.presse-liste em{font-style:normal;opacity:.7;font-size:.85rem}
