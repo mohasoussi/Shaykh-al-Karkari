@@ -1497,3 +1497,24 @@ html[lang="ar"] .header-nav { font-size: clamp(1.3rem, 1.7vw, 1.6rem); }
 }
 @media (min-width: 980px) and (max-width: 1279px) { .brand-name { display: none; } }
 html[lang="ar"] .header-nav { font-size: clamp(1.75rem, 2.2vw, 2.35rem); }
+
+/* Page Média : cartes d'accès + galerie */
+.media-page .media-cards { grid-template-columns: repeat(2, 1fr) !important; }
+.media-page .hub-card { min-height: clamp(280px, 38vw, 420px) !important; }
+.media-gal-head { margin-top: clamp(60px, 9vw, 120px); }
+.galerie { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); columns: 3 260px; column-gap: 18px; }
+.galerie-item { display: block; margin: 0 0 18px; border-radius: 14px; overflow: hidden; break-inside: avoid; background: #1d2a3d; cursor: zoom-in; }
+.galerie-item img { display: block; width: 100%; height: auto; transition: transform 1s var(--ease), filter .6s; }
+.galerie-item:hover img { transform: scale(1.05); filter: brightness(1.08); }
+@media (max-width: 760px) { .media-page .media-cards { grid-template-columns: 1fr !important; } .galerie { columns: 2 150px; column-gap: 10px; } .galerie-item { margin-bottom: 10px; border-radius: 10px; } }
+.lightbox { position: fixed; inset: 0; z-index: 130; display: grid; place-items: center; background: rgba(6, 9, 16, .94); opacity: 0; transition: opacity .25s; }
+.lightbox[hidden] { display: none; }
+.lightbox.is-open { opacity: 1; }
+.lightbox img { max-width: min(92vw, 1100px); max-height: 88vh; border-radius: 6px; box-shadow: 0 30px 90px rgba(0, 0, 0, .6); }
+.lb-close, .lb-nav { position: absolute; color: #f4efe6; background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .25); border-radius: 50%; width: 52px; height: 52px; font-size: 2rem; line-height: 1; cursor: pointer; transition: background .3s; }
+.lb-close:hover, .lb-nav:hover { background: rgba(255, 255, 255, .25); }
+.lb-close { top: 18px; right: 18px; }
+.lb-nav { top: 50%; transform: translateY(-50%); }
+.lb-prev { left: 18px; } .lb-next { right: 18px; }
+html[lang="ar"] .lb-close { right: auto; left: 18px; }
+@media (max-width: 600px) { .lb-nav { top: auto; bottom: 22px; transform: none; } .lb-prev { left: 22px; } .lb-next { right: 22px; } }

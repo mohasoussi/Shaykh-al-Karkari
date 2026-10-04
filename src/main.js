@@ -607,6 +607,44 @@ function videos() {
   });
 }
 
+
+/* ---------------------------------------------------------
+   Galerie photos : visionneuse plein écran (flèches, Échap, balayage)
+   --------------------------------------------------------- */
+function galerie() {
+  const g = $(".galerie");
+  if (!g) return;
+  const liens = $$("a", g);
+  let i = 0;
+  const vue = document.createElement("div");
+  vue.className = "lightbox";
+  vue.hidden = true;
+  vue.innerHTML = `<button class="lb-close" type="button" aria-label="${g.dataset.close}">×</button><button class="lb-nav lb-prev" type="button" aria-label="${g.dataset.prev}">‹</button><img alt="" /><button class="lb-nav lb-next" type="button" aria-label="${g.dataset.next}">›</button>`;
+  document.body.appendChild(vue);
+  const img = $("img", vue);
+  const montrer = (n) => {
+    i = (n + liens.length) % liens.length;
+    img.src = liens[i].href;
+    img.alt = $("img", liens[i])?.alt || "";
+  };
+  const ouvrir = (n) => { montrer(n); vue.hidden = false; document.body.classList.add("modal-open"); requestAnimationFrame(() => vue.classList.add("is-open")); };
+  const fermer = () => { vue.classList.remove("is-open"); document.body.classList.remove("modal-open"); setTimeout(() => (vue.hidden = true), 250); };
+  liens.forEach((a, n) => a.addEventListener("click", (e) => { e.preventDefault(); ouvrir(n); }));
+  $(".lb-close", vue).addEventListener("click", fermer);
+  $(".lb-prev", vue).addEventListener("click", () => montrer(i - 1));
+  $(".lb-next", vue).addEventListener("click", () => montrer(i + 1));
+  vue.addEventListener("click", (e) => { if (e.target === vue) fermer(); });
+  addEventListener("keydown", (e) => {
+    if (vue.hidden) return;
+    if (e.key === "Escape") fermer();
+    if (e.key === "ArrowLeft") montrer(i - (document.documentElement.dir === "rtl" ? -1 : 1));
+    if (e.key === "ArrowRight") montrer(i + (document.documentElement.dir === "rtl" ? -1 : 1));
+  });
+  let x0 = null;
+  vue.addEventListener("touchstart", (e) => (x0 = e.touches[0].clientX), { passive: true });
+  vue.addEventListener("touchend", (e) => { if (x0 === null) return; const d = e.changedTouches[0].clientX - x0; if (Math.abs(d) > 50) montrer(i + (d < 0 ? 1 : -1)); x0 = null; });
+}
+
 /* ---------------------------------------------------------
    Menu plein écran (carreaux de la muraqqa'a)
    --------------------------------------------------------- */
@@ -797,6 +835,7 @@ ready.then(async () => {
   articles();
   lumiere();
   videos();
+  galerie();
   actualites();
   silsila();
   cursor();
