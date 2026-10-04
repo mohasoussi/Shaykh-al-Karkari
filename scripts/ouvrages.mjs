@@ -10,15 +10,21 @@ const NOMS = {
   ar: { fr: "الفرنسية", en: "الإنجليزية", es: "الإسبانية", it: "الإيطالية", nl: "الهولندية" },
 };
 const T = {
-  fr: { dir: "", kicker: "Les ouvrages", h1: "Les ouvrages du Shaykh", lede: "Six livres écrits en arabe, traduits en français, anglais, espagnol, italien et néerlandais, et d'autres ouvrages sur l'enseignement du Shaykh : voici les 49 titres disponibles, classés par langue.", title: "Les ouvrages — Shaykh Mohamed Faouzi Al Karkari", desc: "Les ouvrages du Shaykh Mohamed Faouzi Al Karkari, par langue de traduction.", n: (k) => `${k} titre${k > 1 ? "s" : ""}` },
-  en: { dir: "en/", kicker: "Books", h1: "The Shaykh's books", lede: "Six books written in Arabic, translated into French, English, Spanish, Italian and Dutch, and other works on the Shaykh's teaching: here are the 49 titles available, by language.", title: "Books — Shaykh Mohamed Faouzi Al Karkari", desc: "Books by Shaykh Mohamed Faouzi Al Karkari, by language of translation.", n: (k) => `${k} title${k > 1 ? "s" : ""}` },
-  ar: { dir: "ar/", kicker: "المؤلفات", h1: "مؤلفات الشيخ", lede: "ستة كتب كُتبت بالعربية، ومترجمة إلى الفرنسية والإنجليزية والإسبانية والإيطالية والهولندية، ومؤلفات أخرى حول تعاليم الشيخ: هذه هي العناوين التسعة والأربعون المتوفرة، مصنّفة حسب اللغة.", title: "المؤلفات — الشيخ محمد فوزي الكركري", desc: "مؤلفات الشيخ محمد فوزي الكركري حسب لغة الترجمة.", n: (k) => `${k} عنوانًا` },
+  fr: { dir: "", kicker: "Les ouvrages", h1: "Les ouvrages du Shaykh", lede: "Six livres écrits en arabe, traduits en français, anglais, espagnol, italien et néerlandais, et d'autres ouvrages sur l'enseignement du Shaykh : voici les 49 titres disponibles, classés par langue.", title: "Les ouvrages — Shaykh Mohamed Faouzi Al Karkari", desc: "Les ouvrages du Shaykh Mohamed Faouzi Al Karkari, par langue de traduction.", voir: "Voir le livre", n: (k) => `${k} titre${k > 1 ? "s" : ""}` },
+  en: { dir: "en/", kicker: "Books", h1: "The Shaykh's books", lede: "Six books written in Arabic, translated into French, English, Spanish, Italian and Dutch, and other works on the Shaykh's teaching: here are the 49 titles available, by language.", title: "Books — Shaykh Mohamed Faouzi Al Karkari", desc: "Books by Shaykh Mohamed Faouzi Al Karkari, by language of translation.", voir: "View the book", n: (k) => `${k} title${k > 1 ? "s" : ""}` },
+  ar: { dir: "ar/", kicker: "المؤلفات", h1: "مؤلفات الشيخ", lede: "ستة كتب كُتبت بالعربية، ومترجمة إلى الفرنسية والإنجليزية والإسبانية والإيطالية والهولندية، ومؤلفات أخرى حول تعاليم الشيخ: هذه هي العناوين التسعة والأربعون المتوفرة، مصنّفة حسب اللغة.", title: "المؤلفات — الشيخ محمد فوزي الكركري", desc: "مؤلفات الشيخ محمد فوزي الكركري حسب لغة الترجمة.", voir: "عرض الكتاب", n: (k) => `${k} عنوانًا` },
 };
 for (const [code, t] of Object.entries(T)) {
+  const pre = t.dir ? "../" : "";
   const blocs = Object.entries(data).map(([l, titres]) => `      <section class="livres-langue" id="livres-${l}">
         <h2 class="livres-titre" data-reveal><span>${NOMS[code][l]}</span><em>${t.n(titres.length)}</em></h2>
         <ul class="livres">
-${titres.map((x, i) => `          <li class="livre" data-reveal><span class="livre-n">${String(i + 1).padStart(2, "0")}</span><span class="livre-t" lang="${l}">${esc(x).replace(/ ([?!:])/g, "\u00a0$1")}</span></li>`).join("\n")}
+${titres.map((x, i) => {
+  const titre = esc(x.t).replace(/ ([?!:])/g, "\u00a0$1");
+  const cover = x.img ? `<img src="${pre}${x.img}" alt="" loading="lazy" decoding="async" />` : `<span class="livre-n">${String(i + 1).padStart(2, "0")}</span>`;
+  const lien = x.url ? `<a class="livre-lien" href="${esc(x.url)}" target="_blank" rel="noopener" aria-label="${esc(x.t)}">` : "";
+  return `          <li class="livre${x.img ? " livre--couv" : ""}" data-reveal>${lien}<span class="livre-c">${cover}</span><span class="livre-t" lang="${l}">${titre}</span>${lien ? `<span class="livre-go">${t.voir} <i>${code === "ar" ? "↖" : "↗"}</i></span></a>` : ""}</li>`;
+}).join("\n")}
         </ul>
       </section>`).join("\n");
   const html = `<!doctype html>

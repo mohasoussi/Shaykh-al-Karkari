@@ -1,20 +1,394 @@
 {
-  "fr": [
-    "Zamzam de la connaissance", "Verset de l’ouverture spirituelle", "Un regard sur la noble descendance", "Reflet des sagesses lumineuses",
-    "Recueil des réceptacles des âmes", "Qui es-tu pour Le connaître ?", "Par l’Étoile lorsqu’elle descend", "Nour al-Quran — Lumière du Coran",
-    "Nour al-Hikam — Lumière des Sagesses", "Ne fréquente pas les disciples !", "Libère-toi des apparences, reviens à l’essentiel", "Les Voies d’Ascension Lumineuses",
-    "Les Sentiers de la Foi à la lumière du Wird", "Les fondements de la Tariqa Karkariya", "Les convenances du compagnonnage (1)", "Les convenances du compagnonnage (2)",
-    "Les convenances du compagnonnage (3)", "Les Ascensions Lumineuses", "Lecture du Lâm al-Qabd par le Hâ (Tome 1)", "Lecture du Lâm al-Qabd par le Hâ (Tome 2)",
-    "Lecture du Lâm al-Qabd par le Hâ (Tome 3)", "Le paradoxe du destin et du libre arbitre en Islam", "Le Livre du Secret", "La Voie Blanche",
-    "La Lumière selon les maîtres soufis", "Introduction au lâm al-qabd", "Épître Lunaire", "Des Abysses du Confinement à la Lumière de l’Accomplissement",
-    "Connaître Allah : ton unique raison d’être", "Avant-propos des Lumières"
-  ],
-  "en": [
-    "Chalice of Love", "Understanding the Paradox of Destiny and Free Will in Islam", "The Muraqa'a", "The Gates of Love", "Guided By The Divine Light (Vol. I)",
-    "Guided By The Divine Light (Vol. II)", "The Friday Prayers", "Zamzam of Spiritual Knowledge", "Candles on the Path", "The Sufi Path of Light",
-    "Wisdoms of the Heart", "Introduction to Islamic Metaphysics", "The Foundations of the Karkariya Order", "Sufism Revived", "In the Footsteps of Moses"
-  ],
-  "es": ["Zamzam del Conocimiento", "Los Fundamentos de la Tariqa Karkariya"],
-  "it": ["Insegnamento Contemporaneo Sufi"],
-  "nl": ["De fundamenten van de Tariqa Karkariya"]
+ "fr": [
+  {
+   "t": "Zamzam de la connaissance",
+   "img": "livres/zamzam-de-la-connaissance.webp",
+   "url": "https://les7lectures.com/zamzam-de-la-connaissance/",
+   "src": "Zamzam-de-la-connaissance-cov.jpg",
+   "w": 520,
+   "h": 828
+  },
+  {
+   "t": "Verset de l’ouverture spirituelle",
+   "img": "livres/verset-de-l-ouverture-spirituelle.webp",
+   "url": "https://les7lectures.com/verset-de-louverture-spirituelle/",
+   "src": "Verset-de-louverture-spirituelle-MohamedFaouzi-Al-Karkari.jpg",
+   "w": 500,
+   "h": 817
+  },
+  {
+   "t": "Un regard sur la noble descendance",
+   "img": "livres/un-regard-sur-la-noble-descendance.webp",
+   "url": "https://les7lectures.com/un-regard-sur-la-noble-descendance/",
+   "src": "Un-regard-sur-la-noble-descendance.jpg",
+   "w": 520,
+   "h": 818
+  },
+  {
+   "t": "Reflet des sagesses lumineuses",
+   "img": "livres/reflet-des-sagesses-lumineuses.webp",
+   "url": "https://les7lectures.com/reflet-des-sagesses-lumineuses/",
+   "src": "Reflet-des-Sagesses-Lumineuses-Mehdi-Badeche.jpg",
+   "w": 500,
+   "h": 817
+  },
+  {
+   "t": "Recueil des réceptacles des âmes",
+   "img": "livres/recueil-des-receptacles-des-ames.webp",
+   "url": "https://les7lectures.com/recueil-des-receptacles-des-ames/",
+   "src": "Recueil-des-receptacles-des-ames.jpg",
+   "w": 500,
+   "h": 817
+  },
+  {
+   "t": "Qui es-tu pour Le connaître ?",
+   "img": "livres/qui-es-tu-pour-le-connaitre.webp",
+   "url": "https://les7lectures.com/qui-es-tu-pour-le-connaitre/",
+   "src": "Qui-es-tu-pour-Le-connaitre-cov.jpg",
+   "w": 520,
+   "h": 820
+  },
+  {
+   "t": "Par l’Étoile lorsqu’elle descend",
+   "img": "livres/par-l-etoile-lorsqu-elle-descend.webp",
+   "url": "https://les7lectures.com/par-letoile-lorsquelle-descend/",
+   "src": "Par-letoile-lorsquelle-descend-Mohamed-Faouzi-Al-Karkari.jpg",
+   "w": 500,
+   "h": 817
+  },
+  {
+   "t": "Nour al-Quran — Lumière du Coran",
+   "img": "livres/nour-al-quran-lumiere-du-coran.webp",
+   "url": "https://les7lectures.com/nour-al-quran-lumiere-du-coran/",
+   "src": "Nour-al-Quran-Lumi%C3%A8re-du-Coran-Mohamed-Faouzi-Al-Karkari.jpg",
+   "w": 500,
+   "h": 817
+  },
+  {
+   "t": "Nour al-Hikam — Lumière des Sagesses",
+   "img": "livres/nour-al-hikam-lumiere-des-sagesses.webp",
+   "url": "https://les7lectures.com/nour-al-hikam-lumiere-des-sagesses/",
+   "src": "Nour-al-Hikam-Lumi%C3%A8re-des-sagesses-Mohamed-Faouzi-Al-Karkari.jpg"
+  },
+  {
+   "t": "Ne fréquente pas les disciples !",
+   "img": "livres/ne-frequente-pas-les-disciples.webp",
+   "url": "https://les7lectures.com/ne-frequente-pas-les-disciples/",
+   "src": "Ne-frequente-pas-les-disciples-Tafsir-Sourate-Yusuf.jpg",
+   "w": 520,
+   "h": 820
+  },
+  {
+   "t": "Libère-toi des apparences, reviens à l’essentiel",
+   "img": "livres/libere-toi-des-apparences-reviens-a-l-essentiel.webp",
+   "url": "https://les7lectures.com/libere-toi-des-apparences-reviens-a-lessentiel/",
+   "src": "Libere-toi-des-apparences-reviens-a-lessentiel.jpg",
+   "w": 520,
+   "h": 820
+  },
+  {
+   "t": "Les Voies d’Ascension Lumineuses",
+   "img": "livres/les-voies-d-ascension-lumineuses.webp",
+   "url": "https://les7lectures.com/les-voies-dascension-lumineuses/",
+   "src": "Les-voies-dascensions-lumineuses.jpg",
+   "w": 520,
+   "h": 738
+  },
+  {
+   "t": "Les Sentiers de la Foi à la lumière du Wird",
+   "img": "livres/les-sentiers-de-la-foi-a-la-lumiere-du-wird.webp",
+   "url": "https://les7lectures.com/les-sentiers-de-la-foi-a-la-lumiere-du-wird/",
+   "src": "Les-Sentiers-de-la-Foi-a-la-lumiere-du-Wird-Les7Lectures.jpg",
+   "w": 520,
+   "h": 818
+  },
+  {
+   "t": "Les fondements de la Tariqa Karkariya",
+   "img": "livres/les-fondements-de-la-tariqa-karkariya.webp",
+   "url": "https://les7lectures.com/les-fondements-de-la-tariqa-karkariya/",
+   "src": "Les-fondements-de-la-Tariqa-Karkariya-Mohamed-Faouzi-Al-Karkari.jpg",
+   "w": 500,
+   "h": 817
+  },
+  {
+   "t": "Les convenances du compagnonnage (1)",
+   "img": "livres/les-convenances-du-compagnonnage-1.webp",
+   "url": "https://les7lectures.com/les-convenances-du-compagnonnage/",
+   "src": "Les-convenances-du-compagnonnage-tome-1.jpg"
+  },
+  {
+   "t": "Les convenances du compagnonnage (2)",
+   "img": "livres/les-convenances-du-compagnonnage-2.webp",
+   "url": "https://les7lectures.com/les-convenances-du-compagnonnage-2/",
+   "src": "Les-convenances-du-compagnonnage-tome-2.jpg",
+   "w": 520,
+   "h": 829
+  },
+  {
+   "t": "Les convenances du compagnonnage (3)",
+   "img": "livres/les-convenances-du-compagnonnage-3.webp",
+   "url": "https://les7lectures.com/les-convenances-du-compagnonnage-3/",
+   "src": "Les-convenances-du-compagnonnages-tome-3.jpg",
+   "w": 520,
+   "h": 829
+  },
+  {
+   "t": "Les Ascensions Lumineuses",
+   "img": "livres/les-ascensions-lumineuses.webp",
+   "url": "https://les7lectures.com/les-ascensions-lumineuses/",
+   "src": "Les-Ascensions-Lumineuses.jpg",
+   "w": 520,
+   "h": 738
+  },
+  {
+   "t": "Lecture du Lâm al-Qabd par le Hâ (Tome 1)",
+   "img": "livres/lecture-du-lam-al-qabd-par-le-ha-tome-1.webp",
+   "url": "https://les7lectures.com/lecture-du-lam-al-qabd-par-le-ha-tome-1/",
+   "src": "Lecture-du-Lam-al-Qabd-par-le-Ha-Tome-1.jpg",
+   "w": 520,
+   "h": 780
+  },
+  {
+   "t": "Lecture du Lâm al-Qabd par le Hâ (Tome 2)",
+   "img": "livres/lecture-du-lam-al-qabd-par-le-ha-tome-2.webp",
+   "url": "https://les7lectures.com/lecture-du-lam-al-qabd-par-le-ha-tome-2/",
+   "src": "Lecture-du-Lam-al-Qabd-par-le-Ha-Tome-2.jpg",
+   "w": 520,
+   "h": 738
+  },
+  {
+   "t": "Lecture du Lâm al-Qabd par le Hâ (Tome 3)",
+   "img": "livres/lecture-du-lam-al-qabd-par-le-ha-tome-3.webp",
+   "url": "https://les7lectures.com/lecture-du-lam-al-qabd-par-le-ha-tome-3/",
+   "src": "Lecture-du-Lam-al-Qabd-par-le-Ha-Tome-3.jpg",
+   "w": 520,
+   "h": 738
+  },
+  {
+   "t": "Le paradoxe du destin et du libre arbitre en Islam",
+   "img": "livres/le-paradoxe-du-destin-et-du-libre-arbitre-en-islam.webp",
+   "url": "https://les7lectures.com/le-paradoxe-du-destin-et-du-libre-arbitre-en-islam/",
+   "src": "Le-paradoxe-du-libre-arbitre-et-du-destin-dans-lislam.jpg"
+  },
+  {
+   "t": "Le Livre du Secret",
+   "img": "livres/le-livre-du-secret.webp",
+   "url": "https://les7lectures.com/le-livre-du-secret/",
+   "src": "Le-Livre-du-Secret-Mohamed-Faouzi-Al-Karkari-Les7Lectures.jpg",
+   "w": 500,
+   "h": 817
+  },
+  {
+   "t": "La Voie Blanche",
+   "img": "livres/la-voie-blanche.webp",
+   "url": "https://les7lectures.com/la-voie-blanche/",
+   "src": "La-Voie-Blanche-MohamedFaouziAlKarkari.jpg",
+   "w": 500,
+   "h": 817
+  },
+  {
+   "t": "La Lumière selon les maîtres soufis",
+   "img": "livres/la-lumiere-selon-les-maitres-soufis.webp",
+   "url": "https://les7lectures.com/la-lumiere-selon-les-maitres-soufis/",
+   "src": "La-Lumi%C3%A8re-selon-les-ma%C3%AEtres-soufis-Mohamed-Faouzi-Al-Karkari.jpg",
+   "w": 500,
+   "h": 817
+  },
+  {
+   "t": "Introduction au lâm al-qabd",
+   "img": "livres/introduction-au-lam-al-qabd.webp",
+   "url": "https://les7lectures.com/introduction-au-lam-al-qabd/",
+   "src": "Introduction-au-lam-al-qabd.jpg",
+   "w": 520,
+   "h": 780
+  },
+  {
+   "t": "Épître Lunaire",
+   "img": "livres/epitre-lunaire.webp",
+   "url": "https://les7lectures.com/epitre-lunaire/",
+   "src": "Epitre-Lunaire-Mohamed-Faouzi-Al-Karkari.jpg",
+   "w": 500,
+   "h": 817
+  },
+  {
+   "t": "Des Abysses du Confinement à la Lumière de l’Accomplissement",
+   "img": "livres/des-abysses-du-confinement-a-la-lumiere-de-l-accomplissement.webp",
+   "url": "https://les7lectures.com/des-abysses-du-confinement-a-la-lumiere-de-laccomplissement/",
+   "src": "Des-Abysses-du-Confinement-a-la-Lumiere-de-lAccomplissement.jpg",
+   "w": 520,
+   "h": 829
+  },
+  {
+   "t": "Connaître Allah : ton unique raison d’être",
+   "img": "livres/connaitre-allah-ton-unique-raison-d-etre.webp",
+   "url": "https://les7lectures.com/connaitre-allah-ton-unique-raison-detre/",
+   "src": "Connaitre-Allah-ton-unique-raison-detre.jpg",
+   "w": 520,
+   "h": 818
+  },
+  {
+   "t": "Avant-propos des Lumières",
+   "img": "livres/avant-propos-des-lumieres.webp",
+   "url": "https://les7lectures.com/avant-propos-des-lumieres/",
+   "src": "Avant-popos-des-Lumi%C3%A8res-Mohamed-Faouzi-Al-Karkari.jpg",
+   "w": 500,
+   "h": 817
+  }
+ ],
+ "en": [
+  {
+   "t": "Chalice of Love",
+   "img": "livres/chalice-of-love.webp",
+   "url": "https://les7lectures.com/en/books/chalice-of-love/",
+   "src": "Chalice-of-Love-Softcover.jpg",
+   "w": 520,
+   "h": 784
+  },
+  {
+   "t": "Understanding the Paradox of Destiny and Free Will in Islam",
+   "img": "livres/understanding-the-paradox-of-destiny-and-free-will-in-islam.webp",
+   "url": "https://les7lectures.com/en/books/understandingthe-paradox-of-destiny-and-free-will-in-islam/",
+   "src": "Understanding-the-Paradox-of-Destiny-and-Free-Will-in-Islam.jpg",
+   "w": 520,
+   "h": 857
+  },
+  {
+   "t": "The Muraqa'a",
+   "img": "livres/the-muraqa-a.webp",
+   "url": "https://les7lectures.com/en/books/the-muraqaa/",
+   "src": "The-Muraqaa.jpg",
+   "w": 520,
+   "h": 823
+  },
+  {
+   "t": "The Gates of Love",
+   "img": "livres/the-gates-of-love.webp",
+   "url": "https://les7lectures.com/en/books/the-gates-of-love/",
+   "src": "The-Gates-of-Love.jpg",
+   "w": 520,
+   "h": 829
+  },
+  {
+   "t": "Guided By The Divine Light (Vol. I)",
+   "img": "livres/guided-by-the-divine-light-vol-i.webp",
+   "url": "https://les7lectures.com/en/books/guided-by-the-divine-light/",
+   "src": "Guided-By-The-Divine-Light-Vol.-I.jpg",
+   "w": 520,
+   "h": 829
+  },
+  {
+   "t": "Guided By The Divine Light (Vol. II)",
+   "img": "livres/guided-by-the-divine-light-vol-ii.webp",
+   "url": "https://les7lectures.com/en/books/guided-by-the-divine-light-vol-ii/",
+   "src": "Guided-By-The-Divine-Light-Vol.-II.jpg",
+   "w": 520,
+   "h": 828
+  },
+  {
+   "t": "The Friday Prayers",
+   "img": "livres/the-friday-prayers.webp",
+   "url": "https://les7lectures.com/en/books/the-friday-prayers/",
+   "src": "The-Friday-Book-Les7Lectures.jpg",
+   "w": 520,
+   "h": 784
+  },
+  {
+   "t": "Zamzam of Spiritual Knowledge",
+   "img": "livres/zamzam-of-spiritual-knowledge.webp",
+   "url": "https://les7lectures.com/en/books/zamzam-of-spiritual-knowledge/",
+   "src": "Zamzam-of-Spiritual-Knowledge.jpg",
+   "w": 520,
+   "h": 829
+  },
+  {
+   "t": "Candles on the Path",
+   "img": "livres/candles-on-the-path.webp",
+   "url": "https://les7lectures.com/en/books/candles-on-the-path/",
+   "src": "Candles-on-the-Path.jpg",
+   "w": 520,
+   "h": 828
+  },
+  {
+   "t": "The Sufi Path of Light",
+   "img": "livres/the-sufi-path-of-light.webp",
+   "url": "https://les7lectures.com/en/books/the-sufi-path-of-light/",
+   "src": "The-Sufi-Path-of-Light.jpg"
+  },
+  {
+   "t": "Wisdoms of the Heart",
+   "img": "livres/wisdoms-of-the-heart.webp",
+   "url": "https://les7lectures.com/en/books/wisdoms-of-the-heart/",
+   "src": "Wisdoms-of-the-Heart.jpg",
+   "w": 520,
+   "h": 828
+  },
+  {
+   "t": "Introduction to Islamic Metaphysics",
+   "img": "livres/introduction-to-islamic-metaphysics.webp",
+   "url": "https://les7lectures.com/en/books/introduction-to-islamic-metaphysics/",
+   "src": "Introduction-to-Islamic-Metaphysics.jpg",
+   "w": 520,
+   "h": 780
+  },
+  {
+   "t": "The Foundations of the Karkariya Order",
+   "img": "livres/the-foundations-of-the-karkariya-order.webp",
+   "url": "https://les7lectures.com/en/books/the-foundations-of-the-karkariya-order/",
+   "src": "The-Foundation-of-the-Karkariya-Order.jpg",
+   "w": 520,
+   "h": 780
+  },
+  {
+   "t": "Sufism Revived",
+   "img": "livres/sufism-revived.webp",
+   "url": "https://les7lectures.com/en/books/sufism-revived/",
+   "src": "SufismRevived-MohamedFaouziAlKarkari-YousefCasewit.jpg",
+   "w": 520,
+   "h": 780
+  },
+  {
+   "t": "In the Footsteps of Moses",
+   "img": "livres/in-the-footsteps-of-moses.webp",
+   "url": "https://les7lectures.com/en/books/in-the-footsteps-of-moses/",
+   "src": "IntheFootstepsofMoses-MohamedFaouziAlKarkari-YousefCasewit.jpg",
+   "w": 520,
+   "h": 783
+  }
+ ],
+ "es": [
+  {
+   "t": "Zamzam del Conocimiento",
+   "img": "livres/zamzam-del-conocimiento.webp",
+   "url": "https://les7lectures.com/zamzam-del-conocimiento/",
+   "src": "Zamzam-del-Conocimiento-cov.jpg",
+   "w": 520,
+   "h": 829
+  },
+  {
+   "t": "Los Fundamentos de la Tariqa Karkariya",
+   "img": "livres/los-fundamentos-de-la-tariqa-karkariya.webp",
+   "url": "https://les7lectures.com/los-fundamentos-de-la-tariqa-karkariya/",
+   "src": "Los-Fundamentos-de-la-Tariqa-Karkariya.jpg"
+  }
+ ],
+ "it": [
+  {
+   "t": "Insegnamento Contemporaneo Sufi",
+   "img": "livres/insegnamento-contemporaneo-sufi.webp",
+   "url": "https://les7lectures.com/insegnamento-contemporaneo-sufi/",
+   "src": "Insegnamento-Contemporaneo-Sufi.jpg",
+   "w": 500,
+   "h": 817
+  }
+ ],
+ "nl": [
+  {
+   "t": "De fundamenten van de Tariqa Karkariya",
+   "img": "livres/de-fundamenten-van-de-tariqa-karkariya.webp",
+   "url": "https://les7lectures.com/de-fundamenten-van-de-tariqa-karkariya/",
+   "src": "De-fundamenten-van-de-Tariqa-Karkariya.jpg",
+   "w": 520,
+   "h": 774
+  }
+ ]
 }

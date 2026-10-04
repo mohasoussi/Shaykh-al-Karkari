@@ -1438,3 +1438,42 @@ html[lang="ar"] .maillon-bio { justify-content: flex-start; }
 @media (hover: none) { .maillon-bio span, .maillon-bio i { opacity: .9; transform: none; } }
 .shaykh-texte.maitre, .shaykh-texte.ascendance { padding-top: clamp(140px, 20vh, 200px); }
 .maillon--lien .maillon-carte { padding-bottom: 38px; }
+
+/* Page des ouvrages : couvertures */
+.livres:has(.livre--couv) { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 26px 20px; }
+.livre--couv { display: block; min-height: 0; padding: 0; background: none; border: 0; border-radius: 0; overflow: visible; }
+.livre--couv::before { content: none; }
+.livre-lien { display: grid; gap: 12px; color: var(--ink); text-decoration: none; }
+.livre-c { display: block; aspect-ratio: 2 / 3; border-radius: 6px; overflow: hidden; background: #1d2a3d; box-shadow: 0 14px 34px rgba(18, 26, 39, .28); transition: transform .6s var(--ease), box-shadow .6s var(--ease); }
+.livre--couv .livre-c img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.livre--couv .livre-t { color: var(--ink); font-size: 1.12rem; line-height: 1.2; }
+.livre-go { font: 600 .68rem/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--gold-deep, #9a7a3f); opacity: 0; transform: translateY(4px); transition: opacity .4s, transform .4s var(--ease); }
+.livre-lien:hover .livre-c, .livre-lien:focus-visible .livre-c { transform: translateY(-8px) rotate(-.6deg); box-shadow: 0 26px 50px rgba(18, 26, 39, .38); }
+.livre-lien:hover .livre-go, .livre-lien:focus-visible .livre-go { opacity: 1; transform: none; }
+.livre:not(.livre--couv) .livre-c { aspect-ratio: auto; background: none; box-shadow: none; }
+@media (hover: none) { .livre-go { opacity: .85; transform: none; } }
+html[lang="ar"] .livre-go { letter-spacing: 0; font-size: .85rem; }
+
+/* Mise en avant : la biographie du Shaykh en librairie */
+.book-feature { position: relative; display: grid; grid-template-columns: minmax(220px, 360px) 1fr; gap: clamp(28px, 6vw, 90px); align-items: center; padding: clamp(70px, 11vw, 140px) var(--gutter); max-width: none; background: radial-gradient(120% 90% at 20% 20%, #1f3050 0%, #0f1826 60%, #0a101a 100%); color: var(--ivory); overflow: hidden; }
+.book-feature::before { content: ""; position: absolute; inset: -20%; background: radial-gradient(40% 40% at 28% 45%, rgba(226, 187, 120, .22), transparent 70%); pointer-events: none; }
+.book-feature > * { position: relative; max-width: 1180px; }
+.book-feature-cover { justify-self: end; perspective: 1200px; }
+.book-feature-cover a { display: block; border-radius: 6px; transition: transform .8s var(--ease), box-shadow .8s var(--ease); transform: rotateY(-14deg) rotateX(2deg); box-shadow: 24px 30px 70px rgba(0, 0, 0, .55), 0 0 0 1px rgba(226, 187, 120, .25); }
+.book-feature-cover a:hover { transform: rotateY(0) rotateX(0) translateY(-8px); box-shadow: 0 40px 80px rgba(0, 0, 0, .6), 0 0 60px rgba(226, 187, 120, .25); }
+.book-feature-cover img { display: block; width: 100%; height: auto; border-radius: 6px; }
+.book-feature .kicker { color: var(--gold-soft); }
+.book-feature-sub { margin: 4px 0 18px; font-family: var(--serif); font-style: italic; font-size: 1.3rem; color: var(--gold-soft); }
+.book-feature-quote { margin: 0 0 18px; padding-left: 22px; border-left: 1px solid var(--gold); font-family: var(--serif); font-size: clamp(1.35rem, 2.4vw, 1.9rem); line-height: 1.3; }
+.book-feature-quote cite { display: block; margin-top: 8px; font: 500 .8rem var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--muted-light); font-style: normal; }
+.book-feature-text { max-width: 54ch; color: var(--muted-light); }
+.book-feature-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 18px 0 26px; font: 600 .74rem var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--gold-soft); }
+.book-feature-meta span + span::before { content: "·"; margin-right: 18px; color: var(--muted-light); }
+.book-feature-alt { margin: 16px 0 0; font-size: .9rem; color: var(--muted-light); }
+.book-feature-alt a { color: var(--gold-soft); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 760px) { .book-feature { grid-template-columns: 1fr; text-align: left; } .book-feature-cover { justify-self: center; width: min(62vw, 280px); } }
+html[lang="ar"] .book-feature-quote { padding-left: 0; padding-right: 22px; border-left: 0; border-right: 1px solid var(--gold); }
+html[lang="ar"] .book-feature-cover { justify-self: start; }
+html[lang="ar"] .book-feature-cover a { transform: rotateY(14deg) rotateX(2deg); }
+html[lang="ar"] .book-feature-meta span + span::before { margin-right: 0; margin-left: 18px; }
+html[lang="ar"] .book-feature-meta, html[lang="ar"] .book-feature-quote cite { letter-spacing: 0; font-size: .95rem; }
