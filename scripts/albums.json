@@ -442,5 +442,65 @@
     }
    }
   ]
+ },
+ {
+  "id": "stanford-secret-du-verbe",
+  "article": null,
+  "rubrique": "galerie",
+  "page": true,
+  "titre": {
+   "fr": "Stanford : « Le Secret de la Parole » — repenser l'intelligence à l'ère de l'IA (3 juin 2026)",
+   "en": "Stanford: “The Secret of the Word” — rethinking intelligence in the age of AI (3 June 2026)",
+   "ar": "ستانفورد: «سرّ الكلمة» — إعادة التفكير في الذكاء في عصر الذكاء الاصطناعي (3 يونيو 2026)"
+  },
+  "texte": {
+   "fr": "Invité de l'Université de Stanford en tant que président de l'Institut al-Karkari pour les études soufies, le Shaykh a donné un cours sur le langage du cœur et celui de l'intelligence, à partir de son livre The Secret of the Word.",
+   "en": "Invited to Stanford University as president of the Al-Karkari Institute for Sufi Studies, the Shaykh gave a class on the language of the heart and the language of intelligence, based on his book The Secret of the Word.",
+   "ar": "دُعي الشيخ إلى جامعة ستانفورد بصفته رئيس معهد الكركري للدراسات الصوفية، وألقى درسًا عن لغة القلب ولغة الذكاء انطلاقًا من كتابه «سرّ الكلمة» (The Secret of the Word)."
+  },
+  "corps": [
+   "En séjour aux États-Unis, le Shaykh Mohamed Faouzi al-Karkari, président de l'Institut al-Karkari pour les études soufies, a été l'invité de l'Université de Stanford, où il a donné un cours sur le langage du cœur et le langage de l'intelligence. La séance s'est tenue le 3 juin 2026.",
+   "<h3>Repenser l'intelligence à l'ère de l'intelligence artificielle</h3>",
+   "Le cours, intitulé <em>Sirr al-Kalima</em> — « Le Secret de la Parole » —, avait pour sous-titre : <em>Intelligence, the Word, and the ethics of AI</em> (« L'intelligence, la Parole et l'éthique de l'IA »). Il invitait à repenser l'intelligence à l'heure où l'intelligence artificielle s'impose dans tous les domaines de la vie, en la rapprochant de ce que la tradition soufie dit de l'esprit et de l'intériorité spirituelle de l'être humain.",
+   "Deux questions ont structuré la réflexion : comprendre, d'une part, l'esprit et l'intérieur spirituel de l'Homme, et, d'autre part, les mécanismes de l'IA ; puis voir comment l'intérieur apparaît dans l'extérieur, et quelle est la force de ce mouvement.",
+   "<h3>Un livre au cœur de la séance</h3>",
+   "Ces sujets ont été présentés à partir de la récente publication de l'ouvrage <em>The Secret of the Word</em> du Shaykh Mohamed Faouzi al-Karkari, traduit par Marouen Jedoui. D'après les documents présentés en séance, le texte avait d'abord paru dans la revue <em>Nūr Journal</em> (2026), dans une traduction du Dr Rami Koujah, avant d'être développé en livre sous le même titre (Al-Karkari Institute Press, 2025).",
+   "<h3>Une rencontre avec les étudiants</h3>",
+   "La séance s'est déroulée dans une salle de travail de l'université, en petit comité, avec des étudiants et des participants venus échanger avec le Shaykh. Elle s'inscrit dans les collaborations que l'Institut al-Karkari mène avec les universités américaines autour de la recherche sur le soufisme."
+  ],
+  "photos": [
+   {
+    "f": "stanford-1",
+    "alt": {
+     "fr": "Le Shaykh présente The Secret of the Word devant l'écran de présentation, Université de Stanford",
+     "en": "The Shaykh presenting The Secret of the Word in front of the presentation screen, Stanford University",
+     "ar": "الشيخ يقدّم كتاب «سرّ الكلمة» أمام شاشة العرض، جامعة ستانفورد"
+    }
+   },
+   {
+    "f": "stanford-2",
+    "alt": {
+     "fr": "Le Shaykh et un intervenant devant la diapositive « The Secret of the Word »",
+     "en": "The Shaykh and a speaker in front of the “The Secret of the Word” slide",
+     "ar": "الشيخ ومتحدث أمام شريحة «سرّ الكلمة»"
+    }
+   },
+   {
+    "f": "stanford-3",
+    "alt": {
+     "fr": "Photo de groupe avec le Shaykh à l'issue du cours, Stanford",
+     "en": "Group photo with the Shaykh after the class, Stanford",
+     "ar": "صورة جماعية مع الشيخ بعد الدرس، ستانفورد"
+    }
+   },
+   {
+    "f": "stanford-4",
+    "alt": {
+     "fr": "Les participants du cours dans la salle, Université de Stanford",
+     "en": "Participants of the class in the room, Stanford University",
+     "ar": "المشاركون في الدرس داخل القاعة، جامعة ستانفورد"
+    }
+   }
+  ]
  }
 ]
