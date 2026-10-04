@@ -1,0 +1,12 @@
+[
+  {
+    "id": "une-voix-pour-la-paix",
+    "article": "shaykh-mohamed-faouzi-al-karkari-invite-a-une-voix-pour-la-paix",
+    "titre": { "fr": "Une Voix pour la Paix — Paris", "en": "A Voice for Peace — Paris", "ar": "صوتٌ من أجل السلام — باريس" },
+    "photos": [
+      { "f": "paix-1", "alt": { "fr": "Le Shaykh à la tribune lors de « Une Voix pour la Paix »", "en": "The Shaykh at the podium during “A Voice for Peace”", "ar": "الشيخ على المنبر خلال «صوتٌ من أجل السلام»" } },
+      { "f": "paix-3", "alt": { "fr": "Le Shaykh prend la parole, « Une Voix pour la Paix »", "en": "The Shaykh speaking, “A Voice for Peace”", "ar": "الشيخ يلقي كلمته، «صوتٌ من أجل السلام»" } },
+      { "f": "paix-2", "alt": { "fr": "Le Shaykh entouré de deux participants, « Une Voix pour la Paix »", "en": "The Shaykh with two participants, “A Voice for Peace”", "ar": "الشيخ برفقة مشاركَين، «صوتٌ من أجل السلام»" } }
+    ]
+  }
+]

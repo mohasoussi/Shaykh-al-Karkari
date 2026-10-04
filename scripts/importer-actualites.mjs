@@ -25,6 +25,7 @@ import { parse } from "node-html-parser";
 import sharp from "sharp";
 import { genererLangues } from "./langues.mjs";
 import { genererMaitres, lienMaitre } from "./maitres.mjs";
+import { genererAlbums } from "./albums.mjs";
 import { esc, pageListe, pageArticle, cartesAccueil, cartesEnseignements, TYPES, LISTES } from "./gabarits-actualites.mjs";
 
 const SITE = process.env.SITE_DIR ? path.resolve(process.env.SITE_DIR) : process.cwd();
@@ -561,6 +562,7 @@ async function main() {
   await enseignements();
   await pagesShaykh();
   await genererMaitres();
+  await genererAlbums();
   log(`terminé : ${articles.length} article(s) publiés`);
 }
 

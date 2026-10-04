@@ -3,6 +3,9 @@
    Pour ajouter une photo : la déposer dans public/media/photos/ (+ miniature dans public/media/photos/t/) et l'ajouter à PHOTOS.
    Utilisation : node scripts/media.mjs */
 import fs from "node:fs";
+import { readFileSync } from "node:fs";
+const ALBUMS = JSON.parse(readFileSync("scripts/albums.json", "utf8"));
+const htmlAlbum = (a, code, pre) => a.photos.map((p) => `        <a class="galerie-item" href="${pre}media/evenements/${a.id}/${p.f}.webp" data-reveal><img src="${pre}media/evenements/${a.id}/t/${p.f}.webp" alt="${esc(p.alt[code] || p.alt.fr)}" loading="lazy" decoding="async" /></a>`).join("\n");
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 const PHOTOS = [
@@ -19,7 +22,7 @@ const T = {
   fr: { dir: "", kicker: "Média", h1: "Photos et vidéos", lede: "Les conférences en vidéo, les reportages des rencontres et une galerie de photos du Shaykh.",
     c1: ["Vidéos", "Conférences et entretiens en vidéo : Sorbonne, Chicago, Yale, Stanford, Berkeley…", "Voir les vidéos", "conferences.html", "conf-sorbonne"],
     c2: ["Reportages", "Photos et vidéos des visites, des rencontres et du Mawlid, racontées dans les actualités.", "Lire les reportages", "actualites.html", "conf-paix"],
-    g: "Galerie", gl: "Touchez une photo pour l'agrandir.", close: "Fermer", prev: "Photo précédente", next: "Photo suivante", title: "Média — Shaykh Mohamed Faouzi Al Karkari", desc: "Photos et vidéos du Shaykh Mohamed Faouzi Al Karkari.", a: "→" },
+    g: "Galerie", gl: "Touchez une photo pour l'agrandir. Les albums par événement suivent.", close: "Fermer", prev: "Photo précédente", next: "Photo suivante", title: "Média — Shaykh Mohamed Faouzi Al Karkari", desc: "Photos et vidéos du Shaykh Mohamed Faouzi Al Karkari.", a: "→" },
   en: { dir: "en/", kicker: "Media", h1: "Photos and videos", lede: "Lectures on video, reports from gatherings and a gallery of photographs of the Shaykh.",
     c1: ["Videos", "Lectures and interviews on video: Sorbonne, Chicago, Yale, Stanford, Berkeley…", "Watch the videos", "conferences.html", "conf-sorbonne"],
     c2: ["Reports", "Photos and videos of visits, gatherings and the Mawlid, told in the news section (articles in French).", "Read the reports", "actualites.html", "conf-paix"],
@@ -38,6 +41,12 @@ for (const [code, t] of Object.entries(T)) {
           <div class="hub-txt"><h2>${esc(titre)}</h2><p>${esc(texte)}</p><span class="hub-go">${esc(cta)} <i>${t.a}</i></span></div>
         </a>`;
   const galerie = PHOTOS.map(([f, alt]) => `        <a class="galerie-item" href="${pre}media/photos/${f}.webp" data-reveal><img src="${pre}media/photos/t/${f}.webp" alt="${esc(alt[code])}" loading="lazy" decoding="async" /></a>`).join("\n");
+  const albums = ALBUMS.map((a) => `      <div class="section-head media-gal-head">
+        <h2 class="h2" data-split>${esc(a.titre[code])}</h2>
+      </div>
+      <div class="galerie" data-close="${esc(t.close)}" data-prev="${esc(t.prev)}" data-next="${esc(t.next)}">
+${htmlAlbum(a, code, pre)}
+      </div>`).join("\n");
   const html = `<!doctype html>
 <html lang="${code}"${code === "ar" ? ' dir="rtl"' : ""}>
 <head>
@@ -71,6 +80,7 @@ ${carte(t.c2, 2)}
       <div class="galerie" data-close="${esc(t.close)}" data-prev="${esc(t.prev)}" data-next="${esc(t.next)}">
 ${galerie}
       </div>
+${albums}
     </section>
   </main>
   <!--@include footer-->

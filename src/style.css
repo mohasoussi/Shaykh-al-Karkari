@@ -1518,3 +1518,9 @@ html[lang="ar"] .header-nav { font-size: clamp(1.75rem, 2.2vw, 2.35rem); }
 .lb-prev { left: 18px; } .lb-next { right: 18px; }
 html[lang="ar"] .lb-close { right: auto; left: 18px; }
 @media (max-width: 600px) { .lb-nav { top: auto; bottom: 22px; transform: none; } .lb-prev { left: 22px; } .lb-next { right: 22px; } }
+.album-article { margin: 3em 0 2em; }
+.album-titre { font-family: var(--serif); font-weight: 400; font-size: 1.7rem; margin: 0 0 .8em; }
+.album-article .galerie { padding: 0; columns: 3 150px; column-gap: 12px; max-width: none; }
+.album-article .galerie-item { margin-bottom: 12px; }
+.media-gal-head + .galerie { margin-bottom: 30px; }
+.album-article .galerie { columns: 2 240px; }

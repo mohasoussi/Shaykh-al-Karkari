@@ -612,14 +612,15 @@ function videos() {
    Galerie photos : visionneuse plein écran (flèches, Échap, balayage)
    --------------------------------------------------------- */
 function galerie() {
-  const g = $(".galerie");
-  if (!g) return;
-  const liens = $$("a", g);
+  const galeries = $$(".galerie");
+  if (!galeries.length) return;
+  const g0 = galeries[0];
+  let liens = [];
   let i = 0;
   const vue = document.createElement("div");
   vue.className = "lightbox";
   vue.hidden = true;
-  vue.innerHTML = `<button class="lb-close" type="button" aria-label="${g.dataset.close}">×</button><button class="lb-nav lb-prev" type="button" aria-label="${g.dataset.prev}">‹</button><img alt="" /><button class="lb-nav lb-next" type="button" aria-label="${g.dataset.next}">›</button>`;
+  vue.innerHTML = `<button class="lb-close" type="button" aria-label="${g0.dataset.close}">×</button><button class="lb-nav lb-prev" type="button" aria-label="${g0.dataset.prev}">‹</button><img alt="" /><button class="lb-nav lb-next" type="button" aria-label="${g0.dataset.next}">›</button>`;
   document.body.appendChild(vue);
   const img = $("img", vue);
   const montrer = (n) => {
@@ -627,9 +628,12 @@ function galerie() {
     img.src = liens[i].href;
     img.alt = $("img", liens[i])?.alt || "";
   };
-  const ouvrir = (n) => { montrer(n); vue.hidden = false; document.body.classList.add("modal-open"); requestAnimationFrame(() => vue.classList.add("is-open")); };
+  const ouvrir = (ens, n) => { liens = ens; montrer(n); vue.hidden = false; document.body.classList.add("modal-open"); requestAnimationFrame(() => vue.classList.add("is-open")); };
   const fermer = () => { vue.classList.remove("is-open"); document.body.classList.remove("modal-open"); setTimeout(() => (vue.hidden = true), 250); };
-  liens.forEach((a, n) => a.addEventListener("click", (e) => { e.preventDefault(); ouvrir(n); }));
+  galeries.forEach((g) => {
+    const ens = $$("a", g);
+    ens.forEach((a, n) => a.addEventListener("click", (e) => { e.preventDefault(); ouvrir(ens, n); }));
+  });
   $(".lb-close", vue).addEventListener("click", fermer);
   $(".lb-prev", vue).addEventListener("click", () => montrer(i - 1));
   $(".lb-next", vue).addEventListener("click", () => montrer(i + 1));
