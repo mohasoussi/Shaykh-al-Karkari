@@ -20,6 +20,7 @@ const PHOTOS = [
 
 
 const PRESSE = [
+  ["Méditerranée Plurielle", "https://mediterranee-plurielle.com/index.php/2023/07/10/science-et-conscience-invitees-au-pays-de-loncle-sam", "Science et conscience invitées au pays de l'Oncle Sam", "Le voyage du Shaykh aux États-Unis, son intervention à l'Université de Chicago sur l'intelligence artificielle et sa rencontre avec le professeur rabbinique Yehiel E. Poupko et les professeurs Jeremy Brown et Tzvi Novick, de l'Université Notre-Dame (juillet 2023)."],
   ["Maghreb Observateur", "https://maghreb-observateur.com/?p=20606", "Intelligence Artificielle et Soufisme : quand le Maroc et les États-Unis explorent les liens entre technologie et spiritualité", "À l'Université de Chicago, une conférence réunit le maître soufi Sidi Mohamed Faouzi Al Karkari et Saad Ansari, expert en IA, sous la houlette du professeur Yusef Casewit."],
   ["Atlantica", "https://atlantica.africa/2025/09/22/le-sheikh-soufi-mohammed-fouzi-al-karkari-eleve-au-rang-prestigieux-de-paul-harris-fellow-a-paris/", "Le sheikh soufi Mohammed Fouzi Al Karkari élevé au rang prestigieux de Paul Harris Fellow à Paris"],
   ["OpenPR", "https://www.openpr.com/news/4194798/spiritual-leader-al-karkari-honored-at-paris-peace-summit-al"],
