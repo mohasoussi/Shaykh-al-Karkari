@@ -95,5 +95,59 @@
     }
    }
   ]
+ },
+ {
+  "id": "jordanie",
+  "article": null,
+  "titre": {
+   "fr": "Rencontre avec des officiels religieux — Jordanie",
+   "en": "Meeting with religious officials — Jordan",
+   "ar": "لقاء مع مسؤولين دينيين — الأردن"
+  },
+  "photos": [
+   {
+    "f": "jordanie-1",
+    "alt": {
+     "fr": "Le Shaykh signe le livre d'or lors de sa rencontre en Jordanie",
+     "en": "The Shaykh signing the guest book during his meeting in Jordan",
+     "ar": "الشيخ يوقّع في سجل الزوار خلال لقائه في الأردن"
+    }
+   },
+   {
+    "f": "jordanie-2",
+    "alt": {
+     "fr": "Le Shaykh écrit dans le livre d'or, Jordanie",
+     "en": "The Shaykh writing in the guest book, Jordan",
+     "ar": "الشيخ يكتب في سجل الزوار، الأردن"
+    }
+   }
+  ]
+ },
+ {
+  "id": "presse-marocaine",
+  "article": null,
+  "titre": {
+   "fr": "Entretien avec les médias marocains",
+   "en": "Interview with the Moroccan media",
+   "ar": "حوار مع وسائل الإعلام المغربية"
+  },
+  "photos": [
+   {
+    "f": "presse-1",
+    "alt": {
+     "fr": "Le Shaykh entouré de journalistes marocains",
+     "en": "The Shaykh surrounded by Moroccan journalists",
+     "ar": "الشيخ محاطًا بصحفيين مغاربة"
+    }
+   },
+   {
+    "f": "presse-2",
+    "alt": {
+     "fr": "Le Shaykh répond aux micros de la presse marocaine",
+     "en": "The Shaykh answering the Moroccan press microphones",
+     "ar": "الشيخ يجيب أمام ميكروفونات الصحافة المغربية"
+    }
+   }
+  ]
  }
 ]
