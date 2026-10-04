@@ -45,9 +45,6 @@ async function corpsKarkariya(slug) {
 function page(m, corps) {
   const titre = `${m.nom} — Shaykh Mohamed Faouzi Al Karkari`;
   const desc = (m.intro || m.sous).replace(/\s+/g, " ").slice(0, 200);
-  const sources = m.sources
-    .map(([t, u]) => `<li><a href="${esc(u)}"${/^https?:/.test(u) ? ' target="_blank" rel="noopener"' : ""}>${esc(t)}</a></li>`)
-    .join("");
   return `<!doctype html>
 <html lang="fr">
 <head>
@@ -72,8 +69,6 @@ function page(m, corps) {
       </div>
       <div class="actu-corps">
 ${m.intro ? `        <p class="maitre-intro">${esc(m.intro)}</p>\n` : ""}${corps}
-        <h3 class="maitre-sources-t">Sources</h3>
-        <ul class="maitre-sources">${sources}</ul>
       </div>
       <div class="center shaykh-suite"><a class="btn-glass btn-glass--dark" href="chaine-de-transmission.html"><span>← La chaîne de transmission</span></a></div>
     </section>
@@ -92,7 +87,7 @@ export async function genererMaitres() {
       m.sous = m.sous;
       corps = await corpsKarkariya(m.karkariya);
     } else {
-      corps = m.sections.map(([h, ps]) => `        <h3>${esc(h)}</h3>\n${ps.map((p) => `        <p>${esc(p)}</p>`).join("\n")}`).join("\n");
+      corps = m.sections.map(([h, ps]) => `        <h3>${esc(h)}</h3>\n${ps.map((p) => `        <p>${p}</p>`).join("\n")}`).join("\n");
     }
     await fs.writeFile(path.join(SITE, `maitre-${m.slug}.html`), page(m, corps));
   }

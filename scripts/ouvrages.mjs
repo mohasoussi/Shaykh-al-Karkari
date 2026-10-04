@@ -23,7 +23,7 @@ ${titres.map((x, i) => {
   const titre = esc(x.t).replace(/ ([?!:])/g, "\u00a0$1");
   const cover = x.img ? `<img src="${pre}${x.img}" alt="" loading="lazy" decoding="async" />` : `<span class="livre-n">${String(i + 1).padStart(2, "0")}</span>`;
   const lien = x.url ? `<a class="livre-lien" href="${esc(x.url)}" target="_blank" rel="noopener" aria-label="${esc(x.t)}">` : "";
-  return `          <li class="livre${x.img ? " livre--couv" : ""}" data-reveal>${lien}<span class="livre-c">${cover}</span><span class="livre-t" lang="${l}">${titre}</span>${lien ? `<span class="livre-go">${t.voir} <i>${code === "ar" ? "↖" : "↗"}</i></span></a>` : ""}</li>`;
+  return `          <li class="livre${x.img ? " livre--couv" : ""}" data-reveal>${lien}<span class="livre-c">${cover}</span><span class="livre-t" lang="${l}"${l === "ar" ? "" : ' dir="ltr"'}>${titre}</span>${lien ? `<span class="livre-go">${t.voir} <i>${code === "ar" ? "↖" : "↗"}</i></span></a>` : ""}</li>`;
 }).join("\n")}
         </ul>
       </section>`).join("\n");

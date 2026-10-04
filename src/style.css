@@ -1477,3 +1477,16 @@ html[lang="ar"] .book-feature-cover { justify-self: start; }
 html[lang="ar"] .book-feature-cover a { transform: rotateY(14deg) rotateX(2deg); }
 html[lang="ar"] .book-feature-meta span + span::before { margin-right: 0; margin-left: 18px; }
 html[lang="ar"] .book-feature-meta, html[lang="ar"] .book-feature-quote cite { letter-spacing: 0; font-size: .95rem; }
+
+/* Menu plein écran : le contenu commence sous l'en-tête et s'adapte à la hauteur de l'écran */
+.menu-inner { align-items: start; align-content: start; padding-top: clamp(130px, 21vh, 190px); padding-bottom: 50px; }
+.menu-links a { font-size: clamp(1.7rem, 5.2vh, 3.7rem); line-height: 1.12; }
+.menu-aside { align-self: start; padding-top: clamp(0px, 4vh, 40px); }
+.menu-aside .lang { margin-top: 0; }
+@media (max-height: 700px) { .menu-links a { font-size: clamp(1.5rem, 4.6vh, 2.2rem); } .menu-inner { padding-top: 118px; } }
+.livre-t[dir="ltr"] { display: block; text-align: left; }
+html[lang="ar"] .livre--couv .livre-t[dir="ltr"] { font-size: 1.05rem; }
+
+/* en-tête sur ordinateur : liens plus grands */
+@media (min-width: 980px) { .header-nav { font-size: clamp(1.2rem, 1.55vw, 1.5rem); gap: clamp(22px, 2.8vw, 46px); } }
+html[lang="ar"] .header-nav { font-size: clamp(1.3rem, 1.7vw, 1.6rem); }

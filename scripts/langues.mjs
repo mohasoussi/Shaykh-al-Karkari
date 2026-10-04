@@ -18,8 +18,8 @@ const existe = (f) => fs.access(path.join(SITE, f)).then(() => true, () => false
 /* ---------- libellés des blocs générés (cartes, listes, chaîne) ---------- */
 const MOTS = {
   en: {
-    "Lire l'article": "Read the article",
-    "Lire l'enseignement": "Read the teaching",
+    "Lire l'article": "Read the article (in French)",
+    "Lire l'enseignement": "Read the teaching (in French)",
     "Voir le document officiel": "View the official document",
     "Qu’Allâh les agrée et sanctifie leur Secret.": "May Allah be pleased with them and sanctify their Secret.",
     "Le Prophète Muhammad": "The Prophet Muhammad",
@@ -34,8 +34,8 @@ const MOTS = {
     "Article suivant →": "Next article →",
   },
   ar: {
-    "Lire l'article": "اقرأ المقال",
-    "Lire l'enseignement": "اقرأ الدرس",
+    "Lire l'article": "اقرأ المقال (بالفرنسية)",
+    "Lire l'enseignement": "اقرأ الدرس (بالفرنسية)",
     "Voir le document officiel": "عرض الوثيقة الرسمية",
     "Qu’Allâh les agrée et sanctifie leur Secret.": "رضي الله عنهم وقدّس أسرارهم.",
     "Le Prophète Muhammad": "النبي محمد",
@@ -50,6 +50,39 @@ const MOTS = {
     "Article suivant →": "المقال التالي ←",
   },
 };
+/* ---------- titres traduits des actualités et enseignements ---------- */
+let TITRES = null;
+async function chargerTitres() {
+  if (TITRES) return TITRES;
+  TITRES = { fr: new Map(), tr: {} };
+  try {
+    TITRES.tr = JSON.parse(await lire("scripts/titres-traduits.json"));
+    for (const f of ["actualites", "enseignements"]) {
+      if (!(await existe(`src/data/${f}.json`))) continue;
+      for (const a of JSON.parse(await lire(`src/data/${f}.json`))) TITRES.fr.set(a.slug, a.titre);
+    }
+  } catch {}
+  return TITRES;
+}
+const escH = (t = "") => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+/** Remplace les titres français par leur traduction ; ceux sans traduction restent en français, marqués lang="fr" dir="ltr". */
+async function traduireTitres(html, code, { sansExtrait = false } = {}) {
+  const T = await chargerTitres();
+  const i = code === "en" ? 0 : 1;
+  let h = html;
+  for (const [slug, fr] of T.fr) {
+    const tr = T.tr[slug]?.[i];
+    const frE = escH(fr);
+    if (tr) {
+      h = h.split(`>${frE}<`).join(`>${escH(tr)}<`).split(`data-titre="${escH(fr.toLowerCase())}"`).join(`data-titre="${escH(tr.toLowerCase())}"`);
+    } else {
+      h = h.split(`<h2>${frE}</h2>`).join(`<h2 lang="fr" dir="ltr">${frE}</h2>`).split(`<h3>${frE}</h3>`).join(`<h3 lang="fr" dir="ltr">${frE}</h3>`);
+    }
+  }
+  if (sansExtrait) h = h.replace(/(<div class="actu-txt">[\s\S]*?<\/time>\s*<h2[^>]*>[^<]*<\/h2>)\s*<p>[^<]*<\/p>/g, "$1");
+  return h;
+}
+
 const LOCALES = { en: "en-GB", ar: "ar-u-ca-gregory-nu-latn" };
 
 /** Adapte un morceau de HTML français généré : chemins (les pages sont dans un sous-dossier), dates, libellés, flèches. */
@@ -159,6 +192,7 @@ async function accueil() {
     if (code === "ar") h = h.replace(/<i>→<\/i>/g, "<i>←</i>").replace(/>→</g, ">←<");
     // liens vers les articles (français) et images : un dossier plus haut
     h = h.replace(/(<!--(actualites|enseignements):debut-->)([\s\S]*?)(<!--\2:fin-->)/g, (_, a, _n, bloc, z) => a + localiser(bloc, code) + z);
+    h = await traduireTitres(h, code);
     h = h.replace(/\b(href|src)="(?!https?:|\/|#|mailto:|\.\.\/)(?=[\w-]+\/)/g, (m) => m); // chemins relatifs à un dossier : traités par localiser()
     await fs.mkdir(path.join(SITE, code), { recursive: true });
     await fs.writeFile(path.join(SITE, code, "index.html"), h);
@@ -190,6 +224,7 @@ async function listes() {
       const tr = LISTES_TR[cle][code];
       let h = pageListe(articles, { ...fr, ...tr });
       h = localiser(h, code);
+      h = await traduireTitres(h, code, { sansExtrait: true });
       h = enTete(h, code).replace(/<title>[^<]*<\/title>/, `<title>${tr.titre} — ${code === "ar" ? "الشيخ محمد فوزي الكركري" : "Shaykh Mohamed Faouzi Al Karkari"}</title>`);
       await fs.mkdir(path.join(SITE, code), { recursive: true });
       await fs.writeFile(path.join(SITE, code, `${cle}.html`), h);
