@@ -61,7 +61,19 @@
     }
    }
   ],
-  "rubrique": "galerie"
+  "rubrique": "galerie",
+  "titre_article": "Assise spirituelle et conférence du Shaykh à Genève",
+  "corps": [
+   "Le 23 mai 2026, le Shaykh Sidi Mohamed Faouzi Al Karkari s'est rendu à Genève, en Suisse, où il a présidé une assise spirituelle suivie d'une conférence.",
+   "Le Shaykh a pris la parole devant l'assistance réunie pour l'occasion. Cette étape genevoise s'inscrit dans la série de rencontres que le Shaykh conduit en Europe, entre transmission spirituelle, enseignement et dialogue.",
+   "<p class=\"legende\">Les photos de la rencontre se trouvent dans l'album de la Galerie.</p>"
+  ],
+  "page": true,
+  "texte": {
+   "fr": "Le 23 mai 2026, une assise spirituelle suivie d'une conférence à Genève (Suisse).",
+   "en": "On 23 May 2026, a spiritual gathering followed by a lecture in Geneva (Switzerland).",
+   "ar": "في 23 مايو 2026، مجلس روحي تلته محاضرة في جنيف (سويسرا)."
+  }
  },
  {
   "id": "conference-paris",
@@ -97,7 +109,19 @@
     }
    }
   ],
-  "rubrique": "galerie"
+  "rubrique": "galerie",
+  "titre_article": "Conférence du Shaykh à Paris : « Le cheminement spirituel dans la voie Karkaria »",
+  "corps": [
+   "À Paris, le Shaykh Sidi Mohamed Faouzi Al Karkari a donné une conférence consacrée au cheminement spirituel dans la voie Karkaria, devant une salle comble.",
+   "S'adressant à l'assistance, le Shaykh a présenté les étapes et les principes de ce cheminement, tel qu'il est vécu et transmis au sein de la Tariqa Karkariya.",
+   "<p class=\"legende\">Les photos de la conférence se trouvent dans l'album de la Galerie.</p>"
+  ],
+  "page": true,
+  "texte": {
+   "fr": "Une conférence à Paris devant une salle comble.",
+   "en": "A lecture in Paris before a packed hall.",
+   "ar": "محاضرة في باريس أمام قاعة غاصّة بالحضور."
+  }
  },
  {
   "id": "jordanie",
@@ -125,7 +149,19 @@
     }
    }
   ],
-  "rubrique": "galerie"
+  "rubrique": "galerie",
+  "titre_article": "Rencontre du Shaykh avec des officiels religieux en Jordanie",
+  "corps": [
+   "Lors de son déplacement en Jordanie, le Shaykh Sidi Mohamed Faouzi Al Karkari a rencontré des officiels religieux du royaume.",
+   "À l'issue de la rencontre, le Shaykh a écrit un mot dans le livre d'or de l'institution qui le recevait, en signe de remerciement et de fraternité.",
+   "<p class=\"legende\">Les photos de la rencontre se trouvent dans l'album de la Galerie.</p>"
+  ],
+  "page": true,
+  "texte": {
+   "fr": "Une rencontre avec des officiels religieux en Jordanie, marquée par la signature du livre d'or.",
+   "en": "A meeting with religious officials in Jordan, marked by the signing of the guest book.",
+   "ar": "لقاء مع مسؤولين دينيين في الأردن، تخلّله التوقيع في السجل الذهبي."
+  }
  },
  {
   "id": "presse-marocaine",
@@ -353,7 +389,19 @@
      "ar": "صورة جماعية مع الشيخ في شلسفيغ، ألمانيا"
     }
    }
-  ]
+  ],
+  "titre_article": "Table ronde du Shaykh à Schleswig (Allemagne)",
+  "corps": [
+   "Le 11 mai 2026, le Shaykh Sidi Mohamed Faouzi Al Karkari a participé à une table ronde à Schleswig, en Allemagne.",
+   "La rencontre a pris la forme d'un cercle d'échange autour du Shaykh, dans un esprit de dialogue et de convivialité, et s'est conclue par une photo de groupe avec les participants.",
+   "<p class=\"legende\">Les photos de la rencontre se trouvent dans l'album de la Galerie.</p>"
+  ],
+  "page": true,
+  "texte": {
+   "fr": "Le 11 mai 2026, une table ronde à Schleswig, en Allemagne.",
+   "en": "On 11 May 2026, a round table in Schleswig, Germany.",
+   "ar": "في 11 مايو 2026، مائدة مستديرة في شلسفيغ بألمانيا."
+  }
  },
  {
   "id": "assises-dialogue",
