@@ -20,6 +20,7 @@ const PHOTOS = [
 
 
 const PRESSE = [
+  ["Maghreb Observateur", "https://maghreb-observateur.com/?p=20606", "Intelligence Artificielle et Soufisme : quand le Maroc et les États-Unis explorent les liens entre technologie et spiritualité", "À l'Université de Chicago, une conférence réunit le maître soufi Sidi Mohamed Faouzi Al Karkari et Saad Ansari, expert en IA, sous la houlette du professeur Yusef Casewit."],
   ["Atlantica", "https://atlantica.africa/2025/09/22/le-sheikh-soufi-mohammed-fouzi-al-karkari-eleve-au-rang-prestigieux-de-paul-harris-fellow-a-paris/", "Le sheikh soufi Mohammed Fouzi Al Karkari élevé au rang prestigieux de Paul Harris Fellow à Paris"],
   ["OpenPR", "https://www.openpr.com/news/4194798/spiritual-leader-al-karkari-honored-at-paris-peace-summit-al"],
   ["FinancialContent", "https://www.financialcontent.com/article/getnews-2025-9-23-spiritual-leader-al-karkari-honored-at-paris-peace-summit-al-karkari-institutes-vision-for-global-harmony"],
@@ -39,7 +40,7 @@ function blocPresse(code) {
         <p class="section-lede" data-reveal>${l}</p>
       </div>
       <ul class="presse-liste" data-reveal>
-${PRESSE.map(([n, u, ti]) => `        <li><a href="${u}" target="_blank" rel="noopener"><strong>${n}</strong><span dir="ltr">${ti || titre}</span><em>${cta} ↗</em></a></li>`).join("\n")}
+${PRESSE.map(([n, u, ti, ex]) => `        <li><a href="${u}" target="_blank" rel="noopener"><strong>${n}</strong><span dir="ltr">${ti || titre}</span>${ex ? `<small>${ex}</small>` : ""}<em>${cta} ↗</em></a></li>`).join("\n")}
       </ul>
 `;
 }
