@@ -37,7 +37,7 @@ async function pageEvenement(a) {
   <div class="smooth" id="top">
   <main>
     <article class="actu-article">
-      <a class="actu-retour" href="galerie.html#${a.id}">← La galerie</a>
+      <a class="actu-retour" href="${a.rubrique === "media" ? "media.html" : "galerie.html"}#${a.id}">← ${a.rubrique === "media" ? "Média" : "La galerie"}</a>
       <header class="actu-entete">
         <p class="kicker">Événement</p>
         <h1>${esc(a.titre_article || a.titre.fr)}</h1>

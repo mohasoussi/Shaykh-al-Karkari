@@ -1542,3 +1542,5 @@ html[lang="ar"] .album-n { letter-spacing: 0; font-size: .9rem; }
 .presse-liste strong{color:var(--or,#c9a24b);letter-spacing:.06em;text-transform:uppercase;font-size:.85rem}
 .presse-liste span{font-size:1rem;line-height:1.4}
 .presse-liste em{font-style:normal;opacity:.7;font-size:.85rem}
+.actu-corps .legende{font-size:.9rem;opacity:.75;font-style:italic;border-inline-start:2px solid var(--or,#c9a24b);padding-inline-start:.9rem}
+.actu-corps .legende a{color:var(--or,#c9a24b)}
