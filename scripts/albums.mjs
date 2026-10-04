@@ -24,7 +24,7 @@ async function pageEvenement(a) {
 <html lang="fr">
 <head>
   <!--@include head-->
-  <title>${esc(a.titre.fr)} — Shaykh Mohamed Faouzi Al Karkari</title>
+  <title>${esc(a.titre_article || a.titre.fr)} — Shaykh Mohamed Faouzi Al Karkari</title>
   <meta name="description" content="${esc(a.texte?.fr || a.titre.fr)}" />
   <meta property="og:title" content="${esc(a.titre.fr)}" />
   <meta property="og:description" content="${esc(a.texte?.fr || a.titre.fr)}" />
@@ -40,7 +40,7 @@ async function pageEvenement(a) {
       <a class="actu-retour" href="galerie.html#${a.id}">← La galerie</a>
       <header class="actu-entete">
         <p class="kicker">Événement</p>
-        <h1>${esc(a.titre.fr)}</h1>
+        <h1>${esc(a.titre_article || a.titre.fr)}</h1>
       </header>
       <div class="actu-corps">
 ${a.corps.map((c) => (c.startsWith("<") ? c : `<p>${c}</p>`)).join("\n")}
