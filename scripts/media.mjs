@@ -42,11 +42,11 @@ for (const [code, t] of Object.entries(T)) {
         </a>`;
   const galerie = PHOTOS.map(([f, alt]) => `        <a class="galerie-item" href="${pre}media/photos/${f}.webp" data-reveal><img src="${pre}media/photos/t/${f}.webp" alt="${esc(alt[code])}" loading="lazy" decoding="async" /></a>`).join("\n");
   const albums = ALBUMS.map((a) => `      <div class="section-head media-gal-head">
-        <h2 class="h2" data-split>${esc(a.titre[code])}</h2>
+        <h2 class="h2" data-split>${esc(a.titre[code])}</h2>${a.texte ? `\n        <p class="section-lede" data-reveal>${esc(a.texte[code] || a.texte.fr)}</p>` : ""}
       </div>
       <div class="galerie" data-close="${esc(t.close)}" data-prev="${esc(t.prev)}" data-next="${esc(t.next)}">
 ${htmlAlbum(a, code, pre)}
-      </div>`).join("\n");
+      </div>${a.credit ? `\n      <p class="galerie-credit">${code === "fr" ? "Photos" : code === "en" ? "Photos" : "الصور"} : ${esc(a.credit)}</p>` : ""}`).join("\n");
   const html = `<!doctype html>
 <html lang="${code}"${code === "ar" ? ' dir="rtl"' : ""}>
 <head>

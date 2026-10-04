@@ -1524,3 +1524,4 @@ html[lang="ar"] .lb-close { right: auto; left: 18px; }
 .album-article .galerie-item { margin-bottom: 12px; }
 .media-gal-head + .galerie { margin-bottom: 30px; }
 .album-article .galerie { columns: 2 240px; }
+.galerie-credit { max-width: var(--max); margin: -10px auto 30px; padding: 0 var(--gutter); font-size: .85rem; color: var(--muted); font-style: italic; }

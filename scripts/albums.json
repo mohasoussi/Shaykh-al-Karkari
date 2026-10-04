@@ -198,7 +198,53 @@
      "en": "The Shaykh receiving the Paul Harris Fellow certificate, Peace Symposium",
      "ar": "تسليم الشيخ شهادة «بول هاريس فيلو»، ندوة السلام"
     }
+   },
+   {
+    "f": "symposium-6",
+    "alt": {
+     "fr": "Le Shaykh reçoit le diplôme Paul Harris Fellow, Symposium pour la Paix",
+     "en": "The Shaykh receiving the Paul Harris Fellow certificate, Peace Symposium",
+     "ar": "الشيخ يتسلّم شهادة «بول هاريس فيلو»، ندوة السلام"
+    }
+   },
+   {
+    "f": "symposium-7",
+    "alt": {
+     "fr": "Le Shaykh à la table ronde Laïcité et culte, aux côtés d'une représentante hindoue et d'un intervenant",
+     "en": "The Shaykh at the Secularism and Worship round table, beside a Hindu representative and another speaker",
+     "ar": "الشيخ في مائدة «العلمانية والعبادة» إلى جانب ممثلة هندوسية ومتحدث آخر"
+    }
+   },
+   {
+    "f": "symposium-8",
+    "alt": {
+     "fr": "Les intervenants de la table ronde Laïcité et culte",
+     "en": "The speakers of the Secularism and Worship round table",
+     "ar": "المتحدثون في مائدة «العلمانية والعبادة»"
+    }
+   },
+   {
+    "f": "symposium-9",
+    "alt": {
+     "fr": "Remise du Paul Harris Fellow au Shaykh par les responsables du Rotary",
+     "en": "Rotary officials presenting the Paul Harris Fellow to the Shaykh",
+     "ar": "مسؤولو الروتاري يسلّمون الشيخ شهادة «بول هاريس فيلو»"
+    }
+   },
+   {
+    "f": "symposium-10",
+    "alt": {
+     "fr": "Table ronde : l'animatrice, le Shaykh et deux intervenants",
+     "en": "Round table: the moderator, the Shaykh and two speakers",
+     "ar": "المائدة المستديرة: المحاورة والشيخ ومتحدثان"
+    }
    }
-  ]
+  ],
+  "texte": {
+   "fr": "Le Shaykh participe à une table ronde sur le thème « Laïcité et culte », en présence de responsables religieux juifs, chrétiens et hindou et de personnalités politiques françaises. Il reçoit également le diplôme de Paul Harris Fellow du Rotary International.",
+   "en": "The Shaykh takes part in a round table on “Secularism and worship”, alongside Jewish, Christian and Hindu religious leaders and French political figures. He also receives the Paul Harris Fellow certificate from Rotary International.",
+   "ar": "يشارك الشيخ في مائدة مستديرة حول «العلمانية والعبادة» بحضور مسؤولين دينيين من اليهود والمسيحيين والهندوس وشخصيات سياسية فرنسية. كما يتسلّم شهادة «بول هاريس فيلو» من الروتاري الدولي."
+  },
+  "credit": "TellementCliché.fr"
  }
 ]
