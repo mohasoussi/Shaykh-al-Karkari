@@ -246,5 +246,40 @@
    "ar": "يشارك الشيخ في مائدة مستديرة حول «العلمانية والعبادة» بحضور مسؤولين دينيين من اليهود والمسيحيين والهندوس وشخصيات سياسية فرنسية. كما يتسلّم شهادة «بول هاريس فيلو» من الروتاري الدولي."
   },
   "credit": "TellementCliché.fr"
+ },
+ {
+  "id": "bresil-blumenau",
+  "article": "le-shaykh-mohamed-faouzi-al-karkari-invite-de-luniversite-regionale-de-blumenau-",
+  "titre": {
+   "fr": "Conférence au Brésil — Université de Blumenau (FURB)",
+   "en": "Lecture in Brazil — University of Blumenau (FURB)",
+   "ar": "محاضرة في البرازيل — جامعة بلومينو (FURB)"
+  },
+  "photos": [
+   {
+    "f": "blumenau-1",
+    "alt": {
+     "fr": "Le Shaykh s'exprime lors de sa conférence au Brésil",
+     "en": "The Shaykh speaking during his lecture in Brazil",
+     "ar": "الشيخ يتحدث خلال محاضرته في البرازيل"
+    }
+   },
+   {
+    "f": "blumenau-2",
+    "alt": {
+     "fr": "Le Shaykh à la table de la conférence, Université de Blumenau (FURB)",
+     "en": "The Shaykh at the lecture table, University of Blumenau (FURB)",
+     "ar": "الشيخ على منصة المحاضرة، جامعة بلومينو (FURB)"
+    }
+   },
+   {
+    "f": "blumenau-3",
+    "alt": {
+     "fr": "Photo de groupe avec le Shaykh à l'issue de la conférence, Brésil",
+     "en": "Group photo with the Shaykh after the lecture, Brazil",
+     "ar": "صورة جماعية مع الشيخ بعد المحاضرة، البرازيل"
+    }
+   }
+  ]
  }
 ]
