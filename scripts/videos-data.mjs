@@ -14,6 +14,9 @@ const itv = (id, yt, nom) => ({ id, yt,
   t: { fr: `Entretien — ${nom}`, en: `Interview — ${nom}`, ar: `حوار — ${nom}` } });
 
 export const INTERVIEWS = [
+  { id: "itv-nouveau", yt: "https://youtu.be/PGJgaHGDcS8",
+    place: { fr: "Interview", en: "Interview", ar: "حوار" },
+    t: { fr: "Entretien avec le Shaykh", en: "Interview with the Shaykh", ar: "حوار مع الشيخ" } },
   itv("itv-essentiel", "https://youtu.be/p5n299xzBhM", "L'Essentiel Maroc"),
   itv("itv-telemaroc", "https://youtu.be/L4uFqCjVxwY", "Télé Maroc"),
   itv("itv-journal24", "https://youtu.be/0riR5wCkK0A", "Journal24 TV"),
