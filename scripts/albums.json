@@ -705,6 +705,22 @@
      "en": "The hall applauds at the end of the lecture",
      "ar": "القاعة تصفق في ختام المحاضرة"
     }
+   },
+   {
+    "f": "joinville-6",
+    "alt": {
+     "fr": "Le Shaykh s'exprime à la tribune, à l'Institut de Joinville",
+     "en": "The Shaykh speaking at the table, Joinville Institute",
+     "ar": "الشيخ يتحدث على المنصة في معهد جوينفيل"
+    }
+   },
+   {
+    "f": "joinville-7",
+    "alt": {
+     "fr": "Vue de la salle et de la tribune pendant la conférence",
+     "en": "View of the hall and the speakers' table during the lecture",
+     "ar": "منظر للقاعة والمنصة أثناء المحاضرة"
+    }
    }
   ]
  }
