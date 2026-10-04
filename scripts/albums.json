@@ -1,12 +1,99 @@
 [
-  {
-    "id": "une-voix-pour-la-paix",
-    "article": "shaykh-mohamed-faouzi-al-karkari-invite-a-une-voix-pour-la-paix",
-    "titre": { "fr": "Une Voix pour la Paix — Paris", "en": "A Voice for Peace — Paris", "ar": "صوتٌ من أجل السلام — باريس" },
-    "photos": [
-      { "f": "paix-1", "alt": { "fr": "Le Shaykh à la tribune lors de « Une Voix pour la Paix »", "en": "The Shaykh at the podium during “A Voice for Peace”", "ar": "الشيخ على المنبر خلال «صوتٌ من أجل السلام»" } },
-      { "f": "paix-3", "alt": { "fr": "Le Shaykh prend la parole, « Une Voix pour la Paix »", "en": "The Shaykh speaking, “A Voice for Peace”", "ar": "الشيخ يلقي كلمته، «صوتٌ من أجل السلام»" } },
-      { "f": "paix-2", "alt": { "fr": "Le Shaykh entouré de deux participants, « Une Voix pour la Paix »", "en": "The Shaykh with two participants, “A Voice for Peace”", "ar": "الشيخ برفقة مشاركَين، «صوتٌ من أجل السلام»" } }
-    ]
-  }
+ {
+  "id": "une-voix-pour-la-paix",
+  "article": "shaykh-mohamed-faouzi-al-karkari-invite-a-une-voix-pour-la-paix",
+  "titre": {
+   "fr": "Une Voix pour la Paix — Paris",
+   "en": "A Voice for Peace — Paris",
+   "ar": "صوتٌ من أجل السلام — باريس"
+  },
+  "photos": [
+   {
+    "f": "paix-1",
+    "alt": {
+     "fr": "Le Shaykh à la tribune lors de « Une Voix pour la Paix »",
+     "en": "The Shaykh at the podium during “A Voice for Peace”",
+     "ar": "الشيخ على المنبر خلال «صوتٌ من أجل السلام»"
+    }
+   },
+   {
+    "f": "paix-3",
+    "alt": {
+     "fr": "Le Shaykh prend la parole, « Une Voix pour la Paix »",
+     "en": "The Shaykh speaking, “A Voice for Peace”",
+     "ar": "الشيخ يلقي كلمته، «صوتٌ من أجل السلام»"
+    }
+   },
+   {
+    "f": "paix-2",
+    "alt": {
+     "fr": "Le Shaykh entouré de deux participants, « Une Voix pour la Paix »",
+     "en": "The Shaykh with two participants, “A Voice for Peace”",
+     "ar": "الشيخ برفقة مشاركَين، «صوتٌ من أجل السلام»"
+    }
+   }
+  ]
+ },
+ {
+  "id": "conference-geneve",
+  "article": "cloture-de-la-visite-du-shaykh-mohamed-faouzi-al-karkari-a-geneve",
+  "titre": {
+   "fr": "Conférence à Genève",
+   "en": "Lecture in Geneva",
+   "ar": "محاضرة في جنيف"
+  },
+  "photos": [
+   {
+    "f": "geneve-1",
+    "alt": {
+     "fr": "La salle lors de la conférence du Shaykh à Genève",
+     "en": "The hall during the Shaykh's lecture in Geneva",
+     "ar": "القاعة أثناء محاضرة الشيخ في جنيف"
+    }
+   },
+   {
+    "f": "geneve-2",
+    "alt": {
+     "fr": "Le Shaykh prend la parole à Genève",
+     "en": "The Shaykh speaking in Geneva",
+     "ar": "الشيخ يتحدث في جنيف"
+    }
+   }
+  ]
+ },
+ {
+  "id": "conference-paris",
+  "article": null,
+  "titre": {
+   "fr": "Conférence à Paris",
+   "en": "Lecture in Paris",
+   "ar": "محاضرة في باريس"
+  },
+  "photos": [
+   {
+    "f": "paris-1",
+    "alt": {
+     "fr": "Le Shaykh lors de sa conférence à Paris",
+     "en": "The Shaykh during his lecture in Paris",
+     "ar": "الشيخ خلال محاضرته في باريس"
+    }
+   },
+   {
+    "f": "paris-2",
+    "alt": {
+     "fr": "Le Shaykh s'adresse à l'assistance, conférence à Paris",
+     "en": "The Shaykh addressing the audience, lecture in Paris",
+     "ar": "الشيخ يخاطب الحضور، محاضرة في باريس"
+    }
+   },
+   {
+    "f": "paris-3",
+    "alt": {
+     "fr": "Une salle comble à la conférence de Paris",
+     "en": "A full hall at the Paris lecture",
+     "ar": "قاعة ممتلئة في محاضرة باريس"
+    }
+   }
+  ]
+ }
 ]
