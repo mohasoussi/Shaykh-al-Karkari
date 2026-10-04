@@ -106,7 +106,7 @@ for (const [code, g] of Object.entries(G)) {
   const blocs = GAL.map((a) => `      <section class="album" id="${a.id}">
         <div class="section-head media-gal-head">
           <h2 class="h2" data-split>${esc(a.titre[code])}</h2>
-          <p class="album-n">${g.n(a.photos.length)}</p>${a.texte ? `\n          <p class="section-lede" data-reveal>${esc(a.texte[code] || a.texte.fr)}</p>` : ""}${a.article ? `\n          <p class="album-art"><a href="${pre}actualite-${a.article}.html">${esc(g.art)} →</a></p>` : ""}
+          <p class="album-n">${g.n(a.photos.length)}</p>${a.texte ? `\n          <p class="section-lede" data-reveal>${esc(a.texte[code] || a.texte.fr)}</p>` : ""}${a.corps ? `\n          <p class="album-art"><a href="${pre}evenement-${a.id}.html">${esc(g.art)} →</a></p>` : a.article ? `\n          <p class="album-art"><a href="${pre}actualite-${a.article}.html">${esc(g.art)} →</a></p>` : ""}
         </div>
         <div class="galerie" data-close="${esc(t.close)}" data-prev="${esc(t.prev)}" data-next="${esc(t.next)}">
 ${htmlAlbum(a, code, pre)}

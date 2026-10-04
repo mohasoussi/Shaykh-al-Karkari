@@ -357,5 +357,66 @@
     }
    }
   ]
+ },
+ {
+  "id": "canada-conference-soufie",
+  "article": null,
+  "rubrique": "galerie",
+  "page": true,
+  "credit": "Nur Karkari Institute (I.N.K.)",
+  "titre": {
+   "fr": "Conférence soufie au Canada — INK Author Association",
+   "en": "Sufi Conference Canada — INK Author Association",
+   "ar": "المؤتمر الصوفي في كندا — رابطة مؤلفي INK"
+  },
+  "texte": {
+   "fr": "Première conférence sur le soufisme au Canada de l'association d'auteurs INK (Institute of Nur Karkari) : art, poésie et récit, avec la remise d'un certificat provincial de reconnaissance par le député de l'Ontario Sherif Sabawy.",
+   "en": "The first Sufi conference in Canada of the INK author association (Institute of Nur Karkari): art, poetry and storytelling, with a provincial certificate of recognition presented by Ontario MPP Sherif Sabawy.",
+   "ar": "أول مؤتمر صوفي في كندا لرابطة المؤلفين INK (معهد نور الكركري): الفن والشعر والسرد، وتسليم شهادة تقدير إقليمية من النائب الإقليمي في أونتاريو شريف صبّاوي."
+  },
+  "corps": [
+   "L'association d'auteurs INK (Institute of Nur Karkari) a récemment organisé sa première conférence sur le soufisme au Canada. Ce rassemblement a réuni un groupe international d'auteurs, de chercheurs et d'artistes dans le but de favoriser les échanges littéraires et le dialogue interculturel.",
+   "L'un des moments forts de l'événement a été la reconnaissance officielle par le député provincial de l'Ontario Sherif Sabawy, qui a remis à l'association un certificat provincial de reconnaissance pour sa contribution culturelle. En retour, le fondateur de l'association, Shaykh Sidi Mohamed Faouzi al-Karkari, et son directeur exécutif, le Dr Khaled Salem, ont remis au député provincial Sabawy une plaque en reconnaissance de son soutien continu aux arts.",
+   "Au cours du programme, Shaykh al-Karkari a présenté son livre récemment publié, <em>The Secret of the Word</em>, soulignant l'impact social et culturel de la langue et de la littérature.",
+   "De plus, la conférence a réuni un panel diversifié d'intervenants représentant l'Amérique du Nord, le Moyen-Orient, l'Afrique du Nord et l'Asie. Parmi les participants notables figuraient :",
+   "<ul class=\"bio-liste\"><li><strong>Dr Khaled Salem</strong> : médecin, adepte du soufisme et auteur.</li><li><strong>Amira Al-Masabi</strong> : chercheuse universitaire spécialisée dans le leadership transformationnel.</li><li><strong>Asiya Ahmed</strong> : écrivaine égypto-canadienne et autrice de <em>Nefertiti and the Old Woman of the Inca</em>.</li><li><strong>Saba Al-Eryani</strong> : écrivaine yéméno-canadienne et spécialiste de l'éducation spécialisée.</li><li><strong>Jihan Ashrafi</strong> : écrivaine, poète et universitaire spécialisée en littérature anglaise, française et soufie.</li><li><strong>Huma Aatifi</strong> : professeure adjointe au Brooklyn College et au Lehman College.</li><li><strong>Dr Amal Bin Sharaf</strong> : universitaire algéro-canadienne spécialisée en sociolinguistique.</li><li><strong>Dr Ahmed Al-Khafaji</strong> : psychologue scolaire, auteur et ancien sous-ministre.</li><li><strong>Omar Murad</strong> : écrivain et romancier.</li><li><strong>Imad Kayali</strong> : architecte et écrivain jordano-canadien.</li><li><strong>Faouzia Ben Moussa et Khawla Taha</strong> : représentantes de la Fondation 365 Canada pour l'éducation et l'intégration internationale.</li><li><strong>Douha Al-Darweesh</strong> : professionnelle des médias et coordinatrice culturelle syro-canadienne.</li></ul>",
+   "Le programme comprenait également une cérémonie de remise de prix rendant hommage aux figures marquantes du monde littéraire, notamment à la romancière palestino-canadienne et directrice de la Fondation Nawat, Basma Al-Takrouri.",
+   "L'événement s'est conclu par un concert de l'artiste égypto-canadien Majed Zareef, qui a rendu hommage à l'héritage du chanteur arabe Hany Shaker.",
+   "Après le succès de son lancement lors de la conférence, l'INK Author Association prévoit de continuer à organiser des événements dans toute la région afin de promouvoir les arts, la littérature et l'éducation à l'échelle mondiale."
+  ],
+  "photos": [
+   {
+    "f": "canada-1",
+    "alt": {
+     "fr": "Le Shaykh s'exprime à la conférence soufie du Canada",
+     "en": "The Shaykh speaking at the Sufi Conference Canada",
+     "ar": "الشيخ يتحدث في المؤتمر الصوفي بكندا"
+    }
+   },
+   {
+    "f": "canada-2",
+    "alt": {
+     "fr": "Remise du certificat provincial de reconnaissance à l'association INK",
+     "en": "Presentation of the provincial certificate of recognition to the INK association",
+     "ar": "تسليم شهادة التقدير الإقليمية لرابطة INK"
+    }
+   },
+   {
+    "f": "canada-3",
+    "alt": {
+     "fr": "Le Shaykh remet une plaque au député provincial Sabawy",
+     "en": "The Shaykh presenting a plaque to MPP Sabawy",
+     "ar": "الشيخ يقدّم درعًا للنائب الإقليمي صبّاوي"
+    }
+   },
+   {
+    "f": "canada-4",
+    "alt": {
+     "fr": "Remise d'un certificat d'excellence « Art & Poetry »",
+     "en": "Presentation of an “Art & Poetry” certificate of excellence",
+     "ar": "تسليم شهادة تميّز في «الفن والشعر»"
+    }
+   }
+  ]
  }
 ]
