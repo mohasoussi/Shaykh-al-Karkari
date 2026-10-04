@@ -41,7 +41,7 @@ for (const [code, t] of Object.entries(T)) {
           <div class="hub-txt"><h2>${esc(titre)}</h2><p>${esc(texte)}</p><span class="hub-go">${esc(cta)} <i>${t.a}</i></span></div>
         </a>`;
   const galerie = PHOTOS.map(([f, alt]) => `        <a class="galerie-item" href="${pre}media/photos/${f}.webp" data-reveal><img src="${pre}media/photos/t/${f}.webp" alt="${esc(alt[code])}" loading="lazy" decoding="async" /></a>`).join("\n");
-  const albums = ALBUMS.map((a) => `      <div class="section-head media-gal-head">
+  const albums = ALBUMS.filter((a) => a.rubrique === "media").map((a) => `      <div class="section-head media-gal-head">
         <h2 class="h2" data-split>${esc(a.titre[code])}</h2>${a.texte ? `\n        <p class="section-lede" data-reveal>${esc(a.texte[code] || a.texte.fr)}</p>` : ""}
       </div>
       <div class="galerie" data-close="${esc(t.close)}" data-prev="${esc(t.prev)}" data-next="${esc(t.next)}">
@@ -91,4 +91,58 @@ ${albums}
   if (t.dir) fs.mkdirSync(t.dir, { recursive: true });
   fs.writeFileSync(`${t.dir}media.html`, html);
 }
-console.log("media.html ×3");
+
+/* ---------- page Galerie : un album par événement ---------- */
+const G = {
+  fr: { kicker: "Galerie", h1: "Les événements en photos", lede: "Un album par événement : conférences, symposiums, rencontres. Touchez une photo pour l'agrandir.", title: "Galerie — Shaykh Mohamed Faouzi Al Karkari", desc: "Galerie photo des événements du Shaykh Mohamed Faouzi Al Karkari.", n: (k) => `${k} photo${k > 1 ? "s" : ""}`, art: "Lire l'article" },
+  en: { kicker: "Gallery", h1: "Events in pictures", lede: "One album per event: lectures, symposiums, meetings. Tap a photo to enlarge it.", title: "Gallery — Shaykh Mohamed Faouzi Al Karkari", desc: "Photo gallery of the events of Shaykh Mohamed Faouzi Al Karkari.", n: (k) => `${k} photo${k > 1 ? "s" : ""}`, art: "Read the article (in French)" },
+  ar: { kicker: "المعرض", h1: "الفعاليات بالصور", lede: "ألبوم لكل فعالية: محاضرات وندوات ولقاءات. المس صورة لتكبيرها.", title: "المعرض — الشيخ محمد فوزي الكركري", desc: "معرض صور لفعاليات الشيخ محمد فوزي الكركري.", n: (k) => `${k} صورة`, art: "اقرأ المقال (بالفرنسية)" },
+};
+const GAL = ALBUMS.filter((a) => a.rubrique === "galerie");
+for (const [code, g] of Object.entries(G)) {
+  const t = T[code];
+  const pre = t.dir ? "../" : "";
+  const sommaire = GAL.map((a) => `<a class="chip" href="#${a.id}">${esc(a.titre[code])}</a>`).join("");
+  const blocs = GAL.map((a) => `      <section class="album" id="${a.id}">
+        <div class="section-head media-gal-head">
+          <h2 class="h2" data-split>${esc(a.titre[code])}</h2>
+          <p class="album-n">${g.n(a.photos.length)}</p>${a.texte ? `\n          <p class="section-lede" data-reveal>${esc(a.texte[code] || a.texte.fr)}</p>` : ""}${a.article ? `\n          <p class="album-art"><a href="${pre}actualite-${a.article}.html">${esc(g.art)} →</a></p>` : ""}
+        </div>
+        <div class="galerie" data-close="${esc(t.close)}" data-prev="${esc(t.prev)}" data-next="${esc(t.next)}">
+${htmlAlbum(a, code, pre)}
+        </div>${a.credit ? `\n        <p class="galerie-credit">${code === "ar" ? "الصور" : "Photos"} : ${esc(a.credit)}</p>` : ""}
+      </section>`).join("\n");
+  const html = `<!doctype html>
+<html lang="${code}"${code === "ar" ? ' dir="rtl"' : ""}>
+<head>
+  <!--@include head-->
+  <title>${esc(g.title)}</title>
+  <meta name="description" content="${esc(g.desc)}" />
+  <meta property="og:title" content="${esc(g.title)}" />
+  <meta property="og:description" content="${esc(g.desc)}" />
+  <meta property="og:image" content="/media/photos/portrait-rose.webp" />
+</head>
+<body data-page="galerie">
+  <!--@include ui-->
+  <!--@include header-->
+  <!--@include menu-->
+  <div class="smooth" id="top">
+  <main>
+    <section class="hub media-page">
+      <div class="section-head">
+        <p class="kicker">${g.kicker}</p>
+        <h1 class="h2" data-split>${g.h1}</h1>
+        <p class="section-lede" data-reveal>${g.lede}</p>
+        <nav class="chips" aria-label="${esc(g.kicker)}">${sommaire}</nav>
+      </div>
+${blocs}
+    </section>
+  </main>
+  <!--@include footer-->
+  </div>
+</body>
+</html>
+`;
+  fs.writeFileSync(`${t.dir}galerie.html`, html);
+}
+console.log("media.html + galerie.html ×3");

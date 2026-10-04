@@ -1525,3 +1525,13 @@ html[lang="ar"] .lb-close { right: auto; left: 18px; }
 .media-gal-head + .galerie { margin-bottom: 30px; }
 .album-article .galerie { columns: 2 240px; }
 .galerie-credit { max-width: var(--max); margin: -10px auto 30px; padding: 0 var(--gutter); font-size: .85rem; color: var(--muted); font-style: italic; }
+
+/* Galerie : sommaire par événement */
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.chip { padding: 10px 16px; border: 1px solid var(--line); border-radius: 999px; font-size: .9rem; color: var(--ink); background: rgba(255, 255, 255, .5); transition: background .3s, color .3s, border-color .3s; }
+.chip:hover { background: var(--ink); color: var(--ivory); border-color: var(--ink); }
+.album { scroll-margin-top: 110px; margin-bottom: clamp(30px, 5vw, 70px); }
+.album-n { margin: 4px 0 0; font: 600 .74rem var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.album-art { margin: 14px 0 0; }
+.album-art a { text-decoration: underline; text-underline-offset: 3px; color: var(--ink); }
+html[lang="ar"] .album-n { letter-spacing: 0; font-size: .9rem; }

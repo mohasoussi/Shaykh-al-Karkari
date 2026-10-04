@@ -32,7 +32,8 @@
      "ar": "الشيخ برفقة مشاركَين، «صوتٌ من أجل السلام»"
     }
    }
-  ]
+  ],
+  "rubrique": "galerie"
  },
  {
   "id": "conference-geneve",
@@ -59,7 +60,8 @@
      "ar": "الشيخ يتحدث في جنيف"
     }
    }
-  ]
+  ],
+  "rubrique": "galerie"
  },
  {
   "id": "conference-paris",
@@ -94,7 +96,8 @@
      "ar": "قاعة ممتلئة في محاضرة باريس"
     }
    }
-  ]
+  ],
+  "rubrique": "galerie"
  },
  {
   "id": "jordanie",
@@ -121,7 +124,8 @@
      "ar": "الشيخ يكتب في سجل الزوار، الأردن"
     }
    }
-  ]
+  ],
+  "rubrique": "galerie"
  },
  {
   "id": "presse-marocaine",
@@ -148,7 +152,8 @@
      "ar": "الشيخ يجيب أمام ميكروفونات الصحافة المغربية"
     }
    }
-  ]
+  ],
+  "rubrique": "media"
  },
  {
   "id": "symposium-paix",
@@ -245,7 +250,8 @@
    "en": "The Shaykh takes part in a round table on “Secularism and worship”, alongside Jewish, Christian and Hindu religious leaders and French political figures. He also receives the Paul Harris Fellow certificate from Rotary International.",
    "ar": "يشارك الشيخ في مائدة مستديرة حول «العلمانية والعبادة» بحضور مسؤولين دينيين من اليهود والمسيحيين والهندوس وشخصيات سياسية فرنسية. كما يتسلّم شهادة «بول هاريس فيلو» من الروتاري الدولي."
   },
-  "credit": "TellementCliché.fr"
+  "credit": "TellementCliché.fr",
+  "rubrique": "galerie"
  },
  {
   "id": "bresil-blumenau",
@@ -280,6 +286,7 @@
      "ar": "صورة جماعية مع الشيخ بعد المحاضرة، البرازيل"
     }
    }
-  ]
+  ],
+  "rubrique": "galerie"
  }
 ]
