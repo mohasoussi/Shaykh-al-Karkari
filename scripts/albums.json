@@ -638,5 +638,74 @@
     }
    }
   ]
+ },
+ {
+  "id": "bresil-joinville",
+  "article": null,
+  "rubrique": "galerie",
+  "page": true,
+  "titre": {
+   "fr": "Conférence à Joinville (Brésil) — Psychologie soufie et métaphysique",
+   "en": "Lecture in Joinville (Brazil) — Sufi psychology and metaphysics",
+   "ar": "محاضرة في جوينفيل (البرازيل) — علم النفس الصوفي والميتافيزيقا"
+  },
+  "titre_article": "Le Shaykh Al-Karkari donne une conférence sur la psychologie soufie et la métaphysique au Brésil",
+  "texte": {
+   "fr": "Institut de sciences psychologiques et parapsychologiques, Joinville : une conférence suivie d'une séance de dhikr de guérison.",
+   "en": "Institute of Psychological and Parapsychological Sciences, Joinville: a lecture followed by a healing dhikr session.",
+   "ar": "معهد العلوم النفسية وما وراء النفس بجوينفيل: محاضرة تلتها جلسة ذكر علاجي."
+  },
+  "corps": [
+   "<strong>Joinville, Brésil</strong> – Le Shaykh Sidi Mohamed Faouzi Al-Karkari, fondateur de l'Institut Al-Karkari d'études soufies, a donné une conférence à l'Institut de sciences psychologiques et parapsychologiques de Joinville, ville du sud du Brésil. L'événement a réuni un public choisi de professeurs et de chercheurs du domaine.",
+   "La conférence a exploré les principes fondateurs de la guérison et de la thérapie dans la pensée scientifique soufie. Le Shaykh a expliqué que la méthodologie prophétique offre une vision globale de l'être humain, qui intègre les besoins matériels du corps, y compris la médecine conventionnelle, et les nécessités spirituelles qui forment le cœur de l'existence humaine et l'origine de ses maux fondamentaux. Cette approche repose sur la compréhension de la double nature de l'être humain, à la fois sensorielle et spirituelle.",
+   "Il a détaillé comment la guérison peut s'accomplir dans ce cadre global, soulignant que la forme la plus haute de guérison réside dans la restauration par la lumière divine, qui constitue l'essence même du soi.",
+   "<h3>Une séance de dhikr de guérison</h3>",
+   "À l'issue de la conférence, et à la demande des personnes présentes, le Shaykh a dirigé une séance de dhikr (invocation de Dieu) de guérison. Professeurs, étudiants et chercheurs ont rejoint la récitation collective de la formule de l'unicité, « La ilaha illa Allah » (il n'y a de divinité que Dieu). Le Shaykh a cité à cette occasion les versets coraniques :",
+   "<blockquote class=\"quote\">« C'est par l'évocation d'Allah que les cœurs se tranquillisent. »</blockquote>",
+   "<blockquote class=\"quote\">« Et Nous faisons descendre du Coran ce qui est guérison et miséricorde pour les croyants. »</blockquote>",
+   "La conférence a suscité un vif intérêt intellectuel et scientifique dans l'assistance et donné lieu à des échanges constructifs, visant à bâtir des ponts entre la psychologie, les sciences cognitives et le savoir médical vivant hérité du soufisme."
+  ],
+  "photos": [
+   {
+    "f": "joinville-1",
+    "alt": {
+     "fr": "Un aîné de l'assistance salue chaleureusement le Shaykh",
+     "en": "An elderly attendee warmly greets the Shaykh",
+     "ar": "أحد كبار الحضور يحيّي الشيخ بحرارة"
+    }
+   },
+   {
+    "f": "joinville-2",
+    "alt": {
+     "fr": "Le Shaykh face à la salle, à l'Institut de sciences psychologiques et parapsychologiques de Joinville",
+     "en": "The Shaykh facing the hall at the Institute of Psychological and Parapsychological Sciences, Joinville",
+     "ar": "الشيخ أمام القاعة في معهد العلوم النفسية وما وراء النفس بجوينفيل"
+    }
+   },
+   {
+    "f": "joinville-3",
+    "alt": {
+     "fr": "L'assistance en recueillement pendant le dhikr",
+     "en": "The audience in contemplation during the dhikr",
+     "ar": "الحضور في خشوع أثناء الذكر"
+    }
+   },
+   {
+    "f": "joinville-4",
+    "alt": {
+     "fr": "Professeurs, étudiants et chercheurs dans la salle",
+     "en": "Professors, students and researchers in the hall",
+     "ar": "أساتذة وطلاب وباحثون في القاعة"
+    }
+   },
+   {
+    "f": "joinville-5",
+    "alt": {
+     "fr": "La salle applaudit à la fin de la conférence",
+     "en": "The hall applauds at the end of the lecture",
+     "ar": "القاعة تصفق في ختام المحاضرة"
+    }
+   }
+  ]
  }
 ]
