@@ -381,6 +381,38 @@
     }
    },
    {
+    "f": "assises-9",
+    "alt": {
+     "fr": "Un intervenant prend la parole lors des Assises fraternelles",
+     "en": "A speaker taking the floor at the Fraternal Assizes",
+     "ar": "أحد المتحدثين يتناول الكلمة في الملتقى الأخوي"
+    }
+   },
+   {
+    "f": "assises-8",
+    "alt": {
+     "fr": "Le public réuni autour du cercle de dialogue",
+     "en": "The audience gathered around the dialogue circle",
+     "ar": "الحضور مجتمعون حول حلقة الحوار"
+    }
+   },
+   {
+    "f": "assises-10",
+    "alt": {
+     "fr": "Le public écoute attentivement les échanges, Assises fraternelles",
+     "en": "The audience listening attentively to the exchanges, Fraternal Assizes",
+     "ar": "الحضور يصغون باهتمام إلى النقاش، الملتقى الأخوي"
+    }
+   },
+   {
+    "f": "assises-7",
+    "alt": {
+     "fr": "Le rabbin Michel Serfaty écoute les échanges",
+     "en": "Rabbi Michel Serfaty listening to the exchanges",
+     "ar": "الحاخام ميشال سرفاتي يصغي إلى النقاش"
+    }
+   },
+   {
     "f": "assises-affiche",
     "alt": {
      "fr": "Affiche de l'événement : « Assises du dialogue », lundi 18 mai, Forum 104",
