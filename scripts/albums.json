@@ -288,5 +288,74 @@
    }
   ],
   "rubrique": "galerie"
+ },
+ {
+  "id": "allemagne-schleswig",
+  "article": null,
+  "rubrique": "galerie",
+  "titre": {
+   "fr": "Table ronde à Schleswig (Allemagne) — 11 mai 2026",
+   "en": "Round table in Schleswig (Germany) — 11 May 2026",
+   "ar": "مائدة مستديرة في شلسفيغ (ألمانيا) — 11 مايو 2026"
+  },
+  "photos": [
+   {
+    "f": "schleswig-1",
+    "alt": {
+     "fr": "Cercle d'échange autour du Shaykh à Schleswig, Allemagne",
+     "en": "Circle of exchange around the Shaykh in Schleswig, Germany",
+     "ar": "حلقة حوار حول الشيخ في شلسفيغ، ألمانيا"
+    }
+   },
+   {
+    "f": "schleswig-2",
+    "alt": {
+     "fr": "Photo de groupe avec le Shaykh à Schleswig, Allemagne",
+     "en": "Group photo with the Shaykh in Schleswig, Germany",
+     "ar": "صورة جماعية مع الشيخ في شلسفيغ، ألمانيا"
+    }
+   }
+  ]
+ },
+ {
+  "id": "assises-dialogue",
+  "article": null,
+  "rubrique": "galerie",
+  "titre": {
+   "fr": "Assises du dialogue — Forum 104, Paris (18 mai 2026)",
+   "en": "Dialogue Assizes — Forum 104, Paris (18 May 2026)",
+   "ar": "ملتقى الحوار — فوروم 104، باريس (18 مايو 2026)"
+  },
+  "texte": {
+   "fr": "« Pourquoi le dialogue est la seule solution ? » Table ronde avec le rabbin Michel Serfaty, des responsables religieux et associatifs, organisée par Les Compagnons, Les Guerrières de la Paix et Ensemble avec Marie, pour explorer les voies et les ponts du dialogue entre les communautés.",
+   "en": "“Why is dialogue the only solution?” A round table with Rabbi Michel Serfaty and religious and community leaders, organised by Les Compagnons, Les Guerrières de la Paix and Ensemble avec Marie, to explore the paths and bridges of dialogue between communities.",
+   "ar": "«لماذا الحوار هو الحل الوحيد؟» مائدة مستديرة مع الحاخام ميشال سرفاتي ومسؤولين دينيين وجمعويين، نظّمتها جمعيات «Les Compagnons» و«Les Guerrières de la Paix» و«Ensemble avec Marie»، لاستكشاف سبل الحوار وجسوره بين المجتمعات."
+  },
+  "photos": [
+   {
+    "f": "assises-1",
+    "alt": {
+     "fr": "Le Shaykh et le rabbin lors des Assises du dialogue",
+     "en": "The Shaykh and the rabbi at the Dialogue Assizes",
+     "ar": "الشيخ والحاخام في ملتقى الحوار"
+    }
+   },
+   {
+    "f": "assises-2",
+    "alt": {
+     "fr": "Le Shaykh prend la parole aux Assises du dialogue",
+     "en": "The Shaykh speaking at the Dialogue Assizes",
+     "ar": "الشيخ يتحدث في ملتقى الحوار"
+    }
+   },
+   {
+    "f": "assises-affiche",
+    "alt": {
+     "fr": "Affiche des Assises du dialogue, lundi 18 mai, Forum 104",
+     "en": "Poster of the Dialogue Assizes, Monday 18 May, Forum 104",
+     "ar": "ملصق ملتقى الحوار، الاثنين 18 مايو، فوروم 104"
+    }
+   }
+  ]
  }
 ]
