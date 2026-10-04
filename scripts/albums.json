@@ -322,14 +322,14 @@
   "article": null,
   "rubrique": "galerie",
   "titre": {
-   "fr": "Assises du dialogue — Forum 104, Paris (18 mai 2026)",
-   "en": "Dialogue Assizes — Forum 104, Paris (18 May 2026)",
-   "ar": "ملتقى الحوار — فوروم 104، باريس (18 مايو 2026)"
+   "fr": "Assises fraternelles — dialogue interreligieux, Forum 104, Paris (18 mai 2026)",
+   "en": "Fraternal Assizes — interfaith dialogue, Forum 104, Paris (18 May 2026)",
+   "ar": "الملتقى الأخوي — الحوار بين الأديان، فوروم 104، باريس (18 مايو 2026)"
   },
   "texte": {
-   "fr": "« Pourquoi le dialogue est la seule solution ? » Table ronde avec le rabbin Michel Serfaty, des responsables religieux et associatifs, organisée par Les Compagnons, Les Guerrières de la Paix et Ensemble avec Marie, pour explorer les voies et les ponts du dialogue entre les communautés.",
-   "en": "“Why is dialogue the only solution?” A round table with Rabbi Michel Serfaty and religious and community leaders, organised by Les Compagnons, Les Guerrières de la Paix and Ensemble avec Marie, to explore the paths and bridges of dialogue between communities.",
-   "ar": "«لماذا الحوار هو الحل الوحيد؟» مائدة مستديرة مع الحاخام ميشال سرفاتي ومسؤولين دينيين وجمعويين، نظّمتها جمعيات «Les Compagnons» و«Les Guerrières de la Paix» و«Ensemble avec Marie»، لاستكشاف سبل الحوار وجسوره بين المجتمعات."
+   "fr": "« Pourquoi le dialogue est la seule solution ? » Le Shaykh invité aux Assises fraternelles organisées par l'association Les Compagnons, avec le rabbin Michel Serfaty et d'autres personnalités engagées pour le dialogue, la paix et le vivre-ensemble.",
+   "en": "“Why is dialogue the only solution?” The Shaykh invited to the Fraternal Assizes organised by the association Les Compagnons, with Rabbi Michel Serfaty and other figures committed to dialogue, peace and living together.",
+   "ar": "«لماذا الحوار هو الحل الوحيد؟» الشيخ ضيفًا على الملتقى الأخوي الذي نظّمته جمعية «Les Compagnons» بحضور الحاخام ميشال سرفاتي وشخصيات أخرى ملتزمة بالحوار والسلام والعيش المشترك."
   },
   "photos": [
    {
@@ -341,6 +341,22 @@
     }
    },
    {
+    "f": "assises-3",
+    "alt": {
+     "fr": "Le cercle de dialogue des Assises fraternelles, Forum 104",
+     "en": "The dialogue circle of the Fraternal Assizes, Forum 104",
+     "ar": "حلقة الحوار في الملتقى الأخوي، فوروم 104"
+    }
+   },
+   {
+    "f": "assises-6",
+    "alt": {
+     "fr": "Le Shaykh s'exprime aux côtés du rabbin Michel Serfaty",
+     "en": "The Shaykh speaking beside Rabbi Michel Serfaty",
+     "ar": "الشيخ يتحدث إلى جانب الحاخام ميشال سرفاتي"
+    }
+   },
+   {
     "f": "assises-2",
     "alt": {
      "fr": "Le Shaykh prend la parole aux Assises du dialogue",
@@ -349,13 +365,42 @@
     }
    },
    {
+    "f": "assises-4",
+    "alt": {
+     "fr": "Le public écoute les intervenants, Assises fraternelles",
+     "en": "The audience listening to the speakers, Fraternal Assizes",
+     "ar": "الحضور يصغون إلى المتحدثين، الملتقى الأخوي"
+    }
+   },
+   {
+    "f": "assises-5",
+    "alt": {
+     "fr": "Portrait du rabbin Michel Serfaty lors des Assises fraternelles",
+     "en": "Portrait of Rabbi Michel Serfaty at the Fraternal Assizes",
+     "ar": "صورة الحاخام ميشال سرفاتي في الملتقى الأخوي"
+    }
+   },
+   {
     "f": "assises-affiche",
     "alt": {
-     "fr": "Affiche des Assises du dialogue, lundi 18 mai, Forum 104",
+     "fr": "Affiche de l'événement : « Assises du dialogue », lundi 18 mai, Forum 104",
      "en": "Poster of the Dialogue Assizes, Monday 18 May, Forum 104",
      "ar": "ملصق ملتقى الحوار، الاثنين 18 مايو، فوروم 104"
     }
    }
+  ],
+  "page": true,
+  "corps": [
+   "Ce lundi 18 mai, l'association Les Compagnons a organisé les « Assises fraternelles », une rencontre placée sous le thème : <em>« Pourquoi le dialogue est la seule solution ? »</em>. Elle était coorganisée avec Ensemble avec Marie et Les Guerrières de la Paix, et s'est tenue au Forum 104, à Paris.",
+   "L'événement a réuni plusieurs personnalités engagées dans le dialogue, la paix et le vivre-ensemble, parmi lesquelles le Shaykh Mohamed Faouzi Al Karkari ainsi que :",
+   "<ul class=\"bio-liste\"><li><strong>Michel Serfaty</strong>, rabbin franco-marocain et fondateur de l'Amitié Judéo-Musulmane de France (AJMF) ;</li><li><strong>Fadela Vaillant</strong>, vice-présidente de l'association Les Guerrières de la Paix ;</li><li><strong>Jean-François de Marignan</strong>, représentant de l'association EFESIA, qui œuvre au rapprochement des peuples ;</li><li><strong>Mouhamadou Abu Nur</strong>, docteur en droit public et juriste au Conseil d'État.</li></ul>",
+   "<h3>Trois questions pour dialoguer</h3>",
+   "Durant cette rencontre, les échanges se sont articulés autour de trois grandes questions : Qu'est-ce qui nous unit ? Comment concilier nos différences ? Quelles solutions existent pour promouvoir le vivre-ensemble ?",
+   "Les intervenants ont souligné l'importance d'un dialogue sincère entre les traditions religieuses, culturelles et humaines, dans un contexte mondial marqué par les tensions identitaires et les fractures sociales. Tous ont insisté sur la nécessité de dépasser les préjugés, de chercher à connaître l'autre et de réaliser que ce que visent les trois traditions religieuses, c'est de vouloir pour l'autre ce que l'on voudrait pour soi-même.",
+   "<h3>Le message du Shaykh</h3>",
+   "La présence du Shaykh Mohamed Faouzi al-Karkari a porté un message très fort. Il a appelé à replacer la spiritualité au cœur de nos vies, en réalisant que toute la création n'a été créée, en définitive, que pour que nous nous connaissions nous-mêmes et que nous réalisions la connaissance de notre Créateur.",
+   "Il a également expliqué que la France est vue dans le monde entier, et notamment au Maroc, comme une terre de liberté et de vivre-ensemble. Elle est peuplée d'habitants de toutes origines et de toutes religions, et il a rappelé que c'est le devoir de chacun de respecter les règles et les lois établies, afin que la société puisse se construire dans le respect de chacun.",
+   "Merci à l'association Les Compagnons qui, à travers ces Assises fraternelles, poursuit son engagement en faveur du dialogue, de la paix et du rapprochement entre les différentes composantes de la société."
   ]
  },
  {
