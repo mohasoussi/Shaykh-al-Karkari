@@ -222,7 +222,7 @@ async function listes() {
     for (const code of CODES) {
       const fr = LISTES[cle];
       const tr = LISTES_TR[cle][code];
-      let h = pageListe(articles, { ...fr, ...tr });
+      let h = pageListe(articles, { ...fr, ...tr, code });
       h = localiser(h, code);
       h = await traduireTitres(h, code, { sansExtrait: true });
       h = enTete(h, code).replace(/<title>[^<]*<\/title>/, `<title>${tr.titre} — ${code === "ar" ? "الشيخ محمد فوزي الكركري" : "Shaykh Mohamed Faouzi Al Karkari"}</title>`);

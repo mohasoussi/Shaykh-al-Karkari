@@ -1,6 +1,7 @@
 // Génère la page « Conférences en vidéo » dans les trois langues à partir d'une seule liste.
 // Usage : node scripts/conferences.mjs
 import fs from "node:fs";
+import { CONF_NOUVELLES, ytId as ytId2 } from "./videos-data.mjs";
 
 const L = {
   fr: { dir: "", lang: "fr", kicker: "Les conférences", h1: "Conférences en vidéo", lede: "Amphithéâtres, universités et scènes pour la paix : les rencontres du Shaykh, à regarder.", open: "Ouvrir sur YouTube ↗", play: "Lire la vidéo : ", title: "Conférences en vidéo — Shaykh Mohamed Faouzi Al Karkari", desc: "Les conférences et entretiens du Shaykh Mohamed Faouzi Al Karkari en vidéo." },
@@ -55,8 +56,10 @@ const V = [
     d: { fr: "« L'accent mis par les docteurs de la loi exotérique est souvent porté uniquement sur la relation verticale entre le serviteur et son Seigneur, négligeant la relation horizontale, c'est-à-dire dans la société. »", en: "“The emphasis of the exoteric jurists is often placed solely on the vertical relationship between the servant and his Lord, neglecting the horizontal relationship, that is, within society.”", ar: "«كثيرًا ما يقتصر تركيز فقهاء الظاهر على العلاقة العمودية بين العبد وربّه، مع إغفال العلاقة الأفقية، أي في المجتمع.»" } },
 ];
 
+V.push(...CONF_NOUVELLES);
+
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-const ytId = (u, v) => v.thumb || (u.match(/v=([\w-]{11})/) || [])[1];
+const ytId = (u, v) => v.thumb || ytId2(u);
 const PLAY = '<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>';
 
 for (const [code, T] of Object.entries(L)) {
@@ -73,7 +76,7 @@ for (const [code, T] of Object.entries(L)) {
         <div class="vcopy">
           <span class="talk-place">${esc(v.place[code])}</span>
           <h2>${esc(v.t[code])}</h2>
-          <p>${esc(v.d[code])}</p>
+${v.d ? `          <p>${esc(v.d[code])}</p>\n` : ""}
           <a class="vlink" href="${esc(v.yt)}" target="_blank" rel="noopener" hidden>${T.open}</a>
         </div>
       </article>`;
@@ -111,6 +114,93 @@ ${cards}
 </html>
 `;
   if (dir) fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(`${dir}conferences.html`, html);
+  fs.writeFileSync(`${dir}conferences-videos.html`, html);
 }
-console.log("conferences.html ×3");
+
+/* ---------- page « Conférences » : deux cartes (vidéos, articles) + page des articles ---------- */
+const HUB = {
+  fr: { kicker: "Les conférences", h1: "Conférences", lede: "Les interventions du Shaykh : à regarder en vidéo, ou à lire à travers les articles consacrés à ses conférences, tables rondes et rencontres.",
+    c1: ["Vidéos", "Conférences, ateliers et entretiens en vidéo : Sorbonne, Chicago, Yale, Stanford, Berkeley, Washington…", "Voir les vidéos", "conferences-videos.html", "conf-sorbonne"],
+    c2: ["Articles", "Comptes rendus de ses conférences, tables rondes et événements : Symposium pour la Paix, Assises fraternelles, Stanford, Canada, Brésil…", "Lire les articles", "conferences-articles.html", "conf-paix"],
+    title: "Conférences — Shaykh Mohamed Faouzi Al Karkari", desc: "Vidéos et articles sur les conférences, tables rondes et événements du Shaykh Mohamed Faouzi Al Karkari.", a: "→",
+    h1a: "Articles sur les conférences", lede_a: "Comptes rendus de conférences, de tables rondes et d'événements auxquels le Shaykh a participé. (Articles en français.)", lire: "Lire l'article", title_a: "Articles sur les conférences — Shaykh Mohamed Faouzi Al Karkari" },
+  en: { kicker: "Lectures", h1: "Lectures", lede: "The Shaykh's talks: to watch on video, or to read through the articles on his lectures, round tables and gatherings.",
+    c1: ["Videos", "Lectures, workshops and interviews on video: Sorbonne, Chicago, Yale, Stanford, Berkeley, Washington…", "Watch the videos", "conferences-videos.html", "conf-sorbonne"],
+    c2: ["Articles", "Reports on his lectures, round tables and events: Peace Symposium, Fraternal Assises, Stanford, Canada, Brazil…", "Read the articles", "conferences-articles.html", "conf-paix"],
+    title: "Lectures — Shaykh Mohamed Faouzi Al Karkari", desc: "Videos and articles on the lectures, round tables and events of Shaykh Mohamed Faouzi Al Karkari.", a: "→",
+    h1a: "Articles on the lectures", lede_a: "Reports on lectures, round tables and events the Shaykh took part in. (Articles in French.)", lire: "Read the article (in French)", title_a: "Articles on the lectures — Shaykh Mohamed Faouzi Al Karkari" },
+  ar: { kicker: "المحاضرات", h1: "المحاضرات", lede: "مداخلات الشيخ: للمشاهدة بالفيديو، أو للقراءة عبر المقالات عن محاضراته وموائده المستديرة ولقاءاته.",
+    c1: ["فيديوهات", "محاضرات وورشات وحوارات بالفيديو: السوربون، شيكاغو، ييل، ستانفورد، بيركلي، واشنطن…", "شاهد الفيديوهات", "conferences-videos.html", "conf-sorbonne"],
+    c2: ["مقالات", "تقارير عن محاضراته وموائده المستديرة وفعالياته: ندوة السلام، اللقاءات الأخوية، ستانفورد، كندا، البرازيل…", "اقرأ المقالات", "conferences-articles.html", "conf-paix"],
+    title: "المحاضرات — الشيخ محمد فوزي الكركري", desc: "فيديوهات ومقالات عن محاضرات الشيخ محمد فوزي الكركري وموائده المستديرة وفعالياته.", a: "←",
+    h1a: "مقالات عن المحاضرات", lede_a: "تقارير عن محاضرات وموائد مستديرة وفعاليات شارك فيها الشيخ. (المقالات بالفرنسية.)", lire: "اقرأ المقال (بالفرنسية)", title_a: "مقالات عن المحاضرات — الشيخ محمد فوزي الكركري" },
+};
+const ALB = JSON.parse(fs.readFileSync("scripts/albums.json", "utf8"));
+const EV = ALB.filter((a) => a.corps || a.article);
+const enveloppe = (code, title, desc, body, page) => `<!doctype html>
+<html lang="${code}"${code === "ar" ? ' dir="rtl"' : ""}>
+<head>
+  <!--@include head-->
+  <title>${esc(title)}</title>
+  <meta name="description" content="${esc(desc)}" />
+  <meta property="og:title" content="${esc(title)}" />
+  <meta property="og:description" content="${esc(desc)}" />
+  <meta property="og:image" content="/media/portrait-fes.webp" />
+</head>
+<body data-page="${page}">
+  <!--@include ui-->
+  <!--@include header-->
+  <!--@include menu-->
+  <div class="smooth" id="top">
+  <main>
+${body}  </main>
+  <!--@include footer-->
+  </div>
+</body>
+</html>
+`;
+for (const [code, H] of Object.entries(HUB)) {
+  const dir = L[code].dir, pre = dir ? "../" : "";
+  const carte = ([titre, texte, cta, href, img], n) => `        <a class="hub-card media-card" href="${href}" data-reveal>
+          <img src="${pre}media/${img}.webp" alt="" loading="lazy" />
+          <span class="hub-num">0${n}</span>
+          <div class="hub-txt"><h2>${esc(titre)}</h2><p>${esc(texte)}</p><span class="hub-go">${esc(cta)} <i>${H.a}</i></span></div>
+        </a>`;
+  const hub = `    <section class="hub media-page">
+      <div class="section-head">
+        <p class="kicker">${H.kicker}</p>
+        <h1 class="h2" data-split>${H.h1}</h1>
+        <p class="section-lede" data-reveal>${H.lede}</p>
+      </div>
+      <div class="hub-cards media-cards">
+${carte(H.c1, 1)}
+${carte(H.c2, 2)}
+      </div>
+    </section>
+`;
+  fs.writeFileSync(`${dir}conferences.html`, enveloppe(code, H.title, H.desc, hub, "conferences"));
+  const cartes = EV.map((a) => {
+    const href = a.corps ? `evenement-${a.id}.html` : `actualite-${a.article}.html`;
+    const f = a.photos[0].f;
+    return `        <a class="actu-card" href="${pre}${href}">
+          <figure class="actu-fig"><img src="${pre}media/evenements/${a.id}/t/${f}.webp" alt="" loading="lazy" decoding="async" /></figure>
+          <div class="actu-txt">
+            <h2>${esc(a.titre[code])}</h2>${a.texte ? `\n            <p>${esc(a.texte[code] || a.texte.fr)}</p>` : ""}
+            <span class="actu-lire">${esc(H.lire)} <i>${H.a}</i></span>
+          </div>
+        </a>`;
+  }).join("\n");
+  const arts = `    <section class="actu-page">
+      <div class="section-head">
+        <p class="kicker">${H.kicker}</p>
+        <h1 class="h2" data-split>${H.h1a}</h1>
+        <p class="section-lede" data-reveal>${H.lede_a}</p>
+      </div>
+      <div class="actu-grid" id="actu-grid">
+${cartes}
+      </div>
+    </section>
+`;
+  fs.writeFileSync(`${dir}conferences-articles.html`, enveloppe(code, H.title_a, H.desc, arts, "conferences"));
+}
+console.log("conferences.html (hub) + conferences-videos.html + conferences-articles.html ×3");

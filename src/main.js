@@ -589,7 +589,7 @@ function videos() {
     const raw = (card.dataset.youtube || "").trim();
     if (!raw) return;
     const liste = (raw.match(/[?&]list=([\w-]+)/) || [])[1];
-    const id = (raw.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/) || [])[1] || (liste ? "videoseries" : raw);
+    const id = (raw.match(/(?:v=|youtu\.be\/|embed\/|shorts\/|live\/)([\w-]{11})/) || [])[1] || (liste ? "videoseries" : raw);
     const btn = $(".vplay", card);
     const lien = $(".vlink", card);
     btn.disabled = false;

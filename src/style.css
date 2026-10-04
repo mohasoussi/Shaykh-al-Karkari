@@ -1545,3 +1545,6 @@ html[lang="ar"] .album-n { letter-spacing: 0; font-size: .9rem; }
 .actu-corps .legende{font-size:.9rem;opacity:.75;font-style:italic;border-inline-start:2px solid var(--or,#c9a24b);padding-inline-start:.9rem}
 .actu-corps .legende a{color:var(--or,#c9a24b)}
 .presse-liste small{opacity:.8;font-size:.9rem;line-height:1.5}
+.vband { min-height: 0; padding: clamp(60px, 9vh, 110px) 0; }
+.vband .section-head { margin-bottom: clamp(24px, 4vw, 48px); }
+.media-tete { padding-bottom: 0; } .media-tete .section-head { margin-bottom: 0; }

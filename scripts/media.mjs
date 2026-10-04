@@ -2,6 +2,7 @@
 /* Génère la page « Média » (fr, en, ar) : accès aux vidéos et reportages, galerie de photos avec visionneuse.
    Pour ajouter une photo : la déposer dans public/media/photos/ (+ miniature dans public/media/photos/t/) et l'ajouter à PHOTOS.
    Utilisation : node scripts/media.mjs */
+import { bandeVideos, INTERVIEWS } from "./videos-data.mjs";
 import fs from "node:fs";
 import { readFileSync } from "node:fs";
 const ALBUMS = JSON.parse(readFileSync("scripts/albums.json", "utf8"));
@@ -52,15 +53,15 @@ ${PRESSE.map(([n, u, ti, ex]) => `        <li><a href="${u}" target="_blank" rel
 `;
 }
 const T = {
-  fr: { dir: "", kicker: "Média", h1: "Photos et vidéos", lede: "Les conférences en vidéo, les reportages des rencontres et une galerie de photos du Shaykh.",
+  fr: { dir: "", kicker: "Média", h1: "Interviews et presse", lede: "Les entretiens du Shaykh dans les médias, la revue de presse et les coupures de journaux.", iv: "Interviews en vidéo", ivl: "Entretiens accordés aux chaînes et journaux marocains.",
     c1: ["Vidéos", "Conférences et entretiens en vidéo : Sorbonne, Chicago, Yale, Stanford, Berkeley…", "Voir les vidéos", "conferences.html", "conf-sorbonne"],
     c2: ["Reportages", "Photos et vidéos des visites, des rencontres et du Mawlid, racontées dans les actualités.", "Lire les reportages", "actualites.html", "conf-paix"],
-    g: "Galerie", gl: "Touchez une photo pour l'agrandir. Les albums par événement suivent.", close: "Fermer", prev: "Photo précédente", next: "Photo suivante", title: "Média — Shaykh Mohamed Faouzi Al Karkari", desc: "Photos et vidéos du Shaykh Mohamed Faouzi Al Karkari.", a: "→" },
-  en: { dir: "en/", kicker: "Media", h1: "Photos and videos", lede: "Lectures on video, reports from gatherings and a gallery of photographs of the Shaykh.",
+    g: "Galerie", gl: "Touchez une photo pour l'agrandir. Les albums par événement suivent.", close: "Fermer", prev: "Photo précédente", next: "Photo suivante", title: "Média — Shaykh Mohamed Faouzi Al Karkari", desc: "Interviews, revue de presse et coupures de journaux sur le Shaykh Mohamed Faouzi Al Karkari.", a: "→" },
+  en: { dir: "en/", kicker: "Media", h1: "Interviews and press", lede: "The Shaykh's interviews in the media, the press review and newspaper clippings.", iv: "Video interviews", ivl: "Interviews given to Moroccan channels and newspapers.",
     c1: ["Videos", "Lectures and interviews on video: Sorbonne, Chicago, Yale, Stanford, Berkeley…", "Watch the videos", "conferences.html", "conf-sorbonne"],
     c2: ["Reports", "Photos and videos of visits, gatherings and the Mawlid, told in the news section (articles in French).", "Read the reports", "actualites.html", "conf-paix"],
     g: "Gallery", gl: "Tap a photo to enlarge it.", close: "Close", prev: "Previous photo", next: "Next photo", title: "Media — Shaykh Mohamed Faouzi Al Karkari", desc: "Photos and videos of Shaykh Mohamed Faouzi Al Karkari.", a: "→" },
-  ar: { dir: "ar/", kicker: "الوسائط", h1: "صور وفيديوهات", lede: "المحاضرات بالفيديو، وتقارير اللقاءات، ومعرض صور للشيخ.",
+  ar: { dir: "ar/", kicker: "الوسائط", h1: "حوارات وصحافة", lede: "حوارات الشيخ في وسائل الإعلام، وعرض صحفي، وقصاصات من الجرائد.", iv: "حوارات بالفيديو", ivl: "حوارات مع قنوات وصحف مغربية.",
     c1: ["فيديوهات", "محاضرات وحوارات بالفيديو: السوربون، شيكاغو، ييل، ستانفورد، بيركلي…", "شاهد الفيديوهات", "conferences.html", "conf-sorbonne"],
     c2: ["تقارير", "صور وفيديوهات للزيارات واللقاءات والمولد، مروية في قسم الأخبار (المقالات بالفرنسية).", "اقرأ التقارير", "actualites.html", "conf-paix"],
     g: "المعرض", gl: "المس صورة لتكبيرها.", close: "إغلاق", prev: "الصورة السابقة", next: "الصورة التالية", title: "الوسائط — الشيخ محمد فوزي الكركري", desc: "صور وفيديوهات للشيخ محمد فوزي الكركري.", a: "←" },
@@ -96,25 +97,16 @@ ${htmlAlbum(a, code, pre)}
   <!--@include menu-->
   <div class="smooth" id="top">
   <main>
-    <section class="hub media-page">
+    <section class="hub media-page media-tete">
       <div class="section-head">
         <p class="kicker">${t.kicker}</p>
         <h1 class="h2" data-split>${t.h1}</h1>
         <p class="section-lede" data-reveal>${t.lede}</p>
       </div>
-      <div class="hub-cards media-cards">
-${carte(t.c1, 1)}
-${carte(t.c2, 2)}
-      </div>
-      <div class="section-head media-gal-head">
-        <h2 class="h2" data-split>${t.g}</h2>
-        <p class="section-lede" data-reveal>${t.gl}</p>
-      </div>
-      <div class="galerie" data-close="${esc(t.close)}" data-prev="${esc(t.prev)}" data-next="${esc(t.next)}">
-${galerie}
-      </div>
-${albums}
-${blocPresse(code)}
+    </section>
+${bandeVideos(INTERVIEWS, code, t.iv, t.ivl)}    <section class="hub media-page media-presse">
+${blocPresse(code)}${albums}
+
     </section>
   </main>
   <!--@include footer-->

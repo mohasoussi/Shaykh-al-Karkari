@@ -1,3 +1,4 @@
+import { bandeVideos, ENSEIGNEMENTS_VIDEOS, ENS_LABEL } from "./videos-data.mjs";
 /* Gabarits HTML des pages d'actualités (liste, article, cartes de l'accueil).
    Utilisés par scripts/importer-actualites.mjs — rien à modifier ici pour ajouter des articles. */
 
@@ -75,7 +76,7 @@ ${articles.map((a) => carte(a, l.prefixe)).join("")}      </div>
         <p class="section-lede" data-reveal>${l.lede}</p>
       </div>
 ${contenu}    </section>
-`;
+${l.page === "enseignements" ? bandeVideos(ENSEIGNEMENTS_VIDEOS, l.code || "fr", ...ENS_LABEL[l.code || "fr"]) : ""}`;
   return enveloppe({
     titre: `${l.titre} — Shaykh Mohamed Faouzi Al Karkari`,
     description: l.description,
