@@ -20,6 +20,7 @@ const PHOTOS = [
 
 
 const PRESSE = [
+  ["Atlantica", "https://atlantica.africa/2025/09/22/le-sheikh-soufi-mohammed-fouzi-al-karkari-eleve-au-rang-prestigieux-de-paul-harris-fellow-a-paris/", "Le sheikh soufi Mohammed Fouzi Al Karkari élevé au rang prestigieux de Paul Harris Fellow à Paris"],
   ["OpenPR", "https://www.openpr.com/news/4194798/spiritual-leader-al-karkari-honored-at-paris-peace-summit-al"],
   ["FinancialContent", "https://www.financialcontent.com/article/getnews-2025-9-23-spiritual-leader-al-karkari-honored-at-paris-peace-summit-al-karkari-institutes-vision-for-global-harmony"],
   ["MENAFN", "https://menafn.com/1110102141/Spiritual-Leader-Al-Karkari-Honored-At-Paris-Peace-Summit-Al-Karkari-Institutes-Vision-For-Global-Harmony"],
@@ -27,9 +28,9 @@ const PRESSE = [
   ["Boston News Desk", "https://news.bostonnewsdesk.com/story/537277/spiritual-leader-al-karkari-honored-at-paris-peace-summit-al-karkari-institutes-vision-for-global-harmony.html"],
 ];
 const TP = {
-  fr: ["Dans la presse", "Articles de la presse américaine (septembre 2025) sur la distinction reçue au Symposium pour la Paix.", "« Spiritual Leader Al-Karkari Honored at Paris Peace Summit — Al-Karkari Institute's Vision for Global Harmony »", "Lire l'article"],
-  en: ["In the press", "American press coverage (September 2025) of the honour received at the Peace Symposium.", "“Spiritual Leader Al-Karkari Honored at Paris Peace Summit — Al-Karkari Institute's Vision for Global Harmony”", "Read the article"],
-  ar: ["في الصحافة", "مقالات من الصحافة الأمريكية (سبتمبر 2025) حول التكريم الذي نالـه الشيخ في ندوة السلام.", "“Spiritual Leader Al-Karkari Honored at Paris Peace Summit — Al-Karkari Institute's Vision for Global Harmony”", "اقرأ المقال"],
+  fr: ["Dans la presse", "Articles de presse (septembre 2025) sur la distinction reçue au Symposium pour la Paix.", "« Spiritual Leader Al-Karkari Honored at Paris Peace Summit — Al-Karkari Institute's Vision for Global Harmony »", "Lire l'article"],
+  en: ["In the press", "Press coverage (September 2025) of the honour received at the Peace Symposium.", "“Spiritual Leader Al-Karkari Honored at Paris Peace Summit — Al-Karkari Institute's Vision for Global Harmony”", "Read the article"],
+  ar: ["في الصحافة", "مقالات صحفية (سبتمبر 2025) حول التكريم الذي نالـه الشيخ في ندوة السلام.", "“Spiritual Leader Al-Karkari Honored at Paris Peace Summit — Al-Karkari Institute's Vision for Global Harmony”", "اقرأ المقال"],
 };
 function blocPresse(code) {
   const [h, l, titre, cta] = TP[code];
@@ -38,7 +39,7 @@ function blocPresse(code) {
         <p class="section-lede" data-reveal>${l}</p>
       </div>
       <ul class="presse-liste" data-reveal>
-${PRESSE.map(([n, u]) => `        <li><a href="${u}" target="_blank" rel="noopener"><strong>${n}</strong><span dir="ltr">${titre}</span><em>${cta} ↗</em></a></li>`).join("\n")}
+${PRESSE.map(([n, u, ti]) => `        <li><a href="${u}" target="_blank" rel="noopener"><strong>${n}</strong><span dir="ltr">${ti || titre}</span><em>${cta} ↗</em></a></li>`).join("\n")}
       </ul>
 `;
 }
