@@ -149,5 +149,56 @@
     }
    }
   ]
+ },
+ {
+  "id": "symposium-paix",
+  "article": null,
+  "titre": {
+   "fr": "Symposium pour la Paix — Rotary, Antony",
+   "en": "Peace Symposium — Rotary, Antony",
+   "ar": "ندوة السلام — الروتاري، أنطوني"
+  },
+  "photos": [
+   {
+    "f": "symposium-1",
+    "alt": {
+     "fr": "Le Shaykh à la tribune du Symposium pour la Paix, Rotary Antony-Sceaux",
+     "en": "The Shaykh at the podium of the Peace Symposium, Rotary Antony-Sceaux",
+     "ar": "الشيخ على منبر ندوة السلام، روتاري أنطوني-سو"
+    }
+   },
+   {
+    "f": "symposium-2",
+    "alt": {
+     "fr": "Le Shaykh s'adresse à la salle, Symposium pour la Paix",
+     "en": "The Shaykh addressing the hall, Peace Symposium",
+     "ar": "الشيخ يخاطب القاعة، ندوة السلام"
+    }
+   },
+   {
+    "f": "symposium-3",
+    "alt": {
+     "fr": "Le Shaykh prend la parole, Symposium pour la Paix",
+     "en": "The Shaykh speaking, Peace Symposium",
+     "ar": "الشيخ يلقي كلمته، ندوة السلام"
+    }
+   },
+   {
+    "f": "symposium-4",
+    "alt": {
+     "fr": "Table ronde « Laïcité & Culte », Symposium pour la Paix",
+     "en": "“Secularism & Worship” round table, Peace Symposium",
+     "ar": "مائدة مستديرة «العلمانية والعبادة»، ندوة السلام"
+    }
+   },
+   {
+    "f": "symposium-5",
+    "alt": {
+     "fr": "Remise du diplôme Paul Harris Fellow au Shaykh, Symposium pour la Paix",
+     "en": "The Shaykh receiving the Paul Harris Fellow certificate, Peace Symposium",
+     "ar": "تسليم الشيخ شهادة «بول هاريس فيلو»، ندوة السلام"
+    }
+   }
+  ]
  }
 ]
