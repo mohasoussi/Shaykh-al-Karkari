@@ -50,7 +50,7 @@ const V = [
     t: { fr: "Atelier de Stanford sur la poésie de Hallaj", en: "Stanford workshop on Hallaj's poetry", ar: "ورشة ستانفورد حول شعر الحلّاج" },
     d: { fr: "Atelier sur la poésie de Hallaj par le Shaykh à l'Université Stanford. L'atelier comprend quinze parties : le lecteur enchaîne automatiquement toute la série.", en: "A workshop on Hallaj's poetry by the Shaykh at Stanford University. The workshop has fifteen parts: the player plays the whole series in sequence.", ar: "ورشة الشيخ حول شعر الحلّاج في جامعة ستانفورد، وتتألف من خمسة عشر جزءًا يتابعها المشغّل تلقائيًا." } },
   { id: "paix", yt: "https://www.youtube.com/watch?v=uxFF23Gf8vg", img: "conf-paix",
-    place: { fr: "Paris · France — 2025", en: "Paris · France — 2025", ar: "باريس · فرنسا — 2025" },
+    place: { fr: "Paris · France — 3 juin 2025", en: "Paris · France — 3 June 2025", ar: "باريس · فرنسا — 3 يونيو 2025" },
     t: { fr: "Une Voix pour la Paix", en: "A Voice for Peace", ar: "صوتٌ من أجل السلام" },
     d: { fr: "« L'accent mis par les docteurs de la loi exotérique est souvent porté uniquement sur la relation verticale entre le serviteur et son Seigneur, négligeant la relation horizontale, c'est-à-dire dans la société. »", en: "“The emphasis of the exoteric jurists is often placed solely on the vertical relationship between the servant and his Lord, neglecting the horizontal relationship, that is, within society.”", ar: "«كثيرًا ما يقتصر تركيز فقهاء الظاهر على العلاقة العمودية بين العبد وربّه، مع إغفال العلاقة الأفقية، أي في المجتمع.»" } },
 ];
