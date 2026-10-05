@@ -281,10 +281,11 @@ function reveals() {
     const o = { v: 0 };
     gsap.to(o, {
       v: end,
-      duration: 2,
-      ease: "power2.out",
-      scrollTrigger: { trigger: el, start: "top 90%" },
+      duration: end > 10 ? 1.1 : 0.9,
+      ease: "power3.out",
+      scrollTrigger: { trigger: el, start: "top 92%", once: true },
       onUpdate: () => (el.textContent = Math.round(o.v)),
+      onComplete: () => gsap.fromTo(el, { scale: 1.18 }, { scale: 1, duration: 0.5, ease: "back.out(3)" }),
     });
   });
 
@@ -383,7 +384,7 @@ function teachings() {
    Marquees (institutions + footer), accélérés par le scroll
    --------------------------------------------------------- */
 function marquees() {
-  const rows = [...$$(".marquee-row"), $(".footer-track")];
+  const rows = [...$$(".marquee-row")];
   rows.forEach((row) => {
     row.innerHTML += row.innerHTML; // duplique pour la boucle
     const dir = +(row.dataset.dir || 1);
@@ -739,58 +740,85 @@ function cursor() {
 /* ---------------------------------------------------------
    Poussière de lumière (canvas) sur les sections sombres
    --------------------------------------------------------- */
-function dust() {
-  const canvas = $(".dust");
-  const ctx = canvas.getContext("2d");
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  let w, h, parts;
-  const N = window.innerWidth < 760 ? 40 : 90;
-  function resize() {
-    w = canvas.width = window.innerWidth * dpr;
-    h = canvas.height = window.innerHeight * dpr;
-    parts = Array.from({ length: N }, () => ({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      r: (Math.random() * 1.6 + 0.4) * dpr,
-      vy: -(Math.random() * 0.25 + 0.05) * dpr,
-      vx: (Math.random() - 0.5) * 0.15 * dpr,
-      a: Math.random() * 0.6 + 0.2,
-      t: Math.random() * Math.PI * 2,
-    }));
-  }
-  resize();
-  window.addEventListener("resize", resize);
-  let scrollV = 0;
-  lenis?.on("scroll", (l) => (scrollV = l.velocity));
-  gsap.ticker.add(() => {
-    if (+canvas.style.opacity === 0) return;
-    ctx.clearRect(0, 0, w, h);
-    for (const p of parts) {
-      p.t += 0.02;
-      p.y += p.vy - scrollV * 0.15 * dpr;
-      p.x += p.vx + Math.sin(p.t) * 0.12;
-      if (p.y < -10) p.y = h + 10;
-      if (p.y > h + 10) p.y = -10;
-      if (p.x < -10) p.x = w + 10;
-      if (p.x > w + 10) p.x = -10;
-      const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
-      g.addColorStop(0, `rgba(240, 214, 160, ${p.a * (0.6 + 0.4 * Math.sin(p.t))})`);
-      g.addColorStop(1, "rgba(240, 214, 160, 0)");
-      ctx.fillStyle = g;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
-      ctx.fill();
+/* Livre mis en avant : il pivote de la gauche vers la droite à l'apparition */
+function livre() {
+  const a = $(".book-feature-cover a");
+  if (!a) return;
+  gsap.fromTo(
+    a,
+    { rotateY: -88, rotateX: 2, x: -90, opacity: 0, transformOrigin: "left center" },
+    {
+      rotateY: -14, rotateX: 2, x: 0, opacity: 1, duration: 1.8, ease: "expo.out",
+      scrollTrigger: { trigger: a, start: "top 85%", once: true },
+      onComplete: () => gsap.set(a, { clearProps: "transform,opacity,transformOrigin" }),
     }
-  });
-  // visible seulement au-dessus des sections sombres
-  [".hero", ".manifesto", ".talks", ".merkez", ".vpage", ".footer"].filter((sel) => $(sel)).forEach((sel) =>
-    ScrollTrigger.create({
-      trigger: sel,
-      start: "top 60%",
-      end: "bottom 40%",
-      onToggle: (self) => gsap.to(canvas, { opacity: self.isActive ? 1 : 0, duration: 0.8, overwrite: true }),
-    })
   );
+}
+
+function dust() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const N = window.innerWidth < 760 ? 40 : 90;
+  let scrollV = 0;
+  lenis?.on("scroll", (l) => (scrollV = Math.max(-3, Math.min(3, l.velocity))));
+  // un nuage de particules par canvas : plein écran (sections sombres) ou calque du hero (derrière le Shaykh)
+  const nuage = (canvas, actif) => {
+    const ctx = canvas.getContext("2d");
+    let w, h, parts;
+    const resize = () => {
+      const fixe = getComputedStyle(canvas).position === "fixed";
+      w = canvas.width = (fixe ? window.innerWidth : canvas.offsetWidth || window.innerWidth) * dpr;
+      h = canvas.height = (fixe ? window.innerHeight : canvas.offsetHeight || window.innerHeight) * dpr;
+      parts = Array.from({ length: N }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: (Math.random() * 1.6 + 0.4) * dpr,
+        vy: -(Math.random() * 0.25 + 0.05) * dpr,
+        vx: (Math.random() - 0.5) * 0.15 * dpr,
+        a: Math.random() * 0.6 + 0.2,
+        t: Math.random() * Math.PI * 2,
+      }));
+    };
+    resize();
+    window.addEventListener("resize", resize);
+    gsap.ticker.add(() => {
+      if (!actif()) return;
+      ctx.clearRect(0, 0, w, h);
+      for (const p of parts) {
+        p.t += 0.02;
+        p.y += p.vy - scrollV * 0.05 * dpr;
+        p.x += p.vx + Math.sin(p.t) * 0.12;
+        if (p.y < -10) p.y = h + 10;
+        if (p.y > h + 10) p.y = -10;
+        if (p.x < -10) p.x = w + 10;
+        if (p.x > w + 10) p.x = -10;
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+        g.addColorStop(0, `rgba(240, 214, 160, ${p.a * (0.6 + 0.4 * Math.sin(p.t))})`);
+        g.addColorStop(1, "rgba(240, 214, 160, 0)");
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    });
+  };
+  const canvas = $(".dust");
+  if (canvas) nuage(canvas, () => +canvas.style.opacity > 0);
+  const etoiles = $(".hero-stars");
+  if (etoiles) {
+    let visible = true;
+    nuage(etoiles, () => visible);
+    ScrollTrigger.create({ trigger: ".hero", start: "top bottom", end: "bottom top", onToggle: (self) => (visible = self.isActive) });
+  }
+  // visible seulement au-dessus des sections sombres
+  if (canvas)
+    [".manifesto", ".talks", ".merkez", ".vpage", ".vband"].filter((sel) => $(sel)).forEach((sel) =>
+      ScrollTrigger.create({
+        trigger: sel,
+        start: "top 60%",
+        end: "bottom 40%",
+        onToggle: (self) => gsap.to(canvas, { opacity: self.isActive ? 1 : 0, duration: 0.8, overwrite: true }),
+      })
+    );
 }
 
 /* ---------------------------------------------------------
@@ -843,6 +871,7 @@ ready.then(async () => {
   actualites();
   silsila();
   cursor();
+  livre();
   dust();
   ScrollTrigger.refresh();
 
