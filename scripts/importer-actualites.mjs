@@ -26,6 +26,7 @@ import sharp from "sharp";
 import { genererLangues } from "./langues.mjs";
 import { genererMaitres, lienMaitre } from "./maitres.mjs";
 import { genererAlbums } from "./albums.mjs";
+import { normaliserNoms } from "./normaliser-noms.mjs";
 import { esc, pageListe, pageArticle, cartesAccueil, cartesEnseignements, TYPES, LISTES } from "./gabarits-actualites.mjs";
 
 const SITE = process.env.SITE_DIR ? path.resolve(process.env.SITE_DIR) : process.cwd();
@@ -575,5 +576,10 @@ main().catch((e) => {
     await genererLangues();
   } catch (e) {
     console.error("[langues] erreur :", e);
+  }
+  try {
+    await normaliserNoms(); // orthographe unique des noms propres (Bouzidi, Wakili…) sur toutes les pages
+  } catch (e) {
+    console.error("[noms] erreur :", e);
   }
 });

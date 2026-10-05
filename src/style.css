@@ -1459,7 +1459,7 @@ html[lang="ar"] .livre-go { letter-spacing: 0; font-size: .85rem; }
 .book-feature::before { content: ""; position: absolute; inset: -20%; background: radial-gradient(40% 40% at 28% 45%, rgba(226, 187, 120, .22), transparent 70%); pointer-events: none; }
 .book-feature > * { position: relative; max-width: 1180px; }
 .book-feature-cover { justify-self: end; perspective: 1200px; }
-.book-feature-cover a { display: block; border-radius: 6px; transition: transform .8s var(--ease), box-shadow .8s var(--ease); transform: rotateY(-14deg) rotateX(2deg); box-shadow: 24px 30px 70px rgba(0, 0, 0, .55), 0 0 0 1px rgba(226, 187, 120, .25); }
+.book-feature-cover a { display: block; border-radius: 6px; transition: box-shadow .8s var(--ease); transform: rotateY(-14deg) rotateX(2deg); box-shadow: 24px 30px 70px rgba(0, 0, 0, .55), 0 0 0 1px rgba(226, 187, 120, .25); }
 .book-feature-cover a:hover { transform: rotateY(0) rotateX(0) translateY(-8px); box-shadow: 0 40px 80px rgba(0, 0, 0, .6), 0 0 60px rgba(226, 187, 120, .25); }
 .book-feature-cover img { display: block; width: 100%; height: auto; border-radius: 6px; }
 .book-feature .kicker { color: var(--gold-soft); }
@@ -1552,7 +1552,7 @@ html[lang="ar"] .album-n { letter-spacing: 0; font-size: .9rem; }
 /* ---------- correctifs (octobre) ---------- */
 .section-lede { max-width: min(100%, 62rem); }
 .hero-stars { width: 100%; height: 100%; pointer-events: none; mix-blend-mode: screen; }
-.book-feature-cover a { transform-origin: left center; }
+
 
 /* ---------- pied de page ---------- */
 .footer { background: var(--dusk-deep-2); color: var(--ivory); padding: clamp(56px, 8vw, 96px) 0 0; overflow: visible; }
@@ -1574,3 +1574,30 @@ html[lang="ar"] .album-n { letter-spacing: 0; font-size: .9rem; }
 @media (max-width: 900px) { .footer-main { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } .footer-col--cta { grid-column: 1 / -1; } }
 @media (max-width: 520px) { .footer-main { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; align-items: flex-start; } }
 .footer-col .btn-or span { white-space: nowrap; } .footer-col .btn-or { padding-inline: 22px; }
+
+/* ---------- bouton « Nous rencontrer » (header) ---------- */
+.header-meet { display: none; align-items: center; padding: 11px 22px; border-radius: 999px; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap; color: #1a1306; text-decoration: none;
+  background: linear-gradient(135deg, #f1d9a0, #d9ac5a); box-shadow: 0 0 0 1px rgba(255, 236, 190, 0.55) inset, 0 0 18px rgba(226, 187, 120, 0.55), 0 0 42px rgba(226, 187, 120, 0.28); transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+.header-meet:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(255, 236, 190, 0.8) inset, 0 0 26px rgba(238, 200, 130, 0.8), 0 0 60px rgba(226, 187, 120, 0.45); }
+@media (min-width: 820px) { .header-meet { display: inline-flex; } .header-end { gap: 14px; } }
+@media not (prefers-reduced-motion: reduce) { .header-meet { animation: meet-glow 3.2s ease-in-out infinite; } }
+@keyframes meet-glow { 0%, 100% { box-shadow: 0 0 0 1px rgba(255, 236, 190, 0.55) inset, 0 0 16px rgba(226, 187, 120, 0.45), 0 0 36px rgba(226, 187, 120, 0.2); } 50% { box-shadow: 0 0 0 1px rgba(255, 236, 190, 0.7) inset, 0 0 26px rgba(238, 200, 130, 0.75), 0 0 56px rgba(226, 187, 120, 0.4); } }
+html[lang="ar"] .header-meet { font-size: 0.95rem; letter-spacing: 0; }
+
+/* ---------- hero : version ordinateur plus grande ; arabe : texte de l'autre côté du Shaykh ---------- */
+@media (min-width: 1024px) {
+  .hero-text { width: min(100%, 860px); }
+  .hero-title { font-size: clamp(3rem, 5.4vw, 5.4rem); }
+  .hero-sub { font-size: clamp(1.3rem, 1.9vw, 1.9rem); margin-top: 20px; }
+  .hero-cta { margin-top: 36px; padding: 18px 34px; font-size: 0.85rem; }
+}
+html[lang="ar"] .hero-content { direction: ltr; }
+html[lang="ar"] .hero-text { direction: rtl; text-align: right; }
+@media (min-width: 1024px) { html[lang="ar"] .hero-text { width: fit-content; max-width: 52vw; } }
+html[lang="ar"] .hero-title { letter-spacing: 0; }
+html[lang="ar"] .hero-row--gold, html[lang="ar"] .hero-row--prefix { letter-spacing: 0; }
+
+/* ---------- pied de page : aucune bande claire sous le bas de page ---------- */
+html { background: var(--dusk-deep-2); overscroll-behavior-y: none; }
+.footer { padding-bottom: env(safe-area-inset-bottom); }
+.footer-bottom { padding-bottom: calc(28px + env(safe-area-inset-bottom)); }

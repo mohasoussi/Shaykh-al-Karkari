@@ -740,19 +740,20 @@ function cursor() {
 /* ---------------------------------------------------------
    Poussière de lumière (canvas) sur les sections sombres
    --------------------------------------------------------- */
-/* Livre mis en avant : il pivote de la gauche vers la droite à l'apparition */
+/* Livre mis en avant : il reste ancré et oscille doucement de la gauche vers la droite */
 function livre() {
   const a = $(".book-feature-cover a");
-  if (!a) return;
-  gsap.fromTo(
-    a,
-    { rotateY: -88, rotateX: 2, x: -90, opacity: 0, transformOrigin: "left center" },
-    {
-      rotateY: -14, rotateX: 2, x: 0, opacity: 1, duration: 1.8, ease: "expo.out",
-      scrollTrigger: { trigger: a, start: "top 85%", once: true },
-      onComplete: () => gsap.set(a, { clearProps: "transform,opacity,transformOrigin" }),
-    }
-  );
+  if (!a || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const sg = document.documentElement.lang === "ar" ? -1 : 1; // miroir en arabe
+  gsap.set(a, { rotateY: -16 * sg, rotateX: 2, transformOrigin: "50% 50%" });
+  const balancier = gsap.to(a, { rotateY: -4 * sg, duration: 3.6, ease: "sine.inOut", yoyo: true, repeat: -1 });
+  a.addEventListener("pointerenter", () => {
+    balancier.pause();
+    gsap.to(a, { rotateY: 0, rotateX: 0, y: -8, duration: 0.6, ease: "power3.out", overwrite: "auto" });
+  });
+  a.addEventListener("pointerleave", () => {
+    gsap.to(a, { rotateX: 2, y: 0, duration: 0.6, ease: "power3.out", overwrite: "auto", onComplete: () => balancier.play() });
+  });
 }
 
 function dust() {
