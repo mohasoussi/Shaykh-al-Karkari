@@ -1,7 +1,8 @@
 [
  {
   "nom": "Shaykh Sidi Mohamed Faouzi Al Karkari",
-  "detail": "né en 1974 à Temsamane, dans le Rif"
+  "detail": "né en 1974 à Temsamane, dans le Rif",
+  "bio": "qui-est-le-shaykh.html#biographie"
  },
  {
   "nom": "Sidi Moulay Tayeb al-Karkari al-Idrissi al-Hassani",
@@ -9,11 +10,13 @@
  },
  {
   "nom": "Sidi Moulay at-Tâhir al-Karkari",
-  "detail": "shaykh éducateur et pôle de son temps"
+  "detail": "maître spirituel, fondateur de la zawiya de Tamsaman",
+  "bio": "maitre-mawlay-at-tahir.html"
  },
  {
   "nom": "Moulay Muhammad al-Fardiy",
-  "detail": ""
+  "detail": "",
+  "bio": "maitre-muhammad-al-fardi.html"
  },
  {
   "nom": "Moulay Tayeb",
@@ -21,7 +24,8 @@
  },
  {
   "nom": "Sidi Muhammad ibn Qaddour al-Wakili",
-  "detail": "Shaykh et pôle de son temps, héritier de la darqawiya"
+  "detail": "maître spirituel de la montagne de Karkar, rattaché à la voie darqawie",
+  "bio": "maitre-ibn-qaddour.html"
  },
  {
   "nom": "Moulay 'Abd al'Qader",
@@ -41,7 +45,8 @@
  },
  {
   "nom": "Moulay ʿAli",
-  "detail": ""
+  "detail": "",
+  "bio": "maitre-ali-ibn-moussa.html"
  },
  {
   "nom": "Moulay Moussa",
@@ -105,11 +110,13 @@
  },
  {
   "nom": "Moulay ʿIssa",
-  "detail": ""
+  "detail": "",
+  "bio": "maitre-sidi-makhoukh.html"
  },
  {
   "nom": "Moulay Mimoune Abu-Wakil",
-  "detail": ""
+  "detail": "",
+  "bio": "maitre-mimoun-abu-wakil.html"
  },
  {
   "nom": "Moulay Messʿoud",
@@ -145,51 +152,63 @@
  },
  {
   "nom": "Moulay ʿImrane",
-  "detail": ""
+  "detail": "",
+  "bio": "maitre-moulay-imrane.html"
  },
  {
   "nom": "Moulay Salem",
-  "detail": ""
+  "detail": "",
+  "bio": "maitre-moulay-salem.html"
  },
  {
   "nom": "Moulay ʿIyyad",
-  "detail": ""
+  "detail": "",
+  "bio": "maitre-moulay-iyyad.html"
  },
  {
   "nom": "Moulay Ahmad",
-  "detail": ""
+  "detail": "",
+  "bio": "maitre-ahmad-belkarti.html"
  },
  {
   "nom": "Moulay Muhammad",
-  "detail": ""
+  "detail": "",
+  "bio": "maitre-muhammad-al-bakmani.html"
  },
  {
   "nom": "Moulay al-Qacem",
-  "detail": ""
+  "detail": "",
+  "bio": "maitre-al-qasim-ibn-idris.html"
  },
  {
   "nom": "Moulay Idriss al-Azhar",
-  "detail": ""
+  "detail": "",
+  "bio": "maitre-idris-ii.html"
  },
  {
   "nom": "Moulay Idriss al-Akbar",
-  "detail": ""
+  "detail": "",
+  "bio": "maitre-idris-i.html"
  },
  {
   "nom": "ʿAbdallah al-Kâmil",
-  "detail": ""
+  "detail": "",
+  "bio": "maitre-abd-allah-al-kamil.html"
  },
  {
   "nom": "Moulay Hassan al-Thani",
-  "detail": ""
+  "detail": "",
+  "bio": "maitre-hasan-al-muthanna.html"
  },
  {
   "nom": "Moulay Hassan al-Sebt",
-  "detail": ""
+  "detail": "",
+  "bio": "maitre-al-hassan-ibn-ali.html"
  },
  {
   "nom": "ʿAlî et Fâtima az-Zahrâ",
   "detail": "ʿAlî, que Dieu anoblisse son visage · Fâtima-Zahra, fille du Prophète Muhammad ﷺ",
-  "pont": "De la famille du Prophète, la lignée remonte à l'imam ʿAlî et à Fâtima"
+  "pont": "De la famille du Prophète, la lignée remonte à l'imam ʿAlî et à Fâtima",
+  "bio": "maitre-ali-ibn-abi-talib.html"
  }
 ]

@@ -15,24 +15,24 @@ const total = liste.length + 1;
 const TEXTES = {
   fr: { dir: "", titre: "Sa lignée chérifienne", desc: "La noble lignée chérifienne du Shaykh Mohamed Faouzi Al Karkari, jusqu'au Prophète Muhammad ﷺ.", kicker: "Le Shaykh",
     lede: "Fils du noble chérifien Sidi Moulay Tayeb al-Karkari al-Idrissi al-Hassani, le Shaykh descend de la lignée idrisside : par l'imam ʿAli et Fatima az-Zahra’, elle remonte au Prophète Muhammad ﷺ.",
-    prophete: "Le Prophète Muhammad", suite: "Sa chaîne de transmission", fleche: "→", traduire: (x) => x },
+    prophete: "Le Prophète Muhammad", bio: "Biographie", suite: "Sa chaîne de transmission", fleche: "→", traduire: (x) => x },
   en: { dir: "en/", titre: "His noble lineage", desc: "The noble sharifian lineage of Shaykh Mohamed Faouzi Al Karkari, all the way back to the Prophet Muhammad ﷺ.", kicker: "The Shaykh",
     lede: "Son of the noble sharif Sidi Moulay Tayeb al-Karkari al-Idrissi al-Hassani, the Shaykh descends from the Idrisid line: through Imam ʿAli and Fatima az-Zahra’, it goes back to the Prophet Muhammad ﷺ.",
-    prophete: "The Prophet Muhammad", suite: "His chain of transmission", fleche: "→",
+    prophete: "The Prophet Muhammad", bio: "Biography (in French)", suite: "His chain of transmission", fleche: "→",
     traduire: (x) => ({
       "né en 1974 à Temsamane, dans le Rif": "born in 1974 in Temsamane, in the Rif",
-      "shaykh éducateur et pôle de son temps": "educating shaykh and pole of his time",
-      "Shaykh et pôle de son temps, héritier de la darqawiya": "Shaykh and pole of his time, heir of the Darqawiya",
+      "maître spirituel, fondateur de la zawiya de Tamsaman": "spiritual master, founder of the Tamsaman zawiya",
+      "maître spirituel de la montagne de Karkar, rattaché à la voie darqawie": "spiritual master of the Karkar mountain, attached to the Darqawi way",
       "ʿAlî, que Dieu anoblisse son visage · Fâtima-Zahra, fille du Prophète Muhammad ﷺ": "ʿAli, may God honour his face · Fatima az-Zahra’, daughter of the Prophet Muhammad ﷺ",
       "De la famille du Prophète, la lignée remonte à l'imam ʿAlî et à Fâtima": "From the family of the Prophet, the lineage goes back to Imam ʿAli and Fatima",
     })[x] || x },
   ar: { dir: "ar/", titre: "نسبه الشريف", desc: "النسب الشريف للشيخ محمد فوزي الكركري، وصولًا إلى النبي محمد ﷺ.", kicker: "الشيخ",
     lede: "الشيخ ابن الشريف سيدي مولاي الطيب الكركري الإدريسي الحسني، وينحدر من السلالة الإدريسية التي يتصل نسبها، عبر الإمام علي وفاطمة الزهراء، بالنبي محمد ﷺ.",
-    prophete: "النبي محمد", suite: "سلسلة إسناده", fleche: "←",
+    prophete: "النبي محمد", bio: "السيرة (بالفرنسية)", suite: "سلسلة إسناده", fleche: "←",
     traduire: (x) => ({
       "né en 1974 à Temsamane, dans le Rif": "وُلد سنة 1974م في تمسمان بالريف",
-      "shaykh éducateur et pôle de son temps": "شيخ مربٍّ وقطب زمانه",
-      "Shaykh et pôle de son temps, héritier de la darqawiya": "شيخ وقطب زمانه، وارث الطريقة الدرقاوية",
+      "maître spirituel, fondateur de la zawiya de Tamsaman": "معلّم روحي، مؤسس زاوية تمسمان",
+      "maître spirituel de la montagne de Karkar, rattaché à la voie darqawie": "معلّم روحي من جبل كركر، منتسب إلى الطريقة الدرقاوية",
       "ʿAlî, que Dieu anoblisse son visage · Fâtima-Zahra, fille du Prophète Muhammad ﷺ": "علي، كرّم الله وجهه · فاطمة الزهراء، بنت النبي محمد ﷺ",
       "De la famille du Prophète, la lignée remonte à l'imam ʿAlî et à Fâtima": "من آل بيت النبي، يمتدّ النسب إلى الإمام علي وفاطمة",
     })[x] || x },
@@ -42,12 +42,13 @@ for (const [code, T] of Object.entries(TEXTES)) {
   const items = liste
     .map((m, i) => {
       const pont = m.pont ? `        <li class="maillon maillon--pont" data-n="${i}" aria-hidden="true"><span class="maillon-point"></span><p>${esc(T.traduire(m.pont))}</p></li>\n` : "";
-      return `${pont}        <li class="maillon${i === 0 ? " maillon--shaykh" : ""}" data-n="${i + 1}">
+      return `${pont}        <li class="maillon${i === 0 ? " maillon--shaykh" : ""}${m.bio ? " maillon--lien" : ""}" data-n="${i + 1}">
           <span class="maillon-point" aria-hidden="true"></span>
           <div class="maillon-carte">
             <span class="maillon-rang">${String(i + 1).padStart(2, "0")}</span>
             <h3>${esc(m.nom)}</h3>
             ${m.detail ? `<p class="maillon-invoc">${esc(T.traduire(m.detail))}</p>` : ""}
+            ${m.bio ? `<a class="maillon-bio" href="${T.dir ? "../" : ""}${m.bio}" aria-label="${esc(T.bio)} : ${esc(m.nom)}"><span>${esc(T.bio)}</span><i>${T.fleche}</i></a>` : ""}
           </div>
         </li>
 `;

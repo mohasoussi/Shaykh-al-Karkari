@@ -63,14 +63,14 @@ function page(m, corps) {
   <main>
     <section class="shaykh-texte maitre">
       <div class="section-head">
-        <p class="kicker">Chaîne de transmission</p>
+        <p class="kicker">${m.rubrique === "lignee" ? "Lignée chérifienne" : "Chaîne de transmission"}</p>
         <h1 class="h2" data-split>${esc(m.nom)}</h1>
         <p class="maitre-sous" data-reveal>${esc(m.sous)}</p>
       </div>
       <div class="actu-corps">
-${m.intro ? `        <p class="maitre-intro">${esc(m.intro)}</p>\n` : ""}${corps}
+${m.intro ? `        <p class="maitre-intro">${m.intro.replace(/&(?!amp;)/g, "&amp;")}</p>\n` : ""}${corps}
       </div>
-      <div class="center shaykh-suite"><a class="btn-glass btn-glass--dark" href="chaine-de-transmission.html"><span>← La chaîne de transmission</span></a></div>
+      <div class="center shaykh-suite">${m.voir ? `<a class="btn-glass btn-glass--dark" href="maitre-${m.voir[0]}.html"><span>${esc(m.voir[1])}</span><i>→</i></a> ` : ""}<a class="btn-glass btn-glass--dark" href="${m.rubrique === "lignee" ? "lignee-cherifienne.html" : "chaine-de-transmission.html"}"><span>${m.rubrique === "lignee" ? "← La lignée chérifienne" : "← La chaîne de transmission"}</span></a></div>
     </section>
   </main>
   <!--@include footer-->
