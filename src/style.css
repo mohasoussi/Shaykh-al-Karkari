@@ -1601,3 +1601,5 @@ html[lang="ar"] .hero-row--gold, html[lang="ar"] .hero-row--prefix { letter-spac
 html { background: var(--dusk-deep-2); overscroll-behavior-y: none; }
 .footer { padding-bottom: env(safe-area-inset-bottom); }
 .footer-bottom { padding-bottom: calc(28px + env(safe-area-inset-bottom)); }
+.manifesto-sign span { font-family: var(--serif); font-style: italic; letter-spacing: 0.04em; }
+html[lang="ar"] .manifesto-sign span { font-style: normal; letter-spacing: 0; }
