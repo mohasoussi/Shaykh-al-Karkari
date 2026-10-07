@@ -127,7 +127,6 @@ function runLoader(onReveal) {
       .to(counter, { v: 100, duration: 2, ease: "power2.inOut", onUpdate: () => (count.textContent = Math.round(counter.v)) }, 0)
       // transition vers la page : le verset s'efface, le damier se rallume, puis les carreaux se replient pour révéler l'accueil
       .to(".loader-center", { opacity: 0, scale: 0.94, duration: 0.45, ease: "power2.in" }, ">0.1")
-      .set(loader, { backgroundColor: "transparent" }, "<")
       .to(tiles, { backgroundColor: couleur, duration: 0.4, ease: "power1.inOut", stagger: { each: 0.015, from: "random" } }, "<")
       .set(tiles, { transformOrigin: "bottom" }, ">0.1")
       .add(() => { onReveal && onReveal(); }, "<")

@@ -156,7 +156,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   grid-template-columns: repeat(var(--cols, 8), 1fr);
   grid-template-rows: repeat(var(--rows, 5), 1fr);
 }
-.loader { background: var(--night); }
 .loader-grid span { background: var(--night); }
 /* sécurité : si le script ne démarre pas, le damier se retire seul */
 .loader { animation: loader-secours 0.01s 9s forwards; }
