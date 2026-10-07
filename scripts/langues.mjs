@@ -9,6 +9,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { pageListe, LISTES } from "./gabarits-actualites.mjs";
+import { lireMaison, fusionner } from "./maison.mjs";
 
 const SITE = process.env.SITE_DIR ? path.resolve(process.env.SITE_DIR) : process.cwd();
 const CODES = ["en", "ar"];
@@ -217,7 +218,8 @@ async function listes() {
   ];
   for (const [cle, json] of defs) {
     if (!(await existe(json))) continue;
-    const articles = JSON.parse(await lire(json));
+    let articles = JSON.parse(await lire(json));
+    if (cle === "enseignements") articles = fusionner(articles, await lireMaison(SITE));
     for (const code of CODES) {
       const fr = LISTES[cle];
       const tr = LISTES_TR[cle][code];

@@ -27,6 +27,7 @@ import { genererLangues } from "./langues.mjs";
 import { genererMaitres, lienMaitre } from "./maitres.mjs";
 import { genererAlbums } from "./albums.mjs";
 import { normaliserNoms } from "./normaliser-noms.mjs";
+import { lireMaison, fusionner } from "./maison.mjs";
 import { esc, pageListe, pageArticle, cartesAccueil, cartesEnseignements, TYPES, LISTES } from "./gabarits-actualites.mjs";
 
 const SITE = process.env.SITE_DIR ? path.resolve(process.env.SITE_DIR) : process.cwd();
@@ -350,14 +351,16 @@ async function enseignements() {
   const articles = [];
   for (const a of brut) articles.push(await traiter(a, pris, cfg));
 
-  const gardes = new Set(articles.map((a) => `enseignement-${a.slug}.html`));
+  const maison = await lireMaison(SITE); // enseignements rédigés sur ce site : conservés à chaque import
+  for (const m of maison) pris.add(m.slug);
+  const gardes = new Set([...articles, ...maison].map((a) => `enseignement-${a.slug}.html`));
   for (const f of await fs.readdir(SITE)) if (/^enseignement-.+\.html$/.test(f) && !gardes.has(f)) await fs.rm(path.join(SITE, f));
   const dossiers = path.join(SITE, "public", "enseignements");
   if (await existe(dossiers)) for (const d of await fs.readdir(dossiers)) if (!pris.has(d)) await fs.rm(path.join(dossiers, d), { recursive: true, force: true });
   for (let i = 0; i < articles.length; i++) await fs.writeFile(path.join(SITE, `enseignement-${articles[i].slug}.html`), pageArticle(articles[i], articles[i + 1], articles[i - 1], cfg));
   await fs.writeFile(path.join(SITE, "src", "data", "enseignements.json"), JSON.stringify(articles.map(({ html, ...m }) => m), null, 2) + "\n");
 
-  await fs.writeFile(path.join(SITE, "enseignements.html"), pageListe(articles, LISTES.enseignements));
+  await fs.writeFile(path.join(SITE, "enseignements.html"), pageListe(fusionner(articles, maison), LISTES.enseignements));
   const vedettes = ENS_ACCUEIL.map((k) => articles.find((a) => a.slug.startsWith(k) || a.slugOrigine?.startsWith(k))).filter(Boolean);
   const accueil = path.join(SITE, "index.html");
   let h = await fs.readFile(accueil, "utf8");

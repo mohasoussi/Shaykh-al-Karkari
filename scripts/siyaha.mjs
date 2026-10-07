@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Génère l'article « La siyaha chez les maîtres soufis » (siyaha-maitres-soufis.html, en français).
+/* Génère l'article « La siyaha chez les maîtres soufis » (enseignement-siyaha-maitres-soufis.html, en français).
    Texte rédigé à partir de sources académiques et classiques (liste en fin d'article).
    Utilisation : node scripts/siyaha.mjs */
 import fs from "node:fs";
@@ -109,7 +109,7 @@ const html = `<!doctype html>
   <meta property="og:description" content="${esc(INTRO.slice(0, 200))}" />
   <meta property="og:image" content="/media/peregrination-desert.webp" />
 </head>
-<body data-page="shaykh">
+<body data-page="enseignement">
   <!--@include ui-->
   <!--@include header-->
   <!--@include menu-->
@@ -117,7 +117,7 @@ const html = `<!doctype html>
   <main>
     <section class="shaykh-texte maitre">
       <div class="section-head">
-        <p class="kicker">Le Shaykh · La siyaha</p>
+        <p class="kicker">Les enseignements</p>
         <h1 class="h2" data-split>${esc(TITRE)}</h1>
         <p class="maitre-sous" data-reveal>${esc(SOUS)}</p>
       </div>
@@ -125,7 +125,7 @@ const html = `<!doctype html>
         <p class="maitre-intro">${esc(INTRO)}</p>
 ${corps}
       </div>
-      <div class="center shaykh-suite"><a class="btn-glass btn-glass--dark" href="marche-de-dix-ans.html"><span>← Une marche de 10 ans à travers le Maroc</span></a></div>
+      <div class="center shaykh-suite"><a class="btn-glass btn-glass--dark" href="enseignements.html"><span>← Tous les enseignements</span></a> <a class="btn-glass btn-glass--dark" href="marche-de-dix-ans.html"><span>Une marche de 10 ans à travers le Maroc</span><i>→</i></a></div>
     </section>
   </main>
   <!--@include footer-->
@@ -133,5 +133,5 @@ ${corps}
 </body>
 </html>
 `;
-fs.writeFileSync("siyaha-maitres-soufis.html", html);
-console.log("siyaha-maitres-soufis.html");
+fs.writeFileSync("enseignement-siyaha-maitres-soufis.html", html);
+console.log("enseignement-siyaha-maitres-soufis.html");

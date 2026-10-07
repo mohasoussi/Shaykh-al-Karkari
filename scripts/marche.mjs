@@ -131,7 +131,7 @@ ${video}    <section class="shaykh-texte maitre">
 `;
 
 for (const [code, L] of Object.entries(LANG)) {
-  const corps = SECTIONS.map((s) => `        <h3>${esc(s[code][0])}</h3>\n${s[code][1].map((p) => (typeof p === "string" ? `        <p>${esc(p)}</p>` : `        <p><a class="btn-glass btn-glass--dark" href="${L.dir ? "../" : ""}siyaha-maitres-soufis.html"><span>${esc(p.lien)}</span><i>${L.fleche}</i></a></p>`)).join("\n")}`).join("\n");
+  const corps = SECTIONS.map((s) => `        <h3>${esc(s[code][0])}</h3>\n${s[code][1].map((p) => (typeof p === "string" ? `        <p>${esc(p)}</p>` : `        <p><a class="btn-glass btn-glass--dark" href="${L.dir ? "../" : ""}enseignement-siyaha-maitres-soufis.html"><span>${esc(p.lien)}</span><i>${L.fleche}</i></a></p>`)).join("\n")}`).join("\n");
   const video = bandeVideos(
     [{ id: "marche-video", yt: "https://www.youtube.com/watch?v=J4I9HiyCC1I",
       place: { [code]: L.videoPlace }, t: { [code]: L.video }, d: { [code]: L.videoDesc } }],
