@@ -160,7 +160,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* sécurité : si le script ne démarre pas, le damier se retire seul */
 .loader { animation: loader-secours 0.01s 9s forwards; }
 @keyframes loader-secours { to { visibility: hidden; } }
-.loader-center { position: relative; text-align: center; color: var(--ivory); background: rgba(11, 15, 20, 0.94); padding: clamp(24px, 5vw, 44px) clamp(28px, 6vw, 64px); }
+.loader-veil { position: absolute; inset: 0; background: rgba(11, 15, 20, 0.8); }
+.loader-center { position: relative; text-align: center; color: var(--ivory); padding: clamp(24px, 5vw, 44px) clamp(28px, 6vw, 64px); }
 .loader-verse {
   max-width: 24ch;
   margin: 0 auto;

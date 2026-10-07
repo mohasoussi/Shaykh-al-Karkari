@@ -16,11 +16,11 @@
     body.is-loading{overflow:hidden}
     .loader{position:fixed;inset:0;z-index:100;display:grid;place-items:center}
     .loader-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(var(--cols,8),1fr);grid-template-rows:repeat(var(--rows,5),1fr)}
-    .loader-center{position:relative;text-align:center;color:#f4efe6;background:rgba(11,15,20,.94);padding:32px 48px;font-family:Georgia,serif}
+    .loader-veil{position:absolute;inset:0;background:rgba(11,15,20,.8)}
+    .loader-center{position:relative;text-align:center;color:#f4efe6;padding:32px 48px;font-family:Georgia,serif}
     .loader-verse{max-width:24ch;margin:0 auto;font-style:italic;font-size:clamp(1.6rem,4.6vw,2.5rem);line-height:1.2}
     .loader-ref{margin:14px 0 0;font-size:1rem;letter-spacing:.22em;text-transform:uppercase;color:#c9a46a}
-    .loader-count{margin:22px 0 0;font-size:.75rem;letter-spacing:.3em;color:#a9a49a}
-    html[data-skip] .loader,html[data-skip] .loader-ring{display:none}
+        html[data-skip] .loader,html[data-skip] .loader-ring{display:none}
     html[data-skip] body.is-loading{overflow:auto}
     .loader-ring{position:fixed;left:0;top:0;width:0;height:0;opacity:0;pointer-events:none}
   </style>
@@ -29,6 +29,7 @@
   <!-- ============ LOADER : la muraqqa'a qui s'assemble ============ -->
   <div class="loader" aria-hidden="true">
     <div class="loader-grid"></div>
+    <div class="loader-veil"></div>
     <script>
       (function () {
         try {
@@ -41,7 +42,6 @@
     <div class="loader-center">
       <p class="loader-verse">« Allah est la Lumière des cieux et de la terre »</p>
       <p class="loader-ref">Coran 24:35</p>
-      <p class="loader-count"><span>0</span>%</p>
     </div>
     <script>
       (function () {
@@ -52,7 +52,7 @@
         if (document.fonts && document.fonts.load) {
           Promise.all([document.fonts.load('italic 500 1em "Cormorant Garamond"'), document.fonts.load('600 1em "Cormorant Garamond"')]).then(once, once);
         }
-        setTimeout(once, 1400);
+        setTimeout(once, 500);
       })();
     </script>
   </div>

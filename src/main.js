@@ -107,30 +107,33 @@ function runLoader(onReveal) {
     fin();
     return Promise.resolve();
   }
-  // même damier et même animation que l'ouverture du menu : les carreaux se dressent dans le désordre, puis s'assombrissent
+  // intro de 3 secondes : le damier du menu se dresse sur la page, reste visible derrière un filtre opaque pendant le verset,
+  // puis les carreaux se replient pour révéler l'accueil
   const mobile = window.innerWidth < 760;
   const tiles = buildTiles($(".loader-grid"), mobile ? 3 : 6, mobile ? 5 : 4);
-  const count = $(".loader-count span");
-  const counter = { v: 0 };
+  const veil = $(".loader-veil");
   const couleur = () => PATCH[Math.floor(Math.random() * PATCH.length)];
   gsap.set(tiles, { scaleY: 0, transformOrigin: "top" });
+  // les carreaux changent de couleur en continu derrière le filtre
+  const rythme = setInterval(
+    () => tiles.forEach((t) => Math.random() < 0.5 && gsap.to(t, { backgroundColor: couleur(), duration: 0.4, ease: "power1.inOut", overwrite: "auto" })),
+    300
+  );
 
   return new Promise((resolve) => {
-    const tl = gsap.timeline({ onComplete: () => { fin(); resolve(); } });
+    const tl = gsap.timeline({ onComplete: () => { clearInterval(rythme); fin(); resolve(); } });
     tl.fromTo(tiles, { scaleY: 0, backgroundColor: couleur }, {
       scaleY: 1,
-      duration: 0.5,
+      duration: 0.45,
       ease: "power3.inOut",
-      stagger: { each: 0.02, from: "random" },
-    })
-      .to(tiles, { backgroundColor: "#0b0f14", duration: 0.4, stagger: { each: 0.01, from: "random" } }, "-=0.25")
-      .to(counter, { v: 100, duration: 2, ease: "power2.inOut", onUpdate: () => (count.textContent = Math.round(counter.v)) }, 0)
-      // transition vers la page : le verset s'efface, le damier se rallume, puis les carreaux se replient pour révéler l'accueil
-      .to(".loader-center", { opacity: 0, scale: 0.94, duration: 0.45, ease: "power2.in" }, ">0.1")
-      .to(tiles, { backgroundColor: couleur, duration: 0.4, ease: "power1.inOut", stagger: { each: 0.015, from: "random" } }, "<")
-      .set(tiles, { transformOrigin: "bottom" }, ">0.1")
-      .add(() => { onReveal && onReveal(); }, "<")
-      .to(tiles, { scaleY: 0, duration: 0.75, ease: "power3.inOut", stagger: { each: 0.035, from: "random" } }, "<");
+      stagger: { each: 0.012, from: "random" },
+    }, 0)
+      // à 2 s : le verset et le filtre s'effacent, les carreaux se replient
+      .to(".loader-center", { opacity: 0, scale: 0.96, duration: 0.35, ease: "power2.in" }, 2)
+      .to(veil, { opacity: 0, duration: 0.5, ease: "power1.out" }, 2.05)
+      .add(() => { clearInterval(rythme); onReveal && onReveal(); }, 2.1)
+      .set(tiles, { transformOrigin: "bottom" }, 2.1)
+      .to(tiles, { scaleY: 0, duration: 0.6, ease: "power3.inOut", stagger: { each: 0.012, from: "random" } }, 2.1);
   });
 }
 
