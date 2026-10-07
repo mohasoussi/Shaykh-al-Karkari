@@ -68,12 +68,15 @@ const SECTIONS = [
     ]] },
   { fr: ["La siyaha, une tradition soufie", [
       "Cette forme d'errance pieuse porte, dans la tradition soufie, le nom de siyaha. Elle s'appuie sur plusieurs versets du Coran qui invitent à « parcourir la terre » (par exemple la sourate 29, verset 20) et a été pratiquée par de nombreux maîtres au cours des siècles : marcher, renoncer aux sécurités matérielles et apprendre à dépendre de Dieu seul.",
+      { lien: "Lire l'article : la siyaha chez les maîtres soufis" },
     ]],
     en: ["Siyaha, a Sufi tradition", [
       "In the Sufi tradition, this form of pious wandering is called siyaha. It rests on several verses of the Qur'an that invite believers to “journey in the land” (for example surah 29, verse 20) and has been practised by many masters over the centuries: walking, giving up material security and learning to depend on God alone.",
+      { lien: "Read the article: siyaha among the Sufi masters (in French)" },
     ]],
     ar: ["السياحة، تقليدٌ صوفي", [
       "تُعرف هذه الصورة من الارتحال التعبّدي في التقليد الصوفي باسم «السياحة». وهي تستند إلى آيات عدّة من القرآن تدعو إلى «السير في الأرض» (مثل سورة العنكبوت، الآية 20)، وقد مارسها كثير من المشايخ عبر القرون: مشيٌ، وتخلٍّ عن الأسباب المادية، وتعلّمٌ للاعتماد على الله وحده.",
+      { lien: "اقرأ المقال: السياحة عند المشايخ الصوفية (بالفرنسية)" },
     ]] },
   { fr: ["Le retour et la rencontre avec son maître", [
       "En 2004, de retour à Nador, un feu intérieur, un besoin de repentir et une quête profonde du divin le conduisent chez son Shaykh. Il rend visite à son oncle, Mawlay al-Hassan Al Karkari, et lui demande de s'engager sur la voie. Il entre en retraite spirituelle (khalwa) en novembre 2004, puis demeure environ deux ans à ses côtés.",
@@ -128,7 +131,7 @@ ${video}    <section class="shaykh-texte maitre">
 `;
 
 for (const [code, L] of Object.entries(LANG)) {
-  const corps = SECTIONS.map((s) => `        <h3>${esc(s[code][0])}</h3>\n${s[code][1].map((p) => `        <p>${esc(p)}</p>`).join("\n")}`).join("\n");
+  const corps = SECTIONS.map((s) => `        <h3>${esc(s[code][0])}</h3>\n${s[code][1].map((p) => (typeof p === "string" ? `        <p>${esc(p)}</p>` : `        <p><a class="btn-glass btn-glass--dark" href="${L.dir ? "../" : ""}siyaha-maitres-soufis.html"><span>${esc(p.lien)}</span><i>${L.fleche}</i></a></p>`)).join("\n")}`).join("\n");
   const video = bandeVideos(
     [{ id: "marche-video", yt: "https://www.youtube.com/watch?v=J4I9HiyCC1I",
       place: { [code]: L.videoPlace }, t: { [code]: L.video }, d: { [code]: L.videoDesc } }],
