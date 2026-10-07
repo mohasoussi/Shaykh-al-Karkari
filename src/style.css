@@ -157,6 +157,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   grid-template-rows: repeat(var(--rows, 5), 1fr);
 }
 .loader { background: var(--night); }
+.loader-grid span { background: var(--night); }
 /* sécurité : si le script ne démarre pas, le damier se retire seul */
 .loader { animation: loader-secours 0.01s 9s forwards; }
 @keyframes loader-secours { to { visibility: hidden; } }
@@ -1611,8 +1612,7 @@ html[lang="ar"] .manifesto-sign span { font-style: normal; letter-spacing: 0; }
 .hub-cards .hub-card:last-child:nth-child(odd) { grid-column: 1 / -1; min-height: 420px; }
 @media (max-width: 860px) { .hub-cards .hub-card:last-child:nth-child(odd) { min-height: 360px; } }
 
-/* ---------- menu : damier de la muraqqa'a (repris de l'ancienne intro) sous un voile sombre pour garder les liens lisibles ---------- */
-.menu-tiles::after { content: ""; position: absolute; inset: 0; background: radial-gradient(90% 80% at 30% 50%, rgba(11, 15, 20, 0.66), rgba(11, 15, 20, 0.3)); pointer-events: none; }
+
 
 /* ---------- le site s'arrête au pied de page : rien de clair au-delà ---------- */
 body { background: var(--dusk-deep-2); }

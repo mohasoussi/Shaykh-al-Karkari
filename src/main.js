@@ -93,57 +93,45 @@ function pointShaykh() {
 function runLoader(onReveal) {
   const loader = $(".loader");
   const ring = $(".loader-ring");
-  if (!loader || document.documentElement.dataset.skip) {
+  const fin = () => {
     loader?.remove();
     ring?.remove();
     document.body.classList.remove("is-loading");
+  };
+  if (!loader || document.documentElement.dataset.skip) {
+    fin();
     onReveal && onReveal();
     return Promise.resolve();
   }
-  const count = $(".loader-count span");
-  const counter = { v: 0 };
-
   if (reduced) {
-    loader.remove();
-    ring?.remove();
-    document.body.classList.remove("is-loading");
+    fin();
     return Promise.resolve();
   }
-
-  // fin d'intro : un cercle se referme jusqu'à n'être plus qu'un point sur le Shaykh
-  const P = pointShaykh();
-  // rayon de départ : couvre toute la zone du damier, même quand la barre d'adresse d'un téléphone change la hauteur visible
-  const vw = Math.max(innerWidth, document.documentElement.clientWidth, window.screen?.width || 0);
-  const vh = Math.max(innerHeight, document.documentElement.clientHeight, window.screen?.height || 0);
-  const iris = { r: Math.hypot(Math.max(P.x, vw - P.x), Math.max(P.y, vh - P.y)) + 200 };
-  const dessiner = () => {
-    loader.style.clipPath = `circle(${iris.r}px at ${P.x}px ${P.y}px)`;
-    ring.style.width = ring.style.height = `${iris.r * 2}px`;
-  };
-  gsap.set(ring, { left: P.x, top: P.y, xPercent: -50, yPercent: -50 });
-  dessiner();
+  // même damier et même animation que l'ouverture du menu : les carreaux se dressent dans le désordre, puis s'assombrissent
+  const mobile = window.innerWidth < 760;
+  const tiles = buildTiles($(".loader-grid"), mobile ? 3 : 6, mobile ? 5 : 4);
+  const count = $(".loader-count span");
+  const counter = { v: 0 };
+  const couleur = () => PATCH[Math.floor(Math.random() * PATCH.length)];
+  gsap.set(tiles, { scaleY: 0, transformOrigin: "top" });
 
   return new Promise((resolve) => {
-    const tl = gsap.timeline({
-      onComplete: () => {
-        loader.remove();
-        ring.remove();
-        document.body.classList.remove("is-loading");
-        resolve();
-      },
-    });
-    tl.to(counter, {
-      v: 100,
-      duration: 2,
-      ease: "power2.inOut",
-      onUpdate: () => (count.textContent = Math.round(counter.v)),
+    const tl = gsap.timeline({ onComplete: () => { fin(); resolve(); } });
+    tl.fromTo(tiles, { scaleY: 0, backgroundColor: couleur }, {
+      scaleY: 1,
+      duration: 0.5,
+      ease: "power3.inOut",
+      stagger: { each: 0.02, from: "random" },
     })
+      .to(tiles, { backgroundColor: "#0b0f14", duration: 0.4, stagger: { each: 0.01, from: "random" } }, "-=0.25")
+      .to(counter, { v: 100, duration: 2, ease: "power2.inOut", onUpdate: () => (count.textContent = Math.round(counter.v)) }, 0)
+      // transition vers la page : le verset s'efface, le damier se rallume, puis les carreaux se replient pour révéler l'accueil
       .to(".loader-center", { opacity: 0, scale: 0.94, duration: 0.45, ease: "power2.in" }, ">0.1")
-      .set(ring, { opacity: 1 }, ">-0.1")
-      .to(iris, { r: 0, duration: 1.9, ease: "power3.inOut", onUpdate: dessiner }, "<")
-      .add(() => { onReveal && onReveal(); }, "<0.55")
-      // le point final éclot puis disparaît
-      .to(ring, { scale: 3.2, opacity: 0, duration: 0.55, ease: "power2.out" }, ">");
+      .set(loader, { backgroundColor: "transparent" }, "<")
+      .to(tiles, { backgroundColor: couleur, duration: 0.4, ease: "power1.inOut", stagger: { each: 0.015, from: "random" } }, "<")
+      .set(tiles, { transformOrigin: "bottom" }, ">0.1")
+      .add(() => { onReveal && onReveal(); }, "<")
+      .to(tiles, { scaleY: 0, duration: 0.75, ease: "power3.inOut", stagger: { each: 0.035, from: "random" } }, "<");
   });
 }
 
@@ -646,12 +634,10 @@ const LABELS = { fr: { fermer: "Fermer", menu: "Menu" }, en: { fermer: "Close", 
 const menu = $(".menu");
 const menuBtn = $(".menu-btn");
 let menuTl;
-let menuRythme;
-let menuTuiles = [];
 
 function buildMenu() {
   const mobile = window.innerWidth < 760;
-  const tiles = menuTuiles = buildTiles($(".menu-tiles"), mobile ? 3 : 6, mobile ? 5 : 4);
+  const tiles = buildTiles($(".menu-tiles"), mobile ? 3 : 6, mobile ? 5 : 4);
   menuTl = gsap
     .timeline({ paused: true })
     .set(menu, { visibility: "visible" })
@@ -662,6 +648,7 @@ function buildMenu() {
       transformOrigin: "top",
       stagger: { each: 0.02, from: "random" },
     })
+    .to(tiles, { backgroundColor: "#0b0f14", duration: 0.4, stagger: { each: 0.01, from: "random" } }, "-=0.25")
     .from(".menu-links a", { yPercent: 110, duration: 0.9, ease: "expo.out", stagger: 0.05 }, "-=0.3")
     .from(".menu-aside > *", { opacity: 0, y: 20, duration: 0.8, ease: "power3.out", stagger: 0.06 }, "<0.2");
 }
@@ -673,16 +660,6 @@ function openMenu() {
   $(".menu-btn-label").textContent = LABELS.fermer;
   lenis?.stop();
   menuTl.timeScale(1).play();
-  // le damier continue de changer de couleur tant que le menu est ouvert (comme à l'ancienne intro)
-  clearInterval(menuRythme);
-  if (!reduced)
-    menuRythme = setInterval(
-      () =>
-        menuTuiles.forEach((t) => {
-          if (Math.random() < 0.4) gsap.to(t, { backgroundColor: PATCH[Math.floor(Math.random() * PATCH.length)], duration: 0.4, ease: "power1.inOut", overwrite: "auto" });
-        }),
-      320
-    );
 }
 function closeMenu() {
   document.body.classList.remove("menu-open");
@@ -690,7 +667,6 @@ function closeMenu() {
   menu.setAttribute("aria-hidden", "true");
   $(".menu-btn-label").textContent = LABELS.menu;
   lenis?.start();
-  clearInterval(menuRythme);
   menuTl.timeScale(1.8).reverse();
 }
 menuBtn.addEventListener("click", () => (document.body.classList.contains("menu-open") ? closeMenu() : openMenu()));
