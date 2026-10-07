@@ -156,7 +156,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   grid-template-columns: repeat(var(--cols, 8), 1fr);
   grid-template-rows: repeat(var(--rows, 5), 1fr);
 }
-.loader-grid span { background: var(--night); }
+.loader { background: var(--night); }
 /* sécurité : si le script ne démarre pas, le damier se retire seul */
 .loader { animation: loader-secours 0.01s 9s forwards; }
 @keyframes loader-secours { to { visibility: hidden; } }
@@ -1603,3 +1603,17 @@ html { background: var(--dusk-deep-2); overscroll-behavior-y: none; }
 .footer-bottom { padding-bottom: calc(28px + env(safe-area-inset-bottom)); }
 .manifesto-sign span { font-family: var(--serif); font-style: italic; letter-spacing: 0.04em; }
 html[lang="ar"] .manifesto-sign span { font-style: normal; letter-spacing: 0; }
+
+/* ---------- page « marche de dix ans » + carte large du hub ---------- */
+.marche-photo { margin: 0 auto clamp(28px, 5vw, 56px); max-width: 1100px; padding-inline: var(--gutter); }
+.marche-photo img { display: block; width: 100%; height: clamp(220px, 38vw, 460px); object-fit: cover; object-position: 50% 60%; border-radius: 22px; }
+.peregrination-lien { margin-top: 18px; }
+.hub-cards .hub-card:last-child:nth-child(odd) { grid-column: 1 / -1; min-height: 420px; }
+@media (max-width: 860px) { .hub-cards .hub-card:last-child:nth-child(odd) { min-height: 360px; } }
+
+/* ---------- menu : damier de la muraqqa'a (repris de l'ancienne intro) sous un voile sombre pour garder les liens lisibles ---------- */
+.menu-tiles::after { content: ""; position: absolute; inset: 0; background: radial-gradient(90% 80% at 30% 50%, rgba(11, 15, 20, 0.66), rgba(11, 15, 20, 0.3)); pointer-events: none; }
+
+/* ---------- le site s'arrête au pied de page : rien de clair au-delà ---------- */
+body { background: var(--dusk-deep-2); }
+.smooth { background: var(--ivory); }

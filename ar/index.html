@@ -28,7 +28,6 @@
 
   <!-- ============ LOADER : la muraqqa'a qui s'assemble ============ -->
   <div class="loader" aria-hidden="true">
-    <div class="loader-grid"></div>
     <script>
       (function () {
         try {
@@ -36,20 +35,6 @@
           var back = nav && nav.type === "back_forward";
           if (sessionStorage.getItem("skipIntro") || back) { sessionStorage.removeItem("skipIntro"); document.documentElement.setAttribute("data-skip", "1"); }
         } catch (e) {}
-        var g = document.querySelector(".loader-grid");
-        var mob = innerWidth < 760, c = mob ? 4 : 8, r = mob ? 7 : 5;
-        var C = ["#b8322a", "#2f6f4e", "#d9a527", "#2c4f8c", "#7b3b7e", "#d96b2b", "#c9a46a"];
-        var idx = [], h = "";
-        g.style.setProperty("--cols", c);
-        g.style.setProperty("--rows", r);
-        for (var i = 0; i < c * r; i++) {
-          var k;
-          do { k = Math.floor(Math.random() * C.length); }
-          while (k === idx[i - 1] && i % c !== 0 || k === idx[i - c]);
-          idx.push(k);
-          h += '<span style="background:' + C[k] + '"></span>';
-        }
-        g.innerHTML = h;
       })();
     </script>
     <div class="loader-center">
