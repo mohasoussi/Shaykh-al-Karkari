@@ -14,7 +14,7 @@ const L = {
 const domaine = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch { return u; } };
 
 for (const [code, T] of Object.entries(L)) {
-  const items = LIENS.map((l) => `        <li class="site-carte" data-reveal><a href="${esc(l.url)}" target="_blank" rel="noopener"><figure><img src="${esc(l.image)}" alt="${esc(l.titre[code] || l.titre.fr)}" loading="lazy" /></figure><div><strong>${esc(l.titre[code] || l.titre.fr)}</strong>${l.texte ? `<p>${esc(l.texte[code] || l.texte.fr)}</p>` : ""}<small>${esc(domaine(l.url))}</small><em>${T.visiter} ↗</em></div></a></li>`).join("\n");
+  const items = LIENS.map((l) => `        <li class="site-carte" data-reveal><a href="${esc(l.url)}" target="_blank" rel="noopener"><figure${l.fond ? ` class="site-logo" style="background:${l.fond}"` : ""}><img src="${esc(l.image)}" alt="${esc(l.titre[code] || l.titre.fr)}" loading="lazy" /></figure><div><strong>${esc(l.titre[code] || l.titre.fr)}</strong>${l.texte ? `<p>${esc(l.texte[code] || l.texte.fr)}</p>` : ""}<small>${esc(domaine(l.url))}</small><em>${T.visiter} ↗</em></div></a></li>`).join("\n");
   const corps = LIENS.length ? `      <ul class="sites-liste">\n${items}\n      </ul>` : `      <p class="section-lede" data-reveal style="margin:0 auto;max-width:44rem">${T.vide}</p>`;
   const html = `<!doctype html>
 <html lang="${code}"${code === "ar" ? ' dir="rtl"' : ""}>

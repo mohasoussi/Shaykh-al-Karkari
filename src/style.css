@@ -1712,3 +1712,4 @@ body { background: var(--dusk-deep-2); }
 .galerie-page .album-art a { text-decoration: underline; text-underline-offset: 3px; }
 .galerie-page .album .section-head { padding: 0 var(--gutter) !important; margin-top: 0 !important; margin-bottom: clamp(22px, 3vw, 36px) !important; }
 .galerie-page .album { padding: clamp(36px, 5vw, 70px) 0; }
+.site-carte figure.site-logo img { object-fit: contain; padding: 6%; }

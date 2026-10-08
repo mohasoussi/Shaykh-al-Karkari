@@ -1,28 +1,42 @@
 [
   {
     "url": "https://thezawiyakarkari.org/",
-    "image": "/media/recueillement.webp",
-    "titre": { "fr": "La Zawiya Karkari", "en": "The Karkari Zawiya", "ar": "الزاوية الكركرية" },
+    "image": "/media/site-zawiya.webp",
+    "titre": {
+      "fr": "La Zawiya Karkari",
+      "en": "The Karkari Zawiya",
+      "ar": "الزاوية الكركرية"
+    },
     "texte": {
       "fr": "Retraites spirituelles en compagnie du Shaykh à travers le monde (États-Unis, Canada, Mexique, France).",
       "en": "Spiritual retreats in the company of the Shaykh around the world (USA, Canada, Mexico, France).",
       "ar": "خلواتٌ روحية برفقة الشيخ عبر العالم (الولايات المتحدة، كندا، المكسيك، فرنسا)."
-    }
+    },
+    "fond": "#fdf7ea"
   },
   {
     "url": "https://www.nur-journal.org/",
-    "image": "/media/lecture-coran.webp",
-    "titre": { "fr": "Nūn Journal", "en": "Nūn Journal", "ar": "مجلة نون" },
+    "image": "/media/site-nun.webp",
+    "titre": {
+      "fr": "Nun Journal",
+      "en": "Nun Journal",
+      "ar": "مجلة نون"
+    },
     "texte": {
-      "fr": "Nūn est la première revue de ce genre : une plateforme où des soufis contemporains partagent leurs réflexions et les expériences reçues du Très Miséricordieux (al-Raḥmān) sur la voie de la servitude (ʿubūdiyya). Sous la direction spirituelle du Shaykh Mohamed Faouzi al-Karkari.",
-      "en": "Nūn is the first magazine of its kind, dedicated to providing a platform for contemporary Sufis to share their insights, reflections, and experiences received from the Most Merciful (al-Raḥmān) through their inspirations and experiences on the path of servanthood (ʿubūdiyya). Guided by Shaykh Mohamed Faouzi al-Karkari.",
+      "fr": "Nun est la première revue de ce genre : une plateforme où des soufis contemporains partagent leurs réflexions et les expériences reçues du Très Miséricordieux (al-Raḥmān) sur la voie de la servitude (ʿubūdiyya). Sous la direction spirituelle du Shaykh Mohamed Faouzi al-Karkari.",
+      "en": "Nun is the first magazine of its kind, dedicated to providing a platform for contemporary Sufis to share their insights, reflections, and experiences received from the Most Merciful (al-Raḥmān) through their inspirations and experiences on the path of servanthood (ʿubūdiyya). Guided by Shaykh Mohamed Faouzi al-Karkari.",
       "ar": "«نون» أولُ مجلةٍ من نوعها، منصةٌ يشارك فيها صوفيّو عصرنا خواطرهم وتأملاتهم وما فاض عليهم من الرحمن في طريق العبودية. بإرشاد الشيخ محمد فوزي الكركري."
-    }
+    },
+    "fond": "#ffffff"
   },
   {
     "url": "https://karkariya.fr/",
     "image": "/media/site-karkariya-fr.webp",
-    "titre": { "fr": "Karkariya.fr", "en": "Karkariya.fr", "ar": "Karkariya.fr" },
+    "titre": {
+      "fr": "Karkariya.fr",
+      "en": "Karkariya.fr",
+      "ar": "Karkariya.fr"
+    },
     "texte": {
       "fr": "Site officiel français de l'Ordre soufi Karkariya.",
       "en": "The official French website of the Karkariya Sufi Order.",

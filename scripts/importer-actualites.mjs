@@ -16,7 +16,8 @@
      3. Le texte est nettoyé, les images sont téléchargées, allégées (WebP) et rangées dans public/actualites/.
      4. On produit : actualites.html (liste), actualite-<nom>.html (un par article), src/data/actualites.json,
         et les 3 derniers articles de l'accueil.
-   À chaque mise en ligne (npm run build), l'import est relancé : les nouveaux articles apparaissent seuls. */
+   À chaque mise en ligne (npm run build), l'import { epurer } from "./epurer-enseignements.mjs";
+import est relancé : les nouveaux articles apparaissent seuls. */
 
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -286,7 +287,8 @@ async function traiter(a, slugsConnus, cfg = { prefixe: "actualite", racineImg: 
     couverture = vignette = null;
   }
   const resume = a.extrait || extrait(texte(propre));
-  return { ...a, titre: shaykhify(a.titre), imageAlt: shaykhify(a.imageAlt), html: shaykhify(propre), couverture, vignette, extrait: shaykhify(extrait(resume)) };
+  const adoucir = cfg.prefixe === "enseignement" ? epurer : (x) => x; // vocabulaire des enseignements : voie, aspirant, exégèse, sans formules de révérence
+  return { ...a, titre: adoucir(shaykhify(a.titre)), imageAlt: shaykhify(a.imageAlt), html: adoucir(shaykhify(propre)), couverture, vignette, extrait: adoucir(shaykhify(extrait(resume))) };
 }
 
 /* ---------- 3. écriture des pages ---------- */
