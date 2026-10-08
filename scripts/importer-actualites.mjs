@@ -286,6 +286,11 @@ async function traiter(a, slugsConnus, cfg = { prefixe: "actualite", racineImg: 
   } else if (srcCouv) {
     couverture = vignette = null;
   }
+  // images choisies à la main (remplacent celles du site d'origine)
+  try {
+    const choix = JSON.parse(await fs.readFile(path.join(SITE, "scripts", "images-enseignements.json"), "utf8"))[a.slug];
+    if (choix && cfg.prefixe === "enseignement") { couverture = choix.couverture; vignette = choix.vignette; }
+  } catch {}
   const resume = a.extrait || extrait(texte(propre));
   const adoucir = cfg.prefixe === "enseignement" ? epurer : (x) => x; // vocabulaire des enseignements : voie, aspirant, exégèse, sans formules de révérence
   return { ...a, titre: adoucir(shaykhify(a.titre)), imageAlt: shaykhify(a.imageAlt), html: adoucir(shaykhify(propre)), couverture, vignette, extrait: adoucir(shaykhify(extrait(resume))) };
