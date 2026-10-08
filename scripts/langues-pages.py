@@ -57,7 +57,7 @@ QUI = [
  ("Qui est le Shaykh ? — Shaykh Mohamed Faouzi Al Karkari", "Who is the Shaykh? — Shaykh Mohamed Faouzi Al Karkari", "من هو الشيخ؟ — الشيخ محمد فوزي الكركري"),
  ('data-cursor="Voir"', 'data-cursor="View"', 'data-cursor="عرض"'),
  ('alt="Le Shaykh Mohamed Faouzi Al Karkari en djellaba blanche et chéchia rouge"', 'alt="Shaykh Mohamed Faouzi Al Karkari in a white djellaba and red chechia"', 'alt="الشيخ محمد فوزي الكركري بجلبابٍ أبيض وطربوشٍ أحمر"'),
- ('alt="Le Shaykh en recueillement"', 'alt="The Shaykh in contemplation"', 'alt="الشيخ في خلوة تأمّل"'),
+ ('alt="Le Shaykh prenant la parole lors d\'une conférence"', 'alt="The Shaykh speaking at a conference"', 'alt="الشيخ يتحدث في أحد المؤتمرات"'),
  ('<p class="kicker">Qui est le Shaykh ?</p>', '<p class="kicker">Who is the Shaykh?</p>', '<p class="kicker">من هو الشيخ؟</p>'),
  ("Un héritier de la chaîne, un chercheur de son temps.", "An heir to the chain, a researcher of his time.", "وارثٌ للسلسلة، وباحثٌ في عصره."),
  ("Le Shaykh Mohamed Faouzi Al Karkari est le guide spirituel de la Tariqa Karkariya, héritier d'une chaîne de transmission ininterrompue remontant au Prophète Mohamed ﷺ. Auteur de 55 livres publiés dans six langues, dont certains sont étudiés dans certaines universités américaines, il conjugue l'accompagnement spirituel, l'écriture et la recherche internationale sur le soufisme — de Nador à Chicago, de Paris à Genève.",
