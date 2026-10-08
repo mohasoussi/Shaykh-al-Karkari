@@ -120,7 +120,7 @@ const ACCUEIL = [
   ['content="Shaykh Mohamed Faouzi Al Karkari" />', 'content="Shaykh Mohamed Faouzi Al Karkari" />', 'content="الشيخ محمد فوزي الكركري" />'],
   ["« Allah est la Lumière des cieux et de la terre »", "“Allah is the Light of the heavens and the earth”", "اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ"],
   ['<p class="loader-ref">Coran 24:35</p>', '<p class="loader-ref">Qur’an 24:35</p>', '<p class="loader-ref">سورة النور 24:35</p>'],
-  ['alt="Le Shaykh en prière au crépuscule, vêtu de sa muraqqa\'a"', 'alt="The Shaykh in prayer at dusk, wearing his muraqqaʿa"', 'alt="الشيخ في صلاةٍ عند الغروب، لابسًا مرقّعته"'],
+  ['alt="Le Shaykh Mohamed Faouzi Al Karkari recevant un diplôme, aux côtés de l\'intervenant qui le distingue"', 'alt="Shaykh Mohamed Faouzi Al Karkari receiving a certificate, beside the speaker honouring him"', 'alt="الشيخ محمد فوزي الكركري يتسلّم شهادة تكريم، إلى جانب المتحدث الذي يكرّمه"'],
   ['<span class="hero-row hero-row--prefix">Shaykh</span>', '<span class="hero-row hero-row--prefix">Shaykh</span>', '<span class="hero-row hero-row--prefix">الشيخ</span>'],
   ['<span class="hero-row">Mohamed Faouzi</span>', '<span class="hero-row">Mohamed Faouzi</span>', '<span class="hero-row">محمد فوزي</span>'],
   ['<span class="hero-row hero-row--gold">AL KARKARI</span>', '<span class="hero-row hero-row--gold">AL KARKARI</span>', '<span class="hero-row hero-row--gold">الكركري</span>'],
