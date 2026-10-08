@@ -1,55 +1,7 @@
 /* Biographies : maîtres de la chaîne de transmission, du XVIe siècle aux premiers compagnons (rédaction neutre). */
 export const CHAINE = [
-  {
-    cle: "Le Shaykh sidi Abu Ya’za al-Mahajiy", slug: "abu-yaza", nom: "Abu Yaza (Yalannur ibn Maymun)",
-    sous: "Vers 1100 – vers 1177 · Moyen Atlas (Maroc) · maître soufi berbère",
-    intro: "Abu Yaza, de son nom complet Yalannur ibn Maymun, est l'une des figures les plus anciennes du soufisme marocain. Issu d'une famille berbère du Moyen Atlas, il vécut en ermite et en maître spirituel, et compta parmi ses élèves plusieurs personnalités qui marquèrent la vie religieuse du Maghreb.",
-    sections: [
-      ["Origine et mode de vie", [
-        "Abu Yaza naquit vers 1100 dans le Moyen Atlas, au sein d'une tribu berbère. Les sources le décrivent comme un homme sans grande instruction formelle, vivant d'abord du travail de la terre, puis consacré à la prière et à l'ascèse dans les montagnes de la région de Khénifra.",
-      ]],
-      ["Un maître reconnu", [
-        "Son rayonnement dépassa sa région. Des disciples venus de tout le Maroc le rencontrèrent, et plusieurs d'entre eux devinrent à leur tour des maîtres. La tradition soufie le range parmi les chaînons qui relient l'enseignement du Maroc des Almoravides et des Almohades aux générations ultérieures. Il est cité dans les recueils de biographies de saints écrits dès le XIIIe siècle, notamment par at-Tadili.",
-      ]],
-      ["Décès et mémoire", [
-        "Il mourut vers 1177, à un âge très avancé selon la tradition. Son sanctuaire, à Moulay Bouazza, dans la région de Khénifra, est toujours un lieu de visite et a donné son nom à la localité.",
-      ]],
-    ],
-  },
 
-  {
-    cle: "Sidi Muhammad al-‘Arbiy al-Fassiy", slug: "muhammad-al-arbi-al-fasi", nom: "Muhammad al-ʿArbi al-Fasi",
-    sous: "1580 – 1642 · Fès · savant et fils d'Abu al-Mahasin al-Fasi",
-    intro: "Muhammad al-ʿArbi al-Fasi est un fils d'Abu al-Mahasin Yusuf al-Fasi, fondateur de la Zawiya Fassiya de Fès. Il assura la continuité de la famille et rédigea la principale source sur la vie de son père.",
-    sections: [
-      ["Dans la famille des Fasi", [
-        "Né à Fès en 1580, il appartient à l'une des grandes familles de savants du Maroc, d'origine andalouse. Il fut formé par son père, dont il suivit l'enseignement juridique et spirituel.",
-      ]],
-      ["Le <em>Mir'at al-Mahasin</em>", [
-        "En 1636, il rédigea le <em>Mir'at al-Mahasin</em> (« Le miroir des qualités »), qui rassemble les souvenirs sur son père et sur l'histoire de la famille. L'ouvrage est une source précieuse pour la vie religieuse de Fès au XVIe siècle.",
-      ]],
-      ["Son rôle", [
-        "Il contribua à perpétuer l'enseignement familial, que reprit ensuite la génération de ʿAbd al-Qadir al-Fasi (1599-1680), père d'ʿAbd ar-Rahman al-Fasi. Il mourut en 1642.",
-      ]],
-    ],
-  },
 
-  {
-    cle: "Sidi ‘AbdarRahman al-Fassiy", slug: "abd-ar-rahman-al-fasi", nom: "ʿAbd ar-Rahman al-Fasi",
-    sous: "1631 – 1685 · Fès · savant, auteur de près de 170 ouvrages",
-    intro: "ʿAbd ar-Rahman al-Fasi est l'un des intellectuels les plus féconds de la famille des Fasi. Juriste, historien et maître soufi de Fès, il laissa une œuvre abondante d'environ 170 ouvrages et fit rayonner l'enseignement de sa zawiya.",
-    sections: [
-      ["Une famille de savants", [
-        "Né à Fès en 1631, ʿAbd ar-Rahman al-Fasi est le fils de ʿAbd al-Qadir al-Fasi (1599-1680) et un descendant d'Abu al-Mahasin Yusuf al-Fasi. Il reçut une formation complète en droit, en lettres et en sciences religieuses.",
-      ]],
-      ["Une œuvre abondante", [
-        "Il rédigea environ 170 ouvrages sur des sujets variés. Parmi ses écrits figure l'<em>Ibtihaj al-qulub</em>, récit consacré à Abu al-Mahasin et à son maître ʿAbd ar-Rahman al-Majdhub. Son œuvre reste une source majeure sur la vie religieuse et intellectuelle de Fès au XVIIe siècle.",
-      ]],
-      ["Décès", [
-        "Il mourut en 1685. Avec lui s'illustra une génération de la famille Fasi qui compta parmi les élites intellectuelles du Maroc de son temps.",
-      ]],
-    ],
-  },
 
   {
     cle: "Sidi Abu al-Mahassin Youssouf al-Fassiy", slug: "abu-al-mahasin-al-fasi", nom: "Abu al-Mahasin Yusuf al-Fasi",
