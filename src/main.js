@@ -791,7 +791,7 @@ function dust() {
   }
   // visible seulement au-dessus des sections sombres
   if (canvas)
-    [".manifesto", ".talks", ".merkez", ".vpage", ".vband"].filter((sel) => $(sel)).forEach((sel) =>
+    [".manifesto", ".talks", ".merkez", ".vpage"].filter((sel) => $(sel)).forEach((sel) =>
       ScrollTrigger.create({
         trigger: sel,
         start: "top 60%",
