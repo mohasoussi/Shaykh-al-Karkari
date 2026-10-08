@@ -10,5 +10,13 @@
   "le-savoir": {
     "couverture": "enseignements/le-savoir/couverture-v2.webp",
     "vignette": "enseignements/le-savoir/vignette-v2.webp"
+  },
+  "cours-30052014-connaitre-allah-par-sa-beaute-sublime": {
+    "couverture": "enseignements/cours-30052014-connaitre-allah-par-sa-beaute-sublime/couverture-v2.webp",
+    "vignette": "enseignements/cours-30052014-connaitre-allah-par-sa-beaute-sublime/vignette-v2.webp"
+  },
+  "5570-2": {
+    "couverture": "enseignements/5570-2/couverture-v2.webp",
+    "vignette": "enseignements/5570-2/vignette-v2.webp"
   }
 }

@@ -16,10 +16,10 @@
      3. Le texte est nettoyé, les images sont téléchargées, allégées (WebP) et rangées dans public/actualites/.
      4. On produit : actualites.html (liste), actualite-<nom>.html (un par article), src/data/actualites.json,
         et les 3 derniers articles de l'accueil.
-   À chaque mise en ligne (npm run build), l'import { epurer } from "./epurer-enseignements.mjs";
-import est relancé : les nouveaux articles apparaissent seuls. */
+   À chaque mise en ligne (npm run build), l'import est relancé : les nouveaux articles apparaissent seuls. */
 
 import fs from "node:fs/promises";
+import { epurer } from "./epurer-enseignements.mjs";
 import path from "node:path";
 import sanitizeHtml from "sanitize-html";
 import { parse } from "node-html-parser";
@@ -332,7 +332,7 @@ async function ecrire(articles) {
 
 /* ---------- enseignements (rubrique « Moudhakara » du site d'origine) ---------- */
 const ENS_CATEGORIE = process.env.ENSEIGNEMENTS_CATEGORIE || "26"; // https://karkariya.fr/le-shaykh/moudhakara/
-const ENS_EXCLUS = /message de la tariqa karkariya|la fornication|r[ée]ponse du shaykh [àa] ceux qui nous critiquent/i;
+const ENS_EXCLUS = /safar, 12-24-66|hadîth al-nouzoul|hadith al-nouzoul|secret de la bay.?a|hujurat|message de la tariqa karkariya|la fornication|r[ée]ponse du shaykh [àa] ceux qui nous critiquent/i;
 // les trois enseignements mis en avant sous la bannière de l'accueil (nom d'origine de l'article)
 const ENS_ACCUEIL = ["vision-yeux-vision-coeur", "le-coeur-spirituel-dans-le-coeur-physique", "la-feconnaissance-pour-les-bienfaits-dallah"];
 const COULEURS = ["#3f5578", "#4f7260", "#a2694a"];
@@ -530,6 +530,7 @@ async function main() {
     log("page remise à zéro");
     return;
   }
+  if (process.env.ENS_SEUL) { await enseignements(); return; } // mise à jour limitée aux enseignements
   log(`lecture de ${SOURCE}`);
   let brut = [];
   try {

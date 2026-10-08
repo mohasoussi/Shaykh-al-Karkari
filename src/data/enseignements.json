@@ -45,21 +45,6 @@
     "vignette": "enseignements/vision-yeux-vision-coeur/vignette.webp"
   },
   {
-    "url": "https://karkariya.fr/tafsir-al-hujurat-appartements/",
-    "slug": "tafsir-al-hujurat-appartements",
-    "titre": "Exégèse de la sourate al-Hujurat (les Appartements)",
-    "date": "2016-07-21T12:43:47Z",
-    "extrait": "Dès le commencement de la sourate, Allâh – Exalté soit-Il – s’adresse aux personnes ayant atteint la station de la foi. Il est en effet clairement indiqué « amanoo », et non « Ô vous les musulmans !…",
-    "image": "https://karkariya.fr/wp-content/uploads/2016/07/les-appartements-hujurat-tafsir-karkariya.fr_.jpg",
-    "imageAlt": "Exégèse de la sourate al-Hujurat (les Appartements)",
-    "categories": [
-      "Moudhakara"
-    ],
-    "estWordPress": true,
-    "couverture": "enseignements/tafsir-al-hujurat-appartements/couverture.webp",
-    "vignette": "enseignements/tafsir-al-hujurat-appartements/vignette.webp"
-  },
-  {
     "url": "https://karkariya.fr/le-coeur-spirituel-dans-le-coeur-physique/",
     "slug": "le-coeur-spirituel-dans-le-coeur-physique",
     "titre": "Le cœur spirituel dans le cœur physique.",
@@ -81,7 +66,7 @@
     "date": "2016-02-29T16:39:48Z",
     "extrait": "Allâh Exalté Soit-Il dit : « Si vous pouvez sortir du domaine des cieux et de la terre alors faite le mais vous ne pourrez le faire qu’à l’aide d’un pouvoir illimité ». Ce pouvoir dont il est…",
     "image": "https://karkariya.fr/wp-content/uploads/2016/02/lordre-des-versets-TariqaKarkariya.jpg",
-    "imageAlt": "Assise du shaykh : l'ordre des versets - Ordre soufi Karkariya - Soufisme",
+    "imageAlt": "Assise du shaykh : l'ordre des versets - Tariqa Karkariya - Soufisme",
     "categories": [
       "Moudhakara"
     ],
@@ -116,8 +101,8 @@
       "Moudhakara"
     ],
     "estWordPress": true,
-    "couverture": "enseignements/5570-2/couverture.webp",
-    "vignette": "enseignements/5570-2/vignette.webp"
+    "couverture": "enseignements/5570-2/couverture-v2.webp",
+    "vignette": "enseignements/5570-2/vignette-v2.webp"
   },
   {
     "url": "https://karkariya.fr/cours-30052014-connaitre-allah-par-sa-beaute-sublime/",
@@ -132,42 +117,8 @@
       "Moudhakara"
     ],
     "estWordPress": true,
-    "couverture": "enseignements/cours-30052014-connaitre-allah-par-sa-beaute-sublime/couverture.webp",
-    "vignette": "enseignements/cours-30052014-connaitre-allah-par-sa-beaute-sublime/vignette.webp"
-  },
-  {
-    "url": "https://karkariya.fr/cours-14032014-le-secret-de-la-baya/",
-    "slug": "cours-14032014-le-secret-de-la-baya",
-    "titre": "(Cours) Le Secret de la Bay’a",
-    "date": "2014-03-24T17:02:00Z",
-    "extrait": "Par conséquent, celui qui ouvre le Coran ouvre en réalité la poitrine de notre Bien-Aimé Prophète, et pour pouvoir y lire il lui faut obligatoirement passer par la…",
-    "image": "https://karkariya.fr/wp-content/uploads/2014/03/Le-secret-de-la-baya.jpg",
-    "imageAlt": "Le Secret de la Bay'a",
-    "categories": [
-      "BASMALA",
-      "Enseignements du Shaykh",
-      "Les Secrets de la Basmala",
-      "Moudhakara"
-    ],
-    "estWordPress": true,
-    "couverture": "enseignements/cours-14032014-le-secret-de-la-baya/couverture.webp",
-    "vignette": "enseignements/cours-14032014-le-secret-de-la-baya/vignette.webp"
-  },
-  {
-    "url": "https://karkariya.fr/hadith-al-nouzoul-asrar-de-lism-le-sheykh-wassita-la-prohibitif/",
-    "slug": "hadith-al-nouzoul-asrar-de-lism-le-sheykh-wassita-la-prohibitif",
-    "titre": "(Cours) Hadîth al-nouzoul, Asrâr de l’Ism, le Shaykh (Wassita), lâ prohibitif",
-    "date": "2014-03-20T10:31:00Z",
-    "extrait": "Allâh étant l’être à qui rien ne ressemble, de même il n’est rien qui ressemble à Son Nom, qui ne se sépare jamais du Nommé, contrairement à la créature, limitée dans le temps et l’espace.",
-    "image": "https://karkariya.fr/wp-content/uploads/2014/03/Ism-Allah.jpg",
-    "imageAlt": "",
-    "categories": [
-      "Enseignements du Shaykh",
-      "Moudhakara"
-    ],
-    "estWordPress": true,
-    "couverture": "enseignements/hadith-al-nouzoul-asrar-de-lism-le-sheykh-wassita-la-prohibitif/couverture.webp",
-    "vignette": "enseignements/hadith-al-nouzoul-asrar-de-lism-le-sheykh-wassita-la-prohibitif/vignette.webp"
+    "couverture": "enseignements/cours-30052014-connaitre-allah-par-sa-beaute-sublime/couverture-v2.webp",
+    "vignette": "enseignements/cours-30052014-connaitre-allah-par-sa-beaute-sublime/vignette-v2.webp"
   },
   {
     "url": "https://karkariya.fr/cours-150214-themes-ism-existantinexistant-la-prohibitif-sens-caches-de-alif-lam-mim/",
@@ -184,21 +135,5 @@
     "estWordPress": true,
     "couverture": "enseignements/cours-150214-themes-ism-existantinexistant-la-prohibitif-sens-caches-de-alif-lam/couverture.webp",
     "vignette": "enseignements/cours-150214-themes-ism-existantinexistant-la-prohibitif-sens-caches-de-alif-lam/vignette.webp"
-  },
-  {
-    "url": "https://karkariya.fr/cours-281213-themes-safar-12-24-66-idhn/",
-    "slug": "cours-281213-themes-safar-12-24-66-idhn",
-    "titre": "(Cours) Safar, 12-24-66, idhn",
-    "date": "2014-02-08T11:34:00Z",
-    "extrait": "L’un des signes majeurs de la venue de l’Heure est que la rotation de la Terre s’inversera et que le Soleil se lèvera à l’Ouest et non pas à l’Est, ce qui correspond à un inversement de la Parole…",
-    "image": "https://karkariya.fr/wp-content/uploads/2014/02/hilal-ramadan.jpg",
-    "imageAlt": "Safar, 12-24-66, idhn",
-    "categories": [
-      "Enseignements du Shaykh",
-      "Moudhakara"
-    ],
-    "estWordPress": true,
-    "couverture": "enseignements/cours-281213-themes-safar-12-24-66-idhn/couverture.webp",
-    "vignette": "enseignements/cours-281213-themes-safar-12-24-66-idhn/vignette.webp"
   }
 ]
