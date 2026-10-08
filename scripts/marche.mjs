@@ -80,11 +80,11 @@ const SECTIONS = [
     ]] },
   { fr: ["Le retour et la rencontre avec son maître", [
       "En 2004, de retour à Nador, un feu intérieur, un besoin de repentir et une quête profonde du divin le conduisent chez son Shaykh. Il rend visite à son oncle, Mawlay al-Hassan Al Karkari, et lui demande de s'engager sur la voie. Il entre en retraite spirituelle (khalwa) en novembre 2004, puis demeure environ deux ans à ses côtés.",
-      "À la mort de son Shaykh, en 2007, il devient son héritier spirituel. Il est aujourd'hui le guide spirituel de la Tariqa Karkariya.",
+      "À la mort de son Shaykh, en 2007, il devient son héritier spirituel. Il est aujourd'hui le guide spirituel de l'Ordre soufi Karkariya.",
     ]],
     en: ["The return and the meeting with his master", [
       "In 2004, back in Nador, an inner fire, a need for repentance and a deep quest for the divine led him to his Shaykh. He visited his uncle, Mawlay al-Hassan Al Karkari, and asked to commit himself to the path. He entered spiritual retreat (khalwa) in November 2004 and then remained about two years at his side.",
-      "When his Shaykh died, in 2007, he became his spiritual heir. He is today the spiritual guide of the Karkariya Tariqa.",
+      "When his Shaykh died, in 2007, he became his spiritual heir. He is today the spiritual guide of the Karkariya Sufi Order.",
     ]],
     ar: ["العودة واللقاء بشيخه", [
       "في سنة 2004م، وعند عودته إلى الناظور، قادته نارٌ باطنة وحاجةٌ إلى التوبة وطلبٌ عميق للحقّ إلى شيخه. زار عمّه مولاي الحسن الكركري وطلب منه أن يدخل الطريق. دخل الخلوة في نوفمبر 2004م، ثم لازمه نحو سنتين.",

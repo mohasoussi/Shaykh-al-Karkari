@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Génère la page « Sites & projets » (sites-projets.html, en/, ar/) : les sites externes liés à la Tariqa Karkariya.
+/* Génère la page « Sites & projets » (sites-projets.html, en/, ar/) : les sites externes liés à l'Ordre soufi Karkariya.
    Pour ajouter un lien : l'ajouter dans scripts/liens-externes.json puis lancer node scripts/sites.mjs
    Format d'une entrée : { "titre": {"fr","en","ar"}, "url": "https://…", "texte": {"fr","en","ar"} } (texte facultatif) */
 import fs from "node:fs";

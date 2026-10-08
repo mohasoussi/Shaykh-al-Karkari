@@ -5,17 +5,20 @@
    Pour un nouvel événement : déposer les photos dans public/media/evenements/<id>/ (+ miniatures dans t/), les déclarer dans albums.json, puis relancer. */
 import fs from "node:fs/promises";
 import path from "node:path";
+import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
 const SITE = process.env.SITE_DIR ? path.resolve(process.env.SITE_DIR) : process.cwd();
 const esc = (s = "") => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+const RATIOS = JSON.parse(readFileSync(path.join(SITE, "scripts", "ratios.json"), "utf8"));
 
 export async function lireAlbums() {
   try { return JSON.parse(await fs.readFile(path.join(SITE, "scripts", "albums.json"), "utf8")); } catch { return []; }
 }
 
 export function htmlAlbum(a, code, pre = "") {
-  return a.photos.map((p) => `        <a class="galerie-item" href="${pre}media/evenements/${a.id}/${p.f}.webp" data-reveal><img src="${pre}media/evenements/${a.id}/t/${p.f}.webp" alt="${esc(p.alt[code] || p.alt.fr)}" loading="lazy" decoding="async" /></a>`).join("\n");
+  return a.photos.map((p) => `        <a class="galerie-item" style="--r:${RATIOS[a.id + "/" + p.f] || 1.5}" href="${pre}media/evenements/${a.id}/${p.f}.webp" data-reveal><img src="${pre}media/evenements/${a.id}/t/${p.f}.webp" alt="${esc(p.alt[code] || p.alt.fr)}" loading="lazy" decoding="async" /></a>`).join("\n");
 }
 
 /** Page d'article d'un événement (albums avec « corps ») : evenement-<id>.html */

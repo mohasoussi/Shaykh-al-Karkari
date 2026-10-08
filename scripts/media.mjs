@@ -6,7 +6,8 @@ import { bandeVideos, INTERVIEWS } from "./videos-data.mjs";
 import fs from "node:fs";
 import { readFileSync } from "node:fs";
 const ALBUMS = JSON.parse(readFileSync("scripts/albums.json", "utf8"));
-const htmlAlbum = (a, code, pre) => a.photos.map((p) => `        <a class="galerie-item" href="${pre}media/evenements/${a.id}/${p.f}.webp" data-reveal><img src="${pre}media/evenements/${a.id}/t/${p.f}.webp" alt="${esc(p.alt[code] || p.alt.fr)}" loading="lazy" decoding="async" /></a>`).join("\n");
+const RATIOS = JSON.parse(readFileSync("scripts/ratios.json", "utf8"));
+const htmlAlbum = (a, code, pre) => a.photos.map((p) => `        <a class="galerie-item" style="--r:${RATIOS[a.id + "/" + p.f] || 1.5}" href="${pre}media/evenements/${a.id}/${p.f}.webp" data-reveal><img src="${pre}media/evenements/${a.id}/t/${p.f}.webp" alt="${esc(p.alt[code] || p.alt.fr)}" loading="lazy" decoding="async" /></a>`).join("\n");
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 const PHOTOS = [
@@ -154,7 +155,7 @@ ${htmlAlbum(a, code, pre)}
   <!--@include menu-->
   <div class="smooth" id="top">
   <main>
-    <section class="hub media-page">
+    <section class="hub media-page galerie-page">
       <div class="section-head">
         <p class="kicker">${g.kicker}</p>
         <h1 class="h2" data-split>${g.h1}</h1>

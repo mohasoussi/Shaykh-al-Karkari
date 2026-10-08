@@ -19,6 +19,13 @@ const RE_AUTRES = [
   [/\bYoussouf al-Fas/g, "Yusuf al-Fas"],
   [/\bal-Fassi\b/g, "al-Fasi"],
   [/\bMachich\b/g, "Mashish"],
+  // « Tariqa Karkariya » n'a pas de sens pour un public francophone : « Ordre soufi Karkariya » (titres de livres étrangers exclus)
+  [/(?<!Fundamentos )\bde la Tariqa Kar(?:kariya|kaira|karia|akiya|akriya)\b/g, "de l'Ordre soufi Karkariya"],
+  [/(?<!Fundamentos de )\bla Tariqa Kar(?:kariya|kaira|karia|akiya|akriya)\b/g, "l'Ordre soufi Karkariya"],
+  [/\bLa Tariqa Kar(?:kariya|kaira|karia|akiya|akriya)\b/g, "L'Ordre soufi Karkariya"],
+  [/(?<!van )\bde Tariqa Kar(?:kariya|kaira|karia|akiya|akriya)\b/g, "de l'Ordre soufi Karkariya"],
+  [/(?<!van de )(?<!Fundamentos de la )\bTariqa Kar(?:kariya|kaira|karia|akiya|akriya)\b/g, "Ordre soufi Karkariya"],
+  [/Karkariya Tariqa/g, "Karkariya Sufi Order"],
   [/\bMuhammad Fawzi al-Karkari\b/g, "Mohamed Faouzi Al Karkari"],
 ];
 

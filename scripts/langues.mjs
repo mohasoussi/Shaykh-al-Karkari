@@ -237,9 +237,9 @@ async function listes() {
 const CHAINE_TR = {
   en: {
     title: "His chain of transmission — Shaykh Mohamed Faouzi Al Karkari",
-    desc: "The initiatic chain (silsila) of the Karkariya Tariqa and the masters who came before the Shaykh.",
+    desc: "The initiatic chain (silsila) of the Karkariya Sufi Order and the masters who came before the Shaykh.",
     kicker: "The Shaykh", h1: "His chain of transmission",
-    lede: "The initiatic chain (silsila) of the Karkariya Tariqa: from master to master, all the way to the Prophet Muhammad ﷺ.",
+    lede: "The initiatic chain (silsila) of the Karkariya Sufi Order: from master to master, all the way to the Prophet Muhammad ﷺ.",
     suite: "His noble lineage", arrow: "→",
   },
   ar: {

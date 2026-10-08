@@ -3,7 +3,7 @@ export const FAMILLE = [
   {
     cle: "Sidi Mawlay al-Hassan", slug: "mawlay-al-hassan", nom: "Sidi Mawlay al-Hassan al-Karkari",
     sous: "Né vers 1936 · mort vers 2006-2007 · Tamsaman (Rif) · maître éducateur du Shaykh Mohamed Faouzi",
-    intro: "Mawlay al-Hassan al-Karkari fut le maître éducateur et le père spirituel du Shaykh Mohamed Faouzi Al Karkari, fondateur de la Tariqa Karkariya. Fils de Mawlay at-Tahir, il devint après la mort de son propre maître l'héritier spirituel de la transmission familiale. Il vécut dans la région de Tamsaman, dans le Rif oriental, et resta toute sa vie très discret sur son rôle.",
+    intro: "Mawlay al-Hassan al-Karkari fut le maître éducateur et le père spirituel du Shaykh Mohamed Faouzi Al Karkari, fondateur de l'Ordre soufi Karkariya. Fils de Mawlay at-Tahir, il devint après la mort de son propre maître l'héritier spirituel de la transmission familiale. Il vécut dans la région de Tamsaman, dans le Rif oriental, et resta toute sa vie très discret sur son rôle.",
     sections: [
       ["Famille et naissance", [
         "Mawlay al-Hassan naquit vers 1936 (1358 de l'hégire selon la tradition de la famille), dans la région de Tamsaman. Il est le fils de Mawlay at-Tahir al-Karkari, petit-fils de Mawlay Muhammad al-Fardi, arrière-petit-fils de Mawlay at-Tayyib et descendant, à la cinquième génération, de Muhammad ibn Qaddour al-Wakili, dont est issue toute la famille. Par cette ascendance, il appartient à la lignée des chérifs idrissides du Rif.",
@@ -17,14 +17,14 @@ export const FAMILLE = [
       ]],
       ["L'héritier spirituel de son père", [
         "À la mort de Mawlay at-Tahir, en 1976, Mawlay al-Hassan devint son héritier spirituel et le maître éducateur des disciples de la zawiya. La transmission se fit sur le lit de mort de son père, devant une trentaine de témoins, parmi lesquels Sidi as-Sayid, l'un des principaux élèves de Mawlay at-Tahir.",
-        "Mawlay al-Hassan n'a pas été à la tête d'une confrérie distincte : la Tariqa Karkariya a été fondée plus tard par son disciple, le Shaykh Mohamed Faouzi Al Karkari. Il exerça son rôle de maître éducateur sans publicité et peu de personnes, en dehors de ses proches disciples, connaissaient l'étendue de son rôle.",
+        "Mawlay al-Hassan n'a pas été à la tête d'une confrérie distincte : l'Ordre soufi Karkariya a été fondée plus tard par son disciple, le Shaykh Mohamed Faouzi Al Karkari. Il exerça son rôle de maître éducateur sans publicité et peu de personnes, en dehors de ses proches disciples, connaissaient l'étendue de son rôle.",
         "Un récit transmis dans la famille illustre cette discrétion : à la mort de Mawlay at-Tahir, un visiteur envoyé par le chef d'une autre confrérie vint à Tamsaman pour le rencontrer. Apprenant son décès, il s'entretint avec Mawlay al-Hassan sans comprendre qu'il parlait à son héritier, et repartit.",
       ]],
       ["Le caractère et la vie quotidienne", [
         "Les témoignages de ses proches décrivent un homme généreux, d'un abord simple, qui accueillait chez lui sans distinction les invités et les personnes dans le besoin. On raconte qu'en rentrant du marché il distribuait en aumônes tout ce qu'il avait sur lui. Il s'habillait de ce qu'il trouvait, s'asseyait à la première place libre et parlait aux enfants avec la même attention qu'aux adultes. Il était connu pour pardonner facilement, tout en sachant se montrer ferme quand la situation l'exigeait.",
       ]],
       ["Le maître du Shaykh Mohamed Faouzi", [
-        "Mohamed Faouzi Al Karkari fut son disciple et l'accompagna pendant deux années consécutives. Il est son héritier spirituel. Il a fondé la Tariqa Karkariya, qu'il dirige aujourd'hui.",
+        "Mohamed Faouzi Al Karkari fut son disciple et l'accompagna pendant deux années consécutives. Il est son héritier spirituel. Il a fondé l'Ordre soufi Karkariya, qu'il dirige aujourd'hui.",
       ]],
       ["Son décès", [
         "Mawlay al-Hassan mourut en 1428 de l'hégire (2006-2007), dans sa maison, après la prière du soir accomplie en groupe. Selon ses proches, il répéta le nom « Allah » jusqu'à ses derniers instants et donna ses dernières consignes à ses enfants avant de s'éteindre. Il fut inhumé à l'endroit qu'il avait lui-même choisi.",
@@ -112,7 +112,7 @@ export const FAMILLE = [
         "Il laissa un recueil de poésie (Diwan), des traités de doctrine tels que <em>Mabadi' at-Ta'yid</em> et <em>Dawhat al-Asrar</em>, des invocations (<em>Munajat</em>) et un long commentaire, la <em>Minah al-Quddusiyya</em>.",
       ]],
       ["Décès et héritage", [
-        "Il mourut le 14 juillet 1934 à Mostaganem. La ʿAlawiyya est restée active en Algérie, en France et dans plusieurs autres pays. Pour la Tariqa Karkariya, il est le maître de Mawlay at-Tahir al-Karkari.",
+        "Il mourut le 14 juillet 1934 à Mostaganem. La ʿAlawiyya est restée active en Algérie, en France et dans plusieurs autres pays. Pour l'Ordre soufi Karkariya, il est le maître de Mawlay at-Tahir al-Karkari.",
       ]],
     ],
   },

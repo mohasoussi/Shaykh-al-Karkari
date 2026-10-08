@@ -846,7 +846,23 @@ ready.then(async () => {
   dust();
   ScrollTrigger.refresh();
   // la hauteur de la page peut changer après coup (images, polices) : on recalcule pour ne pas dépasser le pied de page
-  if (window.ResizeObserver) { let t; new ResizeObserver(() => { clearTimeout(t); t = setTimeout(() => { lenis?.resize?.(); ScrollTrigger.refresh(); }, 250); }).observe(document.body); }
+  // garde-fou : si la page est plus haute que son pied de page (vide sous le footer), on rogne la hauteur du document
+  const rogner = () => {
+    const f = $(".footer");
+    if (!f) return;
+    const bas = Math.round(f.getBoundingClientRect().bottom + window.scrollY);
+    const doc = document.documentElement.scrollHeight;
+    if (doc - bas > 4) {
+      document.body.style.height = bas + "px";
+      document.body.style.overflow = "clip";
+    } else if (document.body.style.overflow === "clip" && doc - bas <= 4) {
+      document.body.style.height = document.body.style.overflow = "";
+    }
+  };
+  addEventListener("load", () => { rogner(); setTimeout(rogner, 1500); setTimeout(rogner, 4000); });
+  addEventListener("resize", () => setTimeout(rogner, 400));
+  addEventListener("orientationchange", () => setTimeout(rogner, 600));
+  if (window.ResizeObserver) { let t; new ResizeObserver(() => { clearTimeout(t); t = setTimeout(() => { lenis?.resize?.(); ScrollTrigger.refresh(); rogner(); }, 250); }).observe(document.body); }
 
   const intro = $(".hero") ? heroIntro().pause() : null;
   if (!intro) gsap.from(".header", { y: -40, opacity: 0, duration: 1.1, ease: "expo.out" });
