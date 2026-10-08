@@ -1647,3 +1647,7 @@ body { background: var(--dusk-deep-2); }
   .hero-sub { margin-top: 8px; font-size: 0.98rem; line-height: 1.25; }
   .hero-cta { margin-top: 14px; padding: 11px 20px; font-size: 0.66rem; }
 }
+.stats-titre { margin: 38px 0 0; }
+@media (min-width: 761px) { .stats { grid-template-columns: repeat(3, 1fr); row-gap: 26px; } }
+.stats-titre + .stats { margin-top: 18px; }
+@media (max-width: 760px) { .stat { grid-template-columns: 158px 1fr; } .stats .stat dt { font-size: 1.7rem; } }
