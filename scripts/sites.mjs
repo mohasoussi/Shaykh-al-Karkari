@@ -7,15 +7,15 @@ import { esc } from "./videos-data.mjs";
 
 const LIENS = JSON.parse(fs.readFileSync("scripts/liens-externes.json", "utf8"));
 const L = {
-  fr: { dir: "", kicker: "Univers Karkariya", h1: "Sites & projets", lede: "Les sites et projets liés à la Tariqa Karkariya.", vide: "Les liens vers les sites et projets seront présentés prochainement sur cette page.", visiter: "Visiter le site", title: "Sites & projets", desc: "Les sites et projets liés à la Tariqa Karkariya." },
-  en: { dir: "en/", kicker: "The Karkariya world", h1: "Sites & projects", lede: "The websites and projects linked to the Karkariya Tariqa.", vide: "Links to the sites and projects will be presented here soon.", visiter: "Visit the website", title: "Sites & projects", desc: "The websites and projects linked to the Karkariya Tariqa." },
-  ar: { dir: "ar/", kicker: "عالم الكركرية", h1: "مواقع ومشاريع", lede: "المواقع والمشاريع المرتبطة بالطريقة الكركرية.", vide: "ستُعرض هنا قريبًا روابط المواقع والمشاريع.", visiter: "زيارة الموقع", title: "مواقع ومشاريع", desc: "المواقع والمشاريع المرتبطة بالطريقة الكركرية." },
+  fr: { dir: "", kicker: "Univers Karkariya", h1: "Sites & projets", lede: "Les sites et projets qui prolongent l'enseignement du Shaykh.", vide: "Les liens vers les sites et projets seront présentés prochainement sur cette page.", visiter: "Visiter le site", title: "Sites & projets", desc: "Les sites et projets qui prolongent l'enseignement du Shaykh." },
+  en: { dir: "en/", kicker: "The Karkariya world", h1: "Sites & projects", lede: "The websites and projects that extend the Shaykh's teaching.", vide: "Links to the sites and projects will be presented here soon.", visiter: "Visit the website", title: "Sites & projects", desc: "The websites and projects that extend the Shaykh's teaching." },
+  ar: { dir: "ar/", kicker: "عالم الكركرية", h1: "مواقع ومشاريع", lede: "المواقع والمشاريع التي تمتد بتعليم الشيخ.", vide: "ستُعرض هنا قريبًا روابط المواقع والمشاريع.", visiter: "زيارة الموقع", title: "مواقع ومشاريع", desc: "المواقع والمشاريع التي تمتد بتعليم الشيخ." },
 };
 const domaine = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch { return u; } };
 
 for (const [code, T] of Object.entries(L)) {
-  const items = LIENS.map((l) => `        <li><a href="${esc(l.url)}" target="_blank" rel="noopener"><strong>${esc(domaine(l.url))}</strong><span>${esc(l.titre[code] || l.titre.fr)}</span>${l.texte ? `<small>${esc(l.texte[code] || l.texte.fr)}</small>` : ""}<em>${T.visiter} ↗</em></a></li>`).join("\n");
-  const corps = LIENS.length ? `      <ul class="presse-liste" data-reveal>\n${items}\n      </ul>` : `      <p class="section-lede" data-reveal style="margin:0 auto;max-width:44rem">${T.vide}</p>`;
+  const items = LIENS.map((l) => `        <li class="site-carte" data-reveal><a href="${esc(l.url)}" target="_blank" rel="noopener"><figure><img src="${esc(l.image)}" alt="${esc(l.titre[code] || l.titre.fr)}" loading="lazy" /></figure><div><strong>${esc(l.titre[code] || l.titre.fr)}</strong>${l.texte ? `<p>${esc(l.texte[code] || l.texte.fr)}</p>` : ""}<small>${esc(domaine(l.url))}</small><em>${T.visiter} ↗</em></div></a></li>`).join("\n");
+  const corps = LIENS.length ? `      <ul class="sites-liste">\n${items}\n      </ul>` : `      <p class="section-lede" data-reveal style="margin:0 auto;max-width:44rem">${T.vide}</p>`;
   const html = `<!doctype html>
 <html lang="${code}"${code === "ar" ? ' dir="rtl"' : ""}>
 <head>

@@ -198,16 +198,6 @@ function manifesto() {
    Lumière : rayons dans la bannière, aube derrière le manifeste, halo autour du verset, fil de lumière en haut de page
    --------------------------------------------------------- */
 function lumiere() {
-  // le titre de la partie où l'on se trouve s'illumine
-  $$(".h2, .manifesto > .kicker").forEach((titre) => {
-    const sombre = !!titre.closest(".manifesto, .talks, .silsila-page") || titre.classList.contains("h2--light");
-    titre.classList.add("lumiere-titre", sombre ? "lumiere-titre--sombre" : "lumiere-titre--clair");
-    ScrollTrigger.create({
-      trigger: titre, start: "top 80%", end: "top 38%",
-      onToggle: (self) => titre.classList.toggle("is-lit", self.isActive),
-    });
-  });
-
   const aube = $(".manifesto-glow");
   if (aube)
     gsap.fromTo(aube, { opacity: 0, scale: 0.5, yPercent: 20 }, {
@@ -781,7 +771,8 @@ function dust() {
       }
     });
   };
-  const canvas = $(".dust");
+  const canvas = null; // plus de fond étoilé hors du hero
+  $(".dust")?.remove();
   if (canvas) nuage(canvas, () => +canvas.style.opacity > 0);
   const etoiles = $(".hero-stars");
   if (etoiles) {
@@ -854,6 +845,8 @@ ready.then(async () => {
   livre();
   dust();
   ScrollTrigger.refresh();
+  // la hauteur de la page peut changer après coup (images, polices) : on recalcule pour ne pas dépasser le pied de page
+  if (window.ResizeObserver) { let t; new ResizeObserver(() => { clearTimeout(t); t = setTimeout(() => { lenis?.resize?.(); ScrollTrigger.refresh(); }, 250); }).observe(document.body); }
 
   const intro = $(".hero") ? heroIntro().pause() : null;
   if (!intro) gsap.from(".header", { y: -40, opacity: 0, duration: 1.1, ease: "expo.out" });
