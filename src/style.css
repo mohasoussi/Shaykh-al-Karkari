@@ -1640,7 +1640,8 @@ body { background: var(--dusk-deep-2); }
     mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 64%, transparent 100%);
     -webkit-mask-composite: source-over; mask-composite: add;
   }
-  .hero-pattern { inset: -20px; z-index: 0; opacity: 0.3; background-size: 44px 44px; filter: blur(1.4px); -webkit-mask-image: none; mask-image: none; animation: none; }
+  /* même filigrane zellige que sur PC (taille 90 px, opacité 0,1, léger flou, même défilement), sur toute la largeur et sous la photo */
+  .hero-pattern { inset: 0; z-index: 0; opacity: 0.1; -webkit-mask-image: none; mask-image: none; }
   .hero-content { padding-top: 69svh; padding-bottom: 20px; }
   .hero-title { font-size: clamp(1.45rem, 7.2vw, 1.9rem); }
   .hero-sub { margin-top: 8px; font-size: 0.98rem; line-height: 1.25; }
