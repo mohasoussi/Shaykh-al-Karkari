@@ -19,6 +19,8 @@ for i in range(1, len(blocs), 2):
     src_fr = json.load(open(os.path.join(fr, nom + ".json"), encoding="utf-8"))
     a = sorted(set(re.findall(r"<!--M\d+-->", src_fr["corps"]))); b = sorted(set(re.findall(r"<!--M\d+-->", corps)))
     if a != b: print("MARQUEURS DIFFÉRENTS :", nom, set(a) ^ set(b))
+    liens = lambda t: sorted(re.findall(r'href="([^"]+)"', t))
+    if liens(src_fr["corps"]) != liens(corps): print("LIENS DIFFÉRENTS :", nom, set(liens(src_fr["corps"])) ^ set(liens(corps)))
     json.dump({"titre": titre, "corps": corps}, open(os.path.join(out, nom + ".json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     n += 1
 print(n, "article(s) enregistrés en", code)
