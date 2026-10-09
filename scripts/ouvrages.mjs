@@ -35,7 +35,7 @@ ${titres.map((x, i) => {
   <meta name="description" content="${esc(t.desc)}" />
   <meta property="og:title" content="${esc(t.title)}" />
   <meta property="og:description" content="${esc(t.desc)}" />
-  <meta property="og:image" content="/media/portrait-fes.webp" />
+  <meta property="og:image" content="/media/hero-remise.webp" />
 </head>
 <body data-page="ouvrages">
   <!--@include ui-->

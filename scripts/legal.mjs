@@ -87,7 +87,7 @@ function page(T, cle, nom) {
   <meta name="description" content="${esc(d.desc)}" />
   <meta property="og:title" content="${esc(titre)}" />
   <meta property="og:description" content="${esc(d.desc)}" />
-  <meta property="og:image" content="/media/portrait-fes.webp" />
+  <meta property="og:image" content="/media/hero-remise.webp" />
 </head>
 <body data-page="shaykh">
   <!--@include ui-->

@@ -89,7 +89,7 @@ ${v.d ? `          <p>${esc(v.d[code])}</p>\n` : ""}
   <meta name="description" content="${esc(T.desc)}" />
   <meta property="og:title" content="${esc(T.title)}" />
   <meta property="og:description" content="${esc(T.desc)}" />
-  <meta property="og:image" content="/media/portrait-fes.webp" />
+  <meta property="og:image" content="/media/hero-remise.webp" />
 </head>
 <body data-page="conferences">
   <!--@include ui-->
@@ -145,7 +145,7 @@ const enveloppe = (code, title, desc, body, page) => `<!doctype html>
   <meta name="description" content="${esc(desc)}" />
   <meta property="og:title" content="${esc(title)}" />
   <meta property="og:description" content="${esc(desc)}" />
-  <meta property="og:image" content="/media/portrait-fes.webp" />
+  <meta property="og:image" content="/media/hero-remise.webp" />
 </head>
 <body data-page="${page}">
   <!--@include ui-->

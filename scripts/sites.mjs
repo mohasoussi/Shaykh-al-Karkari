@@ -24,7 +24,7 @@ for (const [code, T] of Object.entries(L)) {
   <meta name="description" content="${esc(T.desc)}" />
   <meta property="og:title" content="${esc(T.title)}" />
   <meta property="og:description" content="${esc(T.desc)}" />
-  <meta property="og:image" content="/media/portrait-fes.webp" />
+  <meta property="og:image" content="/media/hero-remise.webp" />
 </head>
 <body data-page="sites">
   <!--@include ui-->
