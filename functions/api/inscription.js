@@ -9,18 +9,24 @@ const echapper = (v) => String(v).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<"
 
 /* Envoie un e-mail à l'administrateur via Resend (https://resend.com). Une panne d'envoi ne bloque jamais l'inscription. */
 async function prevenir(env, f) {
-  if (!env.RESEND_API_KEY) return;
+  if (!env.RESEND_API_KEY) return "pas de clé RESEND_API_KEY";
   const vers = env.NOTIF_VERS || "contact@shaykh-alkarkari.com";
   const de = env.NOTIF_DE || "Site Shaykh Al Karkari <inscription@shaykh-alkarkari.com>";
   const lignes = [["Prénom", f.prenom], ["Nom", f.nom], ["Ville", f.ville], ["Pays", f.pays], ["Téléphone", f.telephone || "—"], ["E-mail", f.email]];
   const html = `<h2>Nouvelle inscription</h2><table cellpadding="6">${lignes.map(([k, v]) => `<tr><td><b>${k}</b></td><td>${echapper(v)}</td></tr>`).join("")}</table><p style="color:#888">${f.date}</p>`;
   try {
-    await fetch("https://api.resend.com/emails", {
+    const r = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
       body: JSON.stringify({ from: de, to: [vers], reply_to: f.email, subject: `Nouvelle inscription : ${f.prenom} ${f.nom} (${f.pays})`, html }),
     });
-  } catch {}
+    const texte = (await r.text()).slice(0, 300);
+    if (!r.ok) console.error("Resend", r.status, texte);
+    return r.ok ? "envoyée" : `échec ${r.status} : ${texte}`;
+  } catch (e) {
+    console.error("Resend", e);
+    return `erreur : ${String(e).slice(0, 200)}`;
+  }
 }
 
 export async function onRequestPost({ request, env }) {
@@ -47,7 +53,9 @@ export async function onRequestPost({ request, env }) {
 
   const cle = `i:${Date.now().toString().padStart(14, "0")}-${crypto.randomUUID().slice(0, 8)}`;
   await env.INSCRIPTIONS.put(cle, JSON.stringify(fiche));
-  await prevenir(env, fiche); // alerte par e-mail (facultative : sans clé RESEND_API_KEY, rien n'est envoyé)
+  // alerte par e-mail (facultative : sans clé RESEND_API_KEY, rien n'est envoyé) ; le résultat est noté sur la fiche pour le diagnostic
+  fiche.alerte = await prevenir(env, fiche);
+  await env.INSCRIPTIONS.put(cle, JSON.stringify(fiche));
   return reponse({ ok: true });
 }
 
