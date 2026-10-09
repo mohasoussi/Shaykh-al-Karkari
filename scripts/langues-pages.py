@@ -25,7 +25,7 @@ HUB = [
  ("Le Shaykh — Shaykh Mohamed Faouzi Al Karkari", "The Shaykh — Shaykh Mohamed Faouzi Al Karkari", "الشيخ — الشيخ محمد فوزي الكركري"),
  ('<p class="kicker">Le Shaykh</p>', '<p class="kicker">The Shaykh</p>', '<p class="kicker">الشيخ</p>'),
  ("<h1 class=\"h2\" data-split>Shaykh Mohamed Faouzi Al Karkari</h1>", "<h1 class=\"h2\" data-split>Shaykh Mohamed Faouzi Al Karkari</h1>", "<h1 class=\"h2\" data-split>الشيخ محمد فوزي الكركري</h1>"),
- ("Guide spirituel de la Confrérie Soufie Karkariya. Cinq portes pour le connaître.", "Spiritual guide of the Karkariya Sufi Order. Five doors to get to know him.", "المرشد الروحي للطريقة الصوفية الكركرية. خمسة أبواب للتعرّف عليه."),
+ ("Guide spirituel de la Confrérie Soufie Karkariya. Six portes pour le connaître.", "Spiritual guide of the Karkariya Sufi Order. Six doors to get to know him.", "المرشد الروحي للطريقة الصوفية الكركرية. ستة أبواب للتعرّف عليه."),
  ("<h2>Qui est le Shaykh&nbsp;?</h2>", "<h2>Who is the Shaykh?</h2>", "<h2>من هو الشيخ؟</h2>"),
  ("Son parcours, ses recherches, sa biographie.", "His journey, his research, his biography.", "مسيرته وأبحاثه وسيرته."),
  ("<h2>Sa chaîne de transmission</h2>", "<h2>His chain of transmission</h2>", "<h2>سلسلة إسناده</h2>"),
@@ -37,6 +37,8 @@ HUB = [
  ('href="ascendance-prophetique.html"', 'href="ascendance-prophetique.html"', 'href="ascendance-prophetique.html"'),
  ("<h2>Une marche de 10 ans à travers le Maroc</h2>", "<h2>A 10-year walk across Morocco</h2>", "<h2>مسيرة عشر سنوات عبر المغرب</h2>"),
  ("Seul, en quête de son Seigneur, de 1994 à 2004.", "Alone, in search of his Lord, from 1994 to 2004.", "وحيدًا، في طلب ربّه، من 1994 إلى 2004."),
+ ("<h2>Sa biographie en vidéo</h2>", "<h2>His biography on video</h2>", "<h2>سيرته بالفيديو</h2>"),
+ ("Portraits et témoignages sur sa vie et son œuvre, à regarder dans l'ordre.", "Portraits and testimonies on his life and work, to be watched in order.", "صور وشهادات عن حياته وعمله، تُشاهَد بالترتيب."),
  ('<span class="hub-go">Découvrir <i>→</i></span>', '<span class="hub-go">Discover <i>→</i></span>', '<span class="hub-go">اكتشف <i>←</i></span>'),
 ]
 
