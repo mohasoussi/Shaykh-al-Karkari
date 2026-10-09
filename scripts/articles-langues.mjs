@@ -12,8 +12,8 @@ const esc = (t = "") => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").r
 const lireJson = async (p) => { try { return JSON.parse(await fs.readFile(p, "utf8")); } catch { return null; } };
 const NOM_SITE = { en: "Shaykh Mohamed Faouzi Al Karkari", ar: "الشيخ محمد فوزي الكركري" };
 const LIBELLES = {
-  en: { actualite: { kicker: "News", retour: "← All news" }, enseignement: { kicker: "Teachings", retour: "← All teachings" }, photos: "Photos", fermer: "Close", avant: "Previous photo", apres: "Next photo", prec: "← Previous article", suiv: "Next article →", autres: "Other articles" },
-  ar: { actualite: { kicker: "الأخبار", retour: "→ كل الأخبار" }, enseignement: { kicker: "الدروس", retour: "→ كل الدروس" }, photos: "صور", fermer: "إغلاق", avant: "الصورة السابقة", apres: "الصورة التالية", prec: "→ المقال السابق", suiv: "المقال التالي ←", autres: "مقالات أخرى" },
+  en: { actualite: { kicker: "News", retour: "← All news" }, enseignement: { kicker: "Teachings", retour: "← All teachings" }, marche: "A 10-year walk across Morocco", photos: "Photos", fermer: "Close", avant: "Previous photo", apres: "Next photo", prec: "← Previous article", suiv: "Next article →", autres: "Other articles" },
+  ar: { actualite: { kicker: "الأخبار", retour: "→ كل الأخبار" }, enseignement: { kicker: "الدروس", retour: "→ كل الدروس" }, marche: "مسيرة عشر سنوات عبر المغرب", photos: "صور", fermer: "إغلاق", avant: "الصورة السابقة", apres: "الصورة التالية", prec: "→ المقال السابق", suiv: "المقال التالي ←", autres: "مقالات أخرى" },
 };
 const resume = (corps) => esc(corps.replace(/<!--M\d+-->/g, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 170));
 
@@ -34,7 +34,9 @@ export async function genererArticles(localiser) {
       const fr = await lireJson(path.join(dossierFr, `${nom}.json`));
       const L = LIBELLES[code], lib = L[fr.type];
       let h = await fs.readFile(path.join(SITE, `${nom}.html`), "utf8");
-      h = h.replace(/(<div class="actu-corps">)[\s\S]*?(<\/div>\s*(?:<!--album:debut-->[\s\S]*?<!--album:fin-->\s*)?<nav class="actu-voisins")/, "$1@@CORPS@@$2");
+      const maitre = /^<p class="maitre-sous">/.test(fr.corps);
+      if (maitre) h = h.replace(/(<div class="actu-corps">)[\s\S]*?(<\/div>\s*<div class="center shaykh-suite">)/, "$1@@CORPS@@$2");
+      else h = h.replace(/(<div class="actu-corps">)[\s\S]*?(<\/div>\s*(?:<!--album:debut-->[\s\S]*?<!--album:fin-->\s*)?<nav class="actu-voisins")/, "$1@@CORPS@@$2");
       // album photo : chemins relatifs, intitulé et libellés de la visionneuse
       h = h.replace(/<!--album:debut-->[\s\S]*?<!--album:fin-->/, (a) => a
         .replace(/(href|src)="media\//g, '$1="../media/')
@@ -44,7 +46,12 @@ export async function genererArticles(localiser) {
       const titre = titreDe(code, nom, fr, t);
       let corps = t.corps.replace(/<!--M(\d+)-->/g, (_, i) => fr.figures[+i] ?? "");
       corps = corps.replace(/(href|src)="(actualite-|enseignement-|actualites\/|enseignements\/|shaykh\/|media\/)/g, '$1="../$2');
-      const desc = resume(t.corps);
+      let sous = "";
+      if (maitre) {
+        const m = corps.match(/^<p class="maitre-sous">([\s\S]*?)<\/p>\s*/);
+        if (m) { sous = m[1]; corps = corps.slice(m[0].length); }
+      }
+      const desc = resume(corps);
       h = h
         .replace(/<title>[^<]*<\/title>/, `<title>${esc(titre)} — ${NOM_SITE[code]}</title>`)
         .replace(/(<meta name="description" content=")[^"]*/, `$1${desc}`)
@@ -56,6 +63,14 @@ export async function genererArticles(localiser) {
         .replace(/(<a class="actu-retour" href="[^"]*">)[^<]*/, `$1${lib.retour}`)
         .replace(/(<nav class="actu-voisins" aria-label=")[^"]*/, `$1${L.autres}`)
         .replace("@@CORPS@@", () => corps);
+      if (maitre) {
+        h = h.replace(/<h1 ([^>]*)>[^<]*<\/h1>/, `<h1 $1>${esc(titre)}</h1>`)
+          .replace(/(<p class="maitre-sous"[^>]*>)[^<]*/, `$1${esc(sous)}`)
+          .replace(/(<figure class="marche-photo"[^>]*><img [^>]*alt=")[^"]*/, `$1${esc(titre)}`)
+          .replace(/<div class="center shaykh-suite">[\s\S]*?<\/div>/, (bloc) => bloc
+            .replace(/(href="enseignements\.html"><span>)[^<]*/, `$1${lib.retour}`)
+            .replace(/(href="marche-de-dix-ans\.html"><span>)[^<]*/, `$1${L.marche}`));
+      }
       // voisins : version traduite si elle existe, sinon page française marquée comme telle
       h = h.replace(/<a class="actu-voisin ([^"]*)" href="\.\.\/((?:actualite|enseignement)-[^"]+)\.html"><span>[^<]*<\/span><strong>[^<]*<\/strong><\/a>/g, (m, cls, vnom) => {
         const sens = cls.includes("--prec") ? L.prec : L.suiv;

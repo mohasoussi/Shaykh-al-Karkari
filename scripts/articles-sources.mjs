@@ -11,12 +11,15 @@ let n = 0, mots = 0;
 for (const f of (await fs.readdir(SITE)).filter((x) => /^(actualite|enseignement)-.+\.html$/.test(x))) {
   const h = await fs.readFile(path.join(SITE, f), "utf8");
   const corps = h.match(/<div class="actu-corps">([\s\S]*?)<\/div>\s*(?:<!--album:debut-->[\s\S]*?<!--album:fin-->\s*)?<nav class="actu-voisins"/);
-  if (!corps) { console.warn("sans corps :", f); continue; }
-  const titre = decode(h.match(/<h1>([\s\S]*?)<\/h1>/)?.[1] || "");
+  // page de maître au gabarit « shaykh-texte » (sans voisins) : le sous-titre est placé en tête du corps
+  const maitre = !corps && h.match(/<div class="actu-corps">([\s\S]*?)<\/div>\s*<div class="center shaykh-suite">/);
+  if (!corps && !maitre) { console.warn("sans corps :", f); continue; }
+  const sous = maitre ? h.match(/<p class="maitre-sous"[^>]*>([\s\S]*?)<\/p>/)?.[1] || "" : "";
+  const titre = decode(h.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] || "");
   const date = h.match(/<time datetime="([^"]+)"/)?.[1] || "";
   const kicker = h.match(/<p class="kicker">([\s\S]*?)<\/p>/)?.[1] || "";
   const figures = [];
-  let c = corps[1];
+  let c = maitre ? `<p class="maitre-sous">${sous}</p>\n` + maitre[1] : corps[1];
   // figures (éventuellement imbriquées) : on prend la plus externe
   c = c.replace(/<figure[\s\S]*?<\/figure>\s*(?:<figure[\s\S]*?<\/figure>\s*)*(?:<\/figure>)?/g, (m) => { figures.push(m); return `<!--M${figures.length - 1}-->`; });
   c = c.replace(/<(iframe|script|video|audio)[\s\S]*?<\/\1>/g, (m) => { figures.push(m); return `<!--M${figures.length - 1}-->`; });
