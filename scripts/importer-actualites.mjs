@@ -332,7 +332,7 @@ async function ecrire(articles) {
 
 /* ---------- enseignements (rubrique « Moudhakara » du site d'origine) ---------- */
 const ENS_CATEGORIE = process.env.ENSEIGNEMENTS_CATEGORIE || "26"; // https://karkariya.fr/le-shaykh/moudhakara/
-const ENS_EXCLUS = /safar, 12-24-66|hadîth al-nouzoul|hadith al-nouzoul|secret de la bay.?a|hujurat|message de la tariqa karkariya|la fornication|r[ée]ponse du shaykh [àa] ceux qui nous critiquent/i;
+const ENS_EXCLUS = /ism, existant|existant\/inexistant|sens cachés de|safar, 12-24-66|hadîth al-nouzoul|hadith al-nouzoul|secret de la bay.?a|hujurat|message de la tariqa karkariya|la fornication|r[ée]ponse du shaykh [àa] ceux qui nous critiquent/i;
 // les trois enseignements mis en avant sous la bannière de l'accueil (nom d'origine de l'article)
 const ENS_ACCUEIL = ["vision-yeux-vision-coeur", "le-coeur-spirituel-dans-le-coeur-physique", "la-feconnaissance-pour-les-bienfaits-dallah"];
 const COULEURS = ["#3f5578", "#4f7260", "#a2694a"];
