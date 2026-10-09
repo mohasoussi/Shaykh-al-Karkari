@@ -20,6 +20,7 @@
 
 import fs from "node:fs/promises";
 import { epurer } from "./epurer-enseignements.mjs";
+import { nettoyerShortcodes } from "./shortcodes.mjs";
 import path from "node:path";
 import sanitizeHtml from "sanitize-html";
 import { parse } from "node-html-parser";
@@ -229,7 +230,7 @@ const shaykhify = (html = "") => html.replace(/(<[^>]*>)|([^<]+)/g, (m, tag, txt
 
 async function traiter(a, slugsConnus, cfg = { prefixe: "actualite", racineImg: "actualites" }) {
   // images « paresseuses » (WordPress) : la vraie adresse est dans data-src
-  const brut = parse(`<div>${a.html}</div>`);
+  const brut = parse(`<div>${nettoyerShortcodes(a.html)}</div>`);
   for (const img of brut.querySelectorAll("img")) {
     const vrai = img.getAttribute("data-src") || img.getAttribute("data-lazy-src") || img.getAttribute("data-original");
     if (vrai) img.setAttribute("src", vrai);

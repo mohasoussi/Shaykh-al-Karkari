@@ -42,6 +42,16 @@ const TP = {
   en: ["In the press", "Press coverage (September 2025) of the honour received at the Peace Symposium.", "“Spiritual Leader Al-Karkari Honored at Paris Peace Summit — Al-Karkari Institute's Vision for Global Harmony”", "Read the article"],
   ar: ["في الصحافة", "مقالات صحفية (سبتمبر 2025) حول التكريم الذي نالـه الشيخ في ندوة السلام.", "“Spiritual Leader Al-Karkari Honored at Paris Peace Summit — Al-Karkari Institute's Vision for Global Harmony”", "اقرأ المقال"],
 };
+const TRP = {
+  "Article de presse": ["Press article", "مقال صحفي"],
+  "Revue de presse USA : après un mois aux États-Unis et des conférences à Chicago, Yale, Stanford, Harvard, Indianapolis et Berkeley.": ["US press review: after a month in the United States and lectures in Chicago, Yale, Stanford, Harvard, Indianapolis and Berkeley.", "قراءة في الصحافة الأمريكية: بعد شهر في الولايات المتحدة ومحاضرات في شيكاغو وييل وستانفورد وهارفارد وإنديانابوليس وبيركلي."],
+  "Science et conscience invitées au pays de l'Oncle Sam": ["Science and conscience invited to Uncle Sam's country (in French)", "العلم والوعي ضيفان في بلاد العمّ سام (بالفرنسية)"],
+  "Le voyage du Shaykh aux États-Unis, son intervention à l'Université de Chicago sur l'intelligence artificielle et sa rencontre avec le professeur rabbinique Yehiel E. Poupko et les professeurs Jeremy Brown et Tzvi Novick, de l'Université Notre-Dame (juillet 2023).": ["The Shaykh's journey to the United States, his talk at the University of Chicago on artificial intelligence and his meeting with Rabbi Professor Yehiel E. Poupko and Professors Jeremy Brown and Tzvi Novick of the University of Notre Dame (July 2023).", "رحلة الشيخ إلى الولايات المتحدة، ومحاضرته في جامعة شيكاغو حول الذكاء الاصطناعي، ولقاؤه بالأستاذ الحاخامي يحيئيل بوبكو والأستاذين جيريمي براون وتسفي نوفيك من جامعة نوتردام (يوليو 2023)."],
+  "Intelligence Artificielle et Soufisme : quand le Maroc et les États-Unis explorent les liens entre technologie et spiritualité": ["Artificial Intelligence and Sufism: when Morocco and the United States explore the links between technology and spirituality (in French)", "الذكاء الاصطناعي والتصوف: حين يستكشف المغرب والولايات المتحدة الصلة بين التقنية والروحانية (بالفرنسية)"],
+  "À l'Université de Chicago, une conférence réunit le maître soufi Sidi Mohamed Faouzi Al Karkari et Saad Ansari, expert en IA, sous la houlette du professeur Yusef Casewit.": ["At the University of Chicago, a lecture brings together the Sufi master Sidi Mohamed Faouzi Al Karkari and Saad Ansari, an AI expert, under the guidance of Professor Yusef Casewit.", "في جامعة شيكاغو، محاضرة تجمع المعلّم الصوفي سيدي محمد فوزي الكركري وسعد أنصاري، الخبير في الذكاء الاصطناعي، بإشراف الأستاذ يوسف كاسويت."],
+  "Le sheikh soufi Mohammed Fouzi Al Karkari élevé au rang prestigieux de Paul Harris Fellow à Paris": ["The Sufi sheikh Mohammed Fouzi Al Karkari raised to the prestigious rank of Paul Harris Fellow in Paris (in French)", "الشيخ الصوفي محمد فوزي الكركري يُرفع إلى رتبة «بول هاريس فيلو» المرموقة في باريس (بالفرنسية)"],
+};
+const trp = (txt, code) => (code === "fr" || !txt ? txt : (TRP[txt] || [])[code === "en" ? 0 : 1] || txt);
 function blocPresse(code) {
   const [h, l, titre, cta] = TP[code];
   return `      <div class="section-head media-gal-head">
@@ -49,7 +59,7 @@ function blocPresse(code) {
         <p class="section-lede" data-reveal>${l}</p>
       </div>
       <ul class="presse-liste" data-reveal>
-${PRESSE.map(([n, u, ti, ex]) => `        <li><a href="${u}" target="_blank" rel="noopener"><strong>${n}</strong><span dir="ltr">${ti || titre}</span>${ex ? `<small>${ex}</small>` : ""}<em>${cta} ↗</em></a></li>`).join("\n")}
+${PRESSE.map(([n, u, ti, ex]) => `        <li><a href="${u}" target="_blank" rel="noopener"><strong>${n}</strong><span dir="ltr">${ti ? trp(ti, code) : titre}</span>${ex ? `<small>${trp(ex, code)}</small>` : ""}<em>${cta} ↗</em></a></li>`).join("\n")}
       </ul>
 `;
 }
@@ -76,7 +86,7 @@ for (const [code, t] of Object.entries(T)) {
           <div class="hub-txt"><h2>${esc(titre)}</h2><p>${esc(texte)}</p><span class="hub-go">${esc(cta)} <i>${t.a}</i></span></div>
         </a>`;
   const galerie = PHOTOS.map(([f, alt]) => `        <a class="galerie-item" href="${pre}media/photos/${f}.webp" data-reveal><img src="${pre}media/photos/t/${f}.webp" alt="${esc(alt[code])}" loading="lazy" decoding="async" /></a>`).join("\n");
-  const albums = ALBUMS.filter((a) => a.rubrique === "media").map((a) => `      <div class="section-head media-gal-head">
+  const albums = ALBUMS.filter((a) => a.rubrique === "media").map((a) => `      <div class="section-head media-gal-head" id="${a.id}">
         <h2 class="h2" data-split>${esc(a.titre[code])}</h2>${a.texte ? `\n        <p class="section-lede" data-reveal>${esc(a.texte[code] || a.texte.fr)}</p>` : ""}${a.corps ? `\n        <p class="album-art"><a href="${pre}evenement-${a.id}.html">${code === "fr" ? "Lire l'article" : code === "en" ? "Read the article (French)" : "اقرأ المقال (بالفرنسية)"} →</a></p>` : ""}
       </div>
       <div class="galerie" data-close="${esc(t.close)}" data-prev="${esc(t.prev)}" data-next="${esc(t.next)}">

@@ -5,6 +5,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { esc as echapper } from "./gabarits-actualites.mjs";
+import { nomMaillon } from "./noms-i18n.mjs";
 const esc = (t = "") => echapper(String(t).normalize("NFD").replace(/\u0302/g, "").normalize("NFC").replace(/\bAbou\b/g, "Abu"));
 
 const SITE = process.env.SITE_DIR ? path.resolve(process.env.SITE_DIR) : process.cwd();
@@ -18,7 +19,7 @@ const TEXTES = {
     prophete: "Le Prophète Muhammad", bio: "Biographie", suite: "Sa chaîne de transmission", fleche: "→", traduire: (x) => x },
   en: { dir: "en/", titre: "His noble lineage", desc: "The noble sharifian lineage of Shaykh Mohamed Faouzi Al Karkari, all the way back to the Prophet Muhammad ﷺ.", kicker: "The Shaykh",
     lede: "Son of the noble sharif Sidi Moulay Tayeb al-Karkari al-Idrissi al-Hassani, the Shaykh descends from the Idrisid line: through Imam ʿAli and Fatima az-Zahra’, it goes back to the Prophet Muhammad ﷺ.",
-    prophete: "The Prophet Muhammad", bio: "Biography (in French)", suite: "His chain of transmission", fleche: "→",
+    prophete: "The Prophet Muhammad", bio: "Biography (in French)", bioLocale: "Biography", suite: "His chain of transmission", fleche: "→",
     traduire: (x) => ({
       "né en 1974 à Temsamane, dans le Rif": "born in 1974 in Temsamane, in the Rif",
       "maître spirituel, fondateur de la zawiya de Tamsaman": "spiritual master, founder of the Tamsaman zawiya",
@@ -28,7 +29,7 @@ const TEXTES = {
     })[x] || x },
   ar: { dir: "ar/", titre: "نسبه الشريف", desc: "النسب الشريف للشيخ محمد فوزي الكركري، وصولًا إلى النبي محمد ﷺ.", kicker: "الشيخ",
     lede: "الشيخ ابن الشريف سيدي مولاي الطيب الكركري الإدريسي الحسني، وينحدر من السلالة الإدريسية التي يتصل نسبها، عبر الإمام علي وفاطمة الزهراء، بالنبي محمد ﷺ.",
-    prophete: "النبي محمد", bio: "السيرة (بالفرنسية)", suite: "سلسلة إسناده", fleche: "←",
+    prophete: "النبي محمد ﷺ", bio: "السيرة (بالفرنسية)", bioLocale: "السيرة", suite: "سلسلة إسناده", fleche: "←",
     traduire: (x) => ({
       "né en 1974 à Temsamane, dans le Rif": "وُلد سنة 1974م في تمسمان بالريف",
       "maître spirituel, fondateur de la zawiya de Tamsaman": "معلّم روحي، مؤسس زاوية تمسمان",
@@ -46,9 +47,9 @@ for (const [code, T] of Object.entries(TEXTES)) {
           <span class="maillon-point" aria-hidden="true"></span>
           <div class="maillon-carte">
             <span class="maillon-rang">${String(i + 1).padStart(2, "0")}</span>
-            <h3>${esc(m.nom)}</h3>
+            <h3>${esc(nomMaillon(m.nom, code))}</h3>
             ${m.detail ? `<p class="maillon-invoc">${esc(T.traduire(m.detail))}</p>` : ""}
-            ${m.bio ? `<a class="maillon-bio" href="${T.dir ? "../" : ""}${m.bio}" aria-label="${esc(T.bio)} : ${esc(m.nom)}"><span>${esc(T.bio)}</span><i>${T.fleche}</i></a>` : ""}
+            ${m.bio ? `<a class="maillon-bio" href="${T.dir && !m.bio.startsWith("qui-est-le-shaykh") ? "../" : ""}${m.bio}" aria-label="${esc(m.bio.startsWith("qui-est-le-shaykh") ? T.bioLocale || T.bio : T.bio)} : ${esc(nomMaillon(m.nom, code))}"><span>${esc(m.bio.startsWith("qui-est-le-shaykh") ? T.bioLocale || T.bio : T.bio)}</span><i>${T.fleche}</i></a>` : ""}
           </div>
         </li>
 `;

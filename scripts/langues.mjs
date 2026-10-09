@@ -5,6 +5,7 @@
    - cartes de l'accueil et chaîne de transmission : blocs repris du français, libellés traduits
    Les autres pages (Qui est le Shaykh ?, Le Shaykh, Merkez) : python3 scripts/langues-pages.py
    Appelé automatiquement par l'importer ; utilisable seul : node scripts/langues.mjs */
+import { nomMaillon } from "./noms-i18n.mjs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -252,6 +253,14 @@ const CHAINE_TR = {
   },
 };
 
+/** Noms des maillons (et alt) dans la langue ; la biographie du Shaykh lui-même existe dans chaque langue. */
+function noms(h, code) {
+  h = h.replace(/(<h3>)([^<]+)(<\/h3>)/g, (m, a, n, b) => `${a}${nomMaillon(n, code)}${b}`)
+    .replace(/(<img [^>]*alt=")([^"]+)(")/g, (m, a, n, b) => `${a}${nomMaillon(n, code)}${b}`)
+    .replace(/aria-label="(?:Biographie|Biography(?: \(in French\))?|السيرة(?: \(بالفرنسية\))?) : ([^"]+)"/g, (m, n) => `aria-label="${code === "ar" ? "السيرة" : "Biography"} : ${nomMaillon(n, code)}"`);
+  return h.replace(/(href="qui-est-le-shaykh\.html#biographie"[^>]*>\s*<span>)[^<]*(<\/span>)/, (m, a, b) => `${a}${code === "ar" ? "السيرة" : "Biography"}${b}`);
+}
+
 async function chaine() {
   const fr = await lire("chaine-de-transmission.html");
   const marque = (nom) => new RegExp(`<!--shaykh:${nom}:debut-->[\\s\\S]*?<!--shaykh:${nom}:fin-->`);
@@ -272,6 +281,7 @@ async function chaine() {
       .replace(/(<h1 class="h2" data-split>)[^<]*/, `$1${T.h1}`)
       .replace(/(<p class="section-lede" data-reveal>)[^<]*/, `$1${T.lede}`)
       .replace(/<span>Sa lignée chérifienne<\/span><i>→<\/i>/, `<span>${T.suite}</span><i>${T.arrow}</i>`);
+    h = noms(h, code);
     void tete;
     await fs.mkdir(path.join(SITE, code), { recursive: true });
     await fs.writeFile(path.join(SITE, code, "chaine-de-transmission.html"), h);
