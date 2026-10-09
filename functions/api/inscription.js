@@ -19,12 +19,13 @@ export async function onRequestPost({ request, env }) {
     prenom: propre(d.prenom, 80),
     nom: propre(d.nom, 80),
     ville: propre(d.ville, 80),
+    pays: propre(d.pays, 80),
     telephone: propre(d.telephone, 40),
     email: propre(d.email, 120),
   };
-  if (Object.values(fiche).some((v) => !v)) return reponse({ erreur: "Champs manquants." }, 400);
+  if (["prenom", "nom", "ville", "pays", "email"].some((k) => !fiche[k])) return reponse({ erreur: "Champs manquants." }, 400);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(fiche.email)) return reponse({ erreur: "Adresse e-mail invalide." }, 400);
-  if (fiche.telephone.replace(/\D/g, "").length < 8) return reponse({ erreur: "Numéro invalide." }, 400);
+  if (fiche.telephone && fiche.telephone.replace(/\D/g, "").length < 8) return reponse({ erreur: "Numéro invalide." }, 400);
 
   const cle = `i:${Date.now().toString().padStart(14, "0")}-${crypto.randomUUID().slice(0, 8)}`;
   await env.INSCRIPTIONS.put(cle, JSON.stringify(fiche));

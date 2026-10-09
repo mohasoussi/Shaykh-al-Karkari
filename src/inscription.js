@@ -19,11 +19,12 @@ async function capacite(nom) {
 
 const LANG = document.documentElement.lang;
 const MSG = {
-  fr: { vide: "Merci de remplir tous les champs.", mail: "L'adresse e-mail ne semble pas valide.", tel: "Le numéro de téléphone ne semble pas valide.", ok: "Merci de cocher la case d'accord pour continuer.", envoi: "Envoi en cours…", echec: "L'enregistrement n'a pas abouti. Merci de réessayer dans un instant." },
-  en: { vide: "Please fill in all fields.", mail: "The e-mail address does not look valid.", tel: "The phone number does not look valid.", ok: "Please tick the consent box to continue.", envoi: "Sending…", echec: "Your details could not be saved. Please try again in a moment." },
-  ar: { vide: "يرجى ملء جميع الحقول.", mail: "عنوان البريد الإلكتروني غير صحيح.", tel: "رقم الهاتف غير صحيح.", ok: "يرجى تأشير خانة الموافقة للمتابعة.", envoi: "جارٍ الإرسال…", echec: "تعذّر حفظ بياناتك. يرجى المحاولة بعد قليل." },
+  fr: { vide: "Merci de remplir les champs obligatoires (prénom, nom, ville, pays, e-mail).", mail: "L'adresse e-mail ne semble pas valide.", tel: "Le numéro de téléphone ne semble pas valide.", ok: "Merci de cocher la case d'accord pour continuer.", envoi: "Envoi en cours…", echec: "L'enregistrement n'a pas abouti. Merci de réessayer dans un instant." },
+  en: { vide: "Please fill in the required fields (first name, last name, city, country, e-mail).", mail: "The e-mail address does not look valid.", tel: "The phone number does not look valid.", ok: "Please tick the consent box to continue.", envoi: "Sending…", echec: "Your details could not be saved. Please try again in a moment." },
+  ar: { vide: "يرجى ملء الحقول الإلزامية (الاسم، اللقب، المدينة، البلد، البريد الإلكتروني).", mail: "عنوان البريد الإلكتروني غير صحيح.", tel: "رقم الهاتف غير صحيح.", ok: "يرجى تأشير خانة الموافقة للمتابعة.", envoi: "جارٍ الإرسال…", echec: "تعذّر حفظ بياناتك. يرجى المحاولة بعد قليل." },
 }[LANG] || {};
-const CHAMPS = ["prenom", "nom", "ville", "telephone", "email"];
+const CHAMPS = ["prenom", "nom", "ville", "pays", "telephone", "email"];
+const OBLIGATOIRES = ["prenom", "nom", "ville", "pays", "email"]; // le téléphone est facultatif
 
 async function enregistrer(fiche) {
   // 1. base de données de la page (aperçu) : une fiche par personne, qui s'allonge à chaque envoi
@@ -49,8 +50,8 @@ async function enregistrer(fiche) {
 
 function csv(lignes) {
   const esc = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
-  const tete = ["Date", "Prénom", "Nom", "Ville", "Téléphone", "E-mail"];
-  return "﻿" + [tete, ...lignes.map((l) => [l.date, l.prenom, l.nom, l.ville, l.telephone, l.email])].map((r) => r.map(esc).join(";")).join("\r\n");
+  const tete = ["Date", "Prénom", "Nom", "Ville", "Pays", "Téléphone", "E-mail"];
+  return "﻿" + [tete, ...lignes.map((l) => [l.date, l.prenom, l.nom, l.ville, l.pays, l.telephone, l.email])].map((r) => r.map(esc).join(";")).join("\r\n");
 }
 
 export function initInscription(lenis) {
@@ -122,13 +123,13 @@ export function initInscription(lenis) {
       champ?.focus();
     };
     if (d["bot-field"]) return; // piège à robots
-    const vide = CHAMPS.find((k) => !String(d[k] || "").trim());
+    const vide = OBLIGATOIRES.find((k) => !String(d[k] || "").trim());
     if (vide) return erreur(MSG.vide, form.elements[vide]);
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email.trim())) return erreur(MSG.mail, form.elements.email);
-    if (d.telephone.replace(/\D/g, "").length < 8) return erreur(MSG.tel, form.elements.telephone);
+    if (d.telephone.trim() && d.telephone.replace(/\D/g, "").length < 8) return erreur(MSG.tel, form.elements.telephone);
     if (!form.elements.consentement.checked) return erreur(MSG.ok, form.elements.consentement);
 
-    const fiche = { date: new Date().toISOString(), ...Object.fromEntries(CHAMPS.map((k) => [k, String(d[k]).trim()])) };
+    const fiche = { date: new Date().toISOString(), ...Object.fromEntries(CHAMPS.map((k) => [k, String(d[k] || "").trim()])) };
     bouton.disabled = true;
     msg.textContent = MSG.envoi;
     try {
@@ -166,7 +167,7 @@ export function initInscription(lenis) {
       ...lignes.map((l) => {
         const tr = document.createElement("tr");
         const dt = new Date(l.date);
-        [Number.isNaN(+dt) ? "" : dt.toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" }), l.prenom, l.nom, l.ville, l.telephone, l.email].forEach((v) => {
+        [Number.isNaN(+dt) ? "" : dt.toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" }), l.prenom, l.nom, l.ville, l.pays, l.telephone, l.email].forEach((v) => {
           const td = document.createElement("td");
           td.textContent = v ?? "";
           tr.appendChild(td);
