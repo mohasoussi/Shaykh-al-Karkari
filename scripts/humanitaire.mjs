@@ -13,6 +13,35 @@ const REGLE = /humanitaire|puits|kits? scolaires?|orphelin|eau potable|rohingya|
 const INCLURE = new Set([]);
 const EXCLURE = new Set([]);
 
+/* Classement des actions humanitaires en rubriques (ordre d'affichage). Les cas particuliers sont fixés par leur adresse. */
+export const RUBRIQUES = {
+  fr: ["Puits et eau potable", "Dons alimentaires et soutien aux familles", "Orphelins, enfants et écoles", "Santé et handicap", "Secours aux personnes en détresse", "L'engagement de la voie"],
+  en: ["Wells and drinking water", "Food donations and support for families", "Orphans, children and schools", "Health and disability", "Relief for people in distress", "The path's commitment"],
+  ar: ["الآبار والماء الصالح للشرب", "التبرعات الغذائية ودعم الأسر", "الأيتام والأطفال والمدارس", "الصحة والإعاقة", "إغاثة المنكوبين والمستضعفين", "التزام الطريقة"],
+};
+const FIXES = {
+  "les-disciples-karkaris-apportent-de-la-joie-aux-habitants-de-thana-ghora": 0,
+  "action-humanitaire-de-la-karkariya-au-ghana": 0,
+  "les-karkaris-du-niger-entreprennent-une-action-humanitaire-a-kabawa": 0,
+  "deuxieme-action-humanitaire-au-bresil": 3,
+};
+export function rubrique(a) {
+  if (a.slug in FIXES) return FIXES[a.slug];
+  const t = a.titre;
+  if (/apport des soufis/i.test(t)) return 5;
+  if (/sinistr|sans-papiers|rohingyas?$/i.test(t) && !/eau potable/i.test(t)) return 4;
+  if (/cataracte|tricycle/i.test(t)) return 3;
+  if (/orphelin|kits? scolaires?|[ée]cole|camionnette/i.test(t)) return 2;
+  if (/puits|eau potable/i.test(t)) return 0;
+  return 1; // distributions de vivres et soutien aux familles
+}
+/** Répartit les articles dans les rubriques (tableau de tableaux, dans l'ordre de RUBRIQUES). */
+export function grouper(articles) {
+  const g = RUBRIQUES.fr.map(() => []);
+  for (const a of articles) g[rubrique(a)].push(a);
+  return g;
+}
+
 export const estHumanitaire = (a) => !EXCLURE.has(a.slug) && (INCLURE.has(a.slug) || REGLE.test(a.titre));
 
 const dateLongue = (iso) => new Date(iso).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
@@ -46,7 +75,7 @@ export async function separerHumanitaire(racine = SITE) {
   await regler(hum, "Actions humanitaires", "actions-humanitaires.html", "← Toutes les actions humanitaires");
 
   await fs.writeFile(path.join(racine, "actualites.html"), pageListe(reste));
-  await fs.writeFile(path.join(racine, "actions-humanitaires.html"), pageListe(hum, LISTES.humanitaire));
+  await fs.writeFile(path.join(racine, "actions-humanitaires.html"), pageListe(hum, { ...LISTES.humanitaire, groupes: grouper(hum).map((arts, i) => ({ titre: RUBRIQUES.fr[i], articles: arts })) }));
   await fs.writeFile(jsonActu, JSON.stringify(reste, null, 2) + "\n");
   await fs.writeFile(path.join(racine, "src", "data", "humanitaire.json"), JSON.stringify(hum, null, 2) + "\n");
 
@@ -61,5 +90,5 @@ export async function separerHumanitaire(racine = SITE) {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const r = await separerHumanitaire();
   console.log(`[humanitaire] ${r.humanitaire} action(s) humanitaire(s), ${r.actualites} actualité(s)`);
-  if (process.argv.includes("--liste")) r.hum.forEach((a) => console.log(" -", a.date.slice(0, 10), a.titre));
+  if (process.argv.includes("--liste")) grouper(r.hum).forEach((arts, i) => { console.log(`\n## ${RUBRIQUES.fr[i]} (${arts.length})`); arts.forEach((a) => console.log(" -", a.date.slice(0, 10), a.titre)); });
 }

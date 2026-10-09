@@ -474,7 +474,8 @@ function actualites() {
   const aucun = $(".actu-aucun");
   const champ = $("#actu-q");
   const PAS = 12;
-  let visibles = PAS;
+  const groupes = $$(".actu-groupe", grille); // page « Actions humanitaires » : cartes rangées par rubrique, sans pagination
+  let visibles = groupes.length ? Infinity : PAS;
   const rendre = () => {
     const sans = (s) => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
     const q = sans((champ?.value || "").trim());
@@ -483,9 +484,10 @@ function actualites() {
     ok.slice(0, visibles).forEach((c) => (c.hidden = false));
     if (plus) plus.hidden = ok.length <= visibles;
     if (aucun) aucun.hidden = ok.length > 0;
+    groupes.forEach((g) => (g.hidden = !$$(".actu-card", g).some((c) => !c.hidden)));
     ScrollTrigger.refresh();
   };
-  champ?.addEventListener("input", () => ((visibles = PAS), rendre()));
+  champ?.addEventListener("input", () => ((visibles = groupes.length ? Infinity : PAS), rendre()));
   plus?.addEventListener("click", () => ((visibles += PAS), rendre()));
   rendre();
 }

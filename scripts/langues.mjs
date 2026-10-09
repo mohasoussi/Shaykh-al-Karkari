@@ -10,6 +10,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { pageListe, LISTES } from "./gabarits-actualites.mjs";
+import { grouper, RUBRIQUES } from "./humanitaire.mjs";
 import { lireMaison, fusionner } from "./maison.mjs";
 
 const SITE = process.env.SITE_DIR ? path.resolve(process.env.SITE_DIR) : process.cwd();
@@ -229,7 +230,7 @@ async function listes() {
     for (const code of CODES) {
       const fr = LISTES[cle];
       const tr = LISTES_TR[cle][code];
-      let h = pageListe(articles, { ...fr, ...tr, code });
+      let h = pageListe(articles, { ...fr, ...tr, code, ...(cle === "humanitaire" ? { groupes: grouper(articles).map((arts, i) => ({ titre: RUBRIQUES[code][i], articles: arts })) } : {}) });
       h = localiser(h, code);
       h = await traduireTitres(h, code, { sansExtrait: true });
       h = enTete(h, code).replace(/<title>[^<]*<\/title>/, `<title>${tr.titre} — ${code === "ar" ? "الشيخ محمد فوزي الكركري" : "Shaykh Mohamed Faouzi Al Karkari"}</title>`);

@@ -1763,3 +1763,10 @@ html[lang="ar"] [data-split] > div { padding-block: 0.14em; margin-block: -0.14e
   .menu-aside .btn-or { margin-bottom: 0; padding: 13px 20px; }
   .menu-aside .btn--fb { padding-top: 11px; padding-bottom: 11px; }
 }
+
+/* Actions humanitaires : cartes rangées par rubrique */
+.actu-groupes { max-width: var(--max); margin: 0 auto; }
+.actu-groupe { margin-top: clamp(48px, 8vw, 84px); }
+.actu-groupe:first-child { margin-top: 8px; }
+.actu-groupe-titre { max-width: var(--max); margin: 0 auto 26px; padding: 0 var(--gutter); font-family: var(--serif); font-weight: 500; font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.15; display: flex; align-items: baseline; gap: 14px; }
+.actu-groupe-titre span { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.12em; color: var(--gold); border: 1px solid currentColor; border-radius: 999px; padding: 3px 11px; }

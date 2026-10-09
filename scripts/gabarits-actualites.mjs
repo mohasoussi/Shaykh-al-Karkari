@@ -58,13 +58,21 @@ export const LISTES = {
 };
 
 export function pageListe(articles, l = LISTES.actualites) {
+  const groupes = l.groupes
+    ? l.groupes.filter((g) => g.articles.length).map((g) => `        <section class="actu-groupe">
+          <h2 class="actu-groupe-titre">${g.titre} <span>${g.articles.length}</span></h2>
+          <div class="actu-grid">
+${g.articles.map((a) => carte(a, l.prefixe)).join("")}          </div>
+        </section>
+`).join("")
+    : "";
   const contenu = articles.length
     ? `      <div class="actu-outils">
         <label class="field actu-recherche"><span>Rechercher</span><input type="search" id="actu-q" placeholder="Un mot du titre" autocomplete="off" /></label>
         <p class="actu-total">${articles.length} article${articles.length > 1 ? "s" : ""}</p>
       </div>
-      <div class="actu-grid" id="actu-grid">
-${articles.map((a) => carte(a, l.prefixe)).join("")}      </div>
+      ${l.groupes ? `<div class="actu-groupes" id="actu-grid">\n${groupes}      </div>` : `<div class="actu-grid" id="actu-grid">
+${articles.map((a) => carte(a, l.prefixe)).join("")}      </div>`}
       <p class="actu-aucun" hidden>Aucun article ne correspond à votre recherche.</p>
       <div class="center actu-suite"><button class="btn-glass btn-glass--dark" type="button" id="actu-more" hidden><span>Voir plus d'articles</span><i>↓</i></button></div>
 `
