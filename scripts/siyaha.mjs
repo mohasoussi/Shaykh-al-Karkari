@@ -121,6 +121,7 @@ const html = `<!doctype html>
         <h1 class="h2" data-split>${esc(TITRE)}</h1>
         <p class="maitre-sous" data-reveal>${esc(SOUS)}</p>
       </div>
+      <figure class="marche-photo" data-reveal><img src="enseignements/siyaha-maitres-soufis/couverture-v2.webp" alt="Le marcheur en habit rapiécé sur un chemin, devant un livre ouvert, au coucher du soleil" loading="eager" /></figure>
       <div class="actu-corps">
         <p class="maitre-intro">${esc(INTRO)}</p>
 ${corps}

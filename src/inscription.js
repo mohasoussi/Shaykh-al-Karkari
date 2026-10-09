@@ -59,8 +59,15 @@ export function initInscription(lenis) {
   if (!modale) return null;
 
   let dernierFocus = null;
+  // la fenêtre doit tenir dans la zone réellement visible (barres du navigateur mobile) et défiler à l'intérieur
+  document.querySelectorAll(".modal-card").forEach((c) => c.setAttribute("data-lenis-prevent", ""));
+  const ajuster = () => document.documentElement.style.setProperty("--vvh", `${Math.round(window.visualViewport?.height || window.innerHeight)}px`);
+  ajuster();
+  window.visualViewport?.addEventListener("resize", ajuster);
+  window.addEventListener("resize", ajuster);
   const ouvrir = (el) => {
     dernierFocus = document.activeElement;
+    ajuster();
     el.hidden = false;
     document.body.classList.add("modal-open");
     lenis?.stop();

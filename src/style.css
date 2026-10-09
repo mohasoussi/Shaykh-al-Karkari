@@ -1716,3 +1716,7 @@ body { background: var(--dusk-deep-2); }
 .marche-fig { margin: 22px calc(-1 * clamp(0px, 5vw, 70px)) 26px; }
 .marche-fig img { display: block; width: 100%; height: clamp(220px, 40vw, 440px); object-fit: cover; border-radius: 18px; }
 @media (max-width: 760px) { .marche-fig { margin-inline: 0; } }
+
+/* fenêtre « Prochaines rencontres » : jamais coupée en bas sur mobile, défilement interne */
+.modal { height: var(--vvh, 100svh); bottom: auto; }
+.modal-card { max-height: calc(var(--vvh, 100svh) - 32px); -webkit-overflow-scrolling: touch; touch-action: pan-y; }

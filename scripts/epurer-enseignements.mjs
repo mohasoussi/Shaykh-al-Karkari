@@ -6,7 +6,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const HONORIFIQUE = /^\s*(?:salla|sall\s?allah|qadass?a|qudiss?a|quddiss?a|qaddas?a|radi[a-z]*\s?allah|rahima?hu|subhana?hu|[ʿ‘’'`]?azza\s+wa|[ʿ‘’'`]?alayhi\s+(?:a?s-?)?salam|ta[ʿ‘’'`]?[aâ]l[aâ])/i;
+const HONORIFIQUE = /^\s*(?:قدس|قدّس|رضي|صلى|سبحانه|salla|sall\s?allah|qadass?a|qudiss?a|quddiss?a|qaddas?a|radi[a-z]*\s?allah|rahima?hu|subhana?hu|[ʿ‘’'`]?azza\s+wa|[ʿ‘’'`]?alayhi\s+(?:a?s-?)?salam|ta[ʿ‘’'`]?[aâ]l[aâ])/i;
 const sansBalises = (t) => t.replace(/<[^>]*>/g, "");
 
 const mots = (t) => {
@@ -19,8 +19,12 @@ const mots = (t) => {
   return t;
 };
 
+const BASMALA_FR = "<h3><strong>Au nom d'Allah, le Tout Miséricordieux, le Très Miséricordieux.<br>Que la prière et la paix soient sur le plus noble des Envoyés, sur sa famille et sur tous ses compagnons.</strong></h3>";
+
 export function epurer(html = "") {
   let t = html;
+  // en-tête arabe (basmala + prière sur le Prophète) → français
+  t = t.replace(/<h3>(?:(?!<\/h3>)[\s\S])*?<\/h3>/g, (m) => (/بسم الله/.test(m) && sansBalises(m).length < 220 ? BASMALA_FR : m));
   // parenthèses de révérence : (sallAllâhu ‘alayhi wa sallam), (qadassa Allahu sirahu)…
   t = t.replace(/\s*\(((?:[^()<]|<[^>]*>)*)\)/g, (m, inner) => (HONORIFIQUE.test(sansBalises(inner)) ? "" : m));
   // formules isolées
