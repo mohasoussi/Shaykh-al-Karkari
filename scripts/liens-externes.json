@@ -57,5 +57,20 @@
       "en": "The official French website of the Karkariya Sufi Order.",
       "ar": "الموقع الرسمي الفرنسي للطريقة الصوفية الكركرية."
     }
+  },
+  {
+    "url": "https://les7lectures.com/livres/",
+    "image": "/media/site-les7lectures.webp",
+    "fond": "#0a0820",
+    "titre": {
+      "fr": "Éditions Les 7 Lectures",
+      "en": "Éditions Les 7 Lectures",
+      "ar": "Éditions Les 7 Lectures"
+    },
+    "texte": {
+      "fr": "Les éditions Les 7 Lectures visent à proposer aux lecteurs des ouvrages originaux et inédits dans l’univers de la spiritualité et de l’ésotérisme. Donner à lire et à relire des œuvres aussi diverses que riches d’enseignements.",
+      "en": "Éditions Les 7 Lectures aim to offer readers original, previously unpublished works in the world of spirituality and esotericism: to give people the chance to read and reread works as varied as they are rich in teaching.",
+      "ar": "تهدف دار «Les 7 Lectures» إلى تقديم مؤلفات أصيلة وغير منشورة في عالم الروحانيات والباطنيات، لتتيح للقراء قراءة وإعادة قراءة أعمال متنوّعة وغنية بالتعاليم."
+    }
   }
 ]

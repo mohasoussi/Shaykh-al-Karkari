@@ -1,7 +1,7 @@
 /* Biographies : famille karkarienne et maîtres du XIXe-XXe siècle (rédaction neutre, sans source copiée). */
 export const FAMILLE = [
   {
-    cle: "Sidi Mawlay al-Hassan", slug: "mawlay-al-hassan", nom: "Sidi Mawlay al-Hassan al-Karkari",
+    cle: "Sidi Mawlay al-Hassan", slug: "mawlay-al-hassan", livre: "moulay-al-hassan", nom: "Sidi Mawlay al-Hassan al-Karkari",
     sous: "Né vers 1936 · mort vers 2006-2007 · Tamsaman (Rif) · maître éducateur du Shaykh Mohamed Faouzi",
     intro: "Mawlay al-Hassan al-Karkari fut le maître éducateur et le père spirituel du Shaykh Mohamed Faouzi Al Karkari, fondateur de l'Ordre soufi Karkariya. Fils de Mawlay at-Tahir, il devint après la mort de son propre maître l'héritier spirituel de la transmission familiale. Il vécut dans la région de Tamsaman, dans le Rif oriental, et resta toute sa vie très discret sur son rôle.",
     sections: [
@@ -33,7 +33,7 @@ export const FAMILLE = [
   },
 
   {
-    cle: "Sidi Mawlay at-Tahir", slug: "mawlay-at-tahir", nom: "Sidi Mawlay at-Tahir al-Karkari",
+    cle: "Sidi Mawlay at-Tahir", slug: "mawlay-at-tahir", livre: "al-karkari", nom: "Sidi Mawlay at-Tahir al-Karkari",
     sous: "Mort en 1976 · Tamsaman (Rif) · disciple de Sidi Ahmad al-ʿAlawi",
     intro: "Mawlay at-Tahir al-Karkari est le maître qui réunit, au XXe siècle, la tradition familiale de la montagne de Karkar et la voie shadhilie-ʿalawie de Mostaganem. Juriste de formation, il fonda à Tamsaman la zawiya où se forma la transmission qui mène au Shaykh Mohamed Faouzi Al Karkari.",
     sections: [

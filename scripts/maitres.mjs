@@ -42,6 +42,8 @@ async function corpsKarkariya(slug) {
   return h.replace(/<p>\s*(Source|Sources)\s*:[^<]*<\/p>/gi, "");
 }
 
+import { livrePromo } from "./livre-promo.mjs";
+
 function page(m, corps) {
   const titre = `${m.nom} — Shaykh Mohamed Faouzi Al Karkari`;
   const desc = (m.intro || m.sous).replace(/\s+/g, " ").slice(0, 200);
@@ -69,7 +71,7 @@ function page(m, corps) {
       </div>
       <div class="actu-corps">
 ${m.intro ? `        <p class="maitre-intro">${m.intro.replace(/&(?!amp;)/g, "&amp;")}</p>\n` : ""}${corps}
-      </div>
+${m.livre ? livrePromo(m.livre) + "\n" : ""}      </div>
       <div class="center shaykh-suite">${m.voir ? `<a class="btn-glass btn-glass--dark" href="maitre-${m.voir[0]}.html"><span>${esc(m.voir[1])}</span><i>→</i></a> ` : ""}<a class="btn-glass btn-glass--dark" href="${m.rubrique === "lignee" ? "lignee-cherifienne.html" : "chaine-de-transmission.html"}"><span>${m.rubrique === "lignee" ? "← La lignée chérifienne" : "← La chaîne de transmission"}</span></a></div>
     </section>
   </main>

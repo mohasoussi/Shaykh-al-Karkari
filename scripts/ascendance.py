@@ -94,6 +94,16 @@ PAGE = """<!doctype html>
       <div class="actu-corps">
 %s
       </div>
+      <aside class="livre-promo" data-reveal>
+        <a class="livre-promo-cover" href="https://les7lectures.com/al-karkari/" target="_blank" rel="noopener" aria-label="Commander le livre « Al-Karkari »"><span class="livre-promo-3d"><img src="/media/livre-al-karkari.webp" alt="Couverture du livre « Al-Karkari — Origines et histoire d'une lignée chérifienne »" loading="lazy" decoding="async" /></span></a>
+        <div class="livre-promo-txt">
+          <p class="kicker">Éditions Les 7 Lectures</p>
+          <h3>Al-Karkari</h3>
+          <p class="livre-promo-sous">Origines et histoire d'une lignée chérifienne</p>
+          <p class="livre-promo-auteur">Mohamed Ouhraich</p>
+          <a class="btn-glass btn-glass--dark" href="https://les7lectures.com/al-karkari/" target="_blank" rel="noopener"><span>Commander le livre</span><i>↗</i></a>
+        </div>
+      </aside>
       <div class="center shaykh-suite"><a class="btn-glass btn-glass--dark" href="lignee-cherifienne.html"><span>Sa lignée chérifienne</span><i>→</i></a></div>
     </section>
   </main>
