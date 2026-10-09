@@ -59,8 +59,8 @@ export const FAMILLE = [
         "Sous les dalles de la zawiya s'ouvrait une grotte, sur laquelle l'édifice avait été bâti. Les résistants y cachaient leurs armes. La grotte possédait deux issues, éloignées l'une de l'autre sous la terre, ce qui permettait de surgir par l'une ou l'autre et de monter des embuscades avant de disparaître dans la montagne. Ainsi, derrière les murs d'une maison de dhikr et d'hospitalité, se préparait en silence la défense du pays.",
         "Mawlay at-Tahir ne fut pas un spectateur de ces événements : il participa activement à la guerre du Rif et à l'organisation des résistants rifains. C'est depuis sa zawiya que se menaient une part des opérations de la résistance, ce qui fit de ce lieu de spiritualité un point d'appui de la lutte contre la colonisation.",
       ]],
-      ["La retraite de Frithjof Schuon (1931)", [
-        "En 1931, à la zawiya de Mostaganem, c'est Mawlay at-Tahir qui dirigea la retraite spirituelle (khalwa) de Frithjof Schuon, l'un des disciples européens du Shaykh Ahmad al-ʿAlawi, qui prit le nom d'ʿIsa Nur ad-Din et devint par la suite un auteur connu pour ses ouvrages sur la métaphysique et les religions. Schuon a d'ailleurs composé un poème consacré à Mawlay at-Tahir.",
+      ["La retraite de Frithjof Schuon (1932)", [
+        "En 1932, à la zawiya de Mostaganem, c'est Mawlay at-Tahir qui dirigea la retraite spirituelle (khalwa) de Frithjof Schuon, l'un des disciples européens du Shaykh Ahmad al-ʿAlawi, qui prit le nom d'ʿIsa Nur ad-Din et devint par la suite un auteur connu pour ses ouvrages sur la métaphysique et les religions. Schuon a d'ailleurs composé un poème consacré à Mawlay at-Tahir.",
         `<figure class="asc-photo"><img src="/media/frithjof-schuon.webp" alt="Frithjof Schuon (ʿIsa Nur ad-Din), disciple du Shaykh Ahmad al-ʿAlawi." loading="lazy" decoding="async" /><figcaption>Frithjof Schuon (ʿIsa Nur ad-Din), disciple du Shaykh Ahmad al-ʿAlawi.</figcaption></figure>`,
       ]],
       ["Caractère et enseignement", [
