@@ -19,7 +19,7 @@ function enveloppe({ titre, description, page, main, image }) {
   <meta name="description" content="${esc(description)}" />
   <meta property="og:title" content="${esc(titre)}" />
   <meta property="og:description" content="${esc(description)}" />
-  <meta property="og:image" content="${esc(image || "/media/hero-remise.webp")}" />
+  <meta property="og:image" content="${esc(image || "/media/partage-shaykh.jpg")}" />
 </head>
 <body data-page="${page}">
   <!--@include ui-->
