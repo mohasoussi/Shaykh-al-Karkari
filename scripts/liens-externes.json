@@ -1,17 +1,17 @@
 [
   {
-    "url": "https://elkarkari.fr/",
-    "image": "/media/site-elkarkari.webp",
-    "fond": "#ffffff",
+    "url": "https://les7lectures.com/livres/",
+    "image": "/media/site-les7lectures.webp",
+    "fond": "#0a0820",
     "titre": {
-      "fr": "Elkarkari.fr — les cours du Shaykh",
-      "en": "Elkarkari.fr — the Shaykh's lessons",
-      "ar": "Elkarkari.fr — دروس الشيخ"
+      "fr": "Éditions Les 7 Lectures",
+      "en": "Éditions Les 7 Lectures",
+      "ar": "Éditions Les 7 Lectures"
     },
     "texte": {
-      "fr": "Ici sont publiés les cours hebdomadaires du maître spirituel vivant, le Shaykh Mohamed Faouzi al-Karkari. Chaque vendredi, à la zawiya Karkariya de Nador (Maroc), a lieu une assise spirituelle durant laquelle le Shaykh et ses disciples évoquent (dhikr) et lisent le Coran ensemble. Au terme de cette assise, le Shaykh dispense ses enseignements traitant de l’initiation spirituelle à travers la lecture du Nom indicateur de l’essence divine, Allâh. Ces cours ont été enregistrés en audio, traduits et retranscrits à l’écrit.",
-      "en": "The weekly lessons of the living spiritual master, Shaykh Mohamed Faouzi al-Karkari, are published here. Every Friday, at the Karkariya zawiya in Nador (Morocco), a spiritual gathering takes place in which the Shaykh and his disciples perform dhikr and read the Qur'an together. At its close, the Shaykh gives his teachings on spiritual initiation through the reading of the Name that designates the divine essence, Allah. These lessons were recorded in audio, translated and transcribed.",
-      "ar": "تُنشر هنا الدروس الأسبوعية للمرشد الروحي الحيّ الشيخ محمد فوزي الكركري. في كل يوم جمعة، بزاوية الكركرية في الناظور (المغرب)، تُقام جلسة روحية يذكر فيها الشيخ ومريدوه الله ويتلون القرآن معًا. وفي ختامها يُلقي الشيخ دروسه في التربية الروحية من خلال قراءة الاسم الدالّ على الذات الإلهية: «الله». وقد سُجّلت هذه الدروس صوتيًا وتُرجمت ونُسخت كتابةً."
+      "fr": "Les éditions Les 7 Lectures visent à proposer aux lecteurs des ouvrages originaux et inédits dans l’univers de la spiritualité et de l’ésotérisme. Donner à lire et à relire des œuvres aussi diverses que riches d’enseignements.",
+      "en": "Éditions Les 7 Lectures aim to offer readers original, previously unpublished works in the world of spirituality and esotericism: to give people the chance to read and reread works as varied as they are rich in teaching.",
+      "ar": "تهدف دار «Les 7 Lectures» إلى تقديم مؤلفات أصيلة وغير منشورة في عالم الروحانيات والباطنيات، لتتيح للقراء قراءة وإعادة قراءة أعمال متنوّعة وغنية بالتعاليم."
     }
   },
   {
@@ -59,18 +59,18 @@
     }
   },
   {
-    "url": "https://les7lectures.com/livres/",
-    "image": "/media/site-les7lectures.webp",
-    "fond": "#0a0820",
+    "url": "https://elkarkari.fr/",
+    "image": "/media/site-elkarkari.webp",
+    "fond": "#ffffff",
     "titre": {
-      "fr": "Éditions Les 7 Lectures",
-      "en": "Éditions Les 7 Lectures",
-      "ar": "Éditions Les 7 Lectures"
+      "fr": "Elkarkari.fr — les cours du Shaykh",
+      "en": "Elkarkari.fr — the Shaykh's lessons",
+      "ar": "Elkarkari.fr — دروس الشيخ"
     },
     "texte": {
-      "fr": "Les éditions Les 7 Lectures visent à proposer aux lecteurs des ouvrages originaux et inédits dans l’univers de la spiritualité et de l’ésotérisme. Donner à lire et à relire des œuvres aussi diverses que riches d’enseignements.",
-      "en": "Éditions Les 7 Lectures aim to offer readers original, previously unpublished works in the world of spirituality and esotericism: to give people the chance to read and reread works as varied as they are rich in teaching.",
-      "ar": "تهدف دار «Les 7 Lectures» إلى تقديم مؤلفات أصيلة وغير منشورة في عالم الروحانيات والباطنيات، لتتيح للقراء قراءة وإعادة قراءة أعمال متنوّعة وغنية بالتعاليم."
+      "fr": "Ici sont publiés les cours hebdomadaires du maître spirituel vivant, le Shaykh Mohamed Faouzi al-Karkari. Chaque vendredi, à la zawiya Karkariya de Nador (Maroc), a lieu une assise spirituelle durant laquelle le Shaykh et ses disciples évoquent (dhikr) et lisent le Coran ensemble. Au terme de cette assise, le Shaykh dispense ses enseignements traitant de l’initiation spirituelle à travers la lecture du Nom indicateur de l’essence divine, Allâh. Ces cours ont été enregistrés en audio, traduits et retranscrits à l’écrit.",
+      "en": "The weekly lessons of the living spiritual master, Shaykh Mohamed Faouzi al-Karkari, are published here. Every Friday, at the Karkariya zawiya in Nador (Morocco), a spiritual gathering takes place in which the Shaykh and his disciples perform dhikr and read the Qur'an together. At its close, the Shaykh gives his teachings on spiritual initiation through the reading of the Name that designates the divine essence, Allah. These lessons were recorded in audio, translated and transcribed.",
+      "ar": "تُنشر هنا الدروس الأسبوعية للمرشد الروحي الحيّ الشيخ محمد فوزي الكركري. في كل يوم جمعة، بزاوية الكركرية في الناظور (المغرب)، تُقام جلسة روحية يذكر فيها الشيخ ومريدوه الله ويتلون القرآن معًا. وفي ختامها يُلقي الشيخ دروسه في التربية الروحية من خلال قراءة الاسم الدالّ على الذات الإلهية: «الله». وقد سُجّلت هذه الدروس صوتيًا وتُرجمت ونُسخت كتابةً."
     }
   }
 ]
