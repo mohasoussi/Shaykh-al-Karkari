@@ -50,7 +50,7 @@ const evenements = () => JSON.parse(fs.readFileSync(path.join(SITE, "scripts/a-v
 
 function carteEvenement(e, code) {
   const t = T[code].av, L = (o) => o[code] || o.fr;
-  const boutons = (e.boutons || []).map((b, i) => `<a class="${i === 0 ? "btn-or" : "btn-glass btn-glass--dark"}" href="${esc(b.url)}" target="_blank" rel="noopener"><span>${esc(L(b.label))}</span><i>${T[code].fleche === "←" ? "↗" : "↗"}</i></a>`).join("\n            ");
+  const boutons = (e.boutons || []).map((b, i) => `<a class="${i === 0 ? "btn-or" : "btn-glass btn-glass--dark"}" href="${esc(b.url)}" ${/^https?:/.test(b.url) ? 'target="_blank" rel="noopener"' : ""}><span>${esc(L(b.label))}</span><i>${T[code].fleche === "←" ? "↗" : "↗"}</i></a>`).join("\n            ");
   return `      <article class="avenir-carte" id="${esc(e.id)}" data-reveal>
         <figure class="avenir-affiche"><img src="${esc(e.image)}" alt="${esc(L(e.imageAlt))}" loading="lazy" decoding="async" /></figure>
         <div class="avenir-txt">
@@ -63,15 +63,15 @@ function carteEvenement(e, code) {
           </dl>
           <p>${esc(L(e.intro))}</p>
           <ul class="avenir-liste">${L(e.programme).map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
-          <h3>${esc(L(e.inclusTitre))}</h3>
-          <ul class="avenir-liste avenir-liste--inclus">${L(e.inclus).map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
-          <p class="avenir-alerte"><strong>${esc(L(e.places))}</strong></p>
-          <p class="avenir-note">${esc(L(e.echeance))}</p>
-          <p>${esc(L(e.questions))}</p>
-          <p class="avenir-fin">${esc(L(e.conclusion))}</p>
+          ${e.inclus ? `<h3>${esc(L(e.inclusTitre))}</h3>\n          <ul class="avenir-liste avenir-liste--inclus">${L(e.inclus).map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
+          ${e.places ? `<p class="avenir-alerte"><strong>${esc(L(e.places))}</strong></p>` : ""}
+          ${e.echeance ? `<p class="avenir-note">${esc(L(e.echeance))}</p>` : ""}
+          ${e.questions ? `<p>${esc(L(e.questions))}</p>` : ""}
+          ${e.conclusion ? `<p class="avenir-fin">${esc(L(e.conclusion))}</p>` : ""}
           <div class="avenir-actions">
             ${boutons}
           </div>
+          ${e.galerie?.length ? `<ul class="avenir-galerie">${e.galerie.map((g) => `<li><img src="${esc(g.src)}" alt="${esc(L(g.alt))}" loading="lazy" decoding="async" /></li>`).join("")}</ul>` : ""}
         </div>
       </article>
 `;

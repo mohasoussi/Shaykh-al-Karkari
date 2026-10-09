@@ -133,5 +133,156 @@
     }
    }
   ]
+ },
+ {
+  "id": "retraite-mont-blanc-2026",
+  "debut": "2026-12-04",
+  "fin": "2026-12-07",
+  "image": "/media/avenir/retraite-mont-blanc-affiche.webp",
+  "imageAlt": {
+   "fr": "Affiche de la retraite spirituelle soufie au cœur du Mont-Blanc, du 4 au 7 décembre 2026 à Chamonix",
+   "en": "Poster of the Sufi spiritual retreat in the heart of Mont Blanc, 4–7 December 2026, Chamonix",
+   "ar": "ملصق الخلوة الروحية الصوفية في قلب مون بلان، من 4 إلى 7 ديسمبر 2026 في شامونيه"
+  },
+  "titre": {
+   "fr": "Retraite spirituelle au Mont Blanc",
+   "en": "Spiritual retreat at Mont Blanc",
+   "ar": "خلوة روحية في مون بلان"
+  },
+  "type": {
+   "fr": "Retraite spirituelle",
+   "en": "Spiritual retreat",
+   "ar": "خلوة روحية"
+  },
+  "dates": {
+   "fr": "4 – 7 décembre 2026",
+   "en": "4 – 7 December 2026",
+   "ar": "4 – 7 ديسمبر 2026"
+  },
+  "lieu": {
+   "fr": "Chamonix (Alpes françaises, France)",
+   "en": "Chamonix (French Alps, France)",
+   "ar": "شامونيه (جبال الألب الفرنسية، فرنسا)"
+  },
+  "organisateur": {
+   "fr": "The Zawiya",
+   "en": "The Zawiya",
+   "ar": "The Zawiya"
+  },
+  "intro": {
+   "fr": "The Zawiya vous invite à une retraite spirituelle de trois nuits à Chamonix, dans le cadre spectaculaire des Alpes françaises, en présence du maître soufi Sidi Mohamed Faouzi al-Karkari. Dans un chalet avec vue sur le pic du Mont Blanc, nos journées et nos nuits seront rythmées par :",
+   "en": "The Zawiya invites you to a three-night spiritual retreat in Chamonix, in the spectacular setting of the French Alps, in the presence of the Sufi master Sidi Mohamed Faouzi al-Karkari. In a chalet with a view of the Mont Blanc peak, our days and nights will be set to the rhythm of:",
+   "ar": "تدعوكم The Zawiya إلى خلوة روحية تمتدّ ثلاث ليالٍ في شامونيه، في أجواء جبال الألب الفرنسية الساحرة، بحضور الشيخ الصوفي سيدي محمد فوزي الكركري. وفي شاليه يطلّ على قمة مون بلان، ستُنظَّم أيامنا ولياليها على إيقاع:"
+  },
+  "programme": {
+   "fr": [
+    "Les cinq prières quotidiennes",
+    "Le dhikr et les prières nocturnes",
+    "Les assises spirituelles avec le Shaykh",
+    "Des randonnées en pleine montagne",
+    "Des visites (dont la « Mer de glace ») et des activités à déterminer selon les conditions météo",
+    "Des moments de fraternité et de partage"
+   ],
+   "en": [
+    "The five daily prayers",
+    "Dhikr and night prayers",
+    "Spiritual gatherings with the Shaykh",
+    "Hikes in the mountains",
+    "Visits (including the “Mer de Glace”) and activities to be decided according to the weather",
+    "Moments of fellowship and sharing"
+   ],
+   "ar": [
+    "الصلوات الخمس اليومية",
+    "الذكر وصلوات الليل",
+    "المجالس الروحية مع الشيخ",
+    "نزهات جبلية في قلب الجبال",
+    "زيارات (منها «بحر الجليد») وأنشطة تُحدَّد بحسب الأحوال الجوية",
+    "لحظات من الأخوّة والتشارك"
+   ]
+  },
+  "inclusTitre": {
+   "fr": "Tarif et séjour",
+   "en": "Price and stay",
+   "ar": "التكلفة والإقامة"
+  },
+  "inclus": {
+   "fr": [
+    "Tarif : 280 €",
+    "Séjour de 3 nuits et 4 jours",
+    "Pension complète"
+   ],
+   "en": [
+    "Price: €280",
+    "3 nights and 4 days",
+    "Full board"
+   ],
+   "ar": [
+    "التكلفة: 280 يورو",
+    "إقامة 3 ليالٍ و4 أيام",
+    "إقامة بوجبات كاملة"
+   ]
+  },
+  "places": {
+   "fr": "Les places sont très limitées.",
+   "en": "Places are very limited.",
+   "ar": "الأماكن محدودة جدًّا."
+  },
+  "questions": {
+   "fr": "Pour réserver votre place, rendez-vous sur thezawiya.fr. Contact : +33 6 74 79 79 16 · contact@thezawiya.fr",
+   "en": "To book your place, go to thezawiya.fr. Contact: +33 6 74 79 79 16 · contact@thezawiya.fr",
+   "ar": "لحجز مكانكم، تفضّلوا بزيارة thezawiya.fr. للتواصل: ‎+33 6 74 79 79 16‎ · contact@thezawiya.fr"
+  },
+  "boutons": [
+   {
+    "url": "https://thezawiya.fr",
+    "label": {
+     "fr": "Réserver sur thezawiya.fr",
+     "en": "Book on thezawiya.fr",
+     "ar": "احجزوا على thezawiya.fr"
+    }
+   },
+   {
+    "url": "mailto:contact@thezawiya.fr",
+    "label": {
+     "fr": "Écrire à The Zawiya",
+     "en": "Write to The Zawiya",
+     "ar": "راسلوا The Zawiya"
+    }
+   }
+  ],
+  "galerie": [
+   {
+    "src": "/media/avenir/retraite-mont-blanc-bienvenue.webp",
+    "alt": {
+     "fr": "Le Shaykh en invocation dans la neige, face aux montagnes",
+     "en": "The Shaykh in supplication in the snow, facing the mountains",
+     "ar": "الشيخ يدعو في الثلج أمام الجبال"
+    }
+   },
+   {
+    "src": "/media/avenir/retraite-mont-blanc-meditation-collective.webp",
+    "alt": {
+     "fr": "Séance de méditation collective autour du Shaykh",
+     "en": "A collective meditation session around the Shaykh",
+     "ar": "جلسة تأمل جماعي حول الشيخ"
+    }
+   },
+   {
+    "src": "/media/avenir/retraite-mont-blanc-marche.webp",
+    "alt": {
+     "fr": "Marche en groupe dans la nature",
+     "en": "A group walk in nature",
+     "ar": "مشي جماعي في الطبيعة"
+    }
+   },
+   {
+    "src": "/media/avenir/retraite-mont-blanc-reserver.webp",
+    "alt": {
+     "fr": "Les Alpes enneigées : réservez sur thezawiya.fr",
+     "en": "The snowy Alps: book on thezawiya.fr",
+     "ar": "جبال الألب المكسوّة بالثلج: احجزوا على thezawiya.fr"
+    }
+   }
+  ]
  }
 ]
