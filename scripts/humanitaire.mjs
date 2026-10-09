@@ -15,25 +15,17 @@ const EXCLURE = new Set([]);
 
 /* Classement des actions humanitaires en rubriques (ordre d'affichage). Les cas particuliers sont fixés par leur adresse. */
 export const RUBRIQUES = {
-  fr: ["Puits et eau potable", "Dons alimentaires et soutien aux familles", "Orphelins, enfants et écoles", "Santé et handicap", "Secours aux personnes en détresse", "L'engagement de la voie"],
-  en: ["Wells and drinking water", "Food donations and support for families", "Orphans, children and schools", "Health and disability", "Relief for people in distress", "The path's commitment"],
-  ar: ["الآبار والماء الصالح للشرب", "التبرعات الغذائية ودعم الأسر", "الأيتام والأطفال والمدارس", "الصحة والإعاقة", "إغاثة المنكوبين والمستضعفين", "التزام الطريقة"],
+  fr: ["Puits, eau potable et dons alimentaires", "Orphelins, enfants et écoles", "Santé, secours et solidarité"],
+  en: ["Wells, drinking water and food donations", "Orphans, children and schools", "Health, relief and solidarity"],
+  ar: ["الآبار والماء الصالح للشرب والتبرعات الغذائية", "الأيتام والأطفال والمدارس", "الصحة والإغاثة والتضامن"],
 };
-const FIXES = {
-  "les-disciples-karkaris-apportent-de-la-joie-aux-habitants-de-thana-ghora": 0,
-  "action-humanitaire-de-la-karkariya-au-ghana": 0,
-  "les-karkaris-du-niger-entreprennent-une-action-humanitaire-a-kabawa": 0,
-  "deuxieme-action-humanitaire-au-bresil": 3,
-};
+const FIXES = { "deuxieme-action-humanitaire-au-bresil": 2 };
 export function rubrique(a) {
   if (a.slug in FIXES) return FIXES[a.slug];
   const t = a.titre;
-  if (/apport des soufis/i.test(t)) return 5;
-  if (/sinistr|sans-papiers|rohingyas?$/i.test(t) && !/eau potable/i.test(t)) return 4;
-  if (/cataracte|tricycle/i.test(t)) return 3;
-  if (/orphelin|kits? scolaires?|[ée]cole|camionnette/i.test(t)) return 2;
-  if (/puits|eau potable/i.test(t)) return 0;
-  return 1; // distributions de vivres et soutien aux familles
+  if (/apport des soufis|sinistr|sans-papiers|cataracte|tricycle|rohingyas?$/i.test(t) && !/eau potable/i.test(t)) return 2; // santé, secours, solidarité
+  if (/orphelin|kits? scolaires?|[ée]cole|camionnette/i.test(t)) return 1; // enfants
+  return 0; // puits, eau potable, distributions de vivres
 }
 /** Répartit les articles dans les rubriques (tableau de tableaux, dans l'ordre de RUBRIQUES). */
 export function grouper(articles) {
