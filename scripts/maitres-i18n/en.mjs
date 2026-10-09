@@ -732,10 +732,10 @@ EN["muhammad-al-fardi"] = {
       `When Mawlay at-Tayyib died, the fuqara' who had followed the father turned to the son. They decided, by common accord, to continue the path with him and to recognise Muhammad al-Fardi as their shaykh.`,
     ]],
     [`Zawiyas to welcome the master`, [
-      `His disciples did not live only on the Karkar mountain: he also had some in Tamsaman and in Tistutin. In each of these two places, the fuqara' had raised a zawiya with their own hands, to receive their shaykh worthily when he came to visit them. And when Muhammad al-Fardi set out, a whole community awaited him at the end of the road, the house open and the meal ready.`,
+      `His disciples did not live only on the Karkar mountain: he also had some in Tamsaman and in Tiztoutine. In each of these two places, the fuqara' had raised a zawiya with their own hands, to receive their shaykh worthily when he came to visit them. And when Muhammad al-Fardi set out, a whole community awaited him at the end of the road, the house open and the meal ready.`,
     ]],
     [`Two sons, two zawiyas`, [
-      `Muhammad al-Fardi had several children, among them Mawlay at-Tahir and Mawlay at-Tayyib, who bore his grandfather's name. He entrusted the second to the disciples of the Tistutin zawiya, and the first to those of the Tamsaman zawiya. Each of the two sons thus went to live among fuqara' whom the father had trained, to continue his education there and gradually take his place. It was in Tamsaman that Mawlay at-Tahir would in turn become a master.`,
+      `Muhammad al-Fardi had several children, among them Mawlay at-Tahir and Mawlay at-Tayyib, who bore his grandfather's name. He entrusted the second to the disciples of the Tiztoutine zawiya, and the first to those of the Tamsaman zawiya. Each of the two sons thus went to live among fuqara' whom the father had trained, to continue his education there and gradually take his place. It was in Tamsaman that Mawlay at-Tahir would in turn become a master.`,
     ]],
     [`The man whose invocation was feared`, [
       `Muhammad al-Fardi was known for his wonders, and first of all for invocations that God answered. People knew it, and everyone took care not to cross him: no one wanted a word spoken against them, from the depths of his heart, to be heard on high.`,

@@ -173,10 +173,10 @@ export const LIGNEE = [
         "Quand Mawlay at-Tayyib mourut, les fuqara' qui avaient suivi le père se tournèrent vers le fils. Ils décidèrent, d'un commun accord, de continuer le chemin avec lui et de reconnaître en Muhammad al-Fardi leur shaykh.",
       ]],
       ["Des zawiyas pour accueillir le maître", [
-        "Ses disciples ne vivaient pas seulement sur la montagne de Karkar : il en comptait aussi à Tamsaman et à Tistutin. Dans chacune de ces deux localités, les fuqara' avaient élevé de leurs mains une zawiya, afin de recevoir dignement leur shaykh lorsqu'il viendrait leur rendre visite. Et quand Muhammad al-Fardi se mettait en route, c'était toute une communauté qui l'attendait au bout du chemin, la maison ouverte et le repas prêt.",
+        "Ses disciples ne vivaient pas seulement sur la montagne de Karkar : il en comptait aussi à Tamsaman et à Tiztoutine. Dans chacune de ces deux localités, les fuqara' avaient élevé de leurs mains une zawiya, afin de recevoir dignement leur shaykh lorsqu'il viendrait leur rendre visite. Et quand Muhammad al-Fardi se mettait en route, c'était toute une communauté qui l'attendait au bout du chemin, la maison ouverte et le repas prêt.",
       ]],
       ["Deux fils, deux zawiyas", [
-        "Muhammad al-Fardi eut plusieurs enfants, parmi lesquels Mawlay at-Tahir et Mawlay at-Tayyib, qui portait le nom de son grand-père. Il confia le second aux disciples de la zawiya de Tistutin, et le premier à ceux de la zawiya de Tamsaman. Chacun des deux fils partit ainsi vivre auprès de fuqara' que le père avait formés, pour y poursuivre son éducation et y prendre peu à peu sa place. C'est à Tamsaman que Mawlay at-Tahir deviendrait à son tour un maître.",
+        "Muhammad al-Fardi eut plusieurs enfants, parmi lesquels Mawlay at-Tahir et Mawlay at-Tayyib, qui portait le nom de son grand-père. Il confia le second aux disciples de la zawiya de Tiztoutine, et le premier à ceux de la zawiya de Tamsaman. Chacun des deux fils partit ainsi vivre auprès de fuqara' que le père avait formés, pour y poursuivre son éducation et y prendre peu à peu sa place. C'est à Tamsaman que Mawlay at-Tahir deviendrait à son tour un maître.",
       ]],
       ["Celui dont on redoutait l'invocation", [
         "Muhammad al-Fardi était connu pour ses prodiges, et d'abord pour des invocations que Dieu exauçait. On le savait, et chacun prenait garde de ne pas le contrarier : nul ne voulait qu'une parole prononcée contre lui, du fond du cœur, soit entendue là-haut.",
