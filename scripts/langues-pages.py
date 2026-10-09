@@ -34,7 +34,7 @@ HUB = [
  ("Une noble famille, jusqu'au Prophète ﷺ.", "A noble family, all the way back to the Prophet ﷺ.", "أسرة شريفة تمتدّ إلى النبي ﷺ."),
  ("<h2>Son ascendance</h2>", "<h2>His ancestry</h2>", "<h2>أصوله وأجداده</h2>"),
  ("Du Prophète ﷺ aux Idrissides du Rif : l'histoire de sa lignée.", "From the Prophet ﷺ to the Idrisids of the Rif: the story of his lineage (article in French).", "من النبي ﷺ إلى الأدارسة في الريف: قصة نسبه (المقال بالفرنسية)."),
- ('href="ascendance-prophetique.html"', 'href="../ascendance-prophetique.html"', 'href="../ascendance-prophetique.html"'),
+ ('href="ascendance-prophetique.html"', 'href="ascendance-prophetique.html"', 'href="ascendance-prophetique.html"'),
  ("<h2>Une marche de 10 ans à travers le Maroc</h2>", "<h2>A 10-year walk across Morocco</h2>", "<h2>مسيرة عشر سنوات عبر المغرب</h2>"),
  ("Seul, en quête de son Seigneur, de 1994 à 2004.", "Alone, in search of his Lord, from 1994 to 2004.", "وحيدًا، في طلب ربّه، من 1994 إلى 2004."),
  ('<span class="hub-go">Découvrir <i>→</i></span>', '<span class="hub-go">Discover <i>→</i></span>', '<span class="hub-go">اكتشف <i>←</i></span>'),

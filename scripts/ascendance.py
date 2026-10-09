@@ -114,3 +114,68 @@ PAGE = """<!doctype html>
 """
 open("ascendance-prophetique.html", "w", encoding="utf-8").write(PAGE % "\n".join("        " + c for c in CORPS))
 print("ascendance-prophetique.html")
+
+
+# ---- versions anglaise et arabe ----
+import sys
+sys.path.insert(0, "scripts")
+import ascendance_i18n as I18N
+
+L = {
+ "en": dict(dir="en", html='lang="en"', title="His ancestry — Shaykh Mohamed Faouzi Al Karkari",
+   desc="The story of Shaykh Mohamed Faouzi Al Karkari's ancestry: from the Prophet Muhammad ﷺ, through Fatima and ʿAli, to the Idrisids of the Rif.",
+   kicker="The Shaykh", h1="His ancestry, from the Prophet ﷺ to the Idrisids of the Rif", suite="His sharifian lineage", fleche="→",
+   livre=("Éditions Les 7 Lectures", "Al-Karkari", "Origins and history of a sharifian lineage", "Mohamed Ouhraich", "Order the book", "Cover of the book “Al-Karkari — Origins and history of a sharifian lineage”", "Order the book “Al-Karkari”"), corps=I18N.EN),
+ "ar": dict(dir="ar", html='lang="ar" dir="rtl"', title="أصوله وأجداده — الشيخ محمد فوزي الكركري",
+   desc="قصة نسب الشيخ محمد فوزي الكركري: من النبي محمد ﷺ، عبر فاطمة وعلي، إلى أدارسة الريف.",
+   kicker="الشيخ", h1="أصوله وأجداده، من النبي ﷺ إلى أدارسة الريف", suite="نسبه الشريف", fleche="←",
+   livre=("Éditions Les 7 Lectures", "Al-Karkari", "أصول وتاريخ سلالة شريفة", "Mohamed Ouhraich", "اطلب الكتاب", "غلاف كتاب «Al-Karkari — أصول وتاريخ سلالة شريفة»", "اطلب كتاب «Al-Karkari»"), corps=I18N.AR),
+}
+for code, d in L.items():
+    k, titre, sous, auteur, bouton, alt, aria = d["livre"]
+    promo = """      <aside class="livre-promo" data-reveal>
+        <a class="livre-promo-cover" href="https://les7lectures.com/al-karkari/" target="_blank" rel="noopener" aria-label="%s"><span class="livre-promo-3d"><img src="/media/livre-al-karkari.webp" alt="%s" loading="lazy" decoding="async" /></span></a>
+        <div class="livre-promo-txt">
+          <p class="kicker">%s</p>
+          <h3>%s</h3>
+          <p class="livre-promo-sous">%s</p>
+          <p class="livre-promo-auteur">%s</p>
+          <a class="btn-glass btn-glass--dark" href="https://les7lectures.com/al-karkari/" target="_blank" rel="noopener"><span>%s</span><i>↗</i></a>
+        </div>
+      </aside>
+""" % (aria, alt, k, titre, sous, auteur, bouton)
+    page = """<!doctype html>
+<html %s>
+<head>
+  <!--@include head-->
+  <title>%s</title>
+  <meta name="description" content="%s" />
+  <meta property="og:title" content="%s" />
+  <meta property="og:description" content="%s" />
+  <meta property="og:image" content="/media/chemin-lumiere.webp" />
+</head>
+<body data-page="shaykh">
+  <!--@include ui-->
+  <!--@include header-->
+  <!--@include menu-->
+  <div class="smooth" id="top">
+  <main>
+    <section class="shaykh-texte ascendance" id="ascendance">
+      <div class="section-head">
+        <p class="kicker">%s</p>
+        <h1 class="h2" data-split>%s</h1>
+      </div>
+      <div class="actu-corps">
+%s
+      </div>
+%s      <div class="center shaykh-suite"><a class="btn-glass btn-glass--dark" href="lignee-cherifienne.html"><span>%s</span><i>%s</i></a></div>
+    </section>
+  </main>
+  <!--@include footer-->
+  </div>
+</body>
+</html>
+""" % (d["html"], html.escape(d["title"]), html.escape(d["desc"], quote=True), html.escape(d["title"]), html.escape(d["desc"], quote=True), d["kicker"], d["h1"], "\n".join("        " + c for c in d["corps"]), promo, d["suite"], d["fleche"])
+    os.makedirs(d["dir"], exist_ok=True)
+    open("%s/ascendance-prophetique.html" % d["dir"], "w", encoding="utf-8").write(page)
+    print("%s/ascendance-prophetique.html" % d["dir"])
