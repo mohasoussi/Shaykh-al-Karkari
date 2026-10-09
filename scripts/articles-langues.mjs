@@ -12,8 +12,8 @@ const esc = (t = "") => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").r
 const lireJson = async (p) => { try { return JSON.parse(await fs.readFile(p, "utf8")); } catch { return null; } };
 const NOM_SITE = { en: "Shaykh Mohamed Faouzi Al Karkari", ar: "الشيخ محمد فوزي الكركري" };
 const LIBELLES = {
-  en: { actualite: { kicker: "News", retour: "← All news" }, enseignement: { kicker: "Teachings", retour: "← All teachings" }, prec: "← Previous article", suiv: "Next article →", autres: "Other articles" },
-  ar: { actualite: { kicker: "الأخبار", retour: "→ كل الأخبار" }, enseignement: { kicker: "الدروس", retour: "→ كل الدروس" }, prec: "→ المقال السابق", suiv: "المقال التالي ←", autres: "مقالات أخرى" },
+  en: { actualite: { kicker: "News", retour: "← All news" }, enseignement: { kicker: "Teachings", retour: "← All teachings" }, photos: "Photos", fermer: "Close", avant: "Previous photo", apres: "Next photo", prec: "← Previous article", suiv: "Next article →", autres: "Other articles" },
+  ar: { actualite: { kicker: "الأخبار", retour: "→ كل الأخبار" }, enseignement: { kicker: "الدروس", retour: "→ كل الدروس" }, photos: "صور", fermer: "إغلاق", avant: "الصورة السابقة", apres: "الصورة التالية", prec: "→ المقال السابق", suiv: "المقال التالي ←", autres: "مقالات أخرى" },
 };
 const resume = (corps) => esc(corps.replace(/<!--M\d+-->/g, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 170));
 
@@ -34,7 +34,12 @@ export async function genererArticles(localiser) {
       const fr = await lireJson(path.join(dossierFr, `${nom}.json`));
       const L = LIBELLES[code], lib = L[fr.type];
       let h = await fs.readFile(path.join(SITE, `${nom}.html`), "utf8");
-      h = h.replace(/(<div class="actu-corps">)[\s\S]*?(<\/div>\s*<nav class="actu-voisins")/, "$1@@CORPS@@$2");
+      h = h.replace(/(<div class="actu-corps">)[\s\S]*?(<\/div>\s*(?:<!--album:debut-->[\s\S]*?<!--album:fin-->\s*)?<nav class="actu-voisins")/, "$1@@CORPS@@$2");
+      // album photo : chemins relatifs, intitulé et libellés de la visionneuse
+      h = h.replace(/<!--album:debut-->[\s\S]*?<!--album:fin-->/, (a) => a
+        .replace(/(href|src)="media\//g, '$1="../media/')
+        .replace('<h2 class="album-titre">Photos</h2>', `<h2 class="album-titre">${L.photos}</h2>`)
+        .replace(/data-close="[^"]*" data-prev="[^"]*" data-next="[^"]*"/, `data-close="${L.fermer}" data-prev="${L.avant}" data-next="${L.apres}"`));
       h = localiser(h, code).replace('<html lang="fr">', `<html lang="${code}"${code === "ar" ? ' dir="rtl"' : ""}>`);
       const titre = titreDe(code, nom, fr, t);
       let corps = t.corps.replace(/<!--M(\d+)-->/g, (_, i) => fr.figures[+i] ?? "");

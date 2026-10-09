@@ -10,7 +10,7 @@ const decode = (s) => s.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&g
 let n = 0, mots = 0;
 for (const f of (await fs.readdir(SITE)).filter((x) => /^(actualite|enseignement)-.+\.html$/.test(x))) {
   const h = await fs.readFile(path.join(SITE, f), "utf8");
-  const corps = h.match(/<div class="actu-corps">([\s\S]*?)<\/div>\s*<nav class="actu-voisins"/);
+  const corps = h.match(/<div class="actu-corps">([\s\S]*?)<\/div>\s*(?:<!--album:debut-->[\s\S]*?<!--album:fin-->\s*)?<nav class="actu-voisins"/);
   if (!corps) { console.warn("sans corps :", f); continue; }
   const titre = decode(h.match(/<h1>([\s\S]*?)<\/h1>/)?.[1] || "");
   const date = h.match(/<time datetime="([^"]+)"/)?.[1] || "";
