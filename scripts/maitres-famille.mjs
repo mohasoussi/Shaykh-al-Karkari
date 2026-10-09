@@ -35,7 +35,7 @@ export const FAMILLE = [
   {
     cle: "Sidi Mawlay at-Tahir", slug: "mawlay-at-tahir", livre: "al-karkari", nom: "Sidi Mawlay at-Tahir al-Karkari",
     sous: "Mort en 1976 · Tamsaman (Rif) · disciple de Sidi Ahmad al-ʿAlawi",
-    intro: "Mawlay at-Tahir al-Karkari est le maître qui réunit, au XXe siècle, la tradition familiale de la montagne de Karkar et la voie shadhilie-ʿalawie de Mostaganem. Juriste de formation, il fonda à Tamsaman la zawiya où se forma la transmission qui mène au Shaykh Mohamed Faouzi Al Karkari.",
+    intro: "Mawlay at-Tahir al-Karkari est le maître qui réunit, au XXe siècle, la tradition familiale de la montagne de Karkar et la voie shadhilie-ʿalawie de Mostaganem. Juriste de formation, il s'établit à Tamsaman, dans la zawiya construite par les disciples de son père, où se forma la transmission qui mène au Shaykh Mohamed Faouzi Al Karkari.",
     sections: [
       ["Naissance et famille", [
         "Mawlay at-Tahir naquit sur la montagne de Karkar, dans le Rif oriental, non loin de la zawiya et de la tombe de son arrière-grand-père, Muhammad ibn Qaddour al-Wakili. Il y fonda aussi sa famille. Son père, Mawlay Muhammad al-Fardi, était réputé pour sa droiture ; son grand-père, Mawlay at-Tayyib, était le fils aîné d'Ibn Qaddour.",
@@ -43,12 +43,16 @@ export const FAMILLE = [
       ["Éducation", [
         "Il reçut une éducation religieuse complète auprès des juristes de sa région et devint lui-même faqih, c'est-à-dire connaisseur du droit islamique. Une anecdote sur son père, rapportée par les proches de la famille, illustre l'esprit dans lequel il fut élevé : envoyé à Fès à l'époque du protectorat, Muhammad al-Fardi répondit franchement, à un barrage des troupes d'occupation, qu'il avait de l'argent sur lui, alors que tous les autres voyageurs prétendaient le contraire ; ses interlocuteurs, incrédules, le laissèrent passer. La droiture était, pour cette famille, la première des vertus.",
       ]],
+      ["À Tamsaman, avant la rencontre avec al-ʿAlawi", [
+        "Devenu adulte, Mawlay at-Tahir quitta la montagne de Karkar pour Tamsaman. Son père, Mawlay Muhammad al-Fardi, avait des disciples dans cette ville ; ils y avaient construit une zawiya pour l'accueillir lorsqu'il venait leur rendre visite. Muhammad al-Fardi décida d'y envoyer son fils, afin qu'il y vive, dans cette zawiya, auprès de ses disciples.",
+        "Cela se passait avant sa rencontre avec Ahmad al-ʿAlawi : lorsqu'il partit pour Mostaganem, Mawlay at-Tahir avait donc déjà des fuqara' (des disciples) et une zawiya à Tamsaman.",
+      ]],
       ["La rencontre avec Ahmad al-ʿAlawi", [
         "Insatisfait de la seule acquisition des sciences religieuses, Mawlay at-Tahir cherchait un guide spirituel. Il le trouva en la personne du cheikh Ahmad al-ʿAlawi de Mostaganem (Algérie), chez qui il se rendit avec son oncle Sidi Muhammad as-Saghir et Sidi Muhammad ibn al-Hajj as-Salih. Cette visite est mentionnée dans l'ouvrage <em>ar-Rawda as-saniyya</em> du cheikh ʿAdda Bentounes. Ils furent accueillis et hébergés trois jours, reçurent l'initiation (wird) et devinrent disciples de la confrérie.",
       ]],
       ["Autorisation d'enseigner", [
         "Le même ouvrage indique que Mawlay at-Tahir et son oncle reçurent de Sidi Ahmad al-ʿAlawi l'autorisation de transmettre le wird de la confrérie, et que Mawlay at-Tahir reçut en plus celle d'encadrer les disciples (fuqara') et de leur enseigner les disciplines spirituelles de la voie. Du vivant même de son maître, c'est par ses mains que passaient, pour la région de Tamsaman, les initiations. Dans les dernières années de la vie d'al-ʿAlawi, malade, il se rendait chaque année à Mostaganem pour la grande réunion annuelle (mawsim) et dirigeait les retraites des disciples.",
-        "Sa zawiya, installée à Tamsaman, attirait un nombre important de disciples : on raconte que, lors des rassemblements annuels, les vêtements blancs des visiteurs couvraient la montagne où elle se trouve. Après la mort d'al-ʿAlawi en 1934, il devint l'un des principaux relais de cette tradition au Maroc. Un mot d'al-ʿAlawi est resté : en citant la sourate Yusuf (« votre bien vous a été rendu »), il fit comprendre que l'autorité spirituelle, partie de chez l'ancêtre Ibn Qaddour, était revenue dans sa famille.",
+        "Sa zawiya de Tamsaman, ouverte bien avant son voyage à Mostaganem, attirait un nombre important de disciples : on raconte que, lors des rassemblements annuels, les vêtements blancs des visiteurs couvraient la montagne où elle se trouve. Après la mort d'al-ʿAlawi en 1934, il devint l'un des principaux relais de cette tradition au Maroc. Un mot d'al-ʿAlawi est resté : en citant la sourate Yusuf (« votre bien vous a été rendu »), il fit comprendre que l'autorité spirituelle, partie de chez l'ancêtre Ibn Qaddour, était revenue dans sa famille.",
       ]],
       ["Caractère et enseignement", [
         "Ceux qui l'ont connu le décrivent comme généreux, courageux et ferme, mais doux quand la situation s'y prêtait ; aimant plaisanter avec ses compagnons, il ne tenait dans ses réunions que des propos édifiants. Le Shaykh Mohamed Faouzi aurait résumé la différence entre les deux fils de la lignée en disant que Mawlay at-Tahir se distinguait par la rigueur, et Mawlay al-Hassan par la douceur.",
