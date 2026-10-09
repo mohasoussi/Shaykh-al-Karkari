@@ -1713,3 +1713,6 @@ body { background: var(--dusk-deep-2); }
 .galerie-page .album .section-head { padding: 0 var(--gutter) !important; margin-top: 0 !important; margin-bottom: clamp(22px, 3vw, 36px) !important; }
 .galerie-page .album { padding: clamp(36px, 5vw, 70px) 0; }
 .site-carte figure.site-logo img { object-fit: contain; padding: 6%; }
+.marche-fig { margin: 22px calc(-1 * clamp(0px, 5vw, 70px)) 26px; }
+.marche-fig img { display: block; width: 100%; height: clamp(220px, 40vw, 440px); object-fit: cover; border-radius: 18px; }
+@media (max-width: 760px) { .marche-fig { margin-inline: 0; } }

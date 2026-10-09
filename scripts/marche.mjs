@@ -51,7 +51,7 @@ const SECTIONS = [
       "لم يخرج لمشروعٍ ما، بل خرج لأنه لم يعد يحتمل: فالمحن والمظالم والصعوبات الكبرى التي طبعت شبابه أغرقته في ضيقٍ ويأسٍ عميقين. وقد حاول أن ينهي حياته فلم يُوفَّق. ولمّا لم يعد قادرًا على العيش حيث كان، قرّر أن يفرّ من حياته بمغادرة الأرض التي نشأ فيها.",
       "اتجه نحو فاس، وليس معه شيء: لا مال ولا مأوى ولا خطة.",
     ]] },
-  { fr: ["Fès : une année sur des cartons", [
+  { img: ["/media/marche-bab-boujloud.webp", ["Bab Boujloud, la porte bleue de Fès, au crépuscule", "Bab Boujloud, the blue gate of Fez, at dusk", "باب بوجلود، الباب الأزرق لفاس، عند الغروب"]], fr: ["Fès : une année sur des cartons", [
       "À Fès, le jeune homme est un vagabond. La nuit, il dort sur des cartons, près de Bab Boujloud. Le jour, il fréquente les quartiers de passage et les zones touristiques, où il vend des mouchoirs à la sauvette pour gagner quelques dirhams et pouvoir manger.",
       "Il reste ainsi à Fès pendant un an.",
     ]],
@@ -90,7 +90,7 @@ const SECTIONS = [
       "لم يكن له قصدٌ ولا وجهةٌ ولا غاية. سلك طريقًا على غير هدى، فمرّ به على مدنٍ وقرى المغرب الشرقي ثم الأوسط واحدةً بعد أخرى: تاوريرت، كرسيف، تازة، فاس، وكل القرى المجاورة، مكناس، ثم سيدي سليمان والقنيطرة. ومن هناك سار محاذيًا ساحل الأطلسي، مرورًا بالمهدية، حتى سلا.",
       "استغرقت الرحلة سنتين. ودخل سلا في يوليو 1999م، والمغرب في أيام الحداد على وفاة الملك الحسن الثاني.",
     ]] },
-  { fr: ["Rabat-Salé : la grotte au bord de la mer", [
+  { img: ["/media/marche-grotte-rabat.webp", ["La plage de Rabat-Salé, où se trouvait la petite grotte", "The beach at Rabat-Salé, where the small cave was", "شاطئ الرباط وسلا حيث كانت المغارة الصغيرة"]], fr: ["Rabat-Salé : la grotte au bord de la mer", [
       "Il reste quelques mois à Rabat et Salé. Sur la plage, il trouve une petite grotte, où il élit domicile. Face à elle se dresse un rocher que la mer recouvre à marée haute : il y laisse ses affaires pendant la journée.",
       "Le jour, il part travailler, dans les sources et là où il trouve de quoi gagner sa vie. Le soir, il s'efforce de rentrer avant que la marée ne monte, pour dormir en paix sur cet îlot que l'eau entoure complètement.",
     ]],
@@ -102,7 +102,7 @@ const SECTIONS = [
       "أقام بضعة أشهر بين الرباط وسلا. وجد على الشاطئ مغارةً صغيرة اتخذها مسكنًا. وكانت قبالتها صخرةٌ يغمرها البحر عند المدّ، فكان يترك أغراضه عليها في النهار.",
       "وفي النهار يذهب إلى العمل حيث يجد ما يكسب به عيشه، وفي المساء يحرص على العودة قبل ارتفاع المدّ لينام آمنًا مطمئنًّا على تلك الجزيرة الصغيرة التي يحيط بها الماء من كل جانب.",
     ]] },
-  { fr: ["Marrakech : la place Jemaa el-Fna (début 2000)", [
+  { img: ["/media/marche-jemaa-el-fna.webp", ["La place Jemaa el-Fna, à Marrakech, au coucher du soleil", "Jemaa el-Fna square in Marrakech at sunset", "ساحة جامع الفنا في مراكش عند الغروب"]], fr: ["Marrakech : la place Jemaa el-Fna (début 2000)", [
       "Il retourne à Fès, puis repart à pied vers Marrakech en traversant le Moyen Atlas : Moulay Bouazza, El Hajeb, Béni Mellal, Fquih Ben Salah, Khénifra, Bouya Omar, jusqu'à Marrakech, où il arrive vers janvier 2000.",
       "Il y reste environ quatre mois, sur la place Jemaa el-Fna. La nuit, il dort sur des cartons. Le jour, il porte une boîte remplie de petites choses, des sucettes notamment, qu'il essaie de vendre aux touristes pour gagner un peu d'argent.",
       "Certains jours, il ne vend rien et n'a pas un dirham. Il lui faut alors frapper à la porte des gens, fouiller les poubelles. Il lui arrive de rester trois jours sans manger, et la faim le pousse parfois à manger des feuilles d'arbres.",
@@ -117,7 +117,7 @@ const SECTIONS = [
       "أقام بها قرابة أربعة أشهر في ساحة جامع الفنا. ينام الليل على الكرتون، ويحمل في النهار صندوقًا فيه أشياء صغيرة، منها المصّاصات، يحاول بيعها للسيّاح ليجمع قليلًا من المال.",
       "وفي بعض الأيام لا يبيع شيئًا ولا يملك درهمًا واحدًا، فيطرق أبواب الناس ويفتّش في القمامة. وربما مرّت عليه ثلاثة أيام بلا طعام، فيلجئه الجوع أحيانًا إلى أكل أوراق الشجر.",
     ]] },
-  { fr: ["Agadir, en traversant l'Atlas (été 2000)", [
+  { img: ["/media/marche-agadir.webp", ["La plage d'Agadir et la colline de la Kasbah", "The beach at Agadir and the Kasbah hill", "شاطئ أكادير وتلّة القصبة"]], fr: ["Agadir, en traversant l'Atlas (été 2000)", [
       "Vers mai 2000, il quitte Marrakech pour Agadir. Il traverse le Haut Atlas par Chichaoua et Imintanout, un passage très difficile à pied. Il arrive à Agadir pour l'été 2000 et y passe la saison.",
     ]],
     en: ["Agadir, across the Atlas (summer 2000)", [
@@ -126,7 +126,7 @@ const SECTIONS = [
     ar: ["أكادير، عبر الأطلس (صيف 2000)", [
       "نحو ماي 2000م غادر مراكش إلى أكادير. عبر الأطلس الكبير عن طريق شيشاوة وإمنتانوت، وهو ممرٌّ شديد الصعوبة لمن يقطعه ماشيًا. وبلغ أكادير مع صيف 2000م وقضى فيها الموسم.",
     ]] },
-  { fr: ["Vers le sud : Guelmim, Assa-Zag et Al Mahbes", [
+  { img: ["/media/marche-assa-zag.webp", ["Une ville du Sud marocain, au pied des montagnes et de la palmeraie", "A town in southern Morocco, at the foot of the mountains and the palm grove", "مدينة في الجنوب المغربي عند سفح الجبال وواحة النخيل"]], fr: ["Vers le sud : Guelmim, Assa-Zag et Al Mahbes", [
       "Puis la fatigue et le désespoir reviennent, et la vie lui est de nouveau intenable. Il a besoin de changer d'air, et il repart vers le sud. Là encore, il ne sait pas où il va. Il prend une route au hasard et la suit.",
       "Cette route est celle qui mène vers le Sahara. Il ne le sait pas. Il marche jusqu'à Guelmim, puis jusqu'à la ville saharienne d'Assa-Zag, et jusqu'au poste frontière d'Al Mahbes.",
       "Il y rencontre des militaires originaires de sa région d'origine, celle de Taza. Pendant quelques mois, il vit avec eux, à la caserne.",
@@ -209,6 +209,8 @@ const SECTIONS = [
     ]] },
 ];
 
+const k0 = (c) => ({ fr: 0, en: 1, ar: 2 })[c];
+
 const GABARIT = (L, code, corps, video, lien) => `<!doctype html>
 <html lang="${code}"${code === "ar" ? ' dir="rtl"' : ""}>
 <head>
@@ -248,7 +250,7 @@ ${video}    <section class="shaykh-texte maitre">
 `;
 
 for (const [code, L] of Object.entries(LANG)) {
-  const corps = SECTIONS.map((s) => `        <h3>${esc(s[code][0])}</h3>\n${s[code][1].map((p) => (typeof p === "string" ? `        <p>${esc(p)}</p>` : `        <p><a class="btn-glass btn-glass--dark" href="${L.dir ? "../" : ""}enseignement-siyaha-maitres-soufis.html"><span>${esc(p.lien)}</span><i>${L.fleche}</i></a></p>`)).join("\n")}`).join("\n");
+  const corps = SECTIONS.map((s, k) => `        <h3>${esc(s[code][0])}</h3>\n${s.img ? `        <figure class="marche-fig" data-reveal><img src="${s.img[0]}" alt="${esc(s.img[1][k0(code)])}" loading="lazy" decoding="async" /></figure>\n` : ""}${s[code][1].map((p) => (typeof p === "string" ? `        <p>${esc(p)}</p>` : `        <p><a class="btn-glass btn-glass--dark" href="${L.dir ? "../" : ""}enseignement-siyaha-maitres-soufis.html"><span>${esc(p.lien)}</span><i>${L.fleche}</i></a></p>`)).join("\n")}`).join("\n");
   const video = bandeVideos(
     [{ id: "marche-video", yt: "https://www.youtube.com/watch?v=J4I9HiyCC1I",
       place: { [code]: L.videoPlace }, t: { [code]: L.video }, d: { [code]: L.videoDesc } }],
