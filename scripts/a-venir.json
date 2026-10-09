@@ -1,0 +1,137 @@
+[
+ {
+  "id": "retraite-automne-2026",
+  "debut": "2026-11-12",
+  "fin": "2026-11-16",
+  "image": "/media/avenir/retraite-automne-2026.webp",
+  "imageAlt": {
+   "fr": "Affiche de la retraite d'automne à Nauvoo, Illinois, du 12 au 16 novembre 2026",
+   "en": "Poster of the Autumn Retreat in Nauvoo, Illinois, 12–16 November 2026",
+   "ar": "ملصق الخلوة الخريفية في نوفو، إلينوي، من 12 إلى 16 نوفمبر 2026"
+  },
+  "titre": {
+   "fr": "La retraite d'automne",
+   "en": "The Autumn Retreat",
+   "ar": "الخلوة الخريفية"
+  },
+  "type": {
+   "fr": "Retraite spirituelle",
+   "en": "Spiritual retreat",
+   "ar": "خلوة روحية"
+  },
+  "dates": {
+   "fr": "12 – 16 novembre 2026",
+   "en": "12 – 16 November 2026",
+   "ar": "12 – 16 نوفمبر 2026"
+  },
+  "lieu": {
+   "fr": "Nauvoo, Illinois (États-Unis)",
+   "en": "Nauvoo, Illinois (United States)",
+   "ar": "نوفو، إلينوي (الولايات المتحدة)"
+  },
+  "organisateur": {
+   "fr": "The Zawiya Foundation",
+   "en": "The Zawiya Foundation",
+   "ar": "The Zawiya Foundation"
+  },
+  "devise": {
+   "fr": "De la création au Créateur",
+   "en": "From creation to the Creator",
+   "ar": "من الخلق إلى الخالق"
+  },
+  "intro": {
+   "fr": "The Zawiya Foundation vous invite à une retraite spirituelle de quatre nuits, dans le cadre paisible de Nauvoo, dans l'Illinois. Tout au long de la retraite, nos journées et nos nuits s'organiseront autour de :",
+   "en": "The Zawiya Foundation invites you to a four-night spiritual retreat in the peaceful surroundings of Nauvoo, Illinois. Throughout the retreat, our days and nights will be centred around:",
+   "ar": "تدعوكم The Zawiya Foundation إلى خلوة روحية تمتدّ أربع ليالٍ في أجواء نوفو الهادئة بولاية إلينوي. وطوال الخلوة ستدور أيامنا ولياليها حول:"
+  },
+  "programme": {
+   "fr": [
+    "Les cinq prières quotidiennes",
+    "Le dhikr et la hadra",
+    "Le qiyam al-layl (la prière de la nuit)",
+    "Des séances de questions-réponses avec le Shaykh",
+    "Le samāʿ et la musique spirituelle",
+    "Des marches dans la nature",
+    "La fraternité et les moments partagés"
+   ],
+   "en": [
+    "The five daily prayers",
+    "Dhikr & Hadra",
+    "Qiyam al-Layl",
+    "Q&A sessions with the Shaykh",
+    "Samāʿ & spiritual music",
+    "Nature hikes",
+    "Fellowship and shared moments together"
+   ],
+   "ar": [
+    "الصلوات الخمس اليومية",
+    "الذكر والحضرة",
+    "قيام الليل",
+    "جلسات أسئلة وأجوبة مع الشيخ",
+    "السماع والموسيقى الروحية",
+    "نزهات في الطبيعة",
+    "الأخوّة واللحظات المشتركة"
+   ]
+  },
+  "inclusTitre": {
+   "fr": "Votre contribution comprend",
+   "en": "Your retreat contribution includes",
+   "ar": "تشمل مساهمتكم"
+  },
+  "inclus": {
+   "fr": [
+    "4 nuits d'hébergement",
+    "4 repas halal et sains par jour : petit-déjeuner, déjeuner, collation de l'après-midi et dîner",
+    "Toutes les activités et tout le programme de la retraite"
+   ],
+   "en": [
+    "4 nights of accommodation",
+    "4 healthy halal meals each day: breakfast, lunch, afternoon tea/snack, and dinner",
+    "All retreat activities and programming"
+   ],
+   "ar": [
+    "أربع ليالٍ من الإقامة",
+    "أربع وجبات حلال صحية يوميًا: الفطور والغداء ووجبة خفيفة بعد الظهر والعشاء",
+    "جميع أنشطة الخلوة وبرنامجها"
+   ]
+  },
+  "places": {
+   "fr": "Places limitées : 10 des 30 places sont déjà réservées, il n'en reste que 20.",
+   "en": "Spots are limited: 10 of our 30 spots are already reserved, leaving only 20 places available.",
+   "ar": "الأماكن محدودة: حُجز 10 من أصل 30 مكانًا، ولم يبقَ سوى 20 مكانًا."
+  },
+  "echeance": {
+   "fr": "Date limite d'inscription : 30 septembre 2026. Pour réserver votre place, vous devez remplir le formulaire d'inscription Google ET effectuer votre paiement avant le 30 septembre. Les inscriptions ou paiements reçus après cette date ne seront pas acceptés.",
+   "en": "RSVP deadline: 30 September 2026. To secure your place, you must complete the Google RSVP form AND submit your payment before 30 September. RSVPs or payments submitted after the deadline will not be accepted.",
+   "ar": "آخر موعد للتسجيل: 30 سبتمبر 2026. لحجز مكانكم عليكم ملء استمارة التسجيل على Google وسداد المبلغ قبل 30 سبتمبر. ولن تُقبل الاستمارات أو المدفوعات الواردة بعد هذا الموعد."
+  },
+  "questions": {
+   "fr": "Pour toute question ou information complémentaire, merci de nous écrire en message privé.",
+   "en": "For any questions or additional information, please reach out privately.",
+   "ar": "لأي استفسار أو معلومات إضافية، يُرجى مراسلتنا على الخاص."
+  },
+  "conclusion": {
+   "fr": "Nous avons hâte de nous retrouver pour quatre nuits de rappel, de présence et de compagnonnage.",
+   "en": "We look forward to gathering once again for four nights of remembrance, presence, and companionship.",
+   "ar": "نتطلع إلى اللقاء من جديد في أربع ليالٍ من الذكر والحضور والصحبة."
+  },
+  "boutons": [
+   {
+    "url": "https://www.facebook.com/share/1GrgsrrU99/?mibextid=wwXIfr",
+    "label": {
+     "fr": "Voir l'événement sur Facebook",
+     "en": "View the event on Facebook",
+     "ar": "عرض الفعالية على فيسبوك"
+    }
+   },
+   {
+    "url": "https://docs.google.com/forms/d/e/1FAIpQLSfUa6MhMNPegBylR4PCZllqln8KM32FjGwFbwWk1PMFCJ-Pgw/viewform",
+    "label": {
+     "fr": "Formulaire d'inscription",
+     "en": "RSVP form",
+     "ar": "استمارة التسجيل"
+    }
+   }
+  ]
+ }
+]

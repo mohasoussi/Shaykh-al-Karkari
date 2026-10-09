@@ -1770,3 +1770,31 @@ html[lang="ar"] [data-split] > div { padding-block: 0.14em; margin-block: -0.14e
 .actu-groupe:first-child { margin-top: 8px; }
 .actu-groupe-titre { max-width: var(--max); margin: 0 auto 26px; padding: 0 var(--gutter); font-family: var(--serif); font-weight: 500; font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.15; display: flex; align-items: baseline; gap: 14px; }
 .actu-groupe-titre span { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.12em; color: var(--gold); border: 1px solid currentColor; border-radius: 999px; padding: 3px 11px; }
+
+/* Actualités : page à deux cartes + événements à venir */
+@media (min-width: 981px) { .hub-cards--2 { grid-template-columns: repeat(2, 1fr); } }
+.avenir { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+.avenir-tete { padding-bottom: 20px; }
+.avenir-carte { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(26px, 4vw, 56px); align-items: start; padding: clamp(22px, 3vw, 40px); border-radius: 26px; background: #ece0c8; margin-bottom: 40px; }
+.avenir-affiche { margin: 0; position: sticky; top: 130px; border-radius: 18px; overflow: hidden; box-shadow: 0 18px 50px rgba(20, 24, 34, 0.25); }
+.avenir-affiche img { display: block; width: 100%; height: auto; }
+.avenir-tag { margin: 0 0 10px; font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; color: #9a6d2a; font-weight: 600; }
+.avenir-txt h2 { margin: 0 0 18px; font-family: var(--serif); font-weight: 500; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.05; }
+.avenir-txt h3 { margin: 26px 0 8px; font-family: var(--serif); font-weight: 500; font-size: 1.35rem; }
+.avenir-txt p { margin: 0 0 14px; line-height: 1.7; }
+.avenir-infos { margin: 0 0 22px; display: grid; gap: 8px; }
+.avenir-infos div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 12px; }
+.avenir-infos dt { font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6b6558; padding-top: 3px; }
+.avenir-infos dd { margin: 0; font-weight: 600; }
+.avenir-liste { margin: 0 0 8px; padding: 0; list-style: none; display: grid; gap: 6px; }
+.avenir-liste li { position: relative; padding-left: 22px; line-height: 1.55; }
+.avenir-liste li::before { content: "✦"; position: absolute; left: 0; top: 0; color: #b4812f; font-size: 0.8rem; }
+.avenir-alerte { margin-top: 22px !important; padding: 14px 18px; border-radius: 14px; background: rgba(180, 129, 47, 0.16); }
+.avenir-note { font-size: 0.92rem; color: #5a5446; }
+.avenir-fin { font-style: italic; }
+.avenir-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px; }
+.avenir-suite { margin: 10px 0 120px; }
+html[dir="rtl"] .avenir-liste li { padding-left: 0; padding-right: 22px; }
+html[dir="rtl"] .avenir-liste li::before { left: auto; right: 0; }
+@media (max-width: 860px) { .avenir-carte { grid-template-columns: 1fr; } .avenir-affiche { position: static; max-width: 420px; margin: 0 auto; } .avenir-infos div { grid-template-columns: 1fr; gap: 2px; } }
+.hub-card--avenir img { filter: brightness(0.62) saturate(1.05); }

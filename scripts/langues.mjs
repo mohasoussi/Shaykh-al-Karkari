@@ -204,8 +204,8 @@ async function accueil() {
 /* ---------- listes d'articles ---------- */
 const LISTES_TR = {
   actualites: {
-    en: { kicker: "News", titre: "News", lede: "Gatherings, lectures, publications: the news of the Shaykh and his work.", description: "News of Shaykh Mohamed Faouzi Al Karkari: gatherings, lectures, publications.", vide: "Articles will soon be published here." },
-    ar: { kicker: "الأخبار", titre: "الأخبار", lede: "لقاءات ومحاضرات ومنشورات: أخبار الشيخ وعمله.", description: "أخبار الشيخ محمد فوزي الكركري: لقاءات ومحاضرات ومنشورات.", vide: "ستُنشر المقالات هنا قريبًا." },
+    en: { kicker: "News", titre: "Past news", lede: "Gatherings, lectures, publications: all the news of the Shaykh and his work.", description: "News of Shaykh Mohamed Faouzi Al Karkari: gatherings, lectures, publications.", vide: "Articles will soon be published here." },
+    ar: { kicker: "الأخبار", titre: "الأخبار السابقة", lede: "لقاءات ومحاضرات ومنشورات: جميع أخبار الشيخ وعمله.", description: "أخبار الشيخ محمد فوزي الكركري: لقاءات ومحاضرات ومنشورات.", vide: "ستُنشر المقالات هنا قريبًا." },
   },
   humanitaire: {
     en: { kicker: "Humanitarian actions", titre: "Humanitarian actions", lede: "Wells, school kits, help for orphans, food donations: the humanitarian actions carried out by the disciples of the Karkariya path around the world.", description: "The humanitarian actions of the Karkariya around the world: wells, help for orphans, school kits, food donations.", vide: "Humanitarian actions will soon be presented here." },

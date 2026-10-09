@@ -453,7 +453,7 @@ function navigation() {
     liens[id]?.classList.add("is-current");
   };
   if (page === "shaykh" || page === "conferences") actif(page);
-  if (page === "actualites" || page === "actualite" || page === "actions-humanitaires") actif("ecrits");
+  if (page === "actualites" || page === "actualite" || page === "actions-humanitaires" || page === "actualites-passees" || page === "actualites-a-venir") actif("ecrits");
   if (page === "home" && $("#ecrits"))
     ScrollTrigger.create({
       trigger: "#ecrits",

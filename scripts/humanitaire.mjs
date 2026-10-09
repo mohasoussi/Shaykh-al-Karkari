@@ -7,6 +7,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { esc, pageListe, cartesAccueil, LISTES } from "./gabarits-actualites.mjs";
+import { genererHub } from "./actualites-hub.mjs";
 
 const SITE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const REGLE = /humanitaire|puits|kits? scolaires?|orphelin|eau potable|rohingya|sinistr|cataracte|tricycle|camionnette|[ée]cole primaire|sans-papiers|(apportent?|apporte) (de )?(la )?joie|villageois|apport des soufis/i;
@@ -63,10 +64,10 @@ export async function separerHumanitaire(racine = SITE) {
       await fs.writeFile(f, h);
     }
   };
-  await regler(reste, "Actualités", "actualites.html", "← Toutes les actualités");
+  await regler(reste, "Actualités", "actualites-passees.html", "← Toutes les actualités");
   await regler(hum, "Actions humanitaires", "actions-humanitaires.html", "← Toutes les actions humanitaires");
 
-  await fs.writeFile(path.join(racine, "actualites.html"), pageListe(reste));
+  await fs.writeFile(path.join(racine, "actualites-passees.html"), pageListe(reste));
   await fs.writeFile(path.join(racine, "actions-humanitaires.html"), pageListe(hum, { ...LISTES.humanitaire, groupes: grouper(hum).map((arts, i) => ({ titre: RUBRIQUES.fr[i], articles: arts })) }));
   await fs.writeFile(jsonActu, JSON.stringify(reste, null, 2) + "\n");
   await fs.writeFile(path.join(racine, "src", "data", "humanitaire.json"), JSON.stringify(hum, null, 2) + "\n");
@@ -76,6 +77,7 @@ export async function separerHumanitaire(racine = SITE) {
   let h = await fs.readFile(accueil, "utf8");
   if (reste.length && h.includes("<!--actualites:debut-->"))
     await fs.writeFile(accueil, h.replace(/<!--actualites:debut-->[\s\S]*?<!--actualites:fin-->/, `<!--actualites:debut-->\n${cartesAccueil(reste)}        <!--actualites:fin-->`));
+  genererHub(); // page « Actualités » (deux cartes) et « Prochainement »
   return { actualites: reste.length, humanitaire: hum.length, hum };
 }
 
