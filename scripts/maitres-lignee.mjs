@@ -163,11 +163,37 @@ export const LIGNEE = [
   L({
     cle: "Moulay Muhammad al-Fardiy", slug: "muhammad-al-fardi", nom: "Mawlay Muhammad al-Fardi",
     sous: "XIXe-XXe siècle · Montagne de Karkar (Rif) · père de Mawlay at-Tahir",
-    intro: "Mawlay Muhammad al-Fardi est le petit-fils d'Ibn Qaddour, le père de Mawlay at-Tahir et le grand-père de Mawlay al-Hassan. Il était réputé dans le Rif pour sa droiture et son honnêteté.",
+    intro: "Sur les hauteurs de la montagne de Karkar, dans le Rif oriental, Mawlay Muhammad al-Fardi grandit à l'ombre de la zawiya de son grand-père, Ibn Qaddour. Devenu à son tour le maître que suivaient les fuqara' de la région, il fut connu de toute la contrée pour trois choses : des invocations que Dieu exauçait, une sagesse qui mit fin à des guerres entre tribus et une droiture que rien ne pouvait plier. Il est le père de Mawlay at-Tahir et le grand-père de Mawlay al-Hassan.",
     sections: [
-      ["Éducation", ["Il fut éduqué par son père, Mawlay at-Tayyib, fils aîné d'Ibn Qaddour, qui insistait particulièrement sur la sincérité et l'honnêteté."]],
-      ["Une réputation de droiture", ["Une anecdote rapportée par sa famille illustre cette réputation : à l'époque du protectorat, alors qu'il se rendait à Fès, il fut arrêté avec les autres voyageurs à un barrage de contrôle. Tous prétendaient ne pas avoir d'argent sur eux ; lui reconnut en avoir et dit le montant. Ses interlocuteurs, incrédules, se moquèrent de lui et le laissèrent passer sans le fouiller."]],
-      ["Descendance", ["Il fut le père de Mawlay at-Tahir, qui rejoignit Ahmad al-ʿAlawi, fonda la zawiya de Tamsaman et fut à son tour le père de Mawlay al-Hassan. Mawlay at-Tahir compta son propre père parmi ses disciples."]],
+      ["Un enfant de la montagne de Karkar", [
+        "Muhammad al-Fardi vit le jour sur la montagne de Karkar, là même où son grand-père, Muhammad ibn Qaddour al-Wakili, avait bâti sa zawiya et réuni ses disciples sous les arbres. Son père, Mawlay at-Tayyib, fils aîné d'Ibn Qaddour, avait reçu la charge de gérer la zawiya de son grand-père. C'est dans cette maison de dévotion et d'hospitalité que l'enfant grandit, entre les récitations, les repas partagés et les allées et venues des disciples.",
+        "Mawlay at-Tayyib lui enseigna avant tout la sincérité et l'honnêteté : dans cette famille, la droiture passait avant toutes les autres vertus.",
+      ]],
+      ["Le choix des fuqara'", [
+        "Quand Mawlay at-Tayyib mourut, les fuqara' qui avaient suivi le père se tournèrent vers le fils. Ils décidèrent, d'un commun accord, de continuer le chemin avec lui et de reconnaître en Muhammad al-Fardi leur shaykh.",
+      ]],
+      ["Des zawiyas pour accueillir le maître", [
+        "Ses disciples ne vivaient pas seulement sur la montagne de Karkar : il en comptait aussi à Tamsaman et à Tistutin. Dans chacune de ces deux localités, les fuqara' avaient élevé de leurs mains une zawiya, afin de recevoir dignement leur shaykh lorsqu'il viendrait leur rendre visite. Et quand Muhammad al-Fardi se mettait en route, c'était toute une communauté qui l'attendait au bout du chemin, la maison ouverte et le repas prêt.",
+      ]],
+      ["Deux fils, deux zawiyas", [
+        "Muhammad al-Fardi eut plusieurs enfants, parmi lesquels Mawlay at-Tahir et Mawlay at-Tayyib, qui portait le nom de son grand-père. Il confia le second aux disciples de la zawiya de Tistutin, et le premier à ceux de la zawiya de Tamsaman. Chacun des deux fils partit ainsi vivre auprès de fuqara' que le père avait formés, pour y poursuivre son éducation et y prendre peu à peu sa place. C'est à Tamsaman que Mawlay at-Tahir deviendrait à son tour un maître.",
+      ]],
+      ["Celui dont on redoutait l'invocation", [
+        "Muhammad al-Fardi était connu pour ses prodiges, et d'abord pour des invocations que Dieu exauçait. On le savait, et chacun prenait garde de ne pas le contrarier : nul ne voulait qu'une parole prononcée contre lui, du fond du cœur, soit entendue là-haut.",
+      ]],
+      ["Celui qui fit taire la guerre", [
+        "Une guerre de plusieurs décennies opposait deux tribus de la région, les Bani Bouyahyi et les Mtalsa. On se battait pour la terre, et plus encore pour l'eau : pour des puits, et chaque puits avait déjà coûté des vies. Les morts s'accumulaient et la paix paraissait hors de portée.",
+        "C'est à Muhammad al-Fardi que les deux camps finirent par s'en remettre. Il les mit d'accord, les réconcilia, et partagea le territoire avec une telle équité que chacun put l'accepter. Les deux tribus avaient plus confiance en lui qu'en leur propre qaïd, à qui revenait pourtant, normalement, ce rôle d'arbitre. On parla longtemps de lui comme de l'homme qui avait mis fin à cette guerre.",
+      ]],
+      ["Le voyageur qui ne mentait jamais", [
+        "Un jour, son père l'envoya à Fès. À cette époque, le pays était coupé en deux : Fès relevait du protectorat français, le Rif du protectorat espagnol, et entre les deux zones se dressait un poste frontière dont les voyageurs gardaient un mauvais souvenir. Les gardes n'y avaient pas la main légère : ils n'hésitaient pas à dépouiller ceux qui passaient.",
+        "Ce jour-là, le car s'arrêta devant le poste. Les passagers furent priés de descendre, et la question tomba, toujours la même : « Qui a de l'argent sur lui ? » L'un après l'autre, tous répondirent que non. Cela ne les sauva pas : les gardes les fouillèrent un à un, et chaque fois qu'ils trouvaient de l'argent, des bijoux ou quelque richesse, ils confisquaient tout.",
+        "Quand vint le tour de Muhammad al-Fardi, il portait sur lui une forte somme : il avait des affaires à régler à Fès. Mais il n'avait jamais menti, ni pour une pièce ni pour sauver sa bourse. À la question « As-tu de l'argent ? », il répondit simplement : « Oui. » — « Combien ? » Il dit la somme. Elle était si élevée que les gardes éclatèrent de rire : ils crurent à une plaisanterie, à l'audace d'un voyageur qui se moquait d'eux, et ils le laissèrent passer.",
+        "Une fois de plus, la vérité l'avait protégé. L'anecdote, racontée depuis dans la famille, dit tout de lui : sa droiture et sa véracité.",
+      ]],
+      ["Descendance", [
+        "Il fut le père de Mawlay at-Tahir, qui s'établit à la zawiya de Tamsaman, rejoignit Ahmad al-ʿAlawi et fut à son tour le père de Mawlay al-Hassan. Mawlay at-Tahir compta son propre père parmi ses disciples.",
+      ]],
     ],
   }),
 ];

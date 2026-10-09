@@ -40,7 +40,7 @@ EN["mawlay-at-tahir"] = {
       `Mawlay at-Tahir was born on the Karkar mountain, in the eastern Rif, not far from the zawiya and the tomb of his great-grandfather, Muhammad ibn Qaddour al-Wakili. He also founded his family there. His father, Mawlay Muhammad al-Fardi, was renowned for his uprightness; his grandfather, Mawlay at-Tayyib, was Ibn Qaddour's eldest son.`,
     ]],
     [`Education`, [
-      `He received a complete religious education from the jurists of his region and himself became a faqih, that is, a knower of Islamic law. An anecdote about his father, reported by people close to the family, illustrates the spirit in which he was raised: sent to Fez during the Protectorate, Muhammad al-Fardi answered frankly, at a checkpoint of the occupying troops, that he had money on him, while all the other travellers claimed the opposite; his incredulous questioners let him through. Uprightness was, for this family, the first of the virtues.`,
+      `He received a complete religious education from the jurists of his region and himself became a faqih, that is, a knower of Islamic law. An anecdote about his father, reported by people close to the family, illustrates the spirit in which he was raised: sent to Fez, then under the French protectorate while the Rif was under the Spanish protectorate, Muhammad al-Fardi had to cross the border post between the two zones. Asked about the money he was carrying, he admitted a sum so high that the guards took it for a joke and let him through, while all the other travellers claimed to have nothing. Uprightness was, for this family, the first of the virtues.`,
     ]],
     [`In Tamsaman, before meeting al-ʿAlawi`, [
       `Once grown, Mawlay at-Tahir left the Karkar mountain for Tamsaman. His father, Mawlay Muhammad al-Fardi, had disciples in that town; they had built a zawiya there to receive him when he came to visit them. Muhammad al-Fardi decided to send his son there, so that he would live in that zawiya among his disciples.`,
@@ -722,16 +722,36 @@ EN["ali-ibn-moussa"] = {
 
 EN["muhammad-al-fardi"] = {
   sous: `Nineteenth-twentieth century · Karkar mountain (Rif) · father of Mawlay at-Tahir`,
-  intro: `Mawlay Muhammad al-Fardi is the grandson of Ibn Qaddour, the father of Mawlay at-Tahir and the grandfather of Mawlay al-Hassan. He was renowned in the Rif for his uprightness and honesty.`,
+  intro: `High on the Karkar mountain, in the eastern Rif, Mawlay Muhammad al-Fardi grew up in the shadow of his grandfather Ibn Qaddour's zawiya. Having in turn become the master whom the region's fuqara' followed, he was known throughout the countryside for three things: invocations that God answered, a wisdom that ended wars between tribes, and an uprightness that nothing could bend. He is the father of Mawlay at-Tahir and the grandfather of Mawlay al-Hassan.`,
   sections: [
-    [`Education`, [
-      `He was educated by his father, Mawlay at-Tayyib, Ibn Qaddour's eldest son, who insisted in particular on sincerity and honesty.`,
+    [`A child of the Karkar mountain`, [
+      `Muhammad al-Fardi was born on the Karkar mountain, the very place where his grandfather, Muhammad ibn Qaddour al-Wakili, had built his zawiya and gathered his disciples under the trees. His father, Mawlay at-Tayyib, Ibn Qaddour's eldest son, had been given charge of running his grandfather's zawiya. It was in this house of devotion and hospitality that the child grew up, amid recitations, shared meals and the comings and goings of the disciples.`,
+      `Mawlay at-Tayyib taught him above all sincerity and honesty: in this family, uprightness came before all other virtues.`,
     ]],
-    [`A reputation for uprightness`, [
-      `An anecdote told by his family illustrates this reputation: during the Protectorate, as he was travelling to Fez, he was stopped with the other travellers at a checkpoint. All claimed they had no money on them; he admitted he had some and gave the amount. His questioners, incredulous, mocked him and let him through without searching him.`,
+    [`The choice of the fuqara'`, [
+      `When Mawlay at-Tayyib died, the fuqara' who had followed the father turned to the son. They decided, by common accord, to continue the path with him and to recognise Muhammad al-Fardi as their shaykh.`,
+    ]],
+    [`Zawiyas to welcome the master`, [
+      `His disciples did not live only on the Karkar mountain: he also had some in Tamsaman and in Tistutin. In each of these two places, the fuqara' had raised a zawiya with their own hands, to receive their shaykh worthily when he came to visit them. And when Muhammad al-Fardi set out, a whole community awaited him at the end of the road, the house open and the meal ready.`,
+    ]],
+    [`Two sons, two zawiyas`, [
+      `Muhammad al-Fardi had several children, among them Mawlay at-Tahir and Mawlay at-Tayyib, who bore his grandfather's name. He entrusted the second to the disciples of the Tistutin zawiya, and the first to those of the Tamsaman zawiya. Each of the two sons thus went to live among fuqara' whom the father had trained, to continue his education there and gradually take his place. It was in Tamsaman that Mawlay at-Tahir would in turn become a master.`,
+    ]],
+    [`The man whose invocation was feared`, [
+      `Muhammad al-Fardi was known for his wonders, and first of all for invocations that God answered. People knew it, and everyone took care not to cross him: no one wanted a word spoken against them, from the depths of his heart, to be heard on high.`,
+    ]],
+    [`The man who silenced the war`, [
+      `A war lasting several decades pitted two tribes of the region against each other, the Bani Bouyahyi and the Mtalsa. They fought over land, and even more over water: over wells, and each well had already cost lives. The dead piled up and peace seemed out of reach.`,
+      `In the end it was to Muhammad al-Fardi that both camps submitted. He brought them to agreement, reconciled them, and divided the territory with such fairness that everyone could accept it. The two tribes trusted him more than their own qaid, to whom this arbitrating role normally fell. For a long time he was spoken of as the man who had ended that war.`,
+    ]],
+    [`The traveller who never lied`, [
+      `One day, his father sent him to Fez. At that time the country was cut in two: Fez came under the French protectorate, the Rif under the Spanish protectorate, and between the two zones stood a border post of which travellers kept a bad memory. The guards there did not have a light hand: they did not hesitate to strip those who passed.`,
+      `That day, the bus stopped in front of the post. The passengers were asked to get off, and the question fell, always the same: “Who has money on them?” One after the other, everyone answered no. It did not save them: the guards searched them one by one, and each time they found money, jewellery or any wealth, they confiscated everything.`,
+      `When Muhammad al-Fardi's turn came, he was carrying a large sum: he had business to settle in Fez. But he had never lied, not for a coin nor to save his purse. To the question “Do you have money?”, he simply answered: “Yes.” — “How much?” He named the sum. It was so high that the guards burst out laughing: they thought it a joke, the nerve of a traveller making fun of them, and they let him through.`,
+      `Once again, the truth had protected him. The story, told in the family ever since, says everything about him: his uprightness and his truthfulness.`,
     ]],
     [`Descendants`, [
-      `He was the father of Mawlay at-Tahir, who joined Ahmad al-ʿAlawi, founded the Tamsaman zawiya and was in turn the father of Mawlay al-Hassan. Mawlay at-Tahir counted his own father among his disciples.`,
+      `He was the father of Mawlay at-Tahir, who settled at the Tamsaman zawiya, joined Ahmad al-ʿAlawi and was in turn the father of Mawlay al-Hassan. Mawlay at-Tahir counted his own father among his disciples.`,
     ]],
   ],
 };
