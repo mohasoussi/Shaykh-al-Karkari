@@ -53,6 +53,7 @@ function carte(a, prefixe = "actualite") {
 
 export const LISTES = {
   actualites: { page: "actualites", prefixe: "actualite", kicker: "Actualités", titre: "Actualités", lede: "Rencontres, conférences, publications : l'actualité du Shaykh et de son action.", description: "L'actualité du Shaykh Mohamed Faouzi Al Karkari : rencontres, conférences, publications.", vide: "Les articles seront bientôt publiés ici." },
+  humanitaire: { page: "actions-humanitaires", prefixe: "actualite", kicker: "Actions humanitaires", titre: "Actions humanitaires", lede: "Puits, kits scolaires, aide aux orphelins, dons alimentaires : les actions humanitaires menées par les disciples de la voie Karkariya à travers le monde.", description: "Les actions humanitaires de la Karkariya dans le monde : puits, aide aux orphelins, kits scolaires, dons alimentaires.", vide: "Les actions humanitaires seront bientôt présentées ici." },
   enseignements: { page: "enseignements", prefixe: "enseignement", kicker: "Les enseignements", titre: "Les enseignements", lede: "Les moudhakara : enseignements du Shaykh sur la pratique, le savoir et le cheminement.", description: "Les enseignements du Shaykh Mohamed Faouzi Al Karkari.", vide: "Les enseignements seront bientôt publiés ici." },
 };
 

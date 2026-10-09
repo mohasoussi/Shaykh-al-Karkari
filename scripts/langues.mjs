@@ -59,7 +59,7 @@ async function chargerTitres() {
   TITRES = { fr: new Map(), tr: {} };
   try {
     TITRES.tr = JSON.parse(await lire("scripts/titres-traduits.json"));
-    for (const f of ["actualites", "enseignements"]) {
+    for (const f of ["actualites", "humanitaire", "enseignements"]) {
       if (!(await existe(`src/data/${f}.json`))) continue;
       for (const a of JSON.parse(await lire(`src/data/${f}.json`))) TITRES.fr.set(a.slug, a.titre);
     }
@@ -139,7 +139,7 @@ const ACCUEIL = [
   ["<span>Être informé</span>", "<span>Stay informed</span>", "<span>ابقَ على اطلاع</span>"],
   ['<p class="kicker">Les enseignements</p>', '<p class="kicker">Teachings</p>', '<p class="kicker">الدروس</p>'],
   ["Ce qui se transmet", "What is handed down", "ما يُتوارَث"],
-  ["Des enseignements thématiques sur la pratique, le savoir et le cheminement.", "Thematic teachings on practice, knowledge and the path. (Texts in French.)", "دروس موضوعية في الممارسة والعلم والسلوك. (النصوص بالفرنسية.)"],
+  ["Des enseignements thématiques sur la pratique, le savoir et le cheminement.", "Thematic teachings on practice, knowledge and the path.", "دروس موضوعية في الممارسة والعلم والسلوك."],
   ["<span>Tous les enseignements</span>", "<span>All teachings</span>", "<span>جميع الدروس</span>"],
   ['<p class="kicker">Interventions</p>', '<p class="kicker">Talks</p>', '<p class="kicker">مداخلات</p>'],
   ["Conférences, workshops, rencontres, assises spirituelles", "Lectures, workshops, gatherings, spiritual assemblies", "محاضرات، وورشات عمل، ولقاءات، ومجالس روحية"],
@@ -203,18 +203,23 @@ async function accueil() {
 /* ---------- listes d'articles ---------- */
 const LISTES_TR = {
   actualites: {
-    en: { kicker: "News", titre: "News", lede: "Gatherings, lectures, publications: the news of the Shaykh and his work. (Articles are published in French.)", description: "News of Shaykh Mohamed Faouzi Al Karkari: gatherings, lectures, publications.", vide: "Articles will soon be published here." },
-    ar: { kicker: "الأخبار", titre: "الأخبار", lede: "لقاءات ومحاضرات ومنشورات: أخبار الشيخ وعمله. (المقالات منشورة بالفرنسية.)", description: "أخبار الشيخ محمد فوزي الكركري: لقاءات ومحاضرات ومنشورات.", vide: "ستُنشر المقالات هنا قريبًا." },
+    en: { kicker: "News", titre: "News", lede: "Gatherings, lectures, publications: the news of the Shaykh and his work.", description: "News of Shaykh Mohamed Faouzi Al Karkari: gatherings, lectures, publications.", vide: "Articles will soon be published here." },
+    ar: { kicker: "الأخبار", titre: "الأخبار", lede: "لقاءات ومحاضرات ومنشورات: أخبار الشيخ وعمله.", description: "أخبار الشيخ محمد فوزي الكركري: لقاءات ومحاضرات ومنشورات.", vide: "ستُنشر المقالات هنا قريبًا." },
+  },
+  humanitaire: {
+    en: { kicker: "Humanitarian actions", titre: "Humanitarian actions", lede: "Wells, school kits, help for orphans, food donations: the humanitarian actions carried out by the disciples of the Karkariya path around the world.", description: "The humanitarian actions of the Karkariya around the world: wells, help for orphans, school kits, food donations.", vide: "Humanitarian actions will soon be presented here." },
+    ar: { kicker: "الأعمال الإنسانية", titre: "الأعمال الإنسانية", lede: "آبار وحقائب مدرسية ورعاية الأيتام وتبرعات غذائية: الأعمال الإنسانية التي ينجزها مريدو الطريقة الكركرية في مختلف أنحاء العالم.", description: "الأعمال الإنسانية للكركرية في العالم: آبار ورعاية للأيتام وحقائب مدرسية وتبرعات غذائية.", vide: "ستُعرض الأعمال الإنسانية هنا قريبًا." },
   },
   enseignements: {
-    en: { kicker: "Teachings", titre: "Teachings", lede: "The moudhakara: the Shaykh's teachings on practice, knowledge and the path. (Texts in French.)", description: "The teachings of Shaykh Mohamed Faouzi Al Karkari.", vide: "Teachings will soon be published here." },
-    ar: { kicker: "الدروس", titre: "الدروس", lede: "المذاكرات: دروس الشيخ في الممارسة والعلم والسلوك. (النصوص بالفرنسية.)", description: "دروس الشيخ محمد فوزي الكركري.", vide: "ستُنشر الدروس هنا قريبًا." },
+    en: { kicker: "Teachings", titre: "Teachings", lede: "The moudhakara: the Shaykh's teachings on practice, knowledge and the path.", description: "The teachings of Shaykh Mohamed Faouzi Al Karkari.", vide: "Teachings will soon be published here." },
+    ar: { kicker: "الدروس", titre: "الدروس", lede: "المذاكرات: دروس الشيخ في الممارسة والعلم والسلوك.", description: "دروس الشيخ محمد فوزي الكركري.", vide: "ستُنشر الدروس هنا قريبًا." },
   },
 };
 
 async function listes() {
   const defs = [
     ["actualites", "src/data/actualites.json"],
+    ["humanitaire", "src/data/humanitaire.json"],
     ["enseignements", "src/data/enseignements.json"],
   ];
   for (const [cle, json] of defs) {
@@ -229,7 +234,7 @@ async function listes() {
       h = await traduireTitres(h, code, { sansExtrait: true });
       h = enTete(h, code).replace(/<title>[^<]*<\/title>/, `<title>${tr.titre} — ${code === "ar" ? "الشيخ محمد فوزي الكركري" : "Shaykh Mohamed Faouzi Al Karkari"}</title>`);
       await fs.mkdir(path.join(SITE, code), { recursive: true });
-      await fs.writeFile(path.join(SITE, code, `${cle}.html`), h);
+      await fs.writeFile(path.join(SITE, code, `${fr.page}.html`), h);
     }
   }
 }

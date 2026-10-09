@@ -30,6 +30,7 @@ import { genererMaitres, lienMaitre } from "./maitres.mjs";
 import { genererAlbums } from "./albums.mjs";
 import { normaliserNoms } from "./normaliser-noms.mjs";
 import { lireMaison, fusionner } from "./maison.mjs";
+import { separerHumanitaire } from "./humanitaire.mjs";
 import { esc, pageListe, pageArticle, cartesAccueil, cartesEnseignements, TYPES, LISTES } from "./gabarits-actualites.mjs";
 
 const SITE = process.env.SITE_DIR ? path.resolve(process.env.SITE_DIR) : process.cwd();
@@ -329,6 +330,10 @@ async function ecrire(articles) {
       await fs.writeFile(accueil, h);
     }
   } else log("repères <!--actualites:debut--> absents de index.html : l'accueil n'est pas mis à jour");
+
+  // les actions humanitaires sortent des actualités et vont dans leur propre rubrique
+  const r = await separerHumanitaire(racine);
+  log(`actions humanitaires : ${r.humanitaire} article(s) rangé(s) dans actions-humanitaires.html, ${r.actualites} restent dans les actualités`);
 }
 
 /* ---------- enseignements (rubrique « Moudhakara » du site d'origine) ---------- */

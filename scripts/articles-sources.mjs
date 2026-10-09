@@ -26,7 +26,7 @@ for (const f of (await fs.readdir(SITE)).filter((x) => /^(actualite|enseignement
   c = c.replace(/<img[^>]*>/g, (m) => { figures.push(m); return `<!--M${figures.length - 1}-->`; });
   c = c.replace(/\n{3,}/g, "\n\n").trim();
   const slug = f.replace(/^(actualite|enseignement)-/, "").replace(/\.html$/, "");
-  await fs.writeFile(path.join(out, f.replace(".html", ".json")), JSON.stringify({ type: f.startsWith("actualite") ? "actualite" : "enseignement", slug, date, titre, kicker, corps: c, figures }, null, 1) + "\n");
+  await fs.writeFile(path.join(out, f.replace(".html", ".json")), JSON.stringify({ type: f.startsWith("enseignement") ? "enseignement" : /class="actu-retour" href="actions-humanitaires\.html"/.test(h) ? "humanitaire" : "actualite", slug, date, titre, kicker, corps: c, figures }, null, 1) + "\n");
   mots += c.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length; n++;
 }
 console.log(n, "articles,", mots, "mots à traduire");

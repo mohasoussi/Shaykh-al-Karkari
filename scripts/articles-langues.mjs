@@ -12,8 +12,8 @@ const esc = (t = "") => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").r
 const lireJson = async (p) => { try { return JSON.parse(await fs.readFile(p, "utf8")); } catch { return null; } };
 const NOM_SITE = { en: "Shaykh Mohamed Faouzi Al Karkari", ar: "الشيخ محمد فوزي الكركري" };
 const LIBELLES = {
-  en: { actualite: { kicker: "News", retour: "← All news" }, enseignement: { kicker: "Teachings", retour: "← All teachings" }, marche: "A 10-year walk across Morocco", photos: "Photos", fermer: "Close", avant: "Previous photo", apres: "Next photo", prec: "← Previous article", suiv: "Next article →", autres: "Other articles" },
-  ar: { actualite: { kicker: "الأخبار", retour: "→ كل الأخبار" }, enseignement: { kicker: "الدروس", retour: "→ كل الدروس" }, marche: "مسيرة عشر سنوات عبر المغرب", photos: "صور", fermer: "إغلاق", avant: "الصورة السابقة", apres: "الصورة التالية", prec: "→ المقال السابق", suiv: "المقال التالي ←", autres: "مقالات أخرى" },
+  en: { actualite: { kicker: "News", retour: "← All news" }, humanitaire: { kicker: "Humanitarian actions", retour: "← All humanitarian actions" }, enseignement: { kicker: "Teachings", retour: "← All teachings" }, marche: "A 10-year walk across Morocco", photos: "Photos", fermer: "Close", avant: "Previous photo", apres: "Next photo", prec: "← Previous article", suiv: "Next article →", autres: "Other articles" },
+  ar: { actualite: { kicker: "الأخبار", retour: "→ كل الأخبار" }, humanitaire: { kicker: "الأعمال الإنسانية", retour: "→ كل الأعمال الإنسانية" }, enseignement: { kicker: "الدروس", retour: "→ كل الدروس" }, marche: "مسيرة عشر سنوات عبر المغرب", photos: "صور", fermer: "إغلاق", avant: "الصورة السابقة", apres: "الصورة التالية", prec: "→ المقال السابق", suiv: "المقال التالي ←", autres: "مقالات أخرى" },
 };
 const resume = (corps) => esc(corps.replace(/<!--M\d+-->/g, " ").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 170));
 
