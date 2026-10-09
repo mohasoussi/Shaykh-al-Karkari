@@ -125,7 +125,7 @@ const ACCUEIL = [
   ['<span class="hero-row hero-row--prefix">Shaykh</span>', '<span class="hero-row hero-row--prefix">Shaykh</span>', '<span class="hero-row hero-row--prefix">الشيخ</span>'],
   ['<span class="hero-row">Mohamed Faouzi</span>', '<span class="hero-row">Mohamed Faouzi</span>', '<span class="hero-row">محمد فوزي</span>'],
   ['<span class="hero-row hero-row--gold">AL KARKARI</span>', '<span class="hero-row hero-row--gold">AL KARKARI</span>', '<span class="hero-row hero-row--gold">الكركري</span>'],
-  ["Guide spirituel de la Confrérie Soufie Karkariya, Auteur, Conférencier", "Spiritual guide of the Karkariya Sufi Order, Author, Lecturer", "المرشد الروحي للطريقة الصوفية الكركرية، مؤلِّف، محاضِر"],
+  ["Guide spirituel de la Confrérie Soufie Karkariya, <span class=\"hero-sub-fin\">Auteur, Conférencier</span>", "Spiritual guide of the Karkariya Sufi Order, <span class=\"hero-sub-fin\">Author, Lecturer</span>", "المرشد الروحي للطريقة الصوفية الكركرية، <span class=\"hero-sub-fin\">مؤلِّف، محاضِر</span>"],
   ["Découvrir le parcours <span", "Discover the journey <span", "اكتشف المسيرة <span"],
   ['aria-label="Défiler">\n          <span>Défiler</span>', 'aria-label="Scroll">\n          <span>Scroll</span>', 'aria-label="مرّر">\n          <span>مرّر</span>'],
   ['aria-label="Introduction"', 'aria-label="Introduction"', 'aria-label="مقدّمة"'],

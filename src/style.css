@@ -1645,6 +1645,7 @@ body { background: var(--dusk-deep-2); }
   .hero-content { padding-top: 69svh; padding-bottom: 20px; }
   .hero-title { font-size: clamp(1.45rem, 7.2vw, 1.9rem); }
   .hero-sub { margin-top: 8px; font-size: 0.98rem; line-height: 1.25; }
+  .hero-sub-fin { display: block; }
   .hero-cta { margin-top: 14px; padding: 11px 20px; font-size: 0.66rem; }
 }
 .stats-titre { margin: 38px 0 0; }
