@@ -292,6 +292,7 @@ export async function genererLangues() {
   await listes();
   await chaine();
   await (await import("./articles-langues.mjs")).genererArticles(localiser);
+  await (await import("./alts.mjs")).appliquerAlts();
   console.log("[langues] en/ et ar/ mis à jour");
 }
 
