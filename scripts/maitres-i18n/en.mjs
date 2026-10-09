@@ -58,6 +58,9 @@ EN["mawlay-at-tahir"] = {
       `Beneath the floor of the zawiya opened a cave, on which the building had been raised. The resistance fighters hid their weapons there. The cave had two exits, far apart underground, which made it possible to emerge by one or the other and set ambushes before vanishing into the mountain. Thus, behind the walls of a house of dhikr and hospitality, the defence of the country was quietly prepared.`,
       `Mawlay at-Tahir was no spectator of these events: he took an active part in the Rif War and in organising the Rifian fighters. It was from his zawiya that part of the resistance's operations were conducted, making this place of spirituality a base of support in the struggle against colonisation.`,
     ]],
+    [`The retreat of Frithjof Schuon (1931)`, [
+      `In 1931, at the zawiya of Mostaganem, it was Mawlay at-Tahir who led the spiritual retreat (khalwa) of Frithjof Schuon, one of the European disciples of Shaykh Ahmad al-ʿAlawi, who took the name ʿIsa Nur ad-Din and later became an author known for his works on metaphysics and religions. Schuon also composed a poem dedicated to Mawlay at-Tahir.`,
+    ]],
     [`Character and teaching`, [
       `Those who knew him describe him as generous, courageous and firm, yet gentle when the situation called for it; fond of joking with his companions, he spoke only edifying words in his gatherings. Shaykh Mohamed Faouzi is said to have summed up the difference between the two sons of the lineage by saying that Mawlay at-Tahir was distinguished by rigour, and Mawlay al-Hassan by gentleness.`,
     ]],
