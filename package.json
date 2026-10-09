@@ -10,7 +10,8 @@
     "actualites": "node scripts/importer-actualites.mjs",
     "prebuild": "node scripts/importer-actualites.mjs --tolerant",
     "lignee": "node scripts/lignee.mjs",
-    "langues": "node scripts/langues.mjs"
+    "langues": "node scripts/langues.mjs",
+    "postbuild": "node scripts/seo.mjs"
   },
   "devDependencies": {
     "node-html-parser": "^9.0.4",

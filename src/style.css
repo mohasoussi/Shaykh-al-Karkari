@@ -1748,3 +1748,4 @@ body { background: var(--dusk-deep-2); }
 /* arabe : les titres animés ne doivent pas rogner les points et les hamzas */
 html[lang="ar"] .h2 { line-height: 1.4; letter-spacing: 0; }
 html[lang="ar"] [data-split] > div { padding-block: 0.14em; margin-block: -0.14em; }
+.check a { text-decoration: underline; text-underline-offset: 3px; }
