@@ -1750,3 +1750,15 @@ html[lang="ar"] .h2 { line-height: 1.4; letter-spacing: 0; }
 html[lang="ar"] [data-split] > div { padding-block: 0.14em; margin-block: -0.14em; }
 .check a { text-decoration: underline; text-underline-offset: 3px; }
 .maitre .asc-photo { max-width: 340px; margin-inline: auto; text-align: center; }
+
+/* Menu plein écran sur téléphone : tout tient dans la hauteur visible, sans défilement */
+@media (max-width: 760px) {
+  .menu-inner { height: 100dvh; gap: 12px; padding-top: 96px; padding-bottom: max(14px, env(safe-area-inset-bottom)); }
+  .menu-links a { font-size: clamp(1.2rem, 4.3dvh, 2.2rem); line-height: 1.1; gap: 14px; }
+  .menu-links a span { font-size: 0.62rem; }
+  .menu-aside { padding-top: 0; gap: 10px; }
+  .lang--menu { margin: 0 0 4px; }
+  .lang--menu a { padding: 7px 12px; }
+  .menu-aside .btn-or { margin-bottom: 0; padding: 13px 20px; }
+  .menu-aside .btn--fb { padding-top: 11px; padding-bottom: 11px; }
+}
