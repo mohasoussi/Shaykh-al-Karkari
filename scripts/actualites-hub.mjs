@@ -86,7 +86,7 @@ export function genererHub() {
   for (const code of ["fr", "en", "ar"]) {
     const t = T[code], dir = path.join(SITE, t.dir);
     if (t.dir) fs.mkdirSync(dir, { recursive: true });
-    const imgAvenir = evs[0]?.image || "/media/hero-shaykh.webp";
+    const imgAvenir = "/media/hub-prochainement.webp";
     const hub = `    <section class="hub">
       <div class="section-head">
         <p class="kicker">${t.kicker}</p>
@@ -94,8 +94,8 @@ export function genererHub() {
         <p class="section-lede" data-reveal>${t.lede}</p>
       </div>
       <div class="hub-cards hub-cards--2">
-        <a class="hub-card hub-card--avenir" href="actualites-a-venir.html" data-reveal>
-          <img src="${imgAvenir}" alt="" loading="lazy" style="object-position:50% 0%" />
+        <a class="hub-card" href="actualites-a-venir.html" data-reveal>
+          <img src="${imgAvenir}" alt="" loading="lazy" style="object-position:35% 50%" />
           <span class="hub-num">01</span>
           <div class="hub-txt">
             <h2>${t.c1.h}</h2>
