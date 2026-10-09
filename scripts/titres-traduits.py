@@ -5,7 +5,7 @@ Utilisation : python3 scripts/titres-traduits.py  ->  scripts/titres-traduits.js
 import json
 T = {
 "rencontre-du-shaykh-avec-un-chef-de-tribu-indigene-au-bresil": ("The Shaykh meets an indigenous tribal chief in Brazil", "لقاء الشيخ مع زعيم قبيلة من السكان الأصليين في البرازيل"),
-"le-shaykh-mohamed-faouzi-al-karkari-invite-de-linstitut-de-parapsychologie-de-jo": ("Shaykh Mohamed Faouzi al-Karkari, guest of the Parapsychology Institute of Joinville (Brazil)", "الشيخ محمد فوزي الكركري ضيفًا على معهد علم النفس الخارق في جوانفيلي (البرازيل)"),
+"le-shaykh-mohamed-faouzi-al-karkari-invite-de-linstitut-de-parapsychologie-de-jo": ("Shaykh Mohamed Faouzi al-Karkari, guest of the Parapsychology Institute of Joinville (Brazil)", "الشيخ محمد فوزي الكركري ضيفًا على معهد علم النفس الخارق في جوينفيل (البرازيل)"),
 "le-shaykh-mohamed-faouzi-al-karkari-invite-de-luniversite-regionale-de-blumenau-": ("Shaykh Mohamed Faouzi al-Karkari, guest of the Regional University of Blumenau, Brazil", "الشيخ محمد فوزي الكركري ضيفًا على جامعة بلومينو الإقليمية في البرازيل"),
 "cloture-de-la-visite-du-shaykh-mohamed-faouzi-al-karkari-a-geneve": ("Closing of Shaykh Mohamed Faouzi al-Karkari's visit to Geneva", "ختام زيارة الشيخ محمد فوزي الكركري إلى جنيف"),
 "shaykh-mohamed-faouzi-al-karkari-invite-a-une-voix-pour-la-paix": ("Shaykh Mohamed Faouzi al-Karkari invited to “A Voice for Peace”", "الشيخ محمد فوزي الكركري مدعوًّا إلى «صوتٌ من أجل السلام»"),
