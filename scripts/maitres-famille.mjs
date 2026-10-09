@@ -61,6 +61,7 @@ export const FAMILLE = [
       ]],
       ["La retraite de Frithjof Schuon (1931)", [
         "En 1931, à la zawiya de Mostaganem, c'est Mawlay at-Tahir qui dirigea la retraite spirituelle (khalwa) de Frithjof Schuon, l'un des disciples européens du Shaykh Ahmad al-ʿAlawi, qui prit le nom d'ʿIsa Nur ad-Din et devint par la suite un auteur connu pour ses ouvrages sur la métaphysique et les religions. Schuon a d'ailleurs composé un poème consacré à Mawlay at-Tahir.",
+        `<figure class="asc-photo"><img src="/media/frithjof-schuon.webp" alt="Frithjof Schuon (ʿIsa Nur ad-Din), disciple du Shaykh Ahmad al-ʿAlawi." loading="lazy" decoding="async" /><figcaption>Frithjof Schuon (ʿIsa Nur ad-Din), disciple du Shaykh Ahmad al-ʿAlawi.</figcaption></figure>`,
       ]],
       ["Caractère et enseignement", [
         "Ceux qui l'ont connu le décrivent comme généreux, courageux et ferme, mais doux quand la situation s'y prêtait ; aimant plaisanter avec ses compagnons, il ne tenait dans ses réunions que des propos édifiants. Le Shaykh Mohamed Faouzi aurait résumé la différence entre les deux fils de la lignée en disant que Mawlay at-Tahir se distinguait par la rigueur, et Mawlay al-Hassan par la douceur.",

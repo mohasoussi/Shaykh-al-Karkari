@@ -89,7 +89,7 @@ export async function genererMaitres() {
       m.sous = m.sous;
       corps = await corpsKarkariya(m.karkariya);
     } else {
-      corps = m.sections.map(([h, ps]) => `        <h3>${esc(h)}</h3>\n${ps.map((p) => `        <p>${p}</p>`).join("\n")}`).join("\n");
+      corps = m.sections.map(([h, ps]) => `        <h3>${esc(h)}</h3>\n${ps.map((p) => (p.startsWith("<figure") ? `        ${p}` : `        <p>${p}</p>`)).join("\n")}`).join("\n");
     }
     await fs.writeFile(path.join(SITE, `maitre-${m.slug}.html`), page(m, corps));
   }

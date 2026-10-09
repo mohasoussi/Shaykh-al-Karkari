@@ -28,7 +28,7 @@ function page(code, m, T) {
   const nom = code === "ar" ? nomMaillon(m.cle || m.nom, "ar") : m.nom;
   const titre = `${nom} — ${T.site}`;
   const desc = amp(t.intro).replace(/<[^>]+>/g, "").slice(0, 200);
-  const corps = t.sections.map(([h, ps]) => `        <h3>${esc(h)}</h3>\n${ps.map((p) => `        <p>${amp(p)}</p>`).join("\n")}`).join("\n");
+  const corps = t.sections.map(([h, ps]) => `        <h3>${esc(h)}</h3>\n${ps.map((p) => (p.startsWith("<figure") ? `        ${p}` : `        <p>${amp(p)}</p>`)).join("\n")}`).join("\n");
   const [href, lib] = T.retour[rub];
   const voir = t.voir && m.voir ? `<a class="btn-glass btn-glass--dark" href="maitre-${m.voir[0]}.html"><span>${esc(t.voir)}</span><i>${T.fleche}</i></a> ` : "";
   return `<!doctype html>

@@ -1749,3 +1749,4 @@ body { background: var(--dusk-deep-2); }
 html[lang="ar"] .h2 { line-height: 1.4; letter-spacing: 0; }
 html[lang="ar"] [data-split] > div { padding-block: 0.14em; margin-block: -0.14em; }
 .check a { text-decoration: underline; text-underline-offset: 3px; }
+.maitre .asc-photo { max-width: 340px; margin-inline: auto; text-align: center; }

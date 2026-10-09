@@ -60,6 +60,7 @@ EN["mawlay-at-tahir"] = {
     ]],
     [`The retreat of Frithjof Schuon (1931)`, [
       `In 1931, at the zawiya of Mostaganem, it was Mawlay at-Tahir who led the spiritual retreat (khalwa) of Frithjof Schuon, one of the European disciples of Shaykh Ahmad al-ʿAlawi, who took the name ʿIsa Nur ad-Din and later became an author known for his works on metaphysics and religions. Schuon also composed a poem dedicated to Mawlay at-Tahir.`,
+        `<figure class="asc-photo"><img src="/media/frithjof-schuon.webp" alt="Frithjof Schuon (ʿIsa Nur ad-Din), disciple of Shaykh Ahmad al-ʿAlawi." loading="lazy" decoding="async" /><figcaption>Frithjof Schuon (ʿIsa Nur ad-Din), disciple of Shaykh Ahmad al-ʿAlawi.</figcaption></figure>`,
     ]],
     [`Character and teaching`, [
       `Those who knew him describe him as generous, courageous and firm, yet gentle when the situation called for it; fond of joking with his companions, he spoke only edifying words in his gatherings. Shaykh Mohamed Faouzi is said to have summed up the difference between the two sons of the lineage by saying that Mawlay at-Tahir was distinguished by rigour, and Mawlay al-Hassan by gentleness.`,
