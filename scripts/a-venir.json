@@ -100,11 +100,6 @@
    "en": "Spots are limited: 10 of our 30 spots are already reserved, leaving only 20 places available.",
    "ar": "الأماكن محدودة: حُجز 10 من أصل 30 مكانًا، ولم يبقَ سوى 20 مكانًا."
   },
-  "echeance": {
-   "fr": "Date limite d'inscription : 30 septembre 2026. Pour réserver votre place, vous devez remplir le formulaire d'inscription Google ET effectuer votre paiement avant le 30 septembre. Les inscriptions ou paiements reçus après cette date ne seront pas acceptés.",
-   "en": "RSVP deadline: 30 September 2026. To secure your place, you must complete the Google RSVP form AND submit your payment before 30 September. RSVPs or payments submitted after the deadline will not be accepted.",
-   "ar": "آخر موعد للتسجيل: 30 سبتمبر 2026. لحجز مكانكم عليكم ملء استمارة التسجيل على Google وسداد المبلغ قبل 30 سبتمبر. ولن تُقبل الاستمارات أو المدفوعات الواردة بعد هذا الموعد."
-  },
   "questions": {
    "fr": "Pour toute question ou information complémentaire, merci de nous écrire en message privé.",
    "en": "For any questions or additional information, please reach out privately.",
@@ -122,14 +117,6 @@
      "fr": "Voir l'événement sur Facebook",
      "en": "View the event on Facebook",
      "ar": "عرض الفعالية على فيسبوك"
-    }
-   },
-   {
-    "url": "https://docs.google.com/forms/d/e/1FAIpQLSfUa6MhMNPegBylR4PCZllqln8KM32FjGwFbwWk1PMFCJ-Pgw/viewform",
-    "label": {
-     "fr": "Formulaire d'inscription",
-     "en": "RSVP form",
-     "ar": "استمارة التسجيل"
     }
    }
   ]
