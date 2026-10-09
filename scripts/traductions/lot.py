@@ -19,6 +19,10 @@ for i in range(1, len(blocs), 2):
     src_fr = json.load(open(os.path.join(fr, nom + ".json"), encoding="utf-8"))
     a = sorted(set(re.findall(r"<!--M\d+-->", src_fr["corps"]))); b = sorted(set(re.findall(r"<!--M\d+-->", corps)))
     if a != b: print("MARQUEURS DIFFÉRENTS :", nom, set(a) ^ set(b))
+    # RESTAURATION : mêmes liens que le français, dans le même ordre (évite toute faute de recopie d'une adresse)
+    hs = re.findall(r'href="([^"]+)"', src_fr["corps"])
+    if len(hs) == len(re.findall(r'href="([^"]+)"', corps)):
+        it = iter(hs); corps = re.sub(r'href="([^"]+)"', lambda m: 'href="%s"' % next(it), corps)
     liens = lambda t: sorted(re.findall(r'href="([^"]+)"', t))
     if liens(src_fr["corps"]) != liens(corps): print("LIENS DIFFÉRENTS :", nom, set(liens(src_fr["corps"])) ^ set(liens(corps)))
     json.dump({"titre": titre, "corps": corps}, open(os.path.join(out, nom + ".json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
