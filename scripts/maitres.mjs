@@ -94,6 +94,7 @@ export async function genererMaitres() {
     await fs.writeFile(path.join(SITE, `maitre-${m.slug}.html`), page(m, corps));
   }
   console.log(`[maîtres] ${MAITRES.length} biographies`);
+  await (await import("./maitres-langues.mjs")).genererMaitresLangues();
 }
 
 import { fileURLToPath } from "node:url";

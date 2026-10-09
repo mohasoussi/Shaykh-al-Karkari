@@ -257,7 +257,7 @@ for (const [code, L] of Object.entries(LANG)) {
     code, L.video, L.videoLede,
   );
   const prefixe = L.dir ? "../" : "";
-  const lien = `<a class="btn-glass btn-glass--dark" href="qui-est-le-shaykh.html#biographie"><span>${esc(L.bio)}</span><i>${L.fleche}</i></a> <a class="btn-glass btn-glass--dark" href="${prefixe}maitre-mawlay-al-hassan.html"><span>${esc(L.maitre)}</span><i>${L.fleche}</i></a> <a class="btn-glass btn-glass--dark" href="${L.dir ? "" : ""}chaine-de-transmission.html"><span>${esc(L.chaine)}</span><i>${L.fleche}</i></a>`;
+  const lien = `<a class="btn-glass btn-glass--dark" href="qui-est-le-shaykh.html#biographie"><span>${esc(L.bio)}</span><i>${L.fleche}</i></a> <a class="btn-glass btn-glass--dark" href="maitre-mawlay-al-hassan.html"><span>${esc(L.maitre)}</span><i>${L.fleche}</i></a> <a class="btn-glass btn-glass--dark" href="${L.dir ? "" : ""}chaine-de-transmission.html"><span>${esc(L.chaine)}</span><i>${L.fleche}</i></a>`;
   fs.mkdirSync(L.dir || ".", { recursive: true });
   fs.writeFileSync(`${L.dir}marche-de-dix-ans.html`, GABARIT(L, code, corps, video, lien));
 }

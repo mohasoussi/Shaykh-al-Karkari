@@ -182,11 +182,11 @@ ${carte(H.c2, 2)}
   const cartes = EV.map((a) => {
     const href = a.corps ? `evenement-${a.id}.html` : `actualite-${a.article}.html`;
     const f = a.photos[0].f;
-    return `        <a class="actu-card" href="${pre}${href}">
+    return `        <a class="actu-card" href="${a.corps ? "" : pre}${href}">
           <figure class="actu-fig"><img src="${pre}media/evenements/${a.id}/t/${f}.webp" alt="" loading="lazy" decoding="async" /></figure>
           <div class="actu-txt">
             <h2>${esc(a.titre[code])}</h2>${a.texte ? `\n            <p>${esc(a.texte[code] || a.texte.fr)}</p>` : ""}
-            <span class="actu-lire">${esc(H.lire)} <i>${H.a}</i></span>
+            <span class="actu-lire">${esc(a.corps ? H.lire.replace(/\s*\((?:in French|بالفرنسية)\)/, "") : H.lire)} <i>${H.a}</i></span>
           </div>
         </a>`;
   }).join("\n");

@@ -62,7 +62,61 @@ ${htmlAlbum(a, "fr")}
   await fs.writeFile(path.join(SITE, `evenement-${a.id}.html`), html);
 }
 
+const LANGUES = {
+  en: { dir: "en", lang: "en", rtl: false, site: "Shaykh Mohamed Faouzi Al Karkari", kicker: "Event", galerie: "← The gallery", media: "← Media", photos: "Photos", credit: "Photos", fermer: "Close", prec: "Previous photo", suiv: "Next photo" },
+  ar: { dir: "ar", lang: "ar", rtl: true, site: "الشيخ محمد فوزي الكركري", kicker: "فعالية", galerie: "المعرض →", media: "الإعلام →", photos: "الصور", credit: "الصور", fermer: "إغلاق", prec: "الصورة السابقة", suiv: "الصورة التالية" },
+};
+
+/** Version anglaise ou arabe d'une page d'événement (textes : scripts/albums-i18n.mjs). */
+async function pageEvenementLangue(a, code, textes) {
+  const T = LANGUES[code];
+  const t = textes[a.id];
+  if (!t) return;
+  const titre = t.titre_article || a.titre[code];
+  const desc = (a.texte?.[code] || titre).replace(/<[^>]+>/g, "");
+  const html = `<!doctype html>
+<html lang="${T.lang}"${T.rtl ? ' dir="rtl"' : ""}>
+<head>
+  <!--@include head-->
+  <title>${esc(titre)} — ${T.site}</title>
+  <meta name="description" content="${esc(desc)}" />
+  <meta property="og:title" content="${esc(titre)}" />
+  <meta property="og:description" content="${esc(desc)}" />
+  <meta property="og:image" content="/media/evenements/${a.id}/${a.photos[0].f}.webp" />
+</head>
+<body data-page="actualite">
+  <!--@include ui-->
+  <!--@include header-->
+  <!--@include menu-->
+  <div class="smooth" id="top">
+  <main>
+    <article class="actu-article">
+      <a class="actu-retour" href="${a.rubrique === "media" ? "media.html" : "galerie.html"}#${a.id}">${a.rubrique === "media" ? T.media : T.galerie}</a>
+      <header class="actu-entete">
+        <p class="kicker">${T.kicker}</p>
+        <h1>${esc(titre)}</h1>
+      </header>
+      <div class="actu-corps">
+${t.corps.map((c) => (c.startsWith("<") ? c : `<p>${c}</p>`)).join("\n")}
+      </div>
+      <section class="album-article"><h2 class="album-titre">${T.photos}</h2>
+      <div class="galerie" data-close="${T.fermer}" data-prev="${T.prec}" data-next="${T.suiv}">
+${htmlAlbum(a, code, "../")}
+      </div>${a.credit ? `<p class="galerie-credit">${T.credit} : ${esc(a.credit)}</p>` : ""}</section>
+    </article>
+  </main>
+  <!--@include footer-->
+  </div>
+</body>
+</html>
+`;
+  await fs.mkdir(path.join(SITE, T.dir), { recursive: true });
+  await fs.writeFile(path.join(SITE, T.dir, `evenement-${a.id}.html`), html);
+}
+
 export async function genererAlbums() {
+  const I18N = await import("./albums-i18n.mjs");
+  for (const a of await lireAlbums()) if (a.corps) { await pageEvenementLangue(a, "en", I18N.EN); await pageEvenementLangue(a, "ar", I18N.AR); }
   let n = 0;
   for (const a of await lireAlbums()) if (a.corps) await pageEvenement(a);
   for (const a of await lireAlbums()) {

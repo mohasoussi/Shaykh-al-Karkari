@@ -1,6 +1,9 @@
 /* Noms des maillons (chaîne de transmission, lignée chérifienne) dans les autres langues :
    en arabe, en écriture arabe ; en anglais, seuls les libellés français sont traduits. */
-const cle = (s) => String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z]+/g, "");
+const cle = (s) =>
+  String(s).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+    .replace(/iy(?=[\s,]|$)/g, "i").replace(/mahassin/g, "mahasin").replace(/youssouf/g, "yusuf").replace(/machich/g, "mashish").replace(/fassi/g, "fasi")
+    .replace(/[^a-z]+/g, "");
 
 const AR = {
   "Shaykh Sidi Mohamed Faouzi Al Karkari": "الشيخ سيدي محمد فوزي الكركري",
@@ -59,7 +62,9 @@ const AR = {
   "Moulay Salem": "مولاي سالم", "Moulay ʿIyyad": "مولاي عياض", "Moulay al-Qacem": "مولاي القاسم",
   "Moulay Idriss al-Azhar": "مولاي إدريس الأزهر", "Moulay Idriss al-Akbar": "مولاي إدريس الأكبر",
   "ʿAbdallah al-Kamil": "عبد الله الكامل", "Moulay Hassan al-Thani": "مولاي الحسن المثنى",
-  "Moulay Hassan al-Sebt": "مولاي الحسن السبط", "ʿAli et Fatima az-Zahra": "علي وفاطمة الزهراء",
+  "Moulay Hassan al-Sebt": "مولاي الحسن السبط",
+  "Fatima az-Zahra": "فاطمة الزهراء", "Moulay Muhammad al-Bakmani": "مولاي محمد البكماني", "Moulay Ahmad Belkarti": "مولاي أحمد بلكارتي",
+  "Moulay ʿIssa Makhoukh": "مولاي عيسى مخوخ", "Moulay ʿAli Ibn Moussa": "مولاي علي بن موسى", "ʿAli et Fatima az-Zahra": "علي وفاطمة الزهراء",
 };
 const EN = {
   "Le Shaykh sidi Abu Ya’za al-Mahaji": "Shaykh Sidi Abu Ya’za al-Mahaji",

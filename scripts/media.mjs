@@ -87,7 +87,7 @@ for (const [code, t] of Object.entries(T)) {
         </a>`;
   const galerie = PHOTOS.map(([f, alt]) => `        <a class="galerie-item" href="${pre}media/photos/${f}.webp" data-reveal><img src="${pre}media/photos/t/${f}.webp" alt="${esc(alt[code])}" loading="lazy" decoding="async" /></a>`).join("\n");
   const albums = ALBUMS.filter((a) => a.rubrique === "media").map((a) => `      <div class="section-head media-gal-head" id="${a.id}">
-        <h2 class="h2" data-split>${esc(a.titre[code])}</h2>${a.texte ? `\n        <p class="section-lede" data-reveal>${esc(a.texte[code] || a.texte.fr)}</p>` : ""}${a.corps ? `\n        <p class="album-art"><a href="${pre}evenement-${a.id}.html">${code === "fr" ? "Lire l'article" : code === "en" ? "Read the article (French)" : "اقرأ المقال (بالفرنسية)"} →</a></p>` : ""}
+        <h2 class="h2" data-split>${esc(a.titre[code])}</h2>${a.texte ? `\n        <p class="section-lede" data-reveal>${esc(a.texte[code] || a.texte.fr)}</p>` : ""}${a.corps ? `\n        <p class="album-art"><a href="evenement-${a.id}.html">${code === "fr" ? "Lire l'article" : code === "en" ? "Read the article" : "اقرأ المقال"} →</a></p>` : ""}
       </div>
       <div class="galerie" data-close="${esc(t.close)}" data-prev="${esc(t.prev)}" data-next="${esc(t.next)}">
 ${htmlAlbum(a, code, pre)}
@@ -132,8 +132,8 @@ ${blocPresse(code)}${albums}
 /* ---------- page Galerie : un album par événement ---------- */
 const G = {
   fr: { kicker: "Galerie", h1: "Les événements en photos", lede: "Un album par événement : conférences, symposiums, rencontres. Touchez une photo pour l'agrandir.", title: "Galerie — Shaykh Mohamed Faouzi Al Karkari", desc: "Galerie photo des événements du Shaykh Mohamed Faouzi Al Karkari.", n: (k) => `${k} photo${k > 1 ? "s" : ""}`, art: "Lire l'article" },
-  en: { kicker: "Gallery", h1: "Events in pictures", lede: "One album per event: lectures, symposiums, meetings. Tap a photo to enlarge it.", title: "Gallery — Shaykh Mohamed Faouzi Al Karkari", desc: "Photo gallery of the events of Shaykh Mohamed Faouzi Al Karkari.", n: (k) => `${k} photo${k > 1 ? "s" : ""}`, art: "Read the article (in French)" },
-  ar: { kicker: "المعرض", h1: "الفعاليات بالصور", lede: "ألبوم لكل فعالية: محاضرات وندوات ولقاءات. المس صورة لتكبيرها.", title: "المعرض — الشيخ محمد فوزي الكركري", desc: "معرض صور لفعاليات الشيخ محمد فوزي الكركري.", n: (k) => `${k} صورة`, art: "اقرأ المقال (بالفرنسية)" },
+  en: { kicker: "Gallery", h1: "Events in pictures", lede: "One album per event: lectures, symposiums, meetings. Tap a photo to enlarge it.", title: "Gallery — Shaykh Mohamed Faouzi Al Karkari", desc: "Photo gallery of the events of Shaykh Mohamed Faouzi Al Karkari.", n: (k) => `${k} photo${k > 1 ? "s" : ""}`, art: "Read the article" },
+  ar: { kicker: "المعرض", h1: "الفعاليات بالصور", lede: "ألبوم لكل فعالية: محاضرات وندوات ولقاءات. المس صورة لتكبيرها.", title: "المعرض — الشيخ محمد فوزي الكركري", desc: "معرض صور لفعاليات الشيخ محمد فوزي الكركري.", n: (k) => `${k} صورة`, art: "اقرأ المقال" },
 };
 const GAL = ALBUMS.filter((a) => a.rubrique === "galerie");
 for (const [code, g] of Object.entries(G)) {
@@ -143,7 +143,7 @@ for (const [code, g] of Object.entries(G)) {
   const blocs = GAL.map((a) => `      <section class="album" id="${a.id}">
         <div class="section-head media-gal-head">
           <h2 class="h2" data-split>${esc(a.titre[code])}</h2>
-          <p class="album-n">${g.n(a.photos.length)}</p>${a.texte ? `\n          <p class="section-lede" data-reveal>${esc(a.texte[code] || a.texte.fr)}</p>` : ""}${a.corps ? `\n          <p class="album-art"><a href="${pre}evenement-${a.id}.html">${esc(g.art)} →</a></p>` : a.article ? `\n          <p class="album-art"><a href="${pre}actualite-${a.article}.html">${esc(g.art)} →</a></p>` : ""}
+          <p class="album-n">${g.n(a.photos.length)}</p>${a.texte ? `\n          <p class="section-lede" data-reveal>${esc(a.texte[code] || a.texte.fr)}</p>` : ""}${a.corps ? `\n          <p class="album-art"><a href="evenement-${a.id}.html">${esc(g.art)} →</a></p>` : a.article ? `\n          <p class="album-art"><a href="${pre}actualite-${a.article}.html">${esc(g.art)} →</a></p>` : ""}
         </div>
         <div class="galerie" data-close="${esc(t.close)}" data-prev="${esc(t.prev)}" data-next="${esc(t.next)}">
 ${htmlAlbum(a, code, pre)}
