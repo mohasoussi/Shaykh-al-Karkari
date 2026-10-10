@@ -104,7 +104,7 @@ export function genererHub() {
           </div>
         </a>
         <a class="hub-card" href="actualites-passees.html" data-reveal>
-          <img src="/media/hero-shaykh.webp" alt="" loading="lazy" style="object-position:60% 30%" />
+          <img src="/media/hub-actualites-passees.webp" alt="" loading="lazy" style="object-position:50% 22%" />
           <span class="hub-num">02</span>
           <div class="hub-txt">
             <h2>${t.c2.h}</h2>
