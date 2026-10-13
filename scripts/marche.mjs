@@ -219,7 +219,7 @@ const GABARIT = (L, code, corps, video, lien) => `<!doctype html>
   <meta name="description" content="${esc(L.desc)}" />
   <meta property="og:title" content="${esc(L.titre)}" />
   <meta property="og:description" content="${esc(L.desc)}" />
-  <meta property="og:image" content="/media/peregrination-desert.webp" />
+  <meta property="og:image" content="/media/partage/marche-de-dix-ans.jpg" />
 </head>
 <body data-page="shaykh">
   <!--@include ui-->

@@ -115,7 +115,7 @@ export function genererHub() {
       </div>
     </section>
 `;
-    fs.writeFileSync(path.join(dir, "actualites.html"), enveloppe(code, { titre: t.titre, desc: t.desc, page: "actualites", main: hub }));
+    fs.writeFileSync(path.join(dir, "actualites.html"), enveloppe(code, { titre: t.titre, desc: t.desc, page: "actualites", main: hub, image: "/media/partage/actualites.jpg" }));
     const a = t.av;
     const corps = evs.length
       ? `    <section class="avenir">\n${evs.map((e) => carteEvenement(e, code)).join("")}    </section>\n`

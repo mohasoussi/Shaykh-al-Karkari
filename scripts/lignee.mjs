@@ -63,7 +63,9 @@ for (const [code, T] of Object.entries(TEXTES)) {
     .replace(/<title>[^<]*<\/title>/, `<title>${T.titre} — ${code === "ar" ? "الشيخ محمد فوزي الكركري" : "Shaykh Mohamed Faouzi Al Karkari"}</title>`)
     .replace(/(<meta name="description" content=")[^"]*/, `$1${esc(T.desc)}`)
     .replace(/(<meta property="og:title" content=")[^"]*/, `$1${T.titre}`)
-    .replace(/(<meta property="og:description" content=")[^"]*/, `$1${esc(T.desc)}`);
+    .replace(/(<meta property="og:description" content=")[^"]*/, `$1${esc(T.desc)}`)
+    .replace(/(<meta property="og:image" content=")[^"]*/, "$1/media/partage/lignee-cherifienne.jpg")
+    .replace(/\s*<meta property="og:image:(width|height)" content="\d+" \/>/g, "");
 
   const page = `${tete}    <section class="silsila-page silsila-page--lignee" id="silsila-page">
       <header class="silsila-tete">
