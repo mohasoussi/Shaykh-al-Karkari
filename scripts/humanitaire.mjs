@@ -8,6 +8,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { esc, pageListe, cartesAccueil, LISTES } from "./gabarits-actualites.mjs";
 import { genererHub } from "./actualites-hub.mjs";
+import { lireActualitesMaison, ecrirePagesMaison } from "./actualites-maison.mjs";
 
 const SITE = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const REGLE = /humanitaire|puits|kits? scolaires?|orphelin|eau potable|rohingya|sinistr|cataracte|tricycle|camionnette|[ée]cole primaire|sans-papiers|(apportent?|apporte) (de )?(la )?joie|villageois|apport des soufis/i;
@@ -46,8 +47,10 @@ export async function separerHumanitaire(racine = SITE) {
   // le fichier peut déjà avoir été trié : on reconstitue la liste complète
   let deja = [];
   try { deja = JSON.parse(await fs.readFile(path.join(racine, "src", "data", "humanitaire.json"), "utf8")); } catch {}
-  const connus = new Set(tous.map((a) => a.slug));
-  const complet = [...tous, ...deja.filter((a) => !connus.has(a.slug))].sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  const maison = await lireActualitesMaison(racine); // actualités rédigées sur ce site : conservées à chaque import
+  await ecrirePagesMaison(racine, maison);
+  const connus = new Set([...tous, ...maison].map((a) => a.slug));
+  const complet = [...tous.filter((a) => !maison.some((m) => m.slug === a.slug)), ...maison, ...deja.filter((a) => !connus.has(a.slug))].sort((a, b) => String(b.date).localeCompare(String(a.date)));
   const hum = complet.filter(estHumanitaire);
   const reste = complet.filter((a) => !estHumanitaire(a));
 

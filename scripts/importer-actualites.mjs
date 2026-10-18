@@ -30,6 +30,7 @@ import { genererMaitres, lienMaitre } from "./maitres.mjs";
 import { genererAlbums } from "./albums.mjs";
 import { normaliserNoms } from "./normaliser-noms.mjs";
 import { lireMaison, fusionner } from "./maison.mjs";
+import { lireActualitesMaison } from "./actualites-maison.mjs";
 import { separerHumanitaire } from "./humanitaire.mjs";
 import { esc, pageListe, pageArticle, cartesAccueil, cartesEnseignements, TYPES, LISTES } from "./gabarits-actualites.mjs";
 
@@ -304,10 +305,11 @@ async function ecrire(articles) {
   await fs.mkdir(path.join(racine, "src", "data"), { recursive: true });
 
   // pages d'articles : on supprime d'abord celles qui n'existent plus
-  const gardes = new Set(articles.map((a) => `actualite-${a.slug}.html`));
+  const maisonActu = await lireActualitesMaison(racine); // actualités rédigées sur ce site : jamais supprimées
+  const gardes = new Set([...articles, ...maisonActu].map((a) => `actualite-${a.slug}.html`));
   for (const f of await fs.readdir(racine)) if (/^actualite-.+\.html$/.test(f) && !gardes.has(f)) await fs.rm(path.join(racine, f));
   const dossiers = path.join(racine, "public", "actualites");
-  if (await existe(dossiers)) for (const d of await fs.readdir(dossiers)) if (!articles.some((a) => a.slug === d)) await fs.rm(path.join(dossiers, d), { recursive: true, force: true });
+  if (await existe(dossiers)) for (const d of await fs.readdir(dossiers)) if (!articles.some((a) => a.slug === d) && !maisonActu.some((a) => a.slug === d)) await fs.rm(path.join(dossiers, d), { recursive: true, force: true });
 
   articles.forEach(async () => {});
   for (let i = 0; i < articles.length; i++) {

@@ -1,5 +1,17 @@
 [
   {
+    "slug": "la-grande-marche-pour-la-paix-a-paris",
+    "titre": "La Grande Marche pour la paix à Paris",
+    "date": "2026-10-18T18:00:00Z",
+    "extrait": "Ce dimanche 18 octobre 2026, nous avons eu l’honneur d’être invités à participer à la Grande Marche pour la paix, organisée à l’occasion des 40 ans de la Rencontre interreligieuse d’Assise.",
+    "imageAlt": "La foule rassemblée au Trocadéro face à la tour Eiffel lors de la Grande Marche pour la paix",
+    "categories": [],
+    "estWordPress": false,
+    "maison": true,
+    "couverture": "actualites/la-grande-marche-pour-la-paix-a-paris/couverture.webp",
+    "vignette": "actualites/la-grande-marche-pour-la-paix-a-paris/vignette.webp"
+  },
+  {
     "url": "https://karkariya.fr/rencontre-du-shaykh-avec-un-chef-de-tribu-indigene-au-bresil/",
     "slug": "rencontre-du-shaykh-avec-un-chef-de-tribu-indigene-au-bresil",
     "titre": "Rencontre du Shaykh avec un chef de tribu indigène au Brésil",
