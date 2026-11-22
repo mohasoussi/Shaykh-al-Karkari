@@ -4,7 +4,7 @@ Les articles eux-mêmes restent en français. Un titre absent de cette liste s'a
 Utilisation : python3 scripts/titres-traduits.py  ->  scripts/titres-traduits.json"""
 import json
 T = {
-"universite-de-chicago-experiences-de-mort-imminente": ("Shaykh Mohamed Faouzi al-Karkari invited to the University of Chicago for a discussion on near-death experiences", "الشيخ محمد فوزي الكركري ضيفًا على جامعة شيكاغو في حوار حول تجارب الاقتراب من الموت"),
+"universite-de-chicago-experiences-de-mort-imminente": ("Shaykh Mohamed Faouzi al-Karkari invited to the University of Chicago to speak about near-death experiences", "الشيخ محمد فوزي الكركري ضيفًا على جامعة شيكاغو للحديث عن تجارب الاقتراب من الموت"),
 "la-grande-marche-pour-la-paix-a-paris": ("The Great March for Peace in Paris", "المسيرة الكبرى من أجل السلام في باريس"),
 "rencontre-du-shaykh-avec-un-chef-de-tribu-indigene-au-bresil": ("The Shaykh meets an indigenous tribal chief in Brazil", "لقاء الشيخ مع زعيم قبيلة من السكان الأصليين في البرازيل"),
 "le-shaykh-mohamed-faouzi-al-karkari-invite-de-linstitut-de-parapsychologie-de-jo": ("Shaykh Mohamed Faouzi al-Karkari, guest of the Parapsychology Institute of Joinville (Brazil)", "الشيخ محمد فوزي الكركري ضيفًا على معهد علم النفس الخارق في جوينفيل (البرازيل)"),
