@@ -1,5 +1,110 @@
 [
  {
+  "id": "aar-denver-2026",
+  "article": "american-academy-of-religion-denver-2026",
+  "titre": {
+   "fr": "American Academy of Religion — Denver (21 novembre 2026)",
+   "en": "American Academy of Religion — Denver (21 November 2026)",
+   "ar": "الأكاديمية الأمريكية للدين — دنفر (21 نوفمبر 2026)"
+  },
+  "texte": {
+   "fr": "Le Shaykh invité à une table ronde sur l’islam, les psychédéliques et les communautés musulmanes, lors de l’Annual Meeting 2026 de l’AAR.",
+   "en": "The Shaykh invited to a round table on Islam, psychedelics and Muslim communities at the 2026 AAR Annual Meeting.",
+   "ar": "الشيخ مدعوّ إلى طاولة مستديرة حول الإسلام والمخدّرات المُهلوِسة والمجتمعات المسلمة في اللقاء السنوي 2026 لجمعية AAR."
+  },
+  "photos": [
+   {
+    "f": "aar-1",
+    "alt": {
+     "fr": "Le Shaykh traversant le hall du Colorado Convention Center, sous la bannière des Annual Meetings 2026 de la SBL et de l’AAR",
+     "en": "The Shaykh walking through the hall of the Colorado Convention Center, under the banner of the 2026 SBL and AAR Annual Meetings",
+     "ar": "الشيخ يعبر ردهة مركز كولورادو للمؤتمرات، تحت لافتة اللقاءات السنوية 2026 لجمعيتي SBL وAAR"
+    }
+   },
+   {
+    "f": "aar-2",
+    "alt": {
+     "fr": "Le Shaykh prenant la parole au pupitre",
+     "en": "The Shaykh speaking at the podium",
+     "ar": "الشيخ يتحدث من المنبر"
+    }
+   },
+   {
+    "f": "aar-3",
+    "alt": {
+     "fr": "Le Shaykh lors de son intervention, au pupitre du Colorado Convention Center",
+     "en": "The Shaykh during his talk, at the podium of the Colorado Convention Center",
+     "ar": "الشيخ أثناء مداخلته على منبر مركز كولورادو للمؤتمرات"
+    }
+   },
+   {
+    "f": "aar-4",
+    "alt": {
+     "fr": "Le Shaykh en conversation avec deux participants après la séance",
+     "en": "The Shaykh in conversation with two participants after the session",
+     "ar": "الشيخ في حديث مع مشاركَين بعد الجلسة"
+    }
+   },
+   {
+    "f": "aar-5",
+    "alt": {
+     "fr": "La table ronde : le Shaykh et trois autres intervenants",
+     "en": "The round table: the Shaykh and three other speakers",
+     "ar": "الطاولة المستديرة: الشيخ وثلاثة متحدثين آخرين"
+    }
+   },
+   {
+    "f": "aar-6",
+    "alt": {
+     "fr": "Une présentation sur les musulmans et les psychédéliques, dans le cadre de l’Annual Meeting de l’AAR",
+     "en": "A presentation on Muslims and psychedelics at the AAR Annual Meeting",
+     "ar": "عرض حول المسلمين والمخدّرات المُهلوِسة ضمن اللقاء السنوي لجمعية AAR"
+    }
+   },
+   {
+    "f": "aar-7",
+    "alt": {
+     "fr": "Le Shaykh échangeant avec une participante",
+     "en": "The Shaykh talking with a participant",
+     "ar": "الشيخ يتحاور مع إحدى المشاركات"
+    }
+   },
+   {
+    "f": "aar-8",
+    "alt": {
+     "fr": "Le Shaykh échangeant avec un participant",
+     "en": "The Shaykh talking with a participant",
+     "ar": "الشيخ يتحاور مع أحد المشاركين"
+    }
+   },
+   {
+    "f": "aar-9",
+    "alt": {
+     "fr": "Échange entre le Shaykh et une participante, autour d’une table",
+     "en": "An exchange between the Shaykh and a participant around a table",
+     "ar": "حوار بين الشيخ وإحدى المشاركات حول طاولة"
+    }
+   },
+   {
+    "f": "aar-10",
+    "alt": {
+     "fr": "Le Shaykh en discussion avec deux interlocuteurs",
+     "en": "The Shaykh in discussion with two interlocutors",
+     "ar": "الشيخ في نقاش مع محاوَرين اثنين"
+    }
+   },
+   {
+    "f": "aar-11",
+    "alt": {
+     "fr": "La salle pendant la table ronde interdisciplinaire",
+     "en": "The room during the interdisciplinary round table",
+     "ar": "القاعة أثناء الطاولة المستديرة المتعددة التخصصات"
+    }
+   }
+  ],
+  "rubrique": "galerie"
+ },
+ {
   "id": "chicago-mort-imminente",
   "article": "universite-de-chicago-experiences-de-mort-imminente",
   "titre": {
