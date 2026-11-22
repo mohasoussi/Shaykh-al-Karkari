@@ -1,5 +1,54 @@
 [
  {
+  "id": "chicago-mort-imminente",
+  "article": "universite-de-chicago-experiences-de-mort-imminente",
+  "titre": {
+   "fr": "Université de Chicago — expériences de mort imminente (19 novembre 2026)",
+   "en": "University of Chicago — near-death experiences (19 November 2026)",
+   "ar": "جامعة شيكاغو — تجارب الاقتراب من الموت (19 نوفمبر 2026)"
+  },
+  "texte": {
+   "fr": "Le Shaykh invité à partager trois expériences de proximité de la mort auprès d’étudiants, entre recherche universitaire et tradition soufie.",
+   "en": "The Shaykh invited to share three near-death experiences with students, between academic research and the Sufi tradition.",
+   "ar": "الشيخ مدعوّ لروي ثلاث تجارب اقتراب من الموت أمام الطلبة، بين البحث الجامعي والتقليد الصوفي."
+  },
+  "photos": [
+   {
+    "f": "chicago-1",
+    "alt": {
+     "fr": "Le Shaykh s’exprimant devant les étudiants, avec en arrière-plan un extrait projeté de son récit",
+     "en": "The Shaykh speaking to the students, with an excerpt of his account projected behind him",
+     "ar": "الشيخ يتحدث إلى الطلبة، وخلفه مقتطف من روايته معروض على الشاشة"
+    }
+   },
+   {
+    "f": "chicago-2",
+    "alt": {
+     "fr": "Le Shaykh et son interlocuteur face aux étudiants, dans la grande salle de l’Université de Chicago",
+     "en": "The Shaykh and his interlocutor facing the students in the great hall of the University of Chicago",
+     "ar": "الشيخ ومحاوره أمام الطلبة في القاعة الكبرى بجامعة شيكاغو"
+    }
+   },
+   {
+    "f": "chicago-3",
+    "alt": {
+     "fr": "Les étudiants réunis en cercle autour du Shaykh pendant l’échange",
+     "en": "The students gathered in a circle around the Shaykh during the discussion",
+     "ar": "الطلبة مجتمعون في حلقة حول الشيخ أثناء النقاش"
+    }
+   },
+   {
+    "f": "chicago-4",
+    "alt": {
+     "fr": "Le Shaykh lors de l’échange, devant les étudiants",
+     "en": "The Shaykh during the discussion, in front of the students",
+     "ar": "الشيخ أثناء النقاش أمام الطلبة"
+    }
+   }
+  ],
+  "rubrique": "galerie"
+ },
+ {
   "id": "une-voix-pour-la-paix",
   "article": "shaykh-mohamed-faouzi-al-karkari-invite-a-une-voix-pour-la-paix",
   "titre": {

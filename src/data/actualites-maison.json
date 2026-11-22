@@ -10,5 +10,17 @@
     "maison": true,
     "couverture": "actualites/la-grande-marche-pour-la-paix-a-paris/couverture.webp",
     "vignette": "actualites/la-grande-marche-pour-la-paix-a-paris/vignette.webp"
+  },
+  {
+    "slug": "universite-de-chicago-experiences-de-mort-imminente",
+    "titre": "Le Shaykh Mohamed Faouzi al-Karkari invité à l’Université de Chicago pour un échange sur les expériences de mort imminente",
+    "date": "2026-11-19T12:00:00Z",
+    "extrait": "Le 19 novembre 2026, nous avons eu l’honneur d’accueillir le Shaykh Mohamed Faouzi al-Karkari à l’Université de Chicago, où il était invité à intervenir auprès d’un groupe d’étudiants dans le cadre d’un enseignement consacré aux expériences de mort imminente (EMI).",
+    "imageAlt": "Le Shaykh Mohamed Faouzi al-Karkari s’exprimant devant les étudiants de l’Université de Chicago",
+    "categories": [],
+    "estWordPress": false,
+    "maison": true,
+    "couverture": "actualites/universite-de-chicago-experiences-de-mort-imminente/couverture.webp",
+    "vignette": "actualites/universite-de-chicago-experiences-de-mort-imminente/vignette.webp"
   }
 ]

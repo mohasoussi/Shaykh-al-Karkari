@@ -123,12 +123,12 @@ const HUB = {
     c1: ["Vidéos", "Conférences, ateliers et entretiens en vidéo : Sorbonne, Chicago, Yale, Stanford, Berkeley, Washington…", "Voir les vidéos", "conferences-videos.html", "conf-sorbonne"],
     c2: ["Articles", "Comptes rendus de ses conférences, tables rondes et événements : Symposium pour la Paix, Assises fraternelles, Stanford, Canada, Brésil…", "Lire les articles", "conferences-articles.html", "conf-paix"],
     title: "Conférences — Shaykh Mohamed Faouzi Al Karkari", desc: "Vidéos et articles sur les conférences, tables rondes et événements du Shaykh Mohamed Faouzi Al Karkari.", a: "→",
-    h1a: "Articles sur les conférences", lede_a: "Comptes rendus de conférences, de tables rondes et d'événements auxquels le Shaykh a participé. (Articles en français.)", lire: "Lire l'article", title_a: "Articles sur les conférences — Shaykh Mohamed Faouzi Al Karkari" },
+    h1a: "Articles sur les conférences", lede_a: "Comptes rendus de conférences, de tables rondes et d'événements auxquels le Shaykh a participé.", lire: "Lire l'article", title_a: "Articles sur les conférences — Shaykh Mohamed Faouzi Al Karkari" },
   en: { kicker: "Lectures", h1: "Lectures", lede: "The Shaykh's talks: to watch on video, or to read through the articles on his lectures, round tables and gatherings.",
     c1: ["Videos", "Lectures, workshops and interviews on video: Sorbonne, Chicago, Yale, Stanford, Berkeley, Washington…", "Watch the videos", "conferences-videos.html", "conf-sorbonne"],
     c2: ["Articles", "Reports on his lectures, round tables and events: Peace Symposium, Fraternal Assises, Stanford, Canada, Brazil…", "Read the articles", "conferences-articles.html", "conf-paix"],
     title: "Lectures — Shaykh Mohamed Faouzi Al Karkari", desc: "Videos and articles on the lectures, round tables and events of Shaykh Mohamed Faouzi Al Karkari.", a: "→",
-    h1a: "Articles on the lectures", lede_a: "Reports on lectures, round tables and events the Shaykh took part in. (Articles in French.)", lire: "Read the article (in French)", title_a: "Articles on the lectures — Shaykh Mohamed Faouzi Al Karkari" },
+    h1a: "Articles on the lectures", lede_a: "Reports on lectures, round tables and events the Shaykh took part in.", lire: "Read the article (in French)", title_a: "Articles on the lectures — Shaykh Mohamed Faouzi Al Karkari" },
   ar: { kicker: "المحاضرات", h1: "المحاضرات", lede: "مداخلات الشيخ: للمشاهدة بالفيديو، أو للقراءة عبر المقالات عن محاضراته وموائده المستديرة ولقاءاته.",
     c1: ["فيديوهات", "محاضرات وورشات وحوارات بالفيديو: السوربون، شيكاغو، ييل، ستانفورد، بيركلي، واشنطن…", "شاهد الفيديوهات", "conferences-videos.html", "conf-sorbonne"],
     c2: ["مقالات", "تقارير عن محاضراته وموائده المستديرة وفعالياته: ندوة السلام، اللقاءات الأخوية، ستانفورد، كندا، البرازيل…", "اقرأ المقالات", "conferences-articles.html", "conf-paix"],
@@ -181,12 +181,13 @@ ${carte(H.c2, 2)}
   fs.writeFileSync(`${dir}conferences.html`, enveloppe(code, H.title, H.desc, hub, "conferences"));
   const cartes = EV.map((a) => {
     const href = a.corps ? `evenement-${a.id}.html` : `actualite-${a.article}.html`;
+    const traduit = !a.corps && (!dir || fs.existsSync(`${dir}${href}`)); // article disponible dans la langue de la page
     const f = a.photos[0].f;
-    return `        <a class="actu-card" href="${a.corps ? "" : pre}${href}">
+    return `        <a class="actu-card" href="${a.corps || traduit ? "" : pre}${href}">
           <figure class="actu-fig"><img src="${pre}media/evenements/${a.id}/t/${f}.webp" alt="" loading="lazy" decoding="async" /></figure>
           <div class="actu-txt">
             <h2>${esc(a.titre[code])}</h2>${a.texte ? `\n            <p>${esc(a.texte[code] || a.texte.fr)}</p>` : ""}
-            <span class="actu-lire">${esc(a.corps ? H.lire.replace(/\s*\((?:in French|بالفرنسية)\)/, "") : H.lire)} <i>${H.a}</i></span>
+            <span class="actu-lire">${esc(a.corps || traduit ? H.lire.replace(/\s*\((?:in French|بالفرنسية)\)/, "") : H.lire)} <i>${H.a}</i></span>
           </div>
         </a>`;
   }).join("\n");
