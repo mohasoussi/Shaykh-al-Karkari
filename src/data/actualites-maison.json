@@ -34,5 +34,17 @@
     "maison": true,
     "couverture": "actualites/american-academy-of-religion-denver-2026/couverture.webp",
     "vignette": "actualites/american-academy-of-religion-denver-2026/vignette.webp"
+  },
+  {
+    "slug": "la-muraqqaa-langage-spirituel-des-couleurs",
+    "titre": "Le Shaykh Mohamed Faouzi al-Karkari sur la Muraqqaʿa : le langage spirituel des couleurs et de la Lumière divine",
+    "date": "2026-11-19T10:00:00Z",
+    "extrait": "Le 19 novembre 2026, l’Université de Chicago, en collaboration avec The Zawiya Foundation, a organisé une rencontre exceptionnelle réunissant le Shaykh Mohamed Faouzi al-Karkari et la professeure Janet, conservatrice à l’Art Institute of Chicago.",
+    "imageAlt": "Le Shaykh Mohamed Faouzi al-Karkari parlant de la Muraqqaʿa, devant un extrait projeté de son enseignement",
+    "categories": [],
+    "estWordPress": false,
+    "maison": true,
+    "couverture": "actualites/la-muraqqaa-langage-spirituel-des-couleurs/couverture.webp",
+    "vignette": "actualites/la-muraqqaa-langage-spirituel-des-couleurs/vignette.webp"
   }
 ]

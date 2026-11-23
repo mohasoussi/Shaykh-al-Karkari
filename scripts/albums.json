@@ -1,5 +1,86 @@
 [
  {
+  "id": "chicago-muraqqaa",
+  "article": "la-muraqqaa-langage-spirituel-des-couleurs",
+  "titre": {
+   "fr": "Université de Chicago — la Muraqqaʿa (19 novembre 2026)",
+   "en": "University of Chicago — the Muraqqaʿa (19 November 2026)",
+   "ar": "جامعة شيكاغو — المرقّعة (19 نوفمبر 2026)"
+  },
+  "texte": {
+   "fr": "Une rencontre avec la professeure Janet, conservatrice à l’Art Institute of Chicago : la Muraqqaʿa, le langage spirituel des couleurs et de la Lumière divine.",
+   "en": "A meeting with Professor Janet, curator at the Art Institute of Chicago: the Muraqqaʿa, the spiritual language of colours and of the divine Light.",
+   "ar": "لقاء مع الأستاذة جانيت، أمينة في معهد الفن بشيكاغو: المرقّعة، اللغة الروحية للألوان وللنور الإلهي."
+  },
+  "photos": [
+   {
+    "f": "muraqqaa-1",
+    "alt": {
+     "fr": "Le Shaykh et les participants réunis dans un salon de l’Université de Chicago",
+     "en": "The Shaykh and the participants gathered in a sitting room at the University of Chicago",
+     "ar": "الشيخ والمشاركون مجتمعون في صالون بجامعة شيكاغو"
+    }
+   },
+   {
+    "f": "muraqqaa-2",
+    "alt": {
+     "fr": "Le Shaykh et ses interlocuteurs, avec des pièces de la Muraqqaʿa déployées sur la table",
+     "en": "The Shaykh and his interlocutors, with pieces of the Muraqqaʿa spread out on the table",
+     "ar": "الشيخ ومحاوِروه، وقطع من المرقّعة منشورة على الطاولة"
+    }
+   },
+   {
+    "f": "muraqqaa-3",
+    "alt": {
+     "fr": "Le Shaykh parlant de la Muraqqaʿa, devant un extrait projeté de son enseignement",
+     "en": "The Shaykh speaking about the Muraqqaʿa, in front of a projected excerpt of his teaching",
+     "ar": "الشيخ يتحدث عن المرقّعة أمام مقتطف من تعليمه معروض على الشاشة"
+    }
+   },
+   {
+    "f": "muraqqaa-4",
+    "alt": {
+     "fr": "Le Shaykh en pleine explication, devant un texte projeté sur l’écran",
+     "en": "The Shaykh in the middle of an explanation, in front of a text projected on the screen",
+     "ar": "الشيخ في أثناء الشرح أمام نص معروض على الشاشة"
+    }
+   },
+   {
+    "f": "muraqqaa-5",
+    "alt": {
+     "fr": "L’assemblée réunie autour de la table couverte de pièces de la Muraqqaʿa",
+     "en": "The audience gathered around the table covered with pieces of the Muraqqaʿa",
+     "ar": "الحضور مجتمعون حول الطاولة المغطاة بقطع من المرقّعة"
+    }
+   },
+   {
+    "f": "muraqqaa-6",
+    "alt": {
+     "fr": "L’assistance et le Shaykh, dans un salon orné de calligraphies",
+     "en": "The audience and the Shaykh in a sitting room decorated with calligraphy",
+     "ar": "الحضور والشيخ في صالون تزيّنه الخطوط العربية"
+    }
+   },
+   {
+    "f": "muraqqaa-7",
+    "alt": {
+     "fr": "Le Shaykh au côté d’une calligraphie de la Basmala",
+     "en": "The Shaykh beside a calligraphy of the Basmala",
+     "ar": "الشيخ بجانب خط للبسملة"
+    }
+   },
+   {
+    "f": "muraqqaa-8",
+    "alt": {
+     "fr": "Vue de l’assistance, à travers l’embrasure de la porte du salon",
+     "en": "A view of the audience through the doorway of the sitting room",
+     "ar": "منظر للحضور من خلال إطار باب الصالون"
+    }
+   }
+  ],
+  "rubrique": "galerie"
+ },
+ {
   "id": "aar-denver-2026",
   "article": "american-academy-of-religion-denver-2026",
   "titre": {
