@@ -1,5 +1,62 @@
 [
  {
+  "id": "chicago-nom-divin",
+  "article": "que-contient-un-nom-divin-universite-de-chicago",
+  "titre": {
+   "fr": "Que contient un Nom divin ? — Université de Chicago (19 novembre 2026)",
+   "en": "What Is in a Divine Name? — University of Chicago (19 November 2026)",
+   "ar": "ماذا في الاسم الإلهي؟ — جامعة شيكاغو (19 نوفمبر 2026)"
+  },
+  "texte": {
+   "fr": "Un échange interreligieux avec le doyen Maurice Charles : les Noms divins, la foi, la lumière de Dieu et la puissance de l’amour divin.",
+   "en": "An interfaith conversation with Dean Maurice Charles: the Divine Names, faith, the light of God and the power of divine love.",
+   "ar": "حوار بين الأديان مع العميد موريس تشارلز: الأسماء الإلهية والإيمان ونور الله وقوة الحب الإلهي."
+  },
+  "photos": [
+   {
+    "f": "nom-divin-1",
+    "alt": {
+     "fr": "Le Shaykh s’exprimant lors de l’échange, entre deux participants",
+     "en": "The Shaykh speaking during the discussion, between two participants",
+     "ar": "الشيخ يتحدث أثناء الحوار بين مشاركَين"
+    }
+   },
+   {
+    "f": "nom-divin-2",
+    "alt": {
+     "fr": "Le Shaykh, au milieu de l’assistance, lors de l’échange interreligieux",
+     "en": "The Shaykh among the audience during the interfaith conversation",
+     "ar": "الشيخ بين الحضور أثناء الحوار بين الأديان"
+    }
+   },
+   {
+    "f": "nom-divin-3",
+    "alt": {
+     "fr": "Le Shaykh et ses deux voisins de canapé pendant l’échange",
+     "en": "The Shaykh and the two people seated beside him during the discussion",
+     "ar": "الشيخ والجالسان إلى جانبه أثناء الحوار"
+    }
+   },
+   {
+    "f": "nom-divin-4",
+    "alt": {
+     "fr": "L’assistance réunie dans la salle de l’Université de Chicago",
+     "en": "The audience gathered in the room at the University of Chicago",
+     "ar": "الحضور مجتمعون في القاعة بجامعة شيكاغو"
+    }
+   },
+   {
+    "f": "nom-divin-5",
+    "alt": {
+     "fr": "Des participants attentifs pendant la soirée",
+     "en": "Attentive participants during the evening",
+     "ar": "مشاركون منصتون خلال الأمسية"
+    }
+   }
+  ],
+  "rubrique": "galerie"
+ },
+ {
   "id": "chicago-muraqqaa",
   "article": "la-muraqqaa-langage-spirituel-des-couleurs",
   "titre": {
