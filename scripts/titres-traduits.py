@@ -4,7 +4,7 @@ Les articles eux-mêmes restent en français. Un titre absent de cette liste s'a
 Utilisation : python3 scripts/titres-traduits.py  ->  scripts/titres-traduits.json"""
 import json
 T = {
-"que-contient-un-nom-divin-universite-de-chicago": ("What Is in a Divine Name? Shaykh Mohamed Faouzi al-Karkari at the University of Chicago", "ماذا في الاسم الإلهي؟ الشيخ محمد فوزي الكركري في جامعة شيكاغو"),
+"que-contient-un-nom-divin-universite-de-chicago": ("The Study of the Divine Names: Shaykh Mohamed Faouzi al-Karkari at the University of Chicago", "دراسة الأسماء الإلهية: الشيخ محمد فوزي الكركري في جامعة شيكاغو"),
 "la-muraqqaa-langage-spirituel-des-couleurs": ("Shaykh Mohamed Faouzi al-Karkari on the Muraqqaʿa: the spiritual language of colours and of the divine Light", "الشيخ محمد فوزي الكركري عن المرقّعة: اللغة الروحية للألوان وللنور الإلهي"),
 "american-academy-of-religion-denver-2026": ("Shaykh Mohamed Faouzi al-Karkari speaks at the 2026 Annual Meeting of the American Academy of Religion", "الشيخ محمد فوزي الكركري يشارك في اللقاء السنوي 2026 للأكاديمية الأمريكية للدين"),
 "universite-de-chicago-experiences-de-mort-imminente": ("Shaykh Mohamed Faouzi al-Karkari invited to the University of Chicago to speak about near-death experiences", "الشيخ محمد فوزي الكركري ضيفًا على جامعة شيكاغو للحديث عن تجارب الاقتراب من الموت"),
