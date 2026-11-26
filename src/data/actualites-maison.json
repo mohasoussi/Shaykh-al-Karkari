@@ -58,5 +58,17 @@
     "maison": true,
     "couverture": "actualites/que-contient-un-nom-divin-universite-de-chicago/couverture.webp",
     "vignette": "actualites/que-contient-un-nom-divin-universite-de-chicago/vignette.webp"
+  },
+  {
+    "slug": "revue-de-presse-etats-unis",
+    "titre": "Revue de presse : le Shaykh Mohamed Faouzi al-Karkari en voyage aux États-Unis",
+    "date": "2026-11-26T12:00:00Z",
+    "extrait": "Retour sur le séjour du Shaykh aux États-Unis : l’Université de Chicago, la réunion annuelle de l’American Academy of Religion à Denver, et les publications américaines qui en ont rendu compte.",
+    "imageAlt": "Affiche « Revue de presse » : le Shaykh Mohamed Faouzi al-Karkari en voyage aux États-Unis, conférences, tables rondes et workshops dans plusieurs universités américaines",
+    "categories": [],
+    "estWordPress": false,
+    "maison": true,
+    "couverture": "actualites/revue-de-presse-etats-unis/couverture.webp",
+    "vignette": "actualites/revue-de-presse-etats-unis/vignette.webp"
   }
 ]

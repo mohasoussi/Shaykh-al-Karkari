@@ -118,6 +118,7 @@ T = {
 "hadith-al-nouzoul-asrar-de-lism-le-sheykh-wassita-la-prohibitif": ("(Lesson) The Hadith of Descent, the secrets of the Name, the Shaykh (Wassita), the prohibitive lā", "(درس) حديث النزول، أسرار الاسم، الشيخ (الواسطة)، لا الناهية"),
 "cours-150214-themes-ism-existantinexistant-la-prohibitif-sens-caches-de-alif-lam": ("(Lesson) The Name, existent/non-existent, the prohibitive lā, hidden meanings of “Alif Lām Mīm”", "(درس) الاسم، الموجود والمعدوم، لا الناهية، المعاني الخفية لـ «الم»"),
 "cours-281213-themes-safar-12-24-66-idhn": ("(Lesson) Safar, 12-24-66, idhn", "(درس) السفر، 12-24-66، الإذن"),
+"revue-de-presse-etats-unis": ("Press Review: Shaykh Mohamed Faouzi al-Karkari’s Journey to the United States", "مراجعة صحفية: رحلة الشيخ محمد فوزي الكركري إلى الولايات المتحدة"),
 }
 json.dump(T, open("scripts/titres-traduits.json", "w"), ensure_ascii=False, indent=1)
 print(len(T), "titres")

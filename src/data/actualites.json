@@ -1,5 +1,17 @@
 [
   {
+    "slug": "revue-de-presse-etats-unis",
+    "titre": "Revue de presse : le Shaykh Mohamed Faouzi al-Karkari en voyage aux États-Unis",
+    "date": "2026-11-26T12:00:00Z",
+    "extrait": "Retour sur le séjour du Shaykh aux États-Unis : l’Université de Chicago, la réunion annuelle de l’American Academy of Religion à Denver, et les publications américaines qui en ont rendu compte.",
+    "imageAlt": "Affiche « Revue de presse » : le Shaykh Mohamed Faouzi al-Karkari en voyage aux États-Unis, conférences, tables rondes et workshops dans plusieurs universités américaines",
+    "categories": [],
+    "estWordPress": false,
+    "maison": true,
+    "couverture": "actualites/revue-de-presse-etats-unis/couverture.webp",
+    "vignette": "actualites/revue-de-presse-etats-unis/vignette.webp"
+  },
+  {
     "slug": "american-academy-of-religion-denver-2026",
     "titre": "Le Shaykh Mohamed Faouzi al-Karkari intervient à l’Annual Meeting 2026 de l’American Academy of Religion",
     "date": "2026-11-21T12:00:00Z",

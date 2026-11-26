@@ -120,7 +120,7 @@ export async function genererAlbums() {
   let n = 0;
   for (const a of await lireAlbums()) if (a.corps) await pageEvenement(a);
   for (const a of await lireAlbums()) {
-    if (!a.article) continue;
+    if (!a.article || a.sansGalerie) continue;
     const f = path.join(SITE, `actualite-${a.article}.html`);
     let h;
     try { h = await fs.readFile(f, "utf8"); } catch { continue; }

@@ -1,5 +1,31 @@
 [
  {
+  "id": "revue-de-presse-etats-unis",
+  "article": "revue-de-presse-etats-unis",
+  "titre": {
+   "fr": "Revue de presse — Le Shaykh aux États-Unis (novembre 2026)",
+   "en": "Press review — The Shaykh in the United States (November 2026)",
+   "ar": "مراجعة صحفية — الشيخ في الولايات المتحدة (نوفمبر 2026)"
+  },
+  "texte": {
+   "fr": "Chicago, Denver et les publications américaines : retour sur le séjour du Shaykh.",
+   "en": "Chicago, Denver and the American publications: a look back at the Shaykh’s journey.",
+   "ar": "شيكاغو ودنفر والمنشورات الأمريكية: نظرة على رحلة الشيخ."
+  },
+  "photos": [
+   {
+    "f": "presse-1",
+    "alt": {
+     "fr": "Affiche « Revue de presse » : le Shaykh Mohamed Faouzi al-Karkari en voyage aux États-Unis",
+     "en": "“Press review” poster: Shaykh Mohamed Faouzi al-Karkari traveling in the United States",
+     "ar": "ملصق «مراجعة صحفية»: الشيخ محمد فوزي الكركري في رحلته إلى الولايات المتحدة"
+    }
+   }
+  ],
+  "rubrique": "media",
+  "sansGalerie": true
+ },
+ {
   "id": "chicago-nom-divin",
   "article": "que-contient-un-nom-divin-universite-de-chicago",
   "titre": {
