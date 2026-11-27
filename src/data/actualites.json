@@ -1,5 +1,17 @@
 [
   {
+    "slug": "revue-de-presse-chicago-denver",
+    "titre": "Revue de presse : le Shaykh Mohamed Faouzi al-Karkari à Chicago et à Denver",
+    "date": "2026-11-27T12:00:00Z",
+    "extrait": "Le témoignage du Shaykh sur la mort et les expériences de mort imminente, présenté à l’Université de Chicago puis à Denver, relayé par plusieurs médias américains.",
+    "imageAlt": "Affiche « Revue de presse » : le Shaykh Mohamed Faouzi al-Karkari à Chicago et Denver, conférences et échanges à l’Université de Chicago et à l’American Academy of Religion",
+    "categories": [],
+    "estWordPress": false,
+    "maison": true,
+    "couverture": "actualites/revue-de-presse-chicago-denver/couverture.webp",
+    "vignette": "actualites/revue-de-presse-chicago-denver/vignette.webp"
+  },
+  {
     "slug": "revue-de-presse-etats-unis",
     "titre": "Revue de presse : le Shaykh Mohamed Faouzi al-Karkari en voyage aux États-Unis",
     "date": "2026-11-26T12:00:00Z",

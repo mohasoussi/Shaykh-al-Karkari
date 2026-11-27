@@ -1,5 +1,31 @@
 [
  {
+  "id": "revue-de-presse-chicago-denver",
+  "article": "revue-de-presse-chicago-denver",
+  "sansGalerie": true,
+  "titre": {
+   "fr": "Revue de presse — Le Shaykh à Chicago et Denver (novembre 2026)",
+   "en": "Press review — The Shaykh in Chicago and Denver (November 2026)",
+   "ar": "مراجعة صحفية — الشيخ في شيكاغو ودنفر (نوفمبر 2026)"
+  },
+  "texte": {
+   "fr": "Le témoignage du Shaykh sur la mort et les expériences de mort imminente, relayé par plusieurs médias américains.",
+   "en": "The Shaykh’s testimony on death and near-death experiences, picked up by several American media outlets.",
+   "ar": "شهادة الشيخ حول الموت وتجارب الاقتراب من الموت، نقلتها عدة وسائل إعلام أمريكية."
+  },
+  "photos": [
+   {
+    "f": "presse-1",
+    "alt": {
+     "fr": "Affiche « Revue de presse » : le Shaykh Mohamed Faouzi al-Karkari à Chicago et Denver, conférences et échanges à l’Université de Chicago et à l’American Academy of Religion",
+     "en": "“Press review” poster: Shaykh Mohamed Faouzi al-Karkari in Chicago and Denver, lectures and exchanges at the University of Chicago and the American Academy of Religion",
+     "ar": "ملصق «مراجعة صحفية»: الشيخ محمد فوزي الكركري في شيكاغو ودنفر، محاضرات ولقاءات في جامعة شيكاغو والأكاديمية الأمريكية للدين"
+    }
+   }
+  ],
+  "rubrique": "media"
+ },
+ {
   "id": "revue-de-presse-etats-unis",
   "article": "revue-de-presse-etats-unis",
   "titre": {
